@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<installer-script minSpecVersion="1.000000" authoringTool="com.apple.PackageMaker" authoringToolVersion="3.0.6" authoringToolBuild="201">
+    <title>arita-dotum4.0</title>
+    <options customize="allow" allow-external-scripts="no" rootVolumeOnly="false"/>
+    <welcome file="Welcome"/>
+    <license file="License"/>
+    <choices-outline>
+        <line choice="choice25"/>
+        <line choice="choice26"/>
+        <line choice="choice27"/>
+        <line choice="choice28"/>
+        <line choice="choice29"/>
+    </choices-outline>
+    <choice id="choice25" title="Arita4.0_B">
+        <pkg-ref id="com.agfont.aritadotum40.Arita4.0_B.pkg"/>
+    </choice>
+    <choice id="choice26" title="Arita4.0_L">
+        <pkg-ref id="com.agfont.aritadotum40.Arita4.0_L.pkg"/>
+    </choice>
+    <choice id="choice27" title="Arita4.0_M">
+        <pkg-ref id="com.agfont.aritadotum40.Arita4.0_M.pkg"/>
+    </choice>
+    <choice id="choice28" title="Arita4.0_SB">
+        <pkg-ref id="com.agfont.aritadotum40.Arita4.0_SB.pkg"/>
+    </choice>
+    <choice id="choice29" title="Arita4.0_T">
+        <pkg-ref id="com.agfont.aritadotum40.Arita4.0_T.pkg"/>
+    </choice>
+    <pkg-ref id="com.agfont.aritadotum40.Arita4.0_B.pkg" installKBytes="792" version="4.0" auth="Root">file:./Contents/Packages/arita40b.pkg</pkg-ref>
+    <pkg-ref id="com.agfont.aritadotum40.Arita4.0_L.pkg" installKBytes="828" version="4.0" auth="Root">file:./Contents/Packages/arita40l.pkg</pkg-ref>
+    <pkg-ref id="com.agfont.aritadotum40.Arita4.0_M.pkg" installKBytes="764" version="4.0" auth="Root">file:./Contents/Packages/arita40m.pkg</pkg-ref>
+    <pkg-ref id="com.agfont.aritadotum40.Arita4.0_SB.pkg" installKBytes="808" version="4.0" auth="Root">file:./Contents/Packages/arita40sb.pkg</pkg-ref>
+    <pkg-ref id="com.agfont.aritadotum40.Arita4.0_T.pkg" installKBytes="268" version="4.0" auth="Root">file:./Contents/Packages/arita40t.pkg</pkg-ref>
+</installer-script>

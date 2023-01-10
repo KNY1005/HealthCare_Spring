@@ -1,0 +1,63 @@
+@font-face {
+    font-family: 'arita-thin';
+    src: url('TTF/아리따-돋움(TTF)-Thin.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+	font-family: 'arita-light';
+	src: url('TTF/아리따-돋움(TTF)-Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+	font-family: 'arita-medium';
+	src: url('TTF/아리따-돋움(TTF)-Medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+	font-family: 'arita-bold';
+	src: url('TTF/아리따-돋움(TTF)-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+	font-family: 'arita-semibold';
+	src: url('TTF/아리따-돋움(TTF)-SemiBold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+	font-family: 'arita-sans-bold';
+	src: url('영문/AritaSans-Bold.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+	font-family: 'arita-sans-light';
+	src: url('영문/AritaSans-Light.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+	font-family: 'arita-sans-medium';
+	src: url('영문/AritaSans-Medium.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+	font-family: 'arita-sans-semibold';
+	src: url('영문/AritaSans-SemiBold.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+	font-family: 'arita-sans-thin';
+	src: url('영문/AritaSans-Thin.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
