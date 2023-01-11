@@ -17,6 +17,7 @@
 	<%@include file="includes/header.jsp"%>
 	<div id="height"></div>
 	<section>
+	
 	</section>
 
 	<%@include file="includes/footer.jsp"%>
