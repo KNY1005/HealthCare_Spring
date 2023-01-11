@@ -26,9 +26,13 @@
 	<hr>
 	<a href="abc4.do">예약4</a>
 	<hr>
-	<a href="abca.do">예약완료-무료</a>
+	<a href="abc5.do">예약완료-무료</a>
 	<hr>
-	<a href="abcb.do">예약완료-결제</a>
+	<a href="abc6.do">예약완료-결제</a>
+	<hr>
+	<a href="abc7.do">결제1</a>
+	<hr>
+	<a href="abc8.do">결제2</a>
 	<hr>
 	<a href="medicallist.do">건강상담소리스트</a>
 	<hr>
