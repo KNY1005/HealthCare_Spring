@@ -5,20 +5,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <title>예약완료</title>
-<link href="${path}/resources/css/reset.css" rel="stylesheet"/>
+
     <style>
     *{
       font-weight: bold;
     }
     ul{list-style:none; padding-left:0px;}
-    main{
-    	position: relative;
-        top: 200px;
+    #main{
+    	
+        
         width: 1320px;
         height: 1000px;
-        margin: 0 auto;
+        margin: 0 auto 0;
     }
     .order_box{
         width: 942px;
@@ -26,16 +25,17 @@
         display: flex;
  		align-items: flex-end;
         justify-content: center;
+        z-index:-999;
       }    
     .order{
         width: 600px;
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
+        z-index:-999;
     }
     .check{
-        position: relative; top: 400px; left: 50%;
-        transform: translate(-50%, -50%);
+        
         width: 1320px;
         height: 1000px;
         margin: 100px 0;
@@ -52,6 +52,7 @@
         border-radius: 20px;
         display: flex;
         justify-content: space-evenly;
+        z-index:-999;
     }
     #infor ul{
         padding: 30px; 
@@ -65,12 +66,14 @@
     }
     #guide{
         display: flex;
+        z-index:-999;
         flex-direction: column;
         margin: 10px 0;
     }
     .btn{
         display: flex;
         justify-content: flex-end;
+        z-index:-999;
     }
     .btn button{
         width: 270px; 
@@ -99,7 +102,7 @@
             <li>예방접종 예약완료</li>
         </ul>
     </div>
-    <main>
+    <main id="main">
         <div class="check">
             <div id="money">
                 예약이 완료되었습니다.

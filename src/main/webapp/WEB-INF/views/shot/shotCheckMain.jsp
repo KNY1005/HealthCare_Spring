@@ -13,11 +13,9 @@
 		font-weight: bold;
 	}
 	main {
-        position: relative; top: 500px; left: 50%;
-        transform: translate(-50%, -50%);
         width: 1320px;
         height: 1000px;
-        margin: 100px 0;
+        margin: 100px auto;
     }    
 	main h2{font-size:40px; margin-bottom: 20px;}
 	main div{border: 1px solid #000; border-radius:10px; padding:20px; overflow:auto; width:1320px; height:600px;}

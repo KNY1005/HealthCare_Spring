@@ -34,8 +34,7 @@
         justify-content: space-evenly;
     }
     .check{
-        position: relative; top: 400px; left: 50%;
-        transform: translate(-50%, -50%);
+        
         width: 1320px;
         height: 1000px;
         margin: 100px 0;

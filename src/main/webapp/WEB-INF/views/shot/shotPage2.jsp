@@ -13,11 +13,10 @@
       font-weight: bold;
       }
       main {
-        position: relative; top: 570px; left: 50%;
-        transform: translate(-50%, -50%);
+        
         width: 1320px;
         height: 1000px;
-        margin: 100px 0;
+        margin: 100px auto;
       }  
      .order_box{
         width: 942px;
@@ -63,7 +62,7 @@
       #age img {
         height: 180px;
         width: 180px;
-        position: relative; left: 32px;
+        
         box-sizing: border-box;
       }
 
@@ -215,7 +214,7 @@
             <li>
               <img
                 class="age_choice"
-                src="../image/baby.png"
+                src="${path }/resources/image/baby.png"
                 alt="영유아"
               />
               <p class="bold">영유아</p>
@@ -224,7 +223,7 @@
             <li>
               <img
                 class="age_choice"
-                src="../image/adult.png"
+                src="${path }/resources/image/adult.png"
                 alt="청·장년"
               />
               <p class="bold">청·장년</p>
@@ -233,7 +232,7 @@
             <li>
               <img
                 class="age_choice"
-                src="../image/old.png"
+                src="${path }/resources/image/old.png"
                 alt="노년층"
               />
               <p class="bold">노년층</p>
