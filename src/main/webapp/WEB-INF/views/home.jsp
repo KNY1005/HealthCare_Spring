@@ -15,10 +15,11 @@
 
 <body>
 	<%@include file="includes/header.jsp"%>
-	<div id="height"></div>
 	<section>
 	</section>
-
+	<a href="abc1.do">유의사항</a>
+	<a href="abc2.do">예약완료-무료</a>
+	<a href="abc3.do">예약완료-결제</a>
 	<%@include file="includes/footer.jsp"%>
 
 

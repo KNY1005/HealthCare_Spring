@@ -35,5 +35,19 @@ public class HomeController {
 		
 		return "home";
 	}
-	
+	@RequestMapping(value = "abc1.do", method = RequestMethod.GET)
+	public String home2() {
+		
+		return "shot/shotCheckMain";
+	}
+	@RequestMapping(value = "abc2.do", method = RequestMethod.GET)
+	public String home3() {
+		
+		return "shot/reserveFree";
+	}
+	@RequestMapping(value = "abc3.do", method = RequestMethod.GET)
+	public String home4() {
+		
+		return "shot/reserveCharged";
+	}
 }
