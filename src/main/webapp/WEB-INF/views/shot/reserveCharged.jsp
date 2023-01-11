@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>예약완료</title>
-
+<link href="${path}/resources/css/reset.css" rel="stylesheet"/>
     <style>
     *{
       font-weight: bold;
@@ -20,14 +20,12 @@
         height: 1000px;
         margin: 0 auto;
     }
-    #height{height:200px;}
     .order_box{
         width: 942px;
         height: 110px;
         display: flex;
  		align-items: flex-end;
         justify-content: center;
-        
       }    
     .order{
         width: 600px;

@@ -8,33 +8,7 @@
 <meta charset="UTF-8">
 <title>예약완료</title>
 <link href="${path}/resources/css/reset.css" rel="stylesheet"/>
-	
     <style>
-    @import url("../navbar/font/arita.css");
-      body,
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6,
-      li,
-      p,
-      #nav li a,
-      #topbar,
-      input,
-      button,
-      select,
-      textarea,
-      a,
-      .wf-container > *,
-      .widget-title,
-      .dwqa-container,
-      #wpmem_reg,
-      #wpmem_login {
-      font-family: "arita-light", "arita-sans-light" !important;
-      color: #000;
-      }
     *{
       font-weight: bold;
     }
