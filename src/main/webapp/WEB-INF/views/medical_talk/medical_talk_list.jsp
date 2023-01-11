@@ -25,9 +25,44 @@
 	<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
 	<style>
+		/*-----------------sub_nav_menu > start---------------*/
+
+		.sub_nav_menu ul {
+			margin-left: 115px;
+			margin-top: 20px;
+		}
+
+		.sub_nav_menu li {
+			text-align: center;
+			float: left;
+			width: 100px;
+			padding: 0 50px;
+			/*글자길이 길어서 넘어가면 이거 늘리세요 */
+			font-weight: bold;
+			font-size: 20px;
+		}
+
+		.sub_nav_menu li:nth-child(2) {
+			border-left: 1px solid #000;
+			border-right: 1px solid #000;
+		}
+
+		.sub_nav_menu li:nth-child(3) {
+			color: #9e0404;
+		}
+
+		/*-----------------sub_nav_menu > end---------------*/
+		#height {
+			height: 80px;
+		}
+		
 		main {
+			
 			width: 1320px;
+			height:1300px;
+			
 			margin: 200px auto 0;
+			
 		}
 
 		main h2 {
@@ -105,7 +140,7 @@
 			border-radius: 100px;
 			width: 60px;
 			height: 60px;
-			background: url("../../../resources/image/gold.png")center no-repeat;
+			background: url("../../resources/image/gold.png")center no-repeat;
 		}
 
 		main #rank #silver {
@@ -115,7 +150,7 @@
 			border-radius: 100px;
 			width: 60px;
 			height: 60px;
-			background: url("../../../resources/image/silver.png")center no-repeat;
+			background: url("../../resources/image/silver.png")center no-repeat;
 		}
 
 		main #rank #bronze {
@@ -125,7 +160,7 @@
 			border-radius: 100px;
 			width: 60px;
 			height: 60px;
-			background: url("../../../resources/image/bronze.png")center no-repeat;
+			background: url("../../resources/image/bronze.png")center no-repeat;
 		}
 
 		main #rank #other {
@@ -135,7 +170,7 @@
 			border-radius: 100px;
 			width: 40px;
 			height: 40px;
-			background: url("../../../resources/image/tumb.png")center no-repeat;
+			background: url("../../resources/image/tumb.png")center no-repeat;
 		}
 
 		main #rank p {
@@ -341,6 +376,7 @@
 </head>
 <body>
 	<%@include file="../includes/header.jsp"%>
+	<div id="height"></div>
 	<div class="sub_nav_menu">
 		<ul>
 			<li>공지사항</li>
