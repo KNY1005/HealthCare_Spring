@@ -19,17 +19,13 @@
 	
 	</section>
 	<a href="abc1.do">유의사항</a>
-	<a href="abc2.do">예약완료-무료</a>
-	<a href="abc3.do">예약완료-결제</a>
+	<hr>
+	<a href="abc2.do">예약2</a>
+	<hr>
+	<a href="abca.do">예약완료-무료</a>
+	<hr>
+	<a href="abcb.do">예약완료-결제</a>
 	<%@include file="includes/footer.jsp"%>
-
-
-
-
-
-
-
-
 
 </body>
 </html>

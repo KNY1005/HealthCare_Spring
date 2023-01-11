@@ -20,11 +20,12 @@
         height: 1000px;
         margin: 100px 0;
     }
-    .order_box{
+   .order_box{
         width: 942px;
+        height: 110px;
         display: flex;
+ 		align-items: flex-end;
         justify-content: center;
-        margin-top: 10px;
       }    
     .order{
         width: 600px;
@@ -87,6 +88,17 @@
 </head>
 <body>
     <%@include file="../includes/header.jsp"  %>
+    <div class="order_box">
+        <ul class="order">
+            <li>예방접종 유의사항</li>
+            <li><i class="xi-angle-right"></i></i></li>
+            <li style="color: #CE8080;">예방접종 병원조회</li>
+            <li><i class="xi-angle-right"></i></i></li>
+            <li>예방접종 예약하기</li>
+            <li><i class="xi-angle-right"></i></i></li>
+            <li>예방접종 예약완료</li>
+        </ul>
+    </div>
     <main>
         <div class="check">
             <div id="money">
