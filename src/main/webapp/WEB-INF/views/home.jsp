@@ -16,6 +16,7 @@
 <body>
 	<%@include file="includes/header.jsp"%>
 	<section>
+	
 	</section>
 	<a href="abc1.do">유의사항</a>
 	<a href="abc2.do">예약완료-무료</a>

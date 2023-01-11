@@ -35,6 +35,7 @@ public class HomeController {
 		
 		return "home";
 	}
+
 	@RequestMapping(value = "abc1.do", method = RequestMethod.GET)
 	public String home2() {
 		
