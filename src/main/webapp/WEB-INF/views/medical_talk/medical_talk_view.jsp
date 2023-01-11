@@ -48,6 +48,10 @@
 		}
 
 		/*-----------------sub_nav_menu > end---------------*/
+		
+		#height {
+			height: 80px;
+		}
 
 		main h2 {
 			font-size: 35px;
@@ -64,9 +68,10 @@
 		main {
 			width: 1320px;
 			font-weight: bold;
-			position: relative;
 			margin-top: 100px;
 			margin-left: 300px;
+			
+			
 		}
 
 		/*메인안에 모든 버튼 호버 적용*/
