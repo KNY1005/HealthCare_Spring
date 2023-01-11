@@ -25,6 +25,8 @@
 	<a href="abca.do">예약완료-무료</a>
 	<hr>
 	<a href="abcb.do">예약완료-결제</a>
+	<hr>
+	<a href="medicallist.do">건강상담소리스트</a>
 	<%@include file="includes/footer.jsp"%>
 
 </body>

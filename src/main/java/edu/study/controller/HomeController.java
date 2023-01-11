@@ -56,4 +56,10 @@ public class HomeController {
 		
 		return "shot/reserveCharged";
 	}
+	
+	@RequestMapping(value = "medicallist.do", method = RequestMethod.GET)
+	public String medicall() {
+		
+		return "medical_talk/medical_talk_list";
+	}
 }
