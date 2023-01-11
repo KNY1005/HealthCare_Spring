@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>예방접종 선택</title>
+<script src="https://code.jquery.com/jquery-latest.min.js" type="application/javascript"></script>
 	<script>
 		$(document).ready(function(){
         $(".choice").mouseover(function(){
@@ -22,18 +23,18 @@
 		font-weight: bold;
 	}
     main {
-        position: relative; top: 500px; left: 50%;
-        transform: translate(-50%, -50%);
+        
         width: 1320px;
         height: 1000px;
-        margin: 100px 0;
+        margin: 100px auto;
     }    
-    .order_box{
+     .order_box{
         width: 942px;
+        height: 110px;
         display: flex;
+ 		align-items: flex-end;
         justify-content: center;
-        margin-top: 10px;
-    }    
+      }    
     .order{
         width: 600px;
         display: flex;
@@ -80,13 +81,7 @@
     .list li{
 		width: 160px;
 	}
-	.inf{
-		margin-bottom: -50px;
-	}
-	.choice{
-		position: relative;
-		top: 35px;
-	}
+	
 	.box{
 		background-color: #ffe7e7;
 	}
@@ -131,7 +126,7 @@
 		justify-content: flex-end;
 	}
 	#btn button:hover {
-	box-shadow: 0 10px 35px rgba(0, 0, 0, 0.05), 0 6px 6px rgba(0, 0, 0, 0.1);
+	box-shadow: inset 1px 1px 3px #c57171;
 	cursor: pointer;
 	transition: box-shadow 0.1s linear;
 	}
@@ -182,7 +177,7 @@
 					<li>잔여량</li>
 					<li>유/무료</li>
 				</ul>
-				<div class="able">
+				<div class="able" style="display: none;">
 					<div id="date">
 						<label for="">날짜</label>
 						<input type="date">

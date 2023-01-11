@@ -51,6 +51,11 @@ public class HomeController {
 		
 		return "shot/shotPage3";
 	}
+	@RequestMapping(value = "abc4.do", method = RequestMethod.GET)
+	public String home4() {
+		
+		return "shot/shotPage4";
+	}
 	@RequestMapping(value = "abca.do", method = RequestMethod.GET)
 	public String homea() {
 		

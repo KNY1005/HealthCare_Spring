@@ -24,6 +24,8 @@
 	<hr>
 	<a href="abc3.do">예약3</a>
 	<hr>
+	<a href="abc4.do">예약4</a>
+	<hr>
 	<a href="abca.do">예약완료-무료</a>
 	<hr>
 	<a href="abcb.do">예약완료-결제</a>
