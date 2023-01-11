@@ -19,11 +19,9 @@
 	<meta name="msapplication-TileImage"
 		content="${path }/resources/image/favicon/ms-icon-144x144.png" />
 	<meta name="theme-color" content="#ffffff" />
-	<!--아이콘 연결-->
-	<link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 	<!--외부 스크립트 플러그인 연결-->
 	<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
 	<style>
 		/*-----------------sub_nav_menu > start---------------*/
 
@@ -60,7 +58,6 @@
 			
 			width: 1320px;
 			height:1300px;
-			
 			margin: 200px auto 0;
 			
 		}
@@ -140,7 +137,7 @@
 			border-radius: 100px;
 			width: 60px;
 			height: 60px;
-			background: url("../../resources/image/gold.png")center no-repeat;
+			background: url("${path }/resources/image/gold.png")center no-repeat;
 		}
 
 		main #rank #silver {
@@ -150,7 +147,7 @@
 			border-radius: 100px;
 			width: 60px;
 			height: 60px;
-			background: url("../../resources/image/silver.png")center no-repeat;
+			background: url("${path }/resources/image/silver.png")center no-repeat;
 		}
 
 		main #rank #bronze {
@@ -160,7 +157,7 @@
 			border-radius: 100px;
 			width: 60px;
 			height: 60px;
-			background: url("../../resources/image/bronze.png")center no-repeat;
+			background: url("${path }/resources/image/bronze.png")center no-repeat;
 		}
 
 		main #rank #other {
@@ -170,7 +167,7 @@
 			border-radius: 100px;
 			width: 40px;
 			height: 40px;
-			background: url("../../resources/image/tumb.png")center no-repeat;
+			background: url("${path }/resources/image/tumb.png")center no-repeat;
 		}
 
 		main #rank p {

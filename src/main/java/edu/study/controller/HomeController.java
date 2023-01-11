@@ -72,6 +72,12 @@ public class HomeController {
 		
 		return "medical_talk/medical_talk_list";
 	}
+	
+	@RequestMapping(value = "medicalview.do", method = RequestMethod.GET)
+	public String medicalv() {
+		
+		return "medical_talk/medical_talk_view";
+	}
 	@RequestMapping(value = "notice1.do", method = RequestMethod.GET)
 	public String howdmeb() {
 		
