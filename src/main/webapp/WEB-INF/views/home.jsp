@@ -6,7 +6,7 @@
 
 <html>
 <head>
-<title>Home...</title>
+<title>Home</title>
 <style>
 	section{height:800px;}
 	#height{height:200px;}
