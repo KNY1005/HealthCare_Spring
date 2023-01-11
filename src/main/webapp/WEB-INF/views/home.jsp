@@ -29,6 +29,8 @@
 	<a href="abcb.do">예약완료-결제</a>
 	<hr>
 	<a href="medicallist.do">건강상담소리스트</a>
+	<hr>
+	<a href="medicalview.do">건강상담소보기</a>
 	<a href="notice1.do">공지1</a>
 	<hr><a href="notice2.do">공지2</a>
 	<hr><a href="notice3.do">공지3</a>
