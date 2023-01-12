@@ -82,23 +82,18 @@ hr {
 
 .title {
 	margin: 20px auto 10px;
-	display: block;
 	width: 970px;
 	height: 40px;
-	text-align: left;
 	font-size: 25px;
-	border-radius: 10px;
-	border-width: 0.3px;
+	line-height: 40px;
 }
 
 .content {
 	margin: 0 auto 20px;
-	display: block;
+	
 	width: 970px;
 	height: 360px;
-	resize: none;
-	font-size: 15px;
-	border-radius: 10px;
+	
 }
 
 #writing_view ul {
@@ -228,8 +223,8 @@ hr {
 		<hr>
 		<form action="">
 			<div id="writing_view">
-				<input type="text" class="title" />
-				<textarea class="content"></textarea>
+				<div class="title">제목</div>
+                <div class="content">내용</div>
 				<ul>
 					<li>작성자</li>
 					<li>작성일</li>
@@ -240,13 +235,12 @@ hr {
 				<div class="filebox">
 					<p class="file1">첨부파일</p>
 					<input class="upload-name" value="파일선택" disabled="disabled">
-					<label for="ex_filename">업로드</label> <input type="file"
-						id="ex_filename" class="upload-hidden">
 				</div>
 			</div>
 			<div id="button">
-				<button>취소</button>
-				<button>완료</button>
+				<button onClick="location.href='notice1.do'">목록</button>
+				<button>삭제</button>
+				<button onClick="location.href='notice2.do'">수정</button>
 			</div>
 		</form>
 	</section>

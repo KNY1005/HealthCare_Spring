@@ -192,7 +192,7 @@ hr {
 	border-radius: 10px;
 	vertical-align: center;
 	padding: 10px;
-	margin-left: 715px;
+	margin-left: 366px;
 }
 
 .filebox label:hover {
@@ -207,6 +207,7 @@ hr {
 	border: none;
 	font-weight: bold;
 	background: #fff;
+	width: 530px;
 }
 </style>
 </head>

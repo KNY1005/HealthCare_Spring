@@ -173,6 +173,7 @@ hr {
 .filebox .file1 {
 	margin: 0 20px 0 20px;
 	font-size: 18px;
+	width: 65px;
 }
 
 .filebox input[type="file"] {
@@ -192,7 +193,7 @@ hr {
 	border-radius: 10px;
 	vertical-align: center;
 	padding: 10px;
-	margin-left: 715px;
+	margin-left: 366px;
 }
 
 .filebox label:hover {
@@ -207,6 +208,7 @@ hr {
 	border: none;
 	font-weight: bold;
 	background: #fff;
+	width: 530px;
 }
 </style>
 </head>
@@ -245,8 +247,8 @@ hr {
 				</div>
 			</div>
 			<div id="button">
-				<button>취소</button>
-				<button>완료</button>
+				<button onClick="location.href='notice1.do'">취소</button>
+				<button onClick="location.href='notice1.do'">완료</button>
 			</div>
 		</form>
 	</section>
