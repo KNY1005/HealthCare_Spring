@@ -13,7 +13,7 @@
 	</bean>
 	
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">	<!-- getConnection해주고 close가 됐는지 자동적으로 해줌 -->
-		<property name="dataSource" ref="dataSource"/>	<!-- ref를 통해 스프링으로 객체의존주입을 해주겠다. -->
+		<property name="dataSource" ref="dataSource"/>	<!-- ref를 통해 스프링으로 객체의존주입을 해주겠다......... -->
 		<property name="configLocation" value="classpath:mybatis-config.xml"/>	<!-- classpath: resources,mybatis위치 지정 -->
 		<property name="mapperLocations" value="classpath:mappers/**/*Mapper.xml"/>	<!-- (mapper : 쿼리의 집합)의 위치를 지정, ** : 하위 모든 폴더 -->
 	</bean>
