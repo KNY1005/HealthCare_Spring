@@ -40,6 +40,9 @@ main {
 	font-size: 25px;
 	vertical-align: top;
 	margin-left: 840px;
+	display:flex;
+	justify-content: center;
+	align-items: center;
 }
 
 #search input::-webkit-search-decoration, #search input::-webkit-search-cancel-button,
@@ -79,17 +82,19 @@ main {
 		95% 50%; /* 화살표 모양의 이미지 */
 }
 
-#search div a {
+#search  {
 	
 }
 
 #glass {
 	border: 1px solid #000;
-	padding: 5px 10px 8px 10px;
+	padding: 4px 10px 4px 10px;
 	border-radius: 0 10px 10px 0;
 	border-left: none;
+	
+	
 }
-
+#glass i{margin-top:2px;}
 #glass:hover {
 	cursor: pointer;
 }
@@ -189,13 +194,13 @@ main {
 		<div id="head">
 			<h3 class="h3">공지사항</h3>
 			<div id="search">
-				<div>
+				
 					<select class="cate">
 						<option>제목</option>
 						<option>작성자</option>
 					</select> <input type="search" name="search" placeholder="검색"> <a href="#"
 						id="glass"><i class="xi-search"></i></a>
-				</div>
+				
 			</div>
 		</div>
 		<hr class="hr">
@@ -207,7 +212,7 @@ main {
 				<th>조회수</th>
 				<th>답변</th>
 			</tr>
-			<tr class="column content" onClick="location.href='#'">
+			<tr class="column content" onClick="location.href='notice3.do'">
 				<td><p class="title">제목</p> <br />
 					<p>여기는 내용 입니다.</p></td>
 				<td>김모모</td>
@@ -234,7 +239,7 @@ main {
 
 
 		</table>
-		<button class="button">글쓰기</button>
+		<button class="button" onClick="location.href='notice4.do'">글쓰기</button>
 
 
 	</main>
