@@ -111,7 +111,7 @@
 		}
 
 		main a:hover {
-			box-shadow: inset 1px 3px 3px rgb(197, 197, 197);
+			box-shadow: inset 3px 3px 5px #c57171;
 			cursor: pointer;
 			transition: all 0.3s;
 
