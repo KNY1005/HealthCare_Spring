@@ -202,6 +202,7 @@ hr {
 </style>
 </head>
 <body>
+	<%@include file="../includes/header.jsp"%>
 	<div class="order_box">
 		<ul class="order">
 			<li style="color: #CE8080;">공지사항</li>
@@ -242,6 +243,6 @@ hr {
 	</main>
 
 
-
+	<%@include file="../includes/footer.jsp"%>
 </body>
 </html>
