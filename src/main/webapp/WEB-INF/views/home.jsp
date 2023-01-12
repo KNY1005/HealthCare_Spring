@@ -6,7 +6,7 @@
 
 <html>
 <head>
-<!--파비콘-->
+<!--파비콘sss-->
 <link rel="icon" type="image/png" sizes="16x16" href="${path}/resources/image/favicon/android-icon-144x144.png"/>
 <link rel="manifest" href="${path}/resources/image/favicon/manifest.json" />
 <meta name="msapplication-TileColor" content="#ffffff" />
