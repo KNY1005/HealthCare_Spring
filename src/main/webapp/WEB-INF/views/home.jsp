@@ -143,7 +143,7 @@
       <div class="main_hover_menu">
         <div>
           <ul class="main_hover_menu_left">
-            <li><a href="#">예방접종123 예약</a></li>
+            <li><a href="#">예방접종 예약</a></li>
             <li><a href="#">건강검진 예약</a></li>
           </ul>
         </div>
