@@ -7,14 +7,26 @@
 <head>
 
 <title>네비바</title>
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
-<link href="${path}/resources/css/reset.css" rel="stylesheet" />
-<link href="${path}/resources/css/header.css" rel="stylesheet" />
-<script src="${path}/resources/js/header.js"></script>
-
-<!--xe아이콘-->
-<link rel="stylesheet"
+    <!--파비콘-->
+    <link rel="icon" type="image/png" sizes="16x16" href="${path}/resources/image/favicon/android-icon-144x144.png"/>
+    <link rel="manifest" href="${path}/resources/image/favicon/manifest.json" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="msapplication-TileImage" content="${path}/resources/image/favicon/ms-icon-144x144.png" />
+    <meta name="theme-color" content="#ffffff" />
+    
+    <!-- 제이쿼리 라이브러리 -->
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	
+	<!-- 리셋, 헤더 css -->
+	<link href="${path}/resources/css/reset.css" rel="stylesheet" />
+	<link href="${path}/resources/css/header.css" rel="stylesheet" />
+	
+	<!-- 헤더 js -->
+	<script src="${path}/resources/js/header.js"></script>
+	
+	<!--xe아이콘-->
+	<link rel="stylesheet"
 	href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css" />
 
 
@@ -26,7 +38,7 @@
 				<div class="nav_main_menu">
 					<ul class="nav_main_menu_1">
 						<li><a href="#"><img
-								src="${path }/resources/image/logo2.png" alt="로고이미지" /></a>
+								src="${path}/resources/image/logo2.png" alt="로고이미지" /></a>
 						</li>
 					</ul>
 					<ul>

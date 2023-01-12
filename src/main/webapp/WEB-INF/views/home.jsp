@@ -6,6 +6,13 @@
 
 <html>
 <head>
+<!--파비콘-->
+<link rel="icon" type="image/png" sizes="16x16" href="${path}/resources/image/favicon/android-icon-144x144.png"/>
+<link rel="manifest" href="${path}/resources/image/favicon/manifest.json" />
+<meta name="msapplication-TileColor" content="#ffffff" />
+<meta name="msapplication-TileImage" content="${path}/resources/image/favicon/ms-icon-144x144.png" />
+<meta name="theme-color" content="#ffffff" />
+
 <!-- 제이쿼리 라이브러리 연결 -->
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
@@ -15,6 +22,8 @@
 
 <!-- 홈 js 연결 -->
 <script src="${path}/resources/js/home.js"></script>
+
+<link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css" />
 <title>메인화면</title>
 </head>
 <body>
@@ -26,7 +35,7 @@
             <ul class="nav_main_menu_1">
               <li>
                 <a href="#">
-                <img src="${path}/resources/images/logo2.png" alt="로고이미지"/>
+                <img src="${path}/resources/image/logo2.png" alt="로고이미지"/>
                 </a>
               </li>
             </ul>
@@ -69,7 +78,7 @@
         </nav>
         <div id="profli">
           <div class="main_profli">
-           <img src="${path}/resources/images/profil.png" alt="프로필" />
+           <img src="${path}/resources/image/profli.png" alt="프로필" />
             <button type="submit" class="btn">
               <i class="xi-plus" alt="검색"></i>
             </button>
@@ -77,7 +86,7 @@
           </div>
           <div id="profli_menu">
             <ul>
-              <li><img src="${path}/resources/images/profil.png" alt="프로필" /></li>
+              <li><img src="${path}/resources/image/profli.png" alt="프로필" /></li>
               <li><p>김모모님</p></li>
               <li><hr width="250px" /></li>
               <li><a href="#">마이페이지</a></li>

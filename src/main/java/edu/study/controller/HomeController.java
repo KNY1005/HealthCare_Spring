@@ -33,7 +33,7 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "NewFile";
+		return "home";
 	}
 	/*예방접종*/
 	@RequestMapping(value = "abc1.do", method = RequestMethod.GET)
