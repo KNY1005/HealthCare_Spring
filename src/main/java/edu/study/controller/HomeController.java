@@ -35,7 +35,7 @@ public class HomeController {
 		
 		return "NewFile";
 	}
-	/*예방접종*/
+	/*�삁諛⑹젒醫�*/
 	@RequestMapping(value = "abc1.do", method = RequestMethod.GET)
 	public String home1() {
 		
@@ -81,7 +81,7 @@ public class HomeController {
 		
 		return "shot/shotMoney3";
 	}
-	/*예방접종*/
+	/*�삁諛⑹젒醫�*/
 	@RequestMapping(value = "medicallist.do", method = RequestMethod.GET)
 	public String medicall() {
 		
@@ -102,6 +102,12 @@ public class HomeController {
 	public String medicalw() {
 		
 		return "medical_talk/medical_talk_write";
+	}
+	
+	/*건강검진 예약하기 */	
+	@RequestMapping(value = "medicalmain.do", method = RequestMethod.GET)
+	public String medicalmain() {
+		return "medical_check/medical_check_main";
 	}
 	@RequestMapping(value = "notice1.do", method = RequestMethod.GET)
 	public String howdmeb() {

@@ -25,6 +25,15 @@
 
 <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css" />
 <title>메인화면</title>
+<style>
+.background {
+  background-image: url("${path}/resources/image/main_view.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  height: 100vh;
+}
+</style>
 </head>
 <body>
 <!-- 헤더(inclue랑 css 다름) -->
@@ -63,16 +72,16 @@
               <li><a href="#">건강검진 예약</a></li>
             </ul>
             <ul>
-              <li><a href="#">헌혈 예약</a></li>
+              <li><a href="blood1.do">헌혈 예약</a></li>
             </ul>
             <ul>
               <li><a href="#">건강소식</a></li>
               <li><a href="#">자가검진</a></li>
             </ul>
             <ul>
-              <li><a href="#">공지사항</a></li>
+              <li><a href="notice1.do">공지사항</a></li>
               <li><a href="#">문의사항</a></li>
-              <li><a href="#">건강상담소</a></li>
+              <li><a href="medicallist.do">건강상담소</a></li>
             </ul>
           </div>
         </nav>
