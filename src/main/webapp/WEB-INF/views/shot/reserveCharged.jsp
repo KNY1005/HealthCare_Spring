@@ -17,7 +17,7 @@
         
         width: 1320px;
         height: 1000px;
-        margin: 0 auto 0;
+        margin: 100px auto;
     }
     .order_box{
         width: 942px;
@@ -38,7 +38,7 @@
         
         width: 1320px;
         height: 1000px;
-        margin: 100px 0;
+        margin: 230px 0;
     }
     #money{
         text-align: center;

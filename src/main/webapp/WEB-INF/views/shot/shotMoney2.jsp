@@ -33,7 +33,12 @@
         flex-direction: row;
         justify-content: space-evenly;
     }
-    
+    .check{
+        
+        width: 1320px;
+        height: 1000px;
+        margin: 230px 0;
+    }
     #money{
         text-align: left;
         font-size: 40px;
@@ -88,8 +93,8 @@
             background-color: white; opacity: 1; border-radius: 10px; z-index: 2;} 
     #bac{
         position: relative;
-        bottom: 1560px;
-        height: 143vh;
+        bottom: 1690px;
+        height: 156vh;
         background-color: rgba(76, 76, 76, 0.7);
         z-index: 1;
     }

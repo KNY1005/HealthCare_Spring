@@ -246,8 +246,8 @@ hr {
 				</div>
 			</div>
 			<div id="button">
-				<button>취소</button>
-				<button>완료</button>
+				<button type="button" onClick="location.href='notice3.do'">취소</button>
+				<button type="button" onClick="location.href='notice3.do'">완료</button>
 			</div>
 		</form>
 	</section>

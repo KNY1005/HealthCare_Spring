@@ -34,7 +34,7 @@
         
         width: 1320px;
         height: 1000px;
-        margin: 100px 0;
+        margin: 230px 0;
     }
     #money{
         text-align: left;
