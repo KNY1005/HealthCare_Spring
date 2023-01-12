@@ -58,50 +58,60 @@
 		#height {
 			height: 80px;
 		}
-		ul {
+		
+		main {
+			margin-left: 300px;
+			margin-top: 100px;
+			width: 1320px;
+			position: relative;
+			height: 800px;
+
+		}
+		
+		main ul {
 			padding-left: 0px;
 		}
 
-		#commit {
+		main #commit {
 			height: 500px;
 			display: flex;
 			flex-direction: column;
 		}
 
-		#commit #finish h2 {
+		main #commit #finish h2 {
 			text-align: center;
 			font-size: 40px;
 		}
 
-		#infor {
+		main #infor {
 			margin-top: 40px;
 			height: 170px;
 			background-color: #FFEFEF;
 			border-radius: 30px;
 		}
 
-		#infor ul {
+		main #infor ul {
 			display: flex;
 			justify-content: space-around;
 			padding: 10px;
 			font-size: 25px;
 		}
 
-		#infor ul li {
+		main #infor ul li {
 			width: 290px;
 			text-align: center;
 		}
 
-		#infor ul:nth-child(1) {
+		main #infor ul:nth-child(1) {
 			margin-top: 31.25px;
 		}
 
-		#guide {
+		main #guide {
 			margin-top: 10px;
 			font-size: 15px;
 		}
 
-		#questionnaire {
+		main #questionnaire {
 			margin-top: 40px;
 			height: 70px;
 			background-color: #FFEFEF;
@@ -111,16 +121,16 @@
 			font-size: 25px;
 		}
 
-		#questionnaire p {
+		main #questionnaire p {
 			margin-left: 100px;
 		}
 
-		#questionnaire a {
+		main #questionnaire a {
 			margin-left: 400px;
 			color: blue;
 		}
 
-		#question_guide p {
+		main #question_guide p {
 			margin-top: 10px;
 		}
 

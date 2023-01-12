@@ -22,6 +22,7 @@
 
 	<style>
 		/*-----------------sub_nav_menu > start---------------*/
+		
 
 		.sub_nav_menu ul {
 			margin-left: 165px;
@@ -54,14 +55,25 @@
 		}
 
 		/*-----------------sub_nav_menu > end---------------*/
+		
+		*{font-weight:bold;}
 
 		#height {
 			height: 80px;
 		}
 		
+		main {
+			margin-left: 300px;
+			margin-top: 100px;
+			width: 1320px;
+			position: relative;
+			height: 800px;
+			display:flex;
+			flex-direction:column;
+		}
+		
 		main h2 {
-			font-size: 35px;
-			font-weight: bold;
+			font-size: 40px;
 		}
 
 		/*유의사항 컨텐츠 박스*/
@@ -83,23 +95,20 @@
 		/*유의사항 안에 큰글씨*/
 		main div p>span {
 			font-size: 25px;
-			font-weight: bold;
 		}
 
 		/*예약하러가기 버튼*/
 		main a {
 			margin-top: 20px;
-			position: relative;
-			float: right;
 			background-color: #FF9797;
 			text-align: center;
-			width: 230px;
+			width: 260px;
 			height: 40px;
 			padding-top: 20px;
 			border-radius: 10px;
 			color: #fff;
-			font-size: 20px;
-			font-weight: bold;
+			font-size: 25px;
+			margin-left:1060px;
 		}
 
 		main a:hover {

@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page session="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -19,6 +20,11 @@
 	<meta name="msapplication-TileImage"
 		content="${path }/resources/image/favicon/ms-icon-144x144.png" />
 	<meta name="theme-color" content="#ffffff" />
+	<!--Jquery-->
+	<script src="https://code.jquery.com/jquery-latest.min.js"
+		type="application/javascript"></script>
+	<script type="application/javascript"
+		src="https://zelkun.tistory.com/attachment/cfile8.uf@99BB7A3D5D45C065343307.js"></script>
 	<script type="application/javascript">
 		jQuery(document).ready(function () {
 			jQuery('#table1').css('color', 'red');
@@ -118,12 +124,22 @@
 
 		/*-----------------sub_nav_menu > end---------------*/
 
+		*{font-weight:bold;}
+		
 		#height {
 			height: 80px;
 		}
-		main h3 {
-			font-weight: bold;
-			font-size: 48px;
+		
+		main {
+			margin-left: 300px;
+			margin-top: 100px;
+			width: 1320px;
+			position: relative;
+			height: 800px;
+		}
+		
+		main h2 {
+			font-size: 40px;
 		}
 
 		main hr {
@@ -131,10 +147,18 @@
 			border: 0;
 			background: #ff7373;
 		}
-
-		main #address_search {
-			position: relative;
+		
+		main #addr #address_search{
+			display:flex;
+			justify-content: center;
+			align-item:center;
 		}
+		
+		main #addr #address_search h3{
+			margin-top:8px;
+			margin-right:30px;
+		}
+
 
 		main #addr #address_search select {
 			-webkit-appearance: none;
@@ -144,7 +168,6 @@
 		}
 
 		main #addr #address_search select {
-			font-weight: bold;
 			width: 180px;
 			height: 45px;
 			margin-left: 20px;
@@ -153,7 +176,7 @@
 			border-radius: 4px;
 			outline: 0 none;
 			font-size: 20px;
-			background: url("../image/bottom_arrow.png") no-repeat 95% 50%;
+			background: url("${path }/resources/image/bottom_arrow.png") no-repeat 95% 50%;
 			/* 화살표 모양의 이미지 */
 			text-align: center;
 		}
@@ -171,11 +194,10 @@
 		main #addr #address_search button {
 			border: 0;
 			background: #ffe7e7;
-			width: 40px;
+			width: 50px;
 			height: 45px;
-			border-radius: 4px;
-			position: absolute;
-			right: -60px;
+			border-radius: 10px;
+			margin-left:20px;
 		}
 
 		main #addr #address_search button:hover {
@@ -197,10 +219,6 @@
 			margin: 25px 0;
 		}
 
-		main #addr div {
-			display: inline-block;
-			margin-left: 300px;
-		}
 
 		main table {
 			border-collapse: separate;
@@ -228,7 +246,7 @@
 		}
 
 		main table th {
-			font-size: 24px;
+			font-size: 20px;
 		}
 
 		main table td {
@@ -269,10 +287,11 @@
 				</ul>
 			</div>
 	<main>
-		<h3>건강검진 병원조회</h3>
+		<h2>건강검진 병원조회</h2>
 		<hr>
 		<div id="addr">
-			<div id="address_search">지역
+			<div id="address_search">
+				<h3>지역</h3>
 				<select id="sido">
 					<option disabled selected>시/도</option>
 				</select><!--//#sido-->

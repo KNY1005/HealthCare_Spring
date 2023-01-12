@@ -54,13 +54,23 @@
 		}
 
 		/*-----------------sub_nav_menu > end---------------*/
-
+		
+		*{font-weight:bold;}
+		
 		#height {
 			height: 80px;
 		}
+		
+		main {
+			margin-left: 300px;
+			margin-top: 100px;
+			width: 1320px;
+			position: relative;
+			height: 800px;
+		}
+		
 		main h2 {
-			font-size: 35px;
-			font-weight: bold;
+			font-size: 40px;
 		}
 		/*첫번째 백그라운드 핑크색박스*/
 		main .medical {
@@ -75,7 +85,6 @@
 			float: left;
 			font-size: 22px;
 			margin-top: 22px;
-			font-weight: bold;
 		}
 
 		main .medical p:nth-child(1) {
@@ -99,130 +108,79 @@
 			border: 1px solid #FF7373;
 		}
 
-		main .timetable h3 {
-			width: 1320px;
-			position: relative; 
-			clear: both;
-			height: 52px;
-			margin-top: 30px;
-			margin-bottom: 0;
-		}
-
-		main .timetable h3 p {
-			float: left;
-			font-size: 22px;
-			font-weight: bold;
-		}
-
-		main .timetable h3 p:nth-child(1) {
-			margin-left: 80px;
-		}
-
-		main .timetable h3 p:nth-child(2) {
-			margin-left: 200px;
-		}
 		/*제일 크고 제일 아래있는 큰 연한 핑크색 박스*/
-		main .timetable .able {
+		main .timetable {
 			border-radius: 40px;
 			border: 3px solid#FDBFBF;
-			position: absolute;
 			height: 350px;
 			width: 1290px;
-			clear: both;
 			margin-top: 30px;
-			display: block;
-			z-index: -10;
+			display: flex;
+			flex-direction:column;
 			margin-left: 15px;
 		}
-		/*두번째 백그라운드 핑크색 박스*/
-		main .timetable #box1 {
-			border-radius: 10px;
-			margin-top: 0px;
-			height: 88px;
-			background-color: #FFE7E7;
-			width: 1320px;
-			position: absolute;
-			clear: both;
-			display: block;
-			z-index: 1;
-		}
+		
+		main .timetable #title{
+			justify-content:center;
+			margin-top:40px;
+			font-size:22px;
+			display:flex;
+			}
+		
+		main .timetable #content{
+			justify-content:center;
+			margin-top:40px;
+			font-size:22px;
+			display:flex;
+			}
+		
+		main .timetable #content p{
+			width: 230px;
+			height:50px;
+			border:none;
+			border-radius: 30px;
+			text-align:center;
+			background-color:#FFE7E7;}
 
-		main .timetable #box1 p {
-			float: left;
-			font-size: 22px;
-			margin-top: 33px;
-			font-weight: bold;
-		}
 
-		main .timetable #box1 p:nth-child(1) {
-			margin-left: 55px;
-		}
 
-		main .timetable #box1 p:nth-child(2) {
-			margin-left: 140px;
-		}
 
-		main .timetable .able #date p {
-			font-size: 22px;
-			margin-left: 106.935px;
-			font-weight: bold;
-		}
-
-		main .timetable .able #date {
-			width: 300px;
-			height: 200px;
-			margin-top: 120px;
-			position: absolute;
-			margin-left: 337px;
-		}
-
-		main .timetable .able #date span {
+		main .timetable  #content span {
 			width: 250px;
-			height: 50px;
+			height: 40px;
 			border: 1px solid#000;
 			border-radius: 10px;
-			position: absolute;
-			margin-top: 20px;
 		}
 
-		main .timetable .able #date span i {
+		main .timetable #content span i {
+					
 			float: right;
 		}
 
-		main .timetable .able #time p {
-			font-size: 22px;
-			margin-left: 185.445px;
-			font-weight: bold;
-		}
 
-		main .timetable .able #time {
+
+		main .timetable  #time {
 			width: 300px;
 			height: 200px;
 			margin-top: 120px;
-			position: absolute;
 			margin-left: 640px;
 		}
 
-		main .timetable .able #time select {
+		main .timetable #content select {
 			margin-top: 20px;
 			font-size: 22px;
 			margin-left: 130px;
-			font-weight: bold;
 			width: 150px;
 		}
 		/*예약 버튼*/
-		main .timetable .able button {
-			float: right;
-			clear: both;
-			margin-top: 280px;
+		main .timetable button {
 			width: 130px;
 			height: 50px;
 			border-radius: 10px;
 			background-color: #FF9797;
 			color: #fff;
-			font-size: 22px;
-			font-weight: bold;
-			margin-right: 30px;
+			font-size: 25px;
+			margin-top: 40px;
 			border: none;
 		}
 	</style>
@@ -253,21 +211,14 @@
 		</div><!--//.medical-->
 		<hr>
 		<div class="timetable">
-			<h3>
-				<p>검진명</p>
-				<p>신청가능기간</p>
-			</h3>
-			<span id="box1">
-				<p>일반건강검진</p>
-				<p>22.10.10 ~ 22.12.10</p>
-			</span>
-			<div class="able">
-				<div id="date">
-					<p>날짜<br></p>
-					<span><a href="#"><i class="xi-calendar xi-3x"></i></a></span>
-				</div><!--//#date-->
-				<div id="time">
-					<p>시간<br></p>
+				<div id="title">
+					<p>검진명</p>
+					<p>날짜</p>
+					<p>시간</p>
+				</div><!--//#title-->				
+				<div id="content">
+					<p>일반건강검진</p>
+					<span><a href="#"><i class="xi-calendar xi-2x"></i></a></span>
 					<select>
 						<option value='' selected>-- 선택 --</option>
 						<option value='09시'>09시</option>
@@ -280,8 +231,7 @@
 						<option value='17시'>17시</option>
 					</select>
 				</div>
-				<button>예약</button>
-			</div><!--//.able-->
+			<button>예약</button>
 		</div><!--//.timetable-->
 	</main>
 		<%@include file="../includes/footer.jsp"%>
