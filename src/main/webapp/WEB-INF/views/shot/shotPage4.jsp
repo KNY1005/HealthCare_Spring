@@ -54,6 +54,7 @@
         .reserve2 p {
             font-size: 20px;
             height: 50px;
+            line-height: 50px;
         }
 
         #btn2 {
@@ -73,7 +74,7 @@
         }
 
         button:hover {
-            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.05), 0 6px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: inset 3px 3px 5px #c57171;
             cursor: pointer;
             transition: box-shadow 0.1s linear;
         }
@@ -201,7 +202,7 @@
         }
 
         #btn button:hover {
-            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.05), 0 6px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: inset 1px 1px 3px rgb(197, 197, 197);
             cursor: pointer;
             transition: box-shadow 0.1s linear;
         }
@@ -221,9 +222,9 @@
         <ul class="order">
             <li>예방접종 유의사항</li>
             <li><i class="xi-angle-right"></i></i></li>
-            <li style="color: #CE8080;">예방접종 병원조회</li>
+            <li>예방접종 병원조회</li>
             <li><i class="xi-angle-right"></i></i></li>
-            <li>예방접종 예약하기</li>
+            <li style="color: #CE8080;">예방접종 예약하기</li>
             <li><i class="xi-angle-right"></i></i></li>
             <li>예방접종 예약완료</li>
         </ul>
