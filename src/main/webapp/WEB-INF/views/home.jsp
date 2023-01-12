@@ -6,12 +6,19 @@
 
 <html>
 <head>
-<title>Home</title>
-<style>
-	
-</style>
+<!-- 제이쿼리 라이브러리 연결 -->
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+<!-- 리셋, 홈 css 연결 -->
+<link href="${path}/resources/css/reset.css" rel="stylesheet" />
+<link href="${path}/resources/css/home.css" rel="stylesheet" />
+
+<!-- 홈 js 연결 -->
+<script src="${path}/resources/js/home.js"></script>
+<title>메인화면</title>
 </head>
 <body>
+<!-- 헤더(inclue랑 css 다름) -->
 	<header>
       <div class="nav_background">
         <nav class="nav">
@@ -85,6 +92,8 @@
         </div>
       </div>
     </header>
+<!-- 헤더(inclue랑 css 다름) -->
+<!-- 메인 -->
     <main>
       <div class="background">
         <div class="layer"></div>
@@ -112,6 +121,7 @@
         </button>
       </div>
 
+        <!-- 수정중 -->
       <div class="main_hover_menu">
         <div>
           <ul class="main_hover_menu_left">
@@ -163,6 +173,9 @@
           </ul>
         </div>
       </div>
+      <!-- 수정중 -->
     </main>
+<!-- 메인 -->
+<!-- 메인은 푸터 없음 -->
 </body>
 </html>
