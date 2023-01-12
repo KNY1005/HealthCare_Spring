@@ -70,19 +70,19 @@
         flex-direction: column;
         margin: 10px 0;
     }
-    .btn{
+    .btnn{
         display: flex;
         justify-content: flex-end;
         z-index:-999;
     }
-    .btn button{
+    .btnn button{
         width: 270px; 
         padding: 15px; 
         font-size: 25px;
         background-color: #FFEFEF; 
         border: #FFEFEF;  
         border-radius: 30px;}
-    .btn :hover{
+    .btnn :hover{
         border-radius: 30px;
         box-shadow: inset 1px 1px 3px rgb(197, 197, 197);
         cursor:pointer;
@@ -125,7 +125,7 @@
                 <p>메시지 수신을 동의하신 경우 해당 날짜 전날 SMS 안내문자가 발송될 예정입니다.</p>
                 <p>수신동의 설정 : 마이페이지 < 개인정보 수정</p>
             </div>
-            <div class="btn">
+            <div class="btnn">
                 <button>결제진행 바로가기</button>
             </div>
             
