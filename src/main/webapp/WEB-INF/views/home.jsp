@@ -49,24 +49,24 @@
               </li>
             </ul>
             <ul>
-              <li><a href="#">예방접종</a></li>
+              <li><a href="abc1.do">예방접종</a></li>
             </ul>
             <ul>
               <li><a href="#">건강검진</a></li>
             </ul>
             <ul>
-              <li><a href="#">헌혈</a></li>
+              <li><a href="blood1.do">헌혈</a></li>
             </ul>
             <ul>
               <li><a href="#">모두건강</a></li>
             </ul>
             <ul>
-              <li><a href="#">건강광장</a></li>
+              <li><a href="notice1.do">건강광장</a></li>
             </ul>
           </div>
           <div id="sliding_menu">
             <ul>
-              <li><a href="#">예방접종 예약</a></li>
+              <li><a href="abc1.do">예방접종 예약</a></li>
             </ul>
             <ul>
               <li><a href="#">건강검진 예약</a></li>
