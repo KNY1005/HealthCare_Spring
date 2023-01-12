@@ -6,126 +6,119 @@
 <meta charset="UTF-8">
 <title>공지사항 목록</title>
 <style>
-* {
-	font-weight: bold;
-}
-
 main {
 	width: 1320px;
-	height: 800px;
-	margin: 200px auto 0;
+	height: 1000px;
+	margin: 0 auto 0;
 }
 
-.notice {
-	font-size: 40px;
-	margin-bottom: 15px;
-}
-
-.order_box {
-	width: 745px;
-	position: fixed;
-	top: 77px;
-	display: flex;
-	justify-content: center;
-	margin-top: 10px;
-}
-
-.order {
-	width: 460px;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-evenly;
-}
-
-h4 {
+.h3 {
 	font-weight: bold;
-	font-size: 36px;
-	display: inline-block;
+	font-size: 40px;
+}
+
+#height {
+	height: 80px;
+}
+
+.sub_nav_menu {
+	margin: 0 0 120px 150px;
+}
+
+.sub_nav_menu li {
+	text-align: center;
+	float: left;
+	font-weight: bold;
+	font-size: 20px;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.sub_nav_menu li:nth-child(3) {
+	color: red;
 }
 
 #head {
-	position: relative;
+	display: flex;
+	flex-direction: row;
 }
 
 #search {
-	bottom: 4px;
 	font-weight: bold;
-	font-size: 36px;
+	font-size: 25px;
 	vertical-align: top;
-	position: absolute;
-	right: 10px;
+	margin-left: 750px;
 }
 
-input {
-	display: inline-block;
-}
-
-#search_n {
-	position: absolute;
-	left: -50px;
-	top: 5px;
-}
-
-input::-webkit-search-decoration, input::-webkit-search-cancel-button,
-	input::-webkit-search-results-button, input::-webkit-search-results-decoration
+#search input::-webkit-search-decoration, #search input::-webkit-search-cancel-button,
+	#search input::-webkit-search-results-button, #search input::-webkit-search-results-decoration
 	{
 	display: none;
 } /*search내의 요소 삭제*/
-input {
+#search input {
 	height: 40px;
 	font-size: 20px;
-	margin-left: 20px;
+	margin-left: -8px;
 	border: 1px solid #000;
-	border-radius: 10px;
-	padding-right: 40px;
+	border-left: none;
+	border-right: none;
+	margin-right: -8px;
 }
 
-#search div a {
-	position: absolute;
-	right: 5px;
-	bottom: -2px;
-}
-
-hr {
+.hr {
 	height: 2px;
 	border: 0;
 	background: #ff7373;
+}
+
+.cate {
+	-webkit-appearance: none; /* 네이티브 외형 감추기 */
+	-moz-appearance: none;
+	appearance: none;
+	font-weight: bold;
+	width: 80px;
+	padding-left: 10px;
+	height: 40px;
+	border: 1px solid #000;
+	border-radius: 10px 0 0 10px;
+	outline: 0 none;
+	font-size: 20px;
+	background: url("${path }/resources/image/bottom_arrow.png") no-repeat
+		95% 50%; /* 화살표 모양의 이미지 */
+}
+
+#search div a {
+	
+}
+
+#glass {
+	border: 1px solid #000;
+	padding: 5px 10px 8px 10px;
+	border-radius: 0 10px 10px 0;
+	border-left: none;
 }
 
 #glass:hover {
 	cursor: pointer;
 }
 
-table {
+#question_list {
 	border-collapse: separate;
 	border-spacing: 0 20px;
 } /*tr간 간격*/
-tr {
+.content {
 	background: #ffe7e7;
 }
 
-tr:nth-child(1) {
+.title {
+	font-size: 30px;
+}
+
+.column:nth-child(1) {
 	background: #fff;
 }
 
-td:first-child, th:first-child {
-	border-radius: 10px 0 0 10px;
-	width: 1000px;
-} /*td테두리 첫번쨰와 마지막만 둥글게 하기위해서*/
-td:first-child {
-	text-align: left;
-	padding-left: 20px;
-}
-
-#tit {
-	font-size: 36px;
-}
-
-td:last-child, th:last-child {
-	border-radius: 0 10px 10px 0;
-}
-
-th, td {
+.column th {
 	width: 350px;
 	font-weight: bold;
 	font-size: 20px;
@@ -134,11 +127,31 @@ th, td {
 	height: 73px;
 }
 
-td {
+.column {
+	cursor: pointer;
+}
+
+.content td:first-child {
+	border-radius: 10px 0 0 10px;
+	width: 1000px;
+	text-align: left;
+	padding-left: 20px;
+} /*td테두리 첫번쨰와 마지막만 둥글게 하기위해서*/
+.content td:last-child {
+	border-radius: 0 10px 10px 0;
+}
+
+.content td {
+	width: 350px;
+	font-weight: bold;
+	font-size: 20px;
+	text-align: center;
+	vertical-align: middle;
+	height: 73px;
 	padding: 10px 0;
 }
 
-tr:nth-child(n+2):hover {
+.content:hover {
 	background: #fff;
 	box-shadow: 0 0 0 3px #ff8f8f inset;
 	border-radius: 10px;
@@ -146,7 +159,7 @@ tr:nth-child(n+2):hover {
 	cursor: pointer;
 }
 
-button {
+.button {
 	border: 0;
 	background: #ffe7e7;
 	width: 180px;
@@ -159,91 +172,80 @@ button {
 	margin-right: 20px;
 }
 
-button:hover {
+.button:hover {
 	border-radius: 10px;
 	transition: .2s;
-	box-shadow: inset 1px 1px 3px rgb(197, 197, 197);
+	box-shadow: inset 3px 3px 5px #c57171;
 	cursor: pointer;
 }
 </style>
 </head>
 <body>
-
-	<div class="order_box">
-		<ul class="order">
-			<li style="color: #CE8080;">공지사항</li>
+	<%@include file="../includes/header.jsp"%>
+	<div id="height"></div>
+	<div class="sub_nav_menu">
+		<ul>
+			<li>공지사항</li>
 			<li>|</li>
 			<li>문의사항</li>
 			<li>|</li>
 			<li>건강상담소</li>
 		</ul>
 	</div>
+
 	<main>
 		<div id="head">
-			<h3 class="notice">공지사항</h3>
+			<h3 class="h3">공지사항</h3>
 			<div id="search">
-				<P id="search_n">검색</P>
 				<div>
-					<input type="search" name="search"> <a href="#" id="glass"><i
-						class="xi-search"></i></a>
+					<select class="cate">
+						<option>제목</option>
+						<option>작성자</option>
+					</select> <input type="search" name="search" value="검색"> <a href="#"
+						id="glass"><i class="xi-search"></i></a>
 				</div>
 			</div>
 		</div>
-		<hr>
-		<table>
-			<tr>
+		<hr class="hr">
+		<table id="question_list">
+			<tr class="column">
 				<th>제목 및 내용</th>
 				<th>작성자</th>
 				<th>작성일</th>
 				<th>조회수</th>
-
+				<th>답변</th>
 			</tr>
-			<tr>
-				<td><p id="tit">제목</p> <br />
+			<tr class="column content" onClick="location.href='#'">
+				<td><p class="title">제목</p> <br />
 					<p>여기는 내용 입니다.</p></td>
 				<td>김모모</td>
 				<td>작성자</td>
 				<td>1000</td>
-
+				<td>답변완료</td>
 			</tr>
-			<tr>
-				<td><p id="tit">제목</p> <br />
+			<tr class="content" onClick="#">
+				<td><p class="title">제목</p> <br />
 					<p>여기는 내용 입니다.</p></td>
 				<td>김모모</td>
 				<td>작성자</td>
 				<td>1000</td>
-
+				<td>답변완료</td>
 			</tr>
-			<tr>
-				<td><p id="tit">제목</p> <br />
+			<tr class="content" onClick="#" style="cursor: pointer;">
+				<td><p class="title">제목</p> <br />
 					<p>여기는 내용 입니다.</p></td>
 				<td>김모모</td>
 				<td>작성자</td>
 				<td>1000</td>
-
+				<td>답변완료</td>
 			</tr>
-			<tr>
-				<td><p id="tit">제목</p> <br />
-					<p>여기는 내용 입니다.</p></td>
-				<td>김모모</td>
-				<td>작성자</td>
-				<td>1000</td>
 
-			</tr>
-			<tr>
-				<td><p id="tit">제목</p> <br />
-					<p>여기는 내용 입니다.</p></td>
-				<td>김모모</td>
-				<td>작성자</td>
-				<td>1000</td>
-
-			</tr>
 
 		</table>
-		<button>글쓰기</button>
+		<button class="button">글쓰기</button>
 
 
 	</main>
-
+	<%@include file="../includes/footer.jsp"%>
 </body>
 </html>
