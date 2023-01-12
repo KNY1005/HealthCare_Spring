@@ -71,9 +71,6 @@ hr {
 	height: 40px;
 	text-align: left;
 	font-size: 25px;
-	position: absolute;
-	top: 30px;
-	left: 60px;
 	line-height: 40px;
 }
 
@@ -81,9 +78,6 @@ hr {
 	width: 970px;
 	height: 360px;
 	resize: none;
-	position: absolute;
-	top: 78px;
-	left: 60px;
 	font-size: 15px;
 }
 
