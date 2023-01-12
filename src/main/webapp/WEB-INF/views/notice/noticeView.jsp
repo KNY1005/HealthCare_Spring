@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>공지사항 상세보기</title>
+<link href="${path}/resources/css/reset.css" rel="stylesheet"/>  
 <style>
 * {
 	font-weight: bold;
@@ -17,30 +20,23 @@ li {
 
 main {
 	width: 1320px;
-	height: 940px;
-	vertical-align: center;
-	position: relative;
-	top: 600px;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	margin-top: 40px;
+    height: 1000px;
+    margin: 100px auto;
 }
 
-.order_box {
-	width: 745px;
-	position: fixed;
-	top: 77px;
-	display: flex;
-	justify-content: center;
-	margin-top: 10px;
-}
-
-.order {
-	width: 460px;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-evenly;
-}
+.order_box{
+        width: 790px;
+        height: 110px;
+        display: flex;
+ 		align-items: flex-end;
+        justify-content: center;
+      }    
+    .order{
+        width: 500px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
 
 #menu {
 	position: relative;
@@ -51,7 +47,10 @@ main {
 	font-size: 40px;
 	margin-bottom: 15px;
 }
-
+.form{
+	display: flex;
+	justify-content: center;
+}
 hr {
 	height: 1px;
 	background-color: #FF7373;
@@ -62,9 +61,7 @@ hr {
 #writing_view {
 	width: 1100px;
 	height: 515px;
-	position: absolute;
-	top: 32px;
-	right: 105px;
+	
 	border: 3px solid #FF8F8F;
 	border-radius: 10px;
 }
@@ -207,7 +204,7 @@ hr {
 </style>
 </head>
 <body>
-
+	<%@include file="../includes/header.jsp"  %>
 	<div class="order_box">
 		<ul class="order">
 			<li style="color: #CE8080;">공지사항</li>
@@ -223,7 +220,7 @@ hr {
 			<h2>공지사항</h2>
 			<hr>
 		</div>
-		<form action="">
+		<form class="form">
 			<div id="writing_view">
 				<div class="title">제목</div>
 				<div class="content">내용</div>
@@ -245,26 +242,7 @@ hr {
 			</div>
 		</form>
 	</main>
-	<footer>
-		<div class="footer_brand">
-			<ul>
-				<li><a href="#"> <i class="xi-instagram"></i>
-				</a></li>
-				<li><a href="#"> <i class="xi-youtube-play"></i>
-				</a></li>
-				<li><a href="#"> <i class="xi-facebook-official"></i>
-				</a></li>
-				<li><a href="#"> <i class="xi-twitter"></i>
-				</a></li>
-			</ul>
-		</div>
-		<div class="footer_text">
-			<p>
-				<span> HealthCare</span><br /> <span> Email :
-					healthcareeeee@gmail.com</span><br />
-			</p>
-		</div>
-	</footer>
+	 <%@include file="../includes/footer.jsp"  %>
 
 
 </body>
