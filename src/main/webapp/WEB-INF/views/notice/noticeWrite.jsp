@@ -38,31 +38,26 @@
 			});
 </script>
 <style>
-#height {
-	height: 80px;
-}
-
-.sub_nav_menu {
-	margin: 0 0 120px 100px;
-}
-
-.sub_nav_menu li {
-	text-align: center;
-	float: left;
+* {
 	font-weight: bold;
-	font-size: 20px;
-	margin-left: 10px;
-	margin-right: 10px;
 }
-
-.sub_nav_menu li:nth-child(1) {
-	color: red;
-}
-
+.order_box{
+        width: 790px;
+        height: 110px;
+        display: flex;
+ 		align-items: flex-end;
+        justify-content: center;
+      }    
+.order{
+        width: 500px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        }
 #view {
 	width: 1320px;
 	height: 1600px;
-	margin: 0 auto 0;
+	margin: 100px auto;
 }
 
 #menu h2 {
@@ -71,10 +66,10 @@
 }
 
 hr {
-	height: 3px;
+	height: 2px;
 	background-color: #FF7373;
 	border: none;
-	margin: 10px 0;
+	margin-bottom: 50px;
 }
 
 #writing_view {
@@ -92,6 +87,8 @@ hr {
 	height: 40px;
 	text-align: left;
 	font-size: 25px;
+	border-radius: 10px;
+	border-width: 0.3px;
 }
 
 .content {
@@ -101,15 +98,17 @@ hr {
 	height: 360px;
 	resize: none;
 	font-size: 15px;
+	border-radius: 10px;
 }
 
 #writing_view ul {
-	margin-left: 60px;
+	margin: 30px 70px;
 }
 
 #writing_view li {
 	display: inline-block;
 	margin-right: 40px;
+	font-weight: bold;
 }
 
 .file {
@@ -156,7 +155,7 @@ hr {
 #button button:hover {
 	border-radius: 10px;
 	transition: .2s;
-	box-shadow: inset 3px 3px 5px #c57171;
+	box-shadow: inset 1px 1px 3px rgb(197, 197, 197);
 	cursor: pointer;
 }
 
@@ -173,7 +172,7 @@ hr {
 
 .filebox .file1 {
 	margin: 0 20px 0 20px;
-	font-size: 20px;
+	font-size: 18px;
 }
 
 .filebox input[type="file"] {
@@ -193,30 +192,29 @@ hr {
 	border-radius: 10px;
 	vertical-align: center;
 	padding: 10px;
-	margin-left: 600px;
+	margin-left: 715px;
 }
 
 .filebox label:hover {
 	border-radius: 10px;
 	transition: .2s;
-	box-shadow: inset 3px 3px 5px #c57171;
+	box-shadow: inset 1px 1px 3px rgb(197, 197, 197);
 	cursor: pointer;
 }
 /* named upload */
 .filebox .upload-name {
-	font-size: 20px;
+	font-size: 18px;
 	border: none;
 	font-weight: bold;
+	background: #fff;
 }
 </style>
 </head>
 <body>
 	<%@include file="../includes/header.jsp"%>
-	<div id="height"></div>
-
-	<div class="sub_nav_menu">
-		<ul>
-			<li>공지사항</li>
+	<div class="order_box">
+		<ul class="order">
+			<li style="color: #CE8080;">공지사항</li>
 			<li>|</li>
 			<li>문의사항</li>
 			<li>|</li>
@@ -225,7 +223,7 @@ hr {
 	</div>
 	<section id="view">
 		<div id="menu">
-			<h2>공지사항 글 쓰기</h2>
+			<h2>공지사항</h2>
 		</div>
 		<hr>
 		<form action="">
