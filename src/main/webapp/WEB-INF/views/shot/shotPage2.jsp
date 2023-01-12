@@ -93,7 +93,7 @@
         border-radius: 10px;
         text-align: center;
       }
-      .btn{
+      .btn2{
         background-color:#FFAEAE;
         border: #FFAEAE;
         border-radius: 10px; 
@@ -253,7 +253,7 @@
                   <select id="sido"><option disabled selected>시/도</option></select>
                   <select id="sigugun"><option disabled selected>시/구/군</option></select>
                   <select id="dong"><option disabled selected>읍/면/동</option></select> 
-                  <button class="btn"><i class="xi-search xi-2x"></i></button>                 
+                  <button class="btn2"><i class="xi-search xi-2x"></i></button>                 
           </div>
         </div>
         <hr id="line">
