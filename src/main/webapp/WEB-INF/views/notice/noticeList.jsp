@@ -9,34 +9,26 @@
 main {
 	width: 1320px;
 	height: 1000px;
-	margin: 0 auto 0;
+	margin: 100px auto;
 }
-
+.order_box{
+        width: 790px;
+        height: 110px;
+        display: flex;
+ 		align-items: flex-end;
+        justify-content: center;
+      }    
+.order{
+        width: 500px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        }
 .h3 {
 	font-weight: bold;
 	font-size: 40px;
 }
 
-#height {
-	height: 80px;
-}
-
-.sub_nav_menu {
-	margin: 0 0 120px 150px;
-}
-
-.sub_nav_menu li {
-	text-align: center;
-	float: left;
-	font-weight: bold;
-	font-size: 20px;
-	margin-left: 20px;
-	margin-right: 20px;
-}
-
-.sub_nav_menu li:nth-child(3) {
-	color: red;
-}
 
 #head {
 	display: flex;
@@ -47,7 +39,7 @@ main {
 	font-weight: bold;
 	font-size: 25px;
 	vertical-align: top;
-	margin-left: 750px;
+	margin-left: 840px;
 }
 
 #search input::-webkit-search-decoration, #search input::-webkit-search-cancel-button,
@@ -175,23 +167,23 @@ main {
 .button:hover {
 	border-radius: 10px;
 	transition: .2s;
-	box-shadow: inset 3px 3px 5px #c57171;
+	box-shadow: inset 1px 1px 3px rgb(197, 197, 197);
 	cursor: pointer;
 }
 </style>
 </head>
 <body>
 	<%@include file="../includes/header.jsp"%>
-	<div id="height"></div>
-	<div class="sub_nav_menu">
-		<ul>
-			<li>공지사항</li>
+	<div class="order_box">
+		<ul class="order">
+			<li style="color: #CE8080;">공지사항</li>
 			<li>|</li>
 			<li>문의사항</li>
 			<li>|</li>
 			<li>건강상담소</li>
 		</ul>
 	</div>
+
 
 	<main>
 		<div id="head">
@@ -201,7 +193,7 @@ main {
 					<select class="cate">
 						<option>제목</option>
 						<option>작성자</option>
-					</select> <input type="search" name="search" value="검색"> <a href="#"
+					</select> <input type="search" name="search" placeholder="검색"> <a href="#"
 						id="glass"><i class="xi-search"></i></a>
 				</div>
 			</div>
