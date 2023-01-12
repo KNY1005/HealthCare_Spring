@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="abc1.do">유의사항</a>//
+<a href="abc1.do">유의사항</a>
 	<hr>
 	<a href="abc2.do">예약2</a>
 	<hr>
@@ -25,7 +25,7 @@
 	<hr>
 	<a href="abc9.do">결제3</a>
 	<hr>
-	<a href="medicallist.do">건강상담소리스트</a>//
+	<a href="medicallist.do">건강상담소리스트</a>
 	<hr>
 	<a href="medicalview.do">건강상담소보기</a>
 	<hr>
@@ -33,12 +33,12 @@
 	<hr>
 	<a href="medicalwrite.do">건강상담소글작성</a>
 	<hr>
-	<a href="notice1.do">공지1</a>//
+	<a href="notice1.do">공지1</a>
 	<hr><a href="notice2.do">공지2</a>
 	<hr><a href="notice3.do">공지3</a>
 	<hr><a href="notice4.do">공지4</a>
 	<hr>
-	<a href="blood1.do">헌혈1</a><br>//
+	<a href="blood1.do">헌혈1</a><br>
 	<a href="blood2.do">헌혈2</a><br>
 	<a href="blood3.do">헌혈3</a><br>
 	<a href="blood4.do">헌혈4</a><br>
