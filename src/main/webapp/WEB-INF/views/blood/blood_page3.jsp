@@ -132,10 +132,6 @@ main {
 	background: #ff7373;
 }
 
-#address_search {
-	position: relative;
-}
-
 .addr {
 	-webkit-appearance: none; /* 네이티브 외형 감추기 */
 	-moz-appearance: none;
@@ -169,8 +165,7 @@ option {
 	width: 40px;
 	height: 45px;
 	border-radius: 4px;
-	position: absolute;
-	right: -60px;
+	margin-left:10px;
 }
 
 .button:hover {
@@ -192,9 +187,10 @@ option {
 	margin: 25px 0;
 }
 
-#addr div {
-	display: inline-block;
-	margin-left: 300px;
+#addr #address_search {
+	display:flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .blood_info {
