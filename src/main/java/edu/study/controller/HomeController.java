@@ -33,7 +33,7 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "home";
+		return "NewFile";
 	}
 
 	@RequestMapping(value = "abc1.do", method = RequestMethod.GET)
@@ -108,4 +108,5 @@ public class HomeController {
 		
 		return "notice/noticeWrite";
 	}
+	
 }
