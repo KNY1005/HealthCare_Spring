@@ -17,6 +17,16 @@
                 $(this).children(".able").stop().slideUp(600);
             });
         });
+        
+        function two(){
+        	var a=1;
+        	if(a==1){ 
+        	      location.href ="abc6.do";
+        	     }
+        	 
+        	else{ location.href = "abc5.do";
+        	     }
+        }
     </script>
     <style>
         * {
@@ -331,8 +341,8 @@
                 <p>예약하시겠습니까?</p>
             </div>
             <div id="btn2">
-                <button>확인</button>
-                <button>취소</button>
+                <button onClick="two()">확인</button>
+                <button onClick="location.href='abc3.do'">취소</button>
             </div>
         </div>
     </section>

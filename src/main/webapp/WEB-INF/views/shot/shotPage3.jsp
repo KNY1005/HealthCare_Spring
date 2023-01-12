@@ -188,7 +188,7 @@
 						<input type="time">
 					</div>
 					<div id="btn">
-						<button>예약</button>
+						<button onClick="location.href='abc4.do'">예약</button>
 					</div>
 				</div>	
 			</div>
@@ -210,7 +210,7 @@
 						<input type="time">
 					</div>
 					<div id="btn">
-						<button>예약</button>
+						<button onClick="location.href='abc4.do'">예약</button>
 					</div>
 				</div>	
 			</div>
@@ -231,7 +231,7 @@
 						<input type="time">
 					</div>
 					<div id="btn">
-						<button>예약</button>
+						<button onClick="location.href='abc4.do'">예약</button>
 					</div>
 				</div>	
 			</div>

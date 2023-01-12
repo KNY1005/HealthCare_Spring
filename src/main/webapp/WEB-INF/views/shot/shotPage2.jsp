@@ -113,7 +113,7 @@
       	background:#fff;
       }
       #hospital_list tr{
-      	background:#ffe7e7;
+      	
       	line-height: 73px;
       	font-size: 25px;
       	border-spacing: 0 20px;
@@ -122,8 +122,17 @@
         
         td:first-child,th:first-child {border-radius: 10px 0 0 10px;}   /*td테두리 첫번쨰와 마지막만 둥글게 하기위해서*/
         td:last-child,th:last-child {border-radius: 0 10px 10px 0;}       
-        th,td{width:350px; text-align:center; vertical-align:middle; height:73px;}            
-        tr:nth-child(n+2):hover {background:#fff; box-shadow: 0 0 0 3px #ff8f8f inset; border-radius: 10px; transition:.2s;cursor:pointer}
+        th,td{width:350px; text-align:center; vertical-align:middle; height:73px;}
+        .content{
+        	background:#ffe7e7;
+        }            
+       .content:hover {
+	background:#fff;
+	box-shadow: 0 0 0 3px #ff8f8f inset;
+	border-radius: 10px;
+	transition: .2s;
+	cursor: pointer;
+}
     </style>
     <script
       src="https://code.jquery.com/jquery-latest.min.js"
@@ -266,13 +275,15 @@
                 <th>주소</th>
                 <th>연락처</th>
             </tr>
-            <tr>
+            <tr class="content"
+            onClick="location.href='abc3.do'">
                 <td>땡땡 병원</td>
                 <td>00:00 ~ 00:00</td>
                 <td>전라북도 전주시 땡땡</td>
                 <td>010-0000-1234</td>
             </tr>
-            <tr>
+            <tr class="content"
+            onClick="location.href='abc3.do'">
                 <td>땡땡 병원</td>
                 <td>00:00 ~ 00:00</td>
                 <td>전라북도 전주시 땡땡</td>

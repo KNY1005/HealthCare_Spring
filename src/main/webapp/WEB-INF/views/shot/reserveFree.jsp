@@ -121,7 +121,7 @@
                 <p>수신동의 설정 : 마이페이지 < 개인정보 수정</p>
             </div>
             <div class="btn">
-                <button>예약조회 바로가기</button>
+                <button onClick="location.href=''">예약조회 바로가기</button>
             </div>
             
         </div>

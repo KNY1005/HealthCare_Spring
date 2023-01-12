@@ -130,7 +130,7 @@
                 <p>수신동의 설정 : 마이페이지 < 개인정보 수정</p>
             </div>
             <div class="btnn">
-                <button>결제진행 바로가기</button>
+                <button onClick="location.href='abc7.do'">결제진행 바로가기</button>
             </div>
             
         </div>

@@ -138,7 +138,8 @@
         </div>
     </main>
     <%@include file="../includes/footer.jsp"  %>
-    <div id="charge_alert"></div>
+    <div id="charge_alert"
+     onClick="location.href='abc9.do'"></div>
     <div id="bac"></div>
 </body>
 </html>

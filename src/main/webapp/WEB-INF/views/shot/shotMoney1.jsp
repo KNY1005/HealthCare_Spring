@@ -125,9 +125,11 @@
             </div>
             
             <div id="button">
-                <button style="background-color: #05CF00;">네이버페이</button>
-                <button style="background-color: #FFE800;">카카오페이</button>
-                <button>카드결제</button>
+                <button style="background-color: #05CF00;"
+                 onClick="location.href='abc8.do'">네이버페이</button>
+                <button style="background-color: #FFE800;"
+                 onClick="location.href='abc8.do'">카카오페이</button>
+                <button onClick="location.href='abc8.do'">카드결제</button>
             </div>
             
         </div>

@@ -111,7 +111,7 @@
 			<br>
 		</p>
 		</div>
-		<a href="#">예방접종 예약 하러가기</a>
+		<a href="abc2.do">예방접종 예약 하러가기</a>
 	</main>
 	<%@include file="../includes/footer.jsp"  %>
 </body>
