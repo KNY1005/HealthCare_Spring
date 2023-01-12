@@ -35,7 +35,7 @@ public class HomeController {
 		
 		return "NewFile";
 	}
-
+	/*예방접종*/
 	@RequestMapping(value = "abc1.do", method = RequestMethod.GET)
 	public String home1() {
 		
@@ -76,6 +76,12 @@ public class HomeController {
 		
 		return "shot/shotMoney2";
 	}
+	@RequestMapping(value = "abc9.do", method = RequestMethod.GET)
+	public String home9() {
+		
+		return "shot/shotMoney3";
+	}
+	/*예방접종*/
 	@RequestMapping(value = "medicallist.do", method = RequestMethod.GET)
 	public String medicall() {
 		

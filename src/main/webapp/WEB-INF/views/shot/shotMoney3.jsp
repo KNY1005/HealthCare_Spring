@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>예약완료</title>
+<title>유료결제</title>
 <link href="${path}/resources/css/reset.css" rel="stylesheet"/>
     <style>
     *{
@@ -100,7 +100,7 @@
     <main>
         <div class="check">
             <div id="money">
-                예약이 완료되었습니다.
+                결제가 완료되었습니다.
             </div>
             <div id="infor">
                 <ul>
@@ -115,6 +115,10 @@
                     <li>접종명</li>
                     <li></li>
                 </ul>
+                <ul>
+                  <li>금액</li>
+                  <li></li>
+              	</ul>
             </div>
             <div id="guide">
                 <p>메시지 수신을 동의하신 경우 해당 날짜 전날 SMS 안내문자가 발송될 예정입니다.</p>

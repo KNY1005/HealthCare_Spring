@@ -23,6 +23,8 @@
 	<hr>
 	<a href="abc8.do">결제2</a>
 	<hr>
+	<a href="abc9.do">결제3</a>
+	<hr>
 	<a href="medicallist.do">건강상담소리스트</a>
 	<hr>
 	<a href="medicalview.do">건강상담소보기</a>

@@ -48,9 +48,9 @@
 	<%@include file="../includes/header.jsp"  %>
 	<div class="order_box">
         <ul class="order">
-            <li>예방접종 유의사항</li>
+            <li style="color: #CE8080;">예방접종 유의사항</li>
             <li><i class="xi-angle-right"></i></i></li>
-            <li style="color: #CE8080;">예방접종 병원조회</li>
+            <li>예방접종 병원조회</li>
             <li><i class="xi-angle-right"></i></i></li>
             <li>예방접종 예약하기</li>
             <li><i class="xi-angle-right"></i></i></li>

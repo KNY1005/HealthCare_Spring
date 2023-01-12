@@ -46,11 +46,7 @@
         justify-content: space-evenly;
       }
       #age li {
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
         box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
         width: 250px;
         height: 250px;
         border: 3px solid rgb(160, 155, 155);
@@ -62,8 +58,7 @@
       #age img {
         height: 180px;
         width: 180px;
-        
-        box-sizing: border-box;
+        text-align: center;
       }
 
       #age li:hover {
@@ -106,7 +101,7 @@
       }  
       button:hover{
         border-radius: 10px;
-        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.05), 0 6px 6px rgba(0, 0, 0, 0.1);
+        box-shadow: inset 1px 1px 3px rgb(197, 197, 197);
         cursor:pointer;
       }
     
