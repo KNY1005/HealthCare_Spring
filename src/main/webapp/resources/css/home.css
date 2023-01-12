@@ -305,7 +305,7 @@ a {
 
 /*background*/
 .background {
-  background: url("${path}/resources/image/main_view.jpg");
+  background-image: url("${path}/resources/image/main_view.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
