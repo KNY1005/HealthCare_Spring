@@ -112,6 +112,7 @@
 		height: 50px;
 		font-size: 18px;
 		border-radius: 15px;
+		text-align: center;
 	}
 
 	#btn button{
@@ -139,9 +140,9 @@
         <ul class="order">
             <li>예방접종 유의사항</li>
             <li><i class="xi-angle-right"></i></i></li>
-            <li style="color: #CE8080;">예방접종 병원조회</li>
+            <li>예방접종 병원조회</li>
             <li><i class="xi-angle-right"></i></i></li>
-            <li>예방접종 예약하기</li>
+            <li style="color: #CE8080;">예방접종 예약하기</li>
             <li><i class="xi-angle-right"></i></i></li>
             <li>예방접종 예약완료</li>
         </ul>

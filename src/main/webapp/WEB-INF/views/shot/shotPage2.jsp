@@ -93,7 +93,7 @@
         border-radius: 10px;
         text-align: center;
       }
-      .btn{
+      .btn2{
         background-color:#FFAEAE;
         border: #FFAEAE;
         border-radius: 10px; 
@@ -104,13 +104,25 @@
         box-shadow: inset 1px 1px 3px rgb(197, 197, 197);
         cursor:pointer;
       }
-    
-      table{border-collapse: separate; border-spacing: 0 20px;}   /*tr간 간격*/
-        tr{background:#ffe7e7;}
-        tr:nth-child(1){background:#fff;}    
+      #hospital_list table{ /*tr간 간격*/
+      	border-collapse: separate; 
+      	border-spacing: 0 20px;
+      	width: 1320px;
+      }   
+      #hospital_list tr:nth-child(1){
+      	background:#fff;
+      }
+      #hospital_list tr{
+      	background:#ffe7e7;
+      	line-height: 73px;
+      	font-size: 25px;
+      	border-spacing: 0 20px;
+      }
+      
+        
         td:first-child,th:first-child {border-radius: 10px 0 0 10px;}   /*td테두리 첫번쨰와 마지막만 둥글게 하기위해서*/
         td:last-child,th:last-child {border-radius: 0 10px 10px 0;}       
-        th,td{width:350px;font-size:24px; text-align:center; vertical-align:middle; height:73px;}            
+        th,td{width:350px; text-align:center; vertical-align:middle; height:73px;}            
         tr:nth-child(n+2):hover {background:#fff; box-shadow: 0 0 0 3px #ff8f8f inset; border-radius: 10px; transition:.2s;cursor:pointer}
     </style>
     <script
@@ -241,7 +253,7 @@
                   <select id="sido"><option disabled selected>시/도</option></select>
                   <select id="sigugun"><option disabled selected>시/구/군</option></select>
                   <select id="dong"><option disabled selected>읍/면/동</option></select> 
-                  <button class="btn"><i class="xi-search xi-2x"></i></button>                 
+                  <button class="btn2"><i class="xi-search xi-2x"></i></button>                 
           </div>
         </div>
         <hr id="line">
