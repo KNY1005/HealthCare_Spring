@@ -173,4 +173,9 @@ public class HomeController {
 		return "blood/blood_page5";
 	}
 	
+	@RequestMapping(value = "mypage1.do", method = RequestMethod.GET)
+	public String mypage1() {
+		
+		return "mypage/blood_reserve_inquiry";
+	}
 }

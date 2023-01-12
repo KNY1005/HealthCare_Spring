@@ -19,74 +19,58 @@
 <meta name="theme-color" content="#ffffff" />
 
 <style>
-body, h1, h2, h3, h4, h5, h6, li, p, #nav li a, #topbar, input, button,
-	select, textarea, a, .wf-container>*, .widget-title, .dwqa-container,
-	#wpmem_reg, #wpmem_login {
-	font-family: "arita-light", "arita-sans-light" !important;
-	color: #000;
-}
-
 main {
 	width: 1320px;
 	height: 1000px;
-	margin: 0 auto 0;
+	margin: 100px auto;
 }
-
+.order_box{
+        width: 790px;
+        height: 110px;
+        display: flex;
+ 		align-items: flex-end;
+        justify-content: center;
+      }    
+.order{
+        width: 500px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        }
 .h3 {
 	font-weight: bold;
 	font-size: 40px;
-	display: inline-block;
 }
 
-#height {
-	height: 80px;
-}
-
-.sub_nav_menu {
-	margin: 0 0 120px 150px;
-}
-
-.sub_nav_menu li {
-	text-align: center;
-	float: left;
-	font-weight: bold;
-	font-size: 20px;
-	margin-left: 20px;
-	margin-right: 20px;
-}
-
-.sub_nav_menu li:nth-child(3) {
-	color: red;
-}
 
 #head {
-	position: relative;
+	display: flex;
+	flex-direction: row;
 }
 
 #search {
-	bottom: 4px;
 	font-weight: bold;
 	font-size: 25px;
 	vertical-align: top;
-	position: absolute;
-	right: 10px;
+	margin-left: 840px;
+	display:flex;
+	justify-content: center;
+	align-items: center;
 }
 
-
-
 #search input::-webkit-search-decoration, #search input::-webkit-search-cancel-button,
-#search input::-webkit-search-results-button, #search input::-webkit-search-results-decoration
+	#search input::-webkit-search-results-button, #search input::-webkit-search-results-decoration
 	{
 	display: none;
 } /*search내의 요소 삭제*/
 #search input {
 	height: 40px;
 	font-size: 20px;
-	margin-left:0;
+	margin-left: -8px;
 	border: 1px solid #000;
-	border-radius: 10px;
-	padding-right: 40px;
-	padding-left: 110px;
+	border-left: none;
+	border-right: none;
+	margin-right: -8px;
 }
 
 .hr {
@@ -94,27 +78,36 @@ main {
 	border: 0;
 	background: #ff7373;
 }
-.cate{-webkit-appearance: none; /* 네이티브 외형 감추기 */
+
+.cate {
+	-webkit-appearance: none; /* 네이티브 외형 감추기 */
 	-moz-appearance: none;
 	appearance: none;
 	font-weight: bold;
-	width: 100px;
-	height: 40px;	
-	padding: 5px 30px 5px 10px;
-	border:none;
-	border-right:1px solid #000;
+	width: 80px;
+	padding-left: 10px;
+	height: 40px;
+	border: 1px solid #000;
+	border-radius: 10px 0 0 10px;
 	outline: 0 none;
 	font-size: 20px;
 	background: url("${path }/resources/image/bottom_arrow.png") no-repeat
-		95% 50%; /* 화살표 모양의 이미지 */	
-	position:absolute;
-	}
-#search div a {
-	position: absolute;
-	right: 5px;
-	bottom: 5px;
+		95% 50%; /* 화살표 모양의 이미지 */
 }
 
+#search  {
+	
+}
+
+#glass {
+	border: 1px solid #000;
+	padding: 4px 10px 4px 10px;
+	border-radius: 0 10px 10px 0;
+	border-left: none;
+	
+	
+}
+#glass i{margin-top:2px;}
 #glass:hover {
 	cursor: pointer;
 }
@@ -192,40 +185,35 @@ main {
 .button:hover {
 	border-radius: 10px;
 	transition: .2s;
-	box-shadow: inset 3px 3px 5px #c57171;
+	box-shadow: inset 1px 1px 3px rgb(197, 197, 197);
 	cursor: pointer;
-}
-
-table {
-	border: 1px;
 }
 </style>
 </head>
 <body>
 	<%@include file="../includes/header.jsp"%>
-	<div id="height"></div>
-	<div class="sub_nav_menu">
-		<ul>
-			<li>공지사항</li>
+	<div class="order_box">
+		<ul class="order">
+			<li >공지사항</li>
 			<li>|</li>
-			<li>문의사항</li>
+			<li style="color: #CE8080;">문의사항</li>
 			<li>|</li>
 			<li>건강상담소</li>
 		</ul>
 	</div>
 
+
 	<main>
 		<div id="head">
 			<h3 class="h3">문의사항</h3>
 			<div id="search">
-				<div>				
-				<select class="cate">
-					<option>제목</option>
-					<option>작성자</option>
-				</select>
-					<input type="search" name="search" value="검색"> <a href="#" id="glass"><i
-						class="xi-search"></i></a>
-				</div>
+				
+					<select class="cate">
+						<option>제목</option>
+						<option>작성자</option>
+					</select> <input type="search" name="search" placeholder="검색"> <a href="#"
+						id="glass"><i class="xi-search"></i></a>
+				
 			</div>
 		</div>
 		<hr class="hr">
@@ -237,8 +225,7 @@ table {
 				<th>조회수</th>
 				<th>답변</th>
 			</tr>
-			<tr class="column content"
-				onClick="location.href='http://www.daum.net/'">
+			<tr class="column content" onClick="location.href='notice3.do'">
 				<td><p class="title">제목</p> <br />
 					<p>여기는 내용 입니다.</p></td>
 				<td>김모모</td>
@@ -246,7 +233,7 @@ table {
 				<td>1000</td>
 				<td>답변완료</td>
 			</tr>
-			<tr class="content" onClick="location.href='http://www.daum.net/'">
+			<tr class="content" onClick="#">
 				<td><p class="title">제목</p> <br />
 					<p>여기는 내용 입니다.</p></td>
 				<td>김모모</td>
@@ -254,8 +241,7 @@ table {
 				<td>1000</td>
 				<td>답변완료</td>
 			</tr>
-			<tr class="content" onClick="location.href='http://www.daum.net/'"
-				style="cursor: pointer;">
+			<tr class="content" onClick="#" style="cursor: pointer;">
 				<td><p class="title">제목</p> <br />
 					<p>여기는 내용 입니다.</p></td>
 				<td>김모모</td>
@@ -266,7 +252,7 @@ table {
 
 
 		</table>
-		<button class="button">글쓰기</button>
+		<button class="button" onClick="location.href='notice4.do'">글쓰기</button>
 
 
 	</main>
