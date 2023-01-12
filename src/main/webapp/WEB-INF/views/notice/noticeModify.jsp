@@ -206,7 +206,7 @@ hr {
 </style>
 </head>
 <body>
-
+	<%@include file="../includes/header.jsp"%>
 	<div class="order_box">
 		<ul class="order">
 			<li style="color: #CE8080;">공지사항</li>
@@ -245,27 +245,7 @@ hr {
 			</div>
 		</form>
 	</main>
-	<footer>
-		<div class="footer_brand">
-			<ul>
-				<li><a href="#"> <i class="xi-instagram"></i>
-				</a></li>
-				<li><a href="#"> <i class="xi-youtube-play"></i>
-				</a></li>
-				<li><a href="#"> <i class="xi-facebook-official"></i>
-				</a></li>
-				<li><a href="#"> <i class="xi-twitter"></i>
-				</a></li>
-			</ul>
-		</div>
-		<div class="footer_text">
-			<p>
-				<span> HealthCare</span><br /> <span> Email :
-					healthcareeeee@gmail.com</span><br />
-			</p>
-		</div>
-	</footer>
-
+	<%@include file="../includes/footer.jsp"%>
 
 </body>
 </html>

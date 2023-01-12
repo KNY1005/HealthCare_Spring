@@ -127,6 +127,7 @@ p {
   z-index: 99999999;
   position: fixed;
   width: 100%;
+  
 }
 a {
   text-decoration-line: none;
@@ -185,6 +186,8 @@ a {
   top: 70px;
   opacity: 1;
   background: rgba(216, 216, 216, 0.3);
+  backdrop-filter: blur(10px);
+  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.1);
 
   border-radius: 10px;
   z-index: 9999;
@@ -253,6 +256,8 @@ a {
   right: 60px;
   display: none;
   transition: 0.5s;
+  backdrop-filter: blur(10px);
+  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.1);
 }
 #profli_menu ul {
   text-align: center;
@@ -300,7 +305,7 @@ a {
 
 /*background*/
 .background {
-  background: url("../image/배경화면.jpg.jpg");
+  background-image: url("${path}/resources/image/main_view.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;

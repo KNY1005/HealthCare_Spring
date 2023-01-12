@@ -38,5 +38,12 @@
 	<hr><a href="notice3.do">공지3</a>
 	<hr><a href="notice4.do">공지4</a>
 	<hr>
+	<a href="blood1.do">헌혈1</a><br>
+	<a href="blood2.do">헌혈2</a><br>
+	<a href="blood3.do">헌혈3</a><br>
+	<a href="blood4.do">헌혈4</a><br>
+	<a href="blood5.do">헌혈5</a><br>
+	<hr>
+	
 </body>
 </html>
