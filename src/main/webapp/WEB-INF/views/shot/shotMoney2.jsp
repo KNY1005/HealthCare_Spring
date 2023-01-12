@@ -82,10 +82,7 @@
       background-color: #FFEFEF; 
       border: #FFEFEF;  
       border-radius: 30px;}
-    #button :hover{
-    	box-shadow: inset 1px 1px 3px rgb(197, 197, 197);
-        cursor:pointer;
-    } 
+    
     #charge_alert{width: 500px;height: 400px; position: fixed; top: 50%; left: 50%;
             transform: translate(-50%, -50%);
             background-color: white; opacity: 1; border-radius: 10px; z-index: 2;} 
