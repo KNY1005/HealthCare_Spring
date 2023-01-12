@@ -25,9 +25,9 @@
           <div class="nav_main_menu">
             <ul class="nav_main_menu_1">
               <li>
-                <a href="#"
-                  ><img src="../image/로고2.png" alt="로고이미지"
-                /></a>
+                <a href="#">
+                <img src="${path}/resources/images/logo2.png" alt="로고이미지"/>
+                </a>
               </li>
             </ul>
             <ul>
@@ -69,7 +69,7 @@
         </nav>
         <div id="profli">
           <div class="main_profli">
-            <img src="../image/profli.png" alt="프로필" />
+           <img src="${path}/resources/images/profil.png" alt="프로필" />
             <button type="submit" class="btn">
               <i class="xi-plus" alt="검색"></i>
             </button>
@@ -77,7 +77,7 @@
           </div>
           <div id="profli_menu">
             <ul>
-              <li><img src="../image/profli.png" alt="프로필" /></li>
+              <li><img src="${path}/resources/images/profil.png" alt="프로필" /></li>
               <li><p>김모모님</p></li>
               <li><hr width="250px" /></li>
               <li><a href="#">마이페이지</a></li>
