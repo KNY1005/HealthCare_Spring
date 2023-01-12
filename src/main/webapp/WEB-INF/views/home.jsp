@@ -24,7 +24,7 @@
 <script src="${path}/resources/js/home.js"></script>
 
 <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css" />
-<title>메인화면</title>
+<title>메인화면.</title>
 <style>
 .background {
   background-image: url("${path}/resources/image/main_view.jpg");
