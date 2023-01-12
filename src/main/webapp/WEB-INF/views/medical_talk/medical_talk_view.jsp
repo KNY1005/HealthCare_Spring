@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=, initial-scale=1.0">
-	<title>건강상담소 목록</title>
+	<title>건강상담소 상세보기</title>
 	<!--파비콘-->
 	<link rel="icon" type="image/png" sizes="16x16"
 		href="${path }/resources/image/favicon/favicon-16x16.png" />
@@ -48,6 +48,10 @@
 		}
 
 		/*-----------------sub_nav_menu > end---------------*/
+		
+		#height {
+			height: 80px;
+		}
 
 		main h2 {
 			font-size: 35px;
@@ -64,9 +68,10 @@
 		main {
 			width: 1320px;
 			font-weight: bold;
-			position: relative;
 			margin-top: 100px;
 			margin-left: 300px;
+			
+			
 		}
 
 		/*메인안에 모든 버튼 호버 적용*/

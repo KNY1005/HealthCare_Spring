@@ -26,7 +26,7 @@
 		/*-----------------sub_nav_menu > start---------------*/
 
 		.sub_nav_menu ul {
-			margin-left: 115px;
+			margin-left: 135px;
 			margin-top: 20px;
 		}
 
@@ -34,7 +34,7 @@
 			text-align: center;
 			float: left;
 			width: 100px;
-			padding: 0 50px;
+			padding: 0 30px;
 			/*글자길이 길어서 넘어가면 이거 늘리세요 */
 			font-weight: bold;
 			font-size: 20px;
