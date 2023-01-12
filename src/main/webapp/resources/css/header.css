@@ -92,9 +92,7 @@ a {
   left: 150px;
   top: 70px;
   opacity: 1;
-  background-color: rgba(255, 177, 177, 0.3);
-  backdrop-filter: blur(10px);
-  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.1);
+  background-color: #FFB7B7;
   border-radius: 10px;
   z-index: 9999;
   font-weight: bold;
@@ -166,9 +164,7 @@ a {
 }
 /*---profli_menu---*/
 #profli_menu {
-  background-color: rgba(255, 235, 235, 0.3);
-  backdrop-filter: blur(10px);
-  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.1);
+  background-color: #FFDADA;
   border-radius: 20px;
   border: none;
   width: 300px;
