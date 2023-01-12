@@ -33,6 +33,14 @@
 	<hr>
 	<a href="medicalwrite.do">건강상담소글작성</a>
 	<hr>
+	<a href="medicalwrite.do">건강검진유의사항</a>
+	<hr>
+	<a href="medicalwrite.do">건강검진병원조회</a>
+	<hr>
+	<a href="medicalwrite.do">건강검진예약하기</a>
+	<hr>
+	<a href="medicalwrite.do">건강검진예약확인</a>
+	<hr>
 	<a href="notice1.do">공지1</a>//
 	<hr><a href="notice2.do">공지2</a>
 	<hr><a href="notice3.do">공지3</a>
