@@ -33,7 +33,7 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "home";
+		return "NewFile";
 	}
 	/*예방접종*/
 	@RequestMapping(value = "abc1.do", method = RequestMethod.GET)
@@ -122,6 +122,32 @@ public class HomeController {
 	public String homeb2() {
 		
 		return "notice/noticeWrite";
+	}
+	@RequestMapping(value = "blood1.do", method = RequestMethod.GET)
+	public String blood1() {
+		
+		return "blood/blood_main";
+	}
+	
+	@RequestMapping(value = "blood2.do", method = RequestMethod.GET)
+	public String blood2() {
+		
+		return "blood/blood_page2";
+	}
+	@RequestMapping(value = "blood3.do", method = RequestMethod.GET)
+	public String blood3() {
+		
+		return "blood/blood_page3";
+	}
+	@RequestMapping(value = "blood4.do", method = RequestMethod.GET)
+	public String blood4() {
+		
+		return "blood/blood_page4";
+	}
+	@RequestMapping(value = "blood5.do", method = RequestMethod.GET)
+	public String blood5() {
+		
+		return "blood/blood_page5";
 	}
 	
 }
