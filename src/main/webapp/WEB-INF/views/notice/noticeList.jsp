@@ -79,6 +79,7 @@ main {
 	border-right: none;
 	margin-right: -8px;
 }
+#search input:focus {outline: none; background:#fff;}
 
 .hr {
 	height: 2px;
