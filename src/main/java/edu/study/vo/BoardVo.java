@@ -8,6 +8,7 @@ public class BoardVo {
 	private String blist;
 	private String bcategory;
 	private String btitle;
+	private String bwriter;
 	private String bcontent;
 	private String bwdate;
 	private String brewdate;
@@ -15,6 +16,7 @@ public class BoardVo {
 	private String bmdate;
 	private String bdelete;
 	private String bsecret;
+	private int bhit;
 	private int midx;
 	
 	public int getBidx() {

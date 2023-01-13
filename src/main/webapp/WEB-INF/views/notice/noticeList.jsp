@@ -205,14 +205,21 @@ main {
 		</div>
 		<hr class="hr">
 		<table id="question_list">
+		<c:forEach items="${datalist}" var="vo">
 			<tr class="column">
 				<th>제목 및 내용</th>
 				<th>작성자</th>
 				<th>작성일</th>
 				<th>조회수</th>
-				
 			</tr>
-			<tr class="column content" onClick="location.href='notice3.do'">
+			<tr class="content" onClick="location.href='notice3.do'">
+				<td><p class="title">${vo.btitle}</p> <br />
+					<p><a href="view.do?bidx=${vo.bidx}">${bcontent}</a></p></td>
+				<td>${vo.bwiter}</td>
+				<td>${vo.bwdate}</td>
+				<td>${vo.bhit}</td>
+			</tr>
+			<tr class="content" onClick="location.href='notice3.do'">
 				<td><p class="title">제목</p> <br />
 					<p>여기는 내용 입니다.</p></td>
 				<td>김모모</td>
@@ -220,15 +227,7 @@ main {
 				<td>1000</td>
 				
 			</tr>
-			<tr class="content" onClick="#">
-				<td><p class="title">제목</p> <br />
-					<p>여기는 내용 입니다.</p></td>
-				<td>김모모</td>
-				<td>작성자</td>
-				<td>1000</td>
-				
-			</tr>
-			<tr class="content" onClick="#" style="cursor: pointer;">
+			<tr class="content" onClick="location.href='notice3.do'">
 				<td><p class="title">제목</p> <br />
 					<p>여기는 내용 입니다.</p></td>
 				<td>김모모</td>
@@ -237,10 +236,11 @@ main {
 				
 			</tr>
 
-
+		</c:forEach>
 		</table>
+		
 		<button class="button" onClick="location.href='notice4.do'">글쓰기</button>
-
+		
 
 	</main>
 	<%@include file="../includes/footer.jsp"%>
