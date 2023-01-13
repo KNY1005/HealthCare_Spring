@@ -221,6 +221,7 @@
 			margin-top: 40px;
 			border: none;
 			margin-left:1130px;
+			cursor: pointer;
 		}
 		
 		main .timetable button:hover {

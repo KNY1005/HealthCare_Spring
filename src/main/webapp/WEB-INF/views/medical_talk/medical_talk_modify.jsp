@@ -258,9 +258,9 @@
 	<div id="height"></div>
 	<div class="sub_nav_menu">
 		<ul>
-			<li>공지사항</li>
-			<li>문의사항</li>
-			<li>건강상담소</li>
+			<li><a href="notice1.do">공지사항</a></li>
+			<li><a href="question/questionList.do">문의사항</a></li>
+			<li><a href="medicallist.do">건강상담소</a></li>
 		</ul>
 	</div><!--//.sub_nav_menu-->
 	<main>
@@ -286,8 +286,8 @@
 				<input type="file" id="ex_filename" class="upload-hidden">
 			</div>
 			<div id="btn">
-				<button type="button" onclick="location.href='medicalv.do'">취소</button>
-				<button type="button" onclick="location.href='medicalv.do'">완료</button>
+				<button type="button" onclick="location.href='medicalview.do'">취소</button>
+				<button type="button" onclick="location.href='medicalview.do'">완료</button>
 			</div>
 		</form>
 	</main>

@@ -267,7 +267,7 @@
 			box-shadow: 0 0 0 3px #ff8f8f inset;
 			border-radius: 10px;
 			transition: .2s;
-			cursor: pointer
+			cursor: pointer;
 		}
 
 	</style>
@@ -312,13 +312,13 @@
 				<th>주소</th>
 				<th>연락처</th>
 			</tr>
-			<tr>
+			<tr onclick="location.href='medical2.do'">
 				<td>땡땡 병원</td>
 				<td>00:00 ~ 00:00</td>
 				<td>전라북도 전주시 완산구 땡땡로 77</td>
 				<td>010-0000-1234</td>
 			</tr>
-			<tr>
+			<tr onclick="location.href='medical2.do'">
 				<td>땡땡 종합병원</td>
 				<td>00:00 ~ 00:00</td>
 				<td>전라북도 전주시 덕진구 땡땡땡로 88</td>

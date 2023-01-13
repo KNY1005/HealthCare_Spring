@@ -474,14 +474,14 @@
 		</div><!--//#rank-->
 		<hr>
 		<table>
-			<tr>
+			<tr onclick="location.href='medicalview.do'">
 				<th>제목 및 내용</th>
 				<th>작성자</th>
 				<th>작성일</th>
 				<th>조회수</th>
 				<th>답변</th>
 			</tr>
-			<tr>
+			<tr onclick="location.href='medicalview.do'">
 				<td>
 					<p id="tit">제목</p><br />
 					<p>여기는 내용 입니다.</p>
@@ -491,7 +491,7 @@
 				<td>1000</td>
 				<td>답변완료</td>
 			</tr>
-			<tr>
+			<tr onclick="location.href='medicalview.do'">
 				<td>
 					<p id="tit">제목</p><br />
 					<p>여기는 내용 입니다.</p>
@@ -501,7 +501,7 @@
 				<td>1000</td>
 				<td>답변완료</td>
 			</tr>
-			<tr>
+			<tr onclick="location.href='medicalview.do'">
 				<td>
 					<p id="tit">제목</p><br />
 					<p>여기는 내용 입니다.</p>
@@ -511,7 +511,7 @@
 				<td>1000</td>
 				<td>답변완료</td>
 			</tr>
-			<tr>
+			<tr onclick="location.href='medicalview.do'">
 				<td>
 					<p id="tit">제목</p><br />
 					<p>여기는 내용 입니다.</p>
@@ -521,7 +521,7 @@
 				<td>1000</td>
 				<td>답변완료</td>
 			</tr>
-			<tr>
+			<tr onclick="location.href='medicalview.do'">
 				<td>
 					<p id="tit">제목</p><br />
 					<p>여기는 내용 입니다.</p>
@@ -532,7 +532,7 @@
 				<td>답변완료</td>
 			</tr>
 		</table>
-		<button type="button" onclick="location.href='medicalw.do'">글쓰기</button>
+		<button type="button" onclick="location.href='medicalwrite.do'">글쓰기</button>
 	</main>	
 	
 	<%@include file="../includes/footer.jsp"%>
