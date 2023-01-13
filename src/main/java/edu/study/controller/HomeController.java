@@ -1,11 +1,8 @@
 package edu.study.controller;
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.Locale;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,21 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class HomeController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
 		
 		return "home";
 	}
@@ -145,33 +130,7 @@ public class HomeController {
 	public String homeb2() {
 		
 		return "notice/noticeWrite";
-	}
-	@RequestMapping(value = "blood1.do", method = RequestMethod.GET)
-	public String blood1() {
-		
-		return "blood/blood_main";
-	}
-	
-	@RequestMapping(value = "blood2.do", method = RequestMethod.GET)
-	public String blood2() {
-		
-		return "blood/blood_page2";
-	}
-	@RequestMapping(value = "blood3.do", method = RequestMethod.GET)
-	public String blood3() {
-		
-		return "blood/blood_page3";
-	}
-	@RequestMapping(value = "blood4.do", method = RequestMethod.GET)
-	public String blood4() {
-		
-		return "blood/blood_page4";
-	}
-	@RequestMapping(value = "blood5.do", method = RequestMethod.GET)
-	public String blood5() {
-		
-		return "blood/blood_page5";
-	}
+	}		
 	
 	@RequestMapping(value = "mypage1.do", method = RequestMethod.GET)
 	public String mypage1() {
