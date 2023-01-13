@@ -7,6 +7,15 @@
 <head>
 <meta charset="UTF-8">
 <title>예방접종 병원조회</title>
+	<!--파비콘-->
+	<link rel="icon" type="image/png" sizes="16x16"
+		href="${path }/resources/image/favicon/favicon-16x16.png" />
+	<link rel="manifest"
+		href="${path }/resources/image/favicon/manifest.json" />
+	<meta name="msapplication-TileColor" content="#ffffff" />
+	<meta name="msapplication-TileImage"
+		content="${path }/resources/image/favicon/ms-icon-144x144.png" />
+	<meta name="theme-color" content="#ffffff" />
 <link href="${path}/resources/css/reset.css" rel="stylesheet"/>    
     <style>
       *{
