@@ -93,6 +93,36 @@
         border-radius: 10px;
         text-align: center;
       }
+      main #addr #address_search select {
+			-webkit-appearance: none;
+			/* 네이티브 외형 감추기 */
+			-moz-appearance: none;
+			appearance: none;
+		}
+
+		main #addr #address_search select {
+			width: 180px;
+			height: 45px;
+			margin-left: 20px;
+			background-size: 20px;
+			padding: 5px 30px 5px 10px;
+			border-radius: 4px;
+			outline: 0 none;
+			font-size: 20px;
+			background: url("${path }/resources/image/bottom_arrow.png") no-repeat 95% 50%;
+			/* 화살표 모양의 이미지 */
+			text-align: center;
+		}
+
+		main #addr #address_search select:hover {
+			border: 3px solid #ff8f8f;
+		}
+		main #addr #address_search option {
+			background: #ff8f8f;
+			color: #fff;
+			padding: 3px 0;
+		}
+		
       .btn2{
         background-color:#FFAEAE;
         border: #FFAEAE;
