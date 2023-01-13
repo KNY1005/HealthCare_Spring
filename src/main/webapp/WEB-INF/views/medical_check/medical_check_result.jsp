@@ -155,6 +155,14 @@
 			border: #FFEFEF;
 			border-radius: 40px;
 			font-weight: bold;
+			cursor: pointer;
+		}
+		
+		main #faker button:hover {
+			background: #ffe7e7;
+			transition: .2s;
+			box-shadow: inset 1px 1px 3px rgb(197, 197, 197);
+			cursor: pointer
 		}
 	</style>
 </head>
