@@ -238,7 +238,7 @@ hr {
 			<h2>문의사항 글 수정</h2>
 		</div>
 		<hr>
-		<form action="">
+		<form>
 			<div id="writing_view">
 				<input type="text" class="title" value="제목" />
 				<textarea class="content">내용</textarea>
@@ -257,8 +257,8 @@ hr {
 				</div>
 			</div>
 			<div id="button">
-				<button href="#">취소</button>
-				<button href="#">완료</button>
+				<button type="button" onclick="location.href='questionView.do'">취소</button>
+				<button type="button" onclick="location.href='questionView.do'">완료</button>
 			</div>
 		</form>
 
