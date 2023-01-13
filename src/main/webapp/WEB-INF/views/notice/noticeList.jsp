@@ -210,7 +210,7 @@ main {
 				<th>작성자</th>
 				<th>작성일</th>
 				<th>조회수</th>
-				<th>답변</th>
+				
 			</tr>
 			<tr class="column content" onClick="location.href='notice3.do'">
 				<td><p class="title">제목</p> <br />
@@ -218,7 +218,7 @@ main {
 				<td>김모모</td>
 				<td>작성자</td>
 				<td>1000</td>
-				<td>답변완료</td>
+				
 			</tr>
 			<tr class="content" onClick="#">
 				<td><p class="title">제목</p> <br />
@@ -226,7 +226,7 @@ main {
 				<td>김모모</td>
 				<td>작성자</td>
 				<td>1000</td>
-				<td>답변완료</td>
+				
 			</tr>
 			<tr class="content" onClick="#" style="cursor: pointer;">
 				<td><p class="title">제목</p> <br />
@@ -234,7 +234,7 @@ main {
 				<td>김모모</td>
 				<td>작성자</td>
 				<td>1000</td>
-				<td>답변완료</td>
+				
 			</tr>
 
 
