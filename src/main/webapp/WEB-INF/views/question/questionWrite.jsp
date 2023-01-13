@@ -61,7 +61,7 @@
 
 #view {
 	width: 1320px;
-	height: 1600px;
+	height: 800px;
 	margin: 0 auto 0;
 }
 
