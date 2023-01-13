@@ -234,30 +234,12 @@ main {
 		<c:forEach items="${datalist}" var="vo">
 			<tr class="content" onClick="location.href='notice3.do'">
 				<td><p class="title">${vo.btitle}</p> <br />
-					<p><a href="view.do?bidx=${vo.bidx}">${bcontent}</a></p></td>
+					<p><a href="view.do?bidx=${vo.bidx}">${vo.bcontent}</a></p></td>
 				<td>${vo.bwriter}</td>
 				<td>${vo.bwdate}</td>
 				<td>${vo.bhit}</td>
 			</tr>
 		</c:forEach>
-			<tr class="content" onClick="location.href='notice3.do'">
-				<td><p class="title">제목</p> <br />
-					<p>여기는 내용 입니다.</p></td>
-				<td>김모모</td>
-				<td>작성자</td>
-				<td>1000</td>
-				
-			</tr>
-			<tr class="content" onClick="location.href='notice3.do'">
-				<td><p class="title">제목</p> <br />
-					<p>여기는 내용 입니다.</p></td>
-				<td>김모모</td>
-				<td>작성자</td>
-				<td>1000</td>
-				
-			</tr>
-
-		
 		</table>
 		
 		<button class="button" onClick="location.href='notice4.do'">글쓰기</button>

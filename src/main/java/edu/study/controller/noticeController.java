@@ -20,11 +20,11 @@ public class noticeController {
 	private BoardService boardService;	//전체 데이터 요청
 	
 	@RequestMapping(value = "/list.do", method = RequestMethod.GET)	
-	public String board1(Model model) {
+	public String board1(Model model,BoardVo vo) {
 		//DB list 조회
-		List<BoardVo> list = boardService.list();
+		List<BoardVo> list = boardService.list(vo);
 		model.addAttribute("datalist",list);	//키값
-				
+		System.out.println("list:"+list);		
 		return "notice/noticeList";	//화면으로 포워드
 	}
 }

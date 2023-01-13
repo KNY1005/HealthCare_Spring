@@ -18,9 +18,9 @@ public class BoardDAO {
 		return sqlSession.selectOne("edu.study.mapper.boardMapper.selectByBidx", bidx); //마이바티스가 제공,한건 조회
 	}
 
-	public List<BoardVo> list() {
+	public List<BoardVo> list(BoardVo vo) {
 		
-		return sqlSession.selectList("edu.study.mapper.boardMapper.list");
+		return sqlSession.selectList("edu.study.mapper.boardMapper.list",vo);
 	}
 	
 	
