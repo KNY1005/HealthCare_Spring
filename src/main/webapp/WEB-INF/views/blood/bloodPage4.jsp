@@ -22,27 +22,23 @@
 main {
 	border: 1px soild #000;
 	width: 1320px;
-	height: 1000px;
-	margin: 0 auto 0;
+	height: 700px;
+	margin: 100px auto ;
 }
-
-#height {
-	height: 80px;
-}
-.sub_nav_menu {
-	margin: 0 0 120px 150px;
-}
-.sub_nav_menu li {
-	text-align: center;
-	float: left;
-	font-weight: bold;
-	font-size: 20px;
-	margin-left:20px;
-	margin-right:20px;
-}
-.sub_nav_menu li:nth-child(5){
-    color:red;
-} 
+.order_box{
+        width: 790px;
+        height: 110px;
+        display: flex;
+ 		align-items: flex-end;
+        justify-content: center;
+      }    
+.order{
+        width: 500px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        }
+.order li:nth-child(5){color:#ce8080;}        
 /*건강검진 예약*/
 main h2 {
 	font-size: 40px;
@@ -163,9 +159,8 @@ main .timetable #button {
 <body>
 	<%@include file="../includes/header.jsp"%>
 	
-	<div id="height"></div>
-	<div class="sub_nav_menu">
-		<ul>
+	<div class="order_box">
+		<ul class="order">
 			<li>헌혈 유의사항</li>
 			<li><i class="xi-angle-right"></i></li>
 			<li>헌혈 전자문진</li>

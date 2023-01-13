@@ -38,31 +38,25 @@
 			});
 </script>
 <style>
-#height {
-	height: 80px;
-}
+.order_box{
+        width: 790px;
+        height: 110px;
+        display: flex;
+ 		align-items: flex-end;
+        justify-content: center;
+      }    
+.order{
+        width: 500px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        }
+.order li:nth-child(3){color:#ce8080;}
 
-.sub_nav_menu {
-	margin: 0 0 120px 100px;
-}
-
-.sub_nav_menu li {
-	text-align: center;
-	float: left;
-	font-weight: bold;
-	font-size: 20px;
-	margin-left: 10px;
-	margin-right: 10px;
-}
-
-.sub_nav_menu li:nth-child(3) {
-	color: red;
-}
 
 #view {
-	width: 1320px;
-	height: 800px;
-	margin: 0 auto 0;
+	width: 1320px;	
+	margin: 100px auto ;
 }
 
 #menu h2 {
@@ -212,11 +206,9 @@ hr {
 </head>
 <body>
 	<%@include file="../includes/header.jsp"%>
-	<div id="height"></div>
-
-	<div class="sub_nav_menu">
-		<ul>
-			<li>공지사항</li>
+	<div class="order_box">
+		<ul class="order">
+			<li >공지사항</li>
 			<li>|</li>
 			<li>문의사항</li>
 			<li>|</li>

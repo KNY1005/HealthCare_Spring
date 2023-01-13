@@ -17,26 +17,21 @@
 	content="${path }/resources/image/favicon/ms-icon-144x144.png" />
 <meta name="theme-color" content="#ffffff" />
 <style>
-#height {
-	height: 80px;
-}
 
-.sub_nav_menu {
-	margin: 0 0 120px 150px;
-}
-
-.sub_nav_menu li {
-	text-align: center;
-	float: left;
-	font-weight: bold;
-	font-size: 20px;
-	margin-left: 20px;
-	margin-right: 20px;
-}
-
-.sub_nav_menu li:nth-child(3) {
-	color: red;
-}
+.order_box{
+        width: 790px;
+        height: 110px;
+        display: flex;
+ 		align-items: flex-end;
+        justify-content: center;
+      }    
+.order{
+        width: 500px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        }
+.order li:nth-child(3){color:#ce8080;}
 
 * {
 	font-weight: bold;
@@ -58,8 +53,7 @@
 }
 
 #view {
-	width: 1320px;
-	height: 1600px;
+	width: 1320px;	
 	margin: 100px auto;
 }
 
@@ -317,11 +311,9 @@ hr {
 
 <body>
 	<%@include file="../includes/header.jsp"%>
-
-	<div id="height"></div>
-	<div class="sub_nav_menu">
-		<ul>
-			<li>공지사항</li>
+<div class="order_box">
+		<ul class="order">
+			<li >공지사항</li>
 			<li>|</li>
 			<li>문의사항</li>
 			<li>|</li>
