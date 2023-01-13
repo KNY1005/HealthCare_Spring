@@ -66,7 +66,7 @@
 			margin-top: 100px;
 			width: 1320px;
 			position: relative;
-			height: 800px;
+			height: 1000px;
 		}
 		
 		main h2 {
@@ -112,7 +112,7 @@
 		main .timetable {
 			border-radius: 40px;
 			border: 3px solid#FDBFBF;
-			height: 350px;
+			height: 305px;
 			width: 1290px;
 			margin-top: 30px;
 			display: flex;
@@ -122,23 +122,42 @@
 		
 		main .timetable #title{
 			justify-content:center;
-			margin-top:40px;
-			font-size:22px;
+			margin-top:60px;
+			font-size:25px;
 			display:flex;
+			}
+		main .timetable #title p{
+			text-align:center;
+			}
+			
+		main .timetable #title p:nth-child(1){
+			width:250px;
+			margin-right:80px;
+			}
+		
+		main .timetable #title p:nth-child(2){
+			width:250px;
+			margin-right:80px;
+			}
+
+		main .timetable #title p:nth-child(3){
+			width:150px;
 			}
 		
 		main .timetable #content{
 			justify-content:center;
 			margin-top:40px;
-			font-size:22px;
+			font-size:25px;
 			display:flex;
 			}
 		
 		main .timetable #content p{
-			width: 230px;
-			height:50px;
+			width: 250px;
+			height:60px;
+			line-height:60px;
 			border:none;
-			border-radius: 30px;
+			border-radius: 20px;
+			margin-right:80px;
 			text-align:center;
 			background-color:#FFE7E7;}
 
@@ -147,9 +166,10 @@
 
 		main .timetable  #content span {
 			width: 250px;
-			height: 40px;
+			height: 50px;
 			border: 1px solid#000;
 			border-radius: 10px;
+			margin-right:80px;
 		}
 
 		main .timetable #content span i {
@@ -163,15 +183,33 @@
 			width: 300px;
 			height: 200px;
 			margin-top: 120px;
-			margin-left: 640px;
 		}
 
 		main .timetable #content select {
-			margin-top: 20px;
-			font-size: 22px;
-			margin-left: 130px;
+			font-size: 25px;
 			width: 150px;
+			height:50px;
+			background-size: 25px;
+			outline: 0 none;
+			border-radius: 4px;
+			padding: 5px 30px 5px 10px;
+			-webkit-appearance: none;
+			/* 네이티브 외형 감추기 */
+			-moz-appearance: none;
+			appearance: none;
+			background: url("${path }/resources/image/bottom_arrow.png") no-repeat 95% 50%;
 		}
+		
+		main .timetable #content select:hover {
+			border: 3px solid #ff8f8f;
+		}
+		
+		main .timetable #content option {
+			background: #ff8f8f;
+			color: #fff;
+			padding: 3px 0;
+		}
+		
 		/*예약 버튼*/
 		main .timetable button {
 			width: 130px;
@@ -182,6 +220,13 @@
 			font-size: 25px;
 			margin-top: 40px;
 			border: none;
+			margin-left:1130px;
+		}
+		
+		main .timetable button:hover {
+			box-shadow: inset 3px 3px 5px #c57171;
+			cursor: pointer;
+			transition: all 0.3s;
 		}
 	</style>
 
