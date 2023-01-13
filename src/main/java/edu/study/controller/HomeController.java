@@ -130,12 +130,7 @@ public class HomeController {
 	public String homeb2() {
 		
 		return "notice/noticeWrite";
-	}
-	@RequestMapping(value = "bloodMain.do", method = RequestMethod.GET)
-	public String bloodMain() {
-		
-		return "blood/bloodMain";
-	}	
+	}		
 	
 	@RequestMapping(value = "mypage1.do", method = RequestMethod.GET)
 	public String mypage1() {
