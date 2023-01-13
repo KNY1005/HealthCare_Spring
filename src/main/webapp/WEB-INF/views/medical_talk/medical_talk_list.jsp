@@ -376,9 +376,9 @@
 	<div id="height"></div>
 	<div class="sub_nav_menu">
 		<ul>
-			<li>공지사항</li>
-			<li>문의사항</li>
-			<li>건강상담소</li>
+			<li><a href="notice1.do">공지사항</a></li>
+			<li><a href="question/questionList.do">문의사항</a></li>
+			<li><a href="medicallist.do">건강상담소</a></li>
 		</ul>
 	</div>
 	<main>
@@ -532,7 +532,7 @@
 				<td>답변완료</td>
 			</tr>
 		</table>
-		<button>글쓰기</button>
+		<button type="button" onclick="location.href='medicalw.do'">글쓰기</button>
 	</main>	
 	
 	<%@include file="../includes/footer.jsp"%>

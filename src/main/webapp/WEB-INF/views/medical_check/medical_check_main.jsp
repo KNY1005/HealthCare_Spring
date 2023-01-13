@@ -170,7 +170,7 @@
 				· [위내시경 받는 분] 진단목적으로 조직검사 또는 헬리코박터균검사를 할 경우 추가비용이 발생할 수 있습니다.<br>
 			</p>
 		</div>
-		<a href="#">건강검진 예약 하러가기</a>
+		<a href="medical1.do">건강검진 예약 하러가기</a>
 	</main>
 		<%@include file="../includes/footer.jsp"%>
 

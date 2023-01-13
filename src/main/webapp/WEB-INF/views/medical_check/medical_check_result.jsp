@@ -55,6 +55,8 @@
 
 		/*-----------------sub_nav_menu > end---------------*/
 
+		*{font-weight:bold;}
+		
 		#height {
 			height: 80px;
 		}
@@ -64,7 +66,7 @@
 			margin-top: 100px;
 			width: 1320px;
 			position: relative;
-			height: 800px;
+			height: 1000px;
 
 		}
 		
@@ -109,6 +111,10 @@
 		main #guide {
 			margin-top: 10px;
 			font-size: 15px;
+		}
+		
+		main #guide p:nth-child(2) {
+			margin-top: 5px;
 		}
 
 		main #questionnaire {
@@ -195,7 +201,7 @@
 				<p>문진표 다운로드 후 미리 작성해 가시면 빠른 검진을 할 수 있습니다.</p>
 			</div><!--//#question_guide-->
 			<div id="faker">
-				<button>마이페이지 이동</button>
+				<button type="button" onclick="location.href='mypage1.do'">마이페이지 이동</button>
 			</div><!--//#faker-->
 		</section><!--//#commit-->
 	</main>

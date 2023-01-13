@@ -107,7 +107,7 @@ public class HomeController {
 	@RequestMapping(value = "medicalresult.do", method = RequestMethod.GET)
 	public String medicalresult() {
 		
-		return "medical_check/medical_talk_result";
+		return "medical_check/medical_check_result";
 	}
 	
 	/*공지사항*/
