@@ -19,6 +19,19 @@ public class BoardVo {
 	private int bhit;
 	private int midx;
 	
+	
+	public String getBwriter() {
+		return bwriter;
+	}
+	public void setBwriter(String bwriter) {
+		this.bwriter = bwriter;
+	}
+	public int getBhit() {
+		return bhit;
+	}
+	public void setBhit(int bhit) {
+		this.bhit = bhit;
+	}
 	public int getBidx() {
 		return bidx;
 	}

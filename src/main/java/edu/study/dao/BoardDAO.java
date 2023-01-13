@@ -17,6 +17,11 @@ public class BoardDAO {
 	public BoardVo selectByBidx(int bidx) {	//보드브이오로 반환
 		return sqlSession.selectOne("edu.study.mapper.boardMapper.selectByBidx", bidx); //마이바티스가 제공,한건 조회
 	}
+
+	public List<BoardVo> list(BoardVo vo) {
+		
+		return sqlSession.selectList("edu.study.mapper.boardMapper.list",vo);
+	}
 	
 	
 }

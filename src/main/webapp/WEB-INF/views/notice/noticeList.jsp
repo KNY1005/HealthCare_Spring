@@ -1,5 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.util.*"%>
+<%@ page import="edu.study.vo.BoardVo"%>
+
+<%
+
+	List<BoardVo> list = (List<BoardVo>)request.getAttribute("datalist");	//형변환,컨트롤러의 키값을 가져옴
+
+	
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -69,6 +79,7 @@ main {
 	border-right: none;
 	margin-right: -8px;
 }
+#search input:focus {outline: none; background:#fff;}
 
 .hr {
 	height: 2px;
@@ -215,37 +226,20 @@ main {
 		</div>
 		<hr class="hr">
 		<table id="question_list">
-		<c:forEach items="${datalist}" var="vo">
 			<tr class="column">
 				<th>제목 및 내용</th>
 				<th>작성자</th>
 				<th>작성일</th>
 				<th>조회수</th>
 			</tr>
+		<c:forEach items="${datalist}" var="vo">
 			<tr class="content" onClick="location.href='notice3.do'">
 				<td><p class="title">${vo.btitle}</p> <br />
-					<p><a href="view.do?bidx=${vo.bidx}">${bcontent}</a></p></td>
-				<td>${vo.bwiter}</td>
+					<p><a href="view.do?bidx=${vo.bidx}">${vo.bcontent}</a></p></td>
+				<td>${vo.bwriter}</td>
 				<td>${vo.bwdate}</td>
 				<td>${vo.bhit}</td>
 			</tr>
-			<tr class="content" onClick="location.href='notice3.do'">
-				<td><p class="title">제목</p> <br />
-					<p>여기는 내용 입니다.</p></td>
-				<td>김모모</td>
-				<td>작성자</td>
-				<td>1000</td>
-				
-			</tr>
-			<tr class="content" onClick="location.href='notice3.do'">
-				<td><p class="title">제목</p> <br />
-					<p>여기는 내용 입니다.</p></td>
-				<td>김모모</td>
-				<td>작성자</td>
-				<td>1000</td>
-				
-			</tr>
-
 		</c:forEach>
 		</table>
 		
