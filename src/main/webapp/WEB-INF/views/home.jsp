@@ -72,7 +72,7 @@
               <li><a href="#">건강검진 예약</a></li>
             </ul>
             <ul>
-              <li><a href="blood/Main.do">헌혈 예약</a></li>
+              <li><a href="blood/main.do">헌혈 예약</a></li>
             </ul>
             <ul>
               <li><a href="#">건강소식</a></li>
