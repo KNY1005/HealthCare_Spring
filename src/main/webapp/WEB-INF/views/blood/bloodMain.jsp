@@ -19,29 +19,25 @@
 <meta name="theme-color" content="#ffffff" />
 <style>
 #main {
-	margin: 0 auto 0;
+	margin: 100px auto;
 	width: 1320px;
-	height: 1000px;
+	
 }
 
-#height {
-	height: 80px;
-}
-.sub_nav_menu {
-	margin: 0 0 120px 150px;
-}
-.sub_nav_menu li {
-	text-align: center;
-	float: left;
-	font-weight: bold;
-	font-size: 20px;
-	margin-left:20px;
-	margin-right:20px;
-}
-.sub_nav_menu li:nth-child(1){
-    color:red;
-} 
-
+.order_box{
+        width: 790px;
+        height: 110px;
+        display: flex;
+ 		align-items: flex-end;
+        justify-content: center;
+      }    
+.order{
+        width: 500px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        }
+.order li:nth-child(1){color:#ce8080;}
 #main h2 {
 	font-size: 35px;
 	font-weight: bold;
@@ -140,9 +136,8 @@
 <body>
 	<%@include file="../includes/header.jsp"%>
 	
-	<div id="height"></div>
-	<div class="sub_nav_menu">
-		<ul>
+	<div class="order_box">
+		<ul class="order">
 			<li>헌혈 유의사항</li>
 			<li><i class="xi-angle-right"></i></li>
 			<li>헌혈 전자문진</li>
