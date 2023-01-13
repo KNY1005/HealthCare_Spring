@@ -349,9 +349,9 @@ hr {
 					</div>
 				</div>
 				<div id="button">
-					<button type="button" onClick="location.href='notice1.do'">목록</button>
+					<button type="button" onClick="location.href='questionList.do'">목록</button>
 					<button>삭제</button>
-					<button type="button" onClick="location.href='notice2.do'">수정</button>
+					<button type="button" onClick="location.href='questionModify.do'">수정</button>
 				</div>
 			</form>
 
