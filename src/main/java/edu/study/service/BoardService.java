@@ -9,5 +9,7 @@ public interface BoardService {
 
 	
 	BoardVo selectByBidx(int bidx); //업무로직에 맞게 이름 짓기
+
+	List<BoardVo> list();
 	
 }

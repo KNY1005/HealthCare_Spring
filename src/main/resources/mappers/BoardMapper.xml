@@ -21,11 +21,30 @@
 			  ,bdelete
 			  ,bsecret
 			  ,bhit
-			  ,uidx
+			  ,midx
 			from table_board
-			
 	</select>
 	
-
+	<select id="selectByBidx" parameterType="int" resultType="BoardVo" >	<!-- 데이터 타입 정의/브이오에 담겠다 -->
+		select bidx
+			  ,boriginbidx
+			  ,bdepth
+			  ,blvl
+			  ,blist
+			  ,bcategory
+			  ,btitle
+			  ,bwriter
+			  ,bcontent
+			  ,bwdate
+			  ,brewdate
+			  ,bstate
+			  ,bmdate
+			  ,bdelete
+			  ,bsecret
+			  ,bhit
+			  ,midx
+			from table_board
+			where bidx = #{bidx}	<!-- 변수명을 이용 -->
+	</select>
 	
 </mapper>

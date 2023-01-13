@@ -20,6 +20,14 @@ public class BoardServiceImpl implements BoardService{	//추상메소드 정의
 		return boardDAO.selectByBidx(bidx);	//데이터베이스에 접근하는 디에이오
 	}
 
+	@Override
+	public List<BoardVo> list() {
+
+		List<BoardVo> list = boardDAO.list();
+		
+		return list;
+	}
+
 
 	
 }
