@@ -52,7 +52,7 @@
               <li><a href="abc1.do">예방접종</a></li>
             </ul>
             <ul>
-              <li><a href="#">건강검진</a></li>
+              <li><a href="medicalmain.do">건강검진</a></li>
             </ul>
             <ul>
               <li><a href="blood1.do">헌혈</a></li>
@@ -69,7 +69,7 @@
               <li><a href="abc1.do">예방접종 예약</a></li>
             </ul>
             <ul>
-              <li><a href="#">건강검진 예약</a></li>
+              <li><a href="medicalmain.do">건강검진 예약</a></li>
             </ul>
             <ul>
               <li><a href="blood/main.do">헌혈 예약</a></li>
@@ -172,7 +172,7 @@
                 <li><span>코로나</span></li>
               </ul>
 
-              <!-- 바 그래프 (백분율 만큼 heigh값) -->
+              <!-- 바 그래프 (백분율 만큼 height값) -->
               <ul class="bar">
                 <li>
                   <div style="height: 100%"><span></span></div>

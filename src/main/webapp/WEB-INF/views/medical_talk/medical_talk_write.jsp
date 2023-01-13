@@ -286,8 +286,8 @@
 				<input type="file" id="ex_filename" class="upload-hidden">
 			</div>
 			<div id="btn">
-				<button>취소</button>
-				<button>완료</button>
+				<button type="button" onclick="location.href='medicall.do'">취소</button>
+				<button type="button" onclick="location.href='medicalv.do'">완료</button>
 			</div>
 		</form>
 	</main>
