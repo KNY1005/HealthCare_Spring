@@ -52,14 +52,14 @@ main {
 	font-weight: bold;
 	font-size: 25px;
 	vertical-align: top;
-	margin-left: 840px;
+	margin-left: 800px;
 	display:flex;
 	justify-content: center;
 	align-items: center;
 }
 
 #search input::-webkit-search-decoration, #search input::-webkit-search-cancel-button,
-	#search input::-webkit-search-results-button, #search input::-webkit-search-results-decoration
+#search input::-webkit-search-results-button, #search input::-webkit-search-results-decoration
 	{
 	display: none;
 } /*search내의 요소 삭제*/
@@ -71,6 +71,7 @@ main {
 	border-left: none;
 	border-right: none;
 	margin-right: -8px;
+	padding-left:10px;
 }
 
 .hr {
@@ -84,7 +85,7 @@ main {
 	-moz-appearance: none;
 	appearance: none;
 	font-weight: bold;
-	width: 80px;
+	width: 100px;
 	padding-left: 10px;
 	height: 40px;
 	border: 1px solid #000;
@@ -124,7 +125,8 @@ main {
 	font-size: 30px;
 }
 
-.column:nth-child(1) {
+.column {
+	cursor: pointer;
 	background: #fff;
 }
 
@@ -137,9 +139,6 @@ main {
 	height: 73px;
 }
 
-.column {
-	cursor: pointer;
-}
 
 .content td:first-child {
 	border-radius: 10px 0 0 10px;
@@ -225,7 +224,7 @@ main {
 				<th>조회수</th>
 				<th>답변</th>
 			</tr>
-			<tr class="column content" onClick="location.href='notice3.do'">
+			<tr class="content" onClick="location.href='questionView.do'">
 				<td><p class="title">제목</p> <br />
 					<p>여기는 내용 입니다.</p></td>
 				<td>김모모</td>
@@ -233,7 +232,7 @@ main {
 				<td>1000</td>
 				<td>답변완료</td>
 			</tr>
-			<tr class="content" onClick="#">
+			<tr class="content" onClick="location.href='questionView.do'">
 				<td><p class="title">제목</p> <br />
 					<p>여기는 내용 입니다.</p></td>
 				<td>김모모</td>
@@ -241,7 +240,7 @@ main {
 				<td>1000</td>
 				<td>답변완료</td>
 			</tr>
-			<tr class="content" onClick="#" style="cursor: pointer;">
+			<tr class="content" onClick="location.href='questionView.do'">
 				<td><p class="title">제목</p> <br />
 					<p>여기는 내용 입니다.</p></td>
 				<td>김모모</td>
@@ -252,7 +251,7 @@ main {
 
 
 		</table>
-		<button class="button" onClick="location.href='notice4.do'">글쓰기</button>
+		<button class="button" onClick="location.href='questionWrite.do'">글쓰기</button>
 
 
 	</main>

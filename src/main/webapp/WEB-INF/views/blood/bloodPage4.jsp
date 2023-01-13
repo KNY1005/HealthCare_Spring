@@ -122,7 +122,7 @@ main .timetable .able #type {
 	font-size: 18px;
 	text-align: center;
 	border-radius: 15px;
-	margin-top: 0px;
+	margin-top: 10px;
 }
 
 #date {
@@ -208,7 +208,7 @@ main .timetable #button {
 
 			</div>
 			<!--//.able-->
-			<button id="button">예약</button>
+			<button id="button" type="button" onclick="location.href='page5.do'">예약</button>
 		</div>
 		<!--//.timetable-->
 	</main>

@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>헌혈 유의사항</title>
+<title>헌혈 전자문진</title>
 <!--파비콘-->
 <link rel="icon" type="image/png" sizes="16x16"
 	href="${path }/resources/image/favicon/favicon-16x16.png" />
@@ -19,14 +19,11 @@
 <meta name="theme-color" content="#ffffff" />
 <style>
 #main {
-	margin: 0 auto 0;
-	width: 1320px;
-	height: 1000px;
+	margin:0 auto 0;
+	width: 1320px;	
+	height:800px;
 }
-
-#height {
-	height: 80px;
-}
+#height{height:80px;}
 .sub_nav_menu {
 	margin: 0 0 120px 150px;
 }
@@ -38,19 +35,17 @@
 	margin-left:20px;
 	margin-right:20px;
 }
-.sub_nav_menu li:nth-child(1){
+.sub_nav_menu li:nth-child(3){
     color:red;
 } 
-
 #main h2 {
 	font-size: 35px;
 	font-weight: bold;
 }
 
-#main #warning {
+#main div {
 	border: 1px solid #000;
 	margin-top: 20px;
-	margin-bottom: 20px;
 	border-radius: 10px;
 	padding: 20px;
 	overflow: auto;
@@ -68,57 +63,9 @@
 	line-height: 30px;
 }
 
-
-#main h3{
-	font-size: 30px;
-	font-weight: bold;
-}
-#main #member_info {
-	border: 1px solid #000;
-	margin-top: 20px;
-	border-radius: 10px;
-	padding: 20px;
-	width: 1320px;
-	height: 100px;
-	display: flex;
-	align-items: center;
-	font-weight: bold;
-	text-align: center;
-	justify-content: center;
-	font-size: 20px;
-}
-
-#main #member_info input {
-	height: 40px;
-	font-size: 20px;
-	margin:0 20px 0;
-	border: 1px solid #000;
-	border-radius: 10px;
-	padding-right: 40px;
-	width:100px;
-}
-
-#member_info button{
-	background-color: #FF9797;
-	text-align: center;
-	width: 130px;
-	height: 40px;	
-	border:none;
-	border-radius: 10px;
-	color: #fff;
-	font-size: 20px;
-	
-}
-
-#member_info button:hover {
-	border-radius: 10px;
-	transition: .2s;
-	box-shadow: inset 3px 3px 5px #c57171;
-	cursor: pointer;
-}
-
 #main a {
-	margin-top: 20px;		
+	margin-top: 20px;
+	position: relative;
 	float: right;
 	background-color: #FF9797;
 	text-align: center;
@@ -128,12 +75,6 @@
 	border-radius: 10px;
 	color: #fff;
 	font-size: 20px;
-}
-#main a:hover {
-	border-radius: 10px;
-	transition: .2s;
-	box-shadow: inset 3px 3px 5px #c57171;
-	cursor: pointer;
 }
 </style>
 </head>
@@ -154,7 +95,7 @@
 	</div>
 	
 	<main id="main">
-		<h2>헌혈 유의사항</h2>
+		<h2>헌혈 전자문진</h2>
 		<div id="warning">
 			<span>□ 헌혈 참여 기준 (전혈 헌혈)</span><br>
 			<p>
@@ -186,16 +127,8 @@
 				팔로 무거운 것을 들거나 심한 운동은 삼가주세요. <br> - 헌혈 당일 음주나 헌혈 후 1시간 이내 흡연은
 				피해주세요. <br> - 헌혈 당일 가벼운 샤워는 가능하나, 사우나, 찜질방, 통목욕은 피해주세요. <br>
 			</p>
-
 		</div>
-		<h3>본인인증</h3>
-		<div id="member_info">
-			<label for="name">이름</label><input name="name" maxlength='8'></input> 
-			<label for="">주민번호</label><input type="text" maxlength='6'></input>-<input type="password"
-				maxlength='7'></input>
-			<button>확인</button>	
-		</div>
-		<a href="#">헌혈 예약 하러가기</a>
+		<a href="page3.do">헌혈 예약하러가기</a>
 	</main>
 	<%@include file="../includes/footer.jsp"%>
 </body>

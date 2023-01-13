@@ -277,13 +277,13 @@ option {
 				<th>주소</th>
 				<th>연락처</th>
 			</tr>
-			<tr class="column content" onClick="location.href='#'">
+			<tr class="column content" onClick="location.href='page4.do'">
 				<td>땡땡 헌혈의 집</td>
 				<td>00:00 ~ 00:00</td>
 				<td>전라북도 전주시 땡땡</td>
 				<td>010-0000-1234</td>
 			</tr>
-			<tr class="column content" onClick="location.href='#'">
+			<tr class="column content" onClick="location.href='page4.do'">
 				<td>땡땡 헌혈의 집</td>
 				<td>00:00 ~ 00:00</td>
 				<td>전라북도 전주시 땡땡</td>
