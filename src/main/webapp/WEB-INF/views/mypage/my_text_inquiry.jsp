@@ -23,6 +23,31 @@
 </head>
 <body>
 <%@include file="../includes/header.jsp"%>
+    <script>
+  
+    //서브메뉴
+    $(document).ready(function(){
+        $(".menu-v1").mouseover(function(){
+            $(this).children(".submenu").stop().slideDown(600);
+        });
+        $(".menu-v1").mouseleave(function(){
+            $(this).children(".submenu").stop().slideUp(600);
+        });
+        
+    });
+
+    //전체 선택
+    function selectAll(selectAll)  {
+    const checkboxes 
+     = document.querySelectorAll('input[type="checkbox"]');
+  
+     checkboxes.forEach((checkbox) => {
+    checkbox.checked = selectAll.checked
+     })
+}
+
+  </script>
+  <body>
     <main>
       <section>
         <p class="mypage_manu_p">마이페이지</p>
@@ -49,21 +74,17 @@
       </section>
       <section class="main_content">
         <div class="main_content_title">
-            <h2>헌혈 스탬프 / 조회</h2>
-            <p><span>김모모</span>님은 <span>10</span>회 헌혈하셧습니다</p>
+            <h2>내가 쓴 글</h2>
 
+             <select name="게시판" class="select">
+              <option disabled selected>-게시판-</option>
+                <option value="문의사항">문의사항</option>
+                <option value="건강상담소">건강상담소</option>
+            </select>
         </div>
+
+
         <hr />
-        <div class="blood">
-          <div class="ring">
-            <ul>
-              <li><span>전주</span>헌혈의 집</li>
-              <li>2022년 12월 30일</li>
-              <li><span>전혈</span></li>
-            </ul>
-          </div>
-        </div>
-        <hr/>
         <div class="list">
             <div class="box">
               <div class="checkbox_box">
@@ -76,10 +97,10 @@
 
               </div>
                 <ul class="main_list">
-                    <li>종류</li>
+                    <li>병원명 </li>
                     <li>날짜</li>
                     <li>시간</li>
-                    <li>헌혈의 집</li>
+                    <li>접종명</li>
                     <li>위치</li>
                 </ul>
             </div>
@@ -94,34 +115,15 @@
               </div>
 
               <ul class="reserve_list">
-                <li>전혈</li>
+                <li>땡땡 병원</li>
                 <li>2022년 12월 30일</li>
                 <li>오후 4시</li>
-                <li>전주 헌혈의 집</li>
+                <li>독감</li>
                 <li>전라북도 전쥐시 땡떙동 땡땡길 10 4층</li>
               </ul>
             </div>
 
-               <div class="box">
-              <div class="checkbox_box">
-                <label>
-                    <input type="checkbox" />
-                    <span class="checkbox" >
-                    </span>
-                </label>
-
-              </div>
-
-              <ul class="reserve_list">
-                <li>전혈</li>
-                <li>2022년 12월 30일</li>
-                <li>오후 4시</li>
-                <li>전주 헌혈의 집</li>
-                <li>전라북도 전쥐시 땡떙동 땡땡길 10 4층</li>
-              </ul>
-            </div>
-
-
+             
 
         </div>
         <!--.reserve_list-->
@@ -130,8 +132,6 @@
         <input type="button" value="삭제하기"/>
       </div>
     </main>
-    <div class="boxbox">
-	</div>
     <%@include file="../includes/footer.jsp"%>
 </body>
 </html>

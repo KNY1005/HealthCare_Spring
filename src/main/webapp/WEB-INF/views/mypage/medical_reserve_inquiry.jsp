@@ -16,14 +16,13 @@
 <meta name="theme-color" content="#ffffff" />
 
 <link href="${path}/resources/css/reset.css" rel="stylesheet" />
-<link href="${path}/resources/css/blood_reserve_inquiry.css" rel="stylesheet" />
+<link href="${path}/resources/css/mypage/medical_reserve_inquiry.css" rel="stylesheet" />
 
-<script src="${path}/resources/js/blood_reserve_inquiry.js"></script>
+<script src="${path}/resources/js/mypage/medical_reserve_inquiry.js"></script>
 
 </head>
 <body>
 <%@include file="../includes/header.jsp"%>
-    <main>
    <main>
       <section>
         <p class="mypage_manu_p">마이페이지</p>
@@ -50,7 +49,7 @@
       </section>
       <section class="main_content">
         <div class="main_content_title">
-            <h2>예방접종 예약 조회</h2>
+            <h2>건강검진 예약 조회</h2>
         </div>
         <hr />
         <div class="list">
@@ -65,10 +64,10 @@
 
               </div>
                 <ul class="main_list">
-                    <li>병원명</li>
+                    <li>병원명 </li>
                     <li>날짜</li>
                     <li>시간</li>
-                    <li>검진명</li>
+                    <li>접종명</li>
                     <li>위치</li>
                 </ul>
             </div>
@@ -83,15 +82,15 @@
               </div>
 
               <ul class="reserve_list">
-                <li>땡땡병원</li>
+                <li>땡땡 병원</li>
                 <li>2022년 12월 30일</li>
                 <li>오후 4시</li>
-                <li>일반건강검진</li>
+                <li>독감</li>
                 <li>전라북도 전쥐시 땡떙동 땡땡길 10 4층</li>
               </ul>
             </div>
 
-
+             
 
         </div>
         <!--.reserve_list-->
