@@ -1,0 +1,276 @@
+@charset "UTF-8";
+a {
+  text-decoration-line: none;
+}
+main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1320px;
+  height: 700px;
+  display: flex;
+  flex-direction: row;
+  z-index:-10;
+}
+
+.boxbox{
+	height: 1000px;
+}
+.mypage_manu {
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  height: 95%;
+  width: 200px;
+  background-color: #ffe7e7;
+}
+.mypage_manu_p {
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.mypage_manu_1 {
+  margin-top: 20px;
+}
+
+.mypage_manu_1 p {
+  padding: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.submenu a {
+  margin-left: 5px;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.submenu li {
+  text-align: center;
+  padding: 5px;
+}
+/*버튼*/
+
+body::before {
+  content: "";
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.a {
+  text-align: center;
+  color: aqua;
+  border: none;
+  position: relative;
+  height: 20px;
+  font-size: 1.6em;
+  padding: 0 2em;
+  cursor: pointer;
+  transition: 800ms ease all;
+  outline: none;
+}
+.a:hover {
+  background: rgb(255, 255, 255);
+}
+
+.a::before,
+.a::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 2px;
+  width: 0;
+  background: rgb(255, 148, 148);
+  transition: 400ms ease all;
+}
+.a::after {
+  right: inherit;
+  top: inherit;
+  left: 0;
+  bottom: 0;
+}
+
+.a:hover::before,
+.a:hover::after {
+  width: 100%;
+  transition: 800ms ease all;
+}
+/*버튼*/
+.menu-v1 .submenu {
+  margin-top: 7px;
+  display: none;
+}
+.menu-v1 .submenu li:hover {
+  background-color: rgb(255, 187, 187);
+  font-weight: bold;
+  transition: 400ms ease all;
+}
+
+/*main_content*/
+.main_content {
+  margin-left: 30px;
+  width: 100%;
+}
+
+.main_content_title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.main_content_title h2 {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.main_content_title span {
+  font-size: 30px;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.main_content hr {
+  border-bottom: none;
+  border-top: 3px solid rgb(255, 120, 120);
+}
+
+/*스탬프*/
+.ring {
+  height: 170px;
+}
+/*스탬프*/
+
+/*리스트*/
+.list {
+  width: 1090px;
+}
+.main_list {
+  justify-content: center;
+  width: 1090px;
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+  font-weight: bold;
+  width: 1090px;
+}
+
+.main_list li:nth-child(1),
+.reserve_list li:nth-child(1) {
+  width: 60px;
+}
+.main_list li:nth-child(2),
+.reserve_list li:nth-child(2) {
+  width: 170px;
+}
+.main_list li:nth-child(3),
+.reserve_list li:nth-child(3) {
+  width: 80px;
+}
+.main_list li:nth-child(4),
+.reserve_list li:nth-child(4) {
+  width: 120px;
+}
+.main_list li:nth-child(5),
+.reserve_list li:nth-child(5) {
+  width: 280px;
+}
+.main_list li {
+  padding: 20px;
+  text-align: center;
+}
+
+.reserve_list {
+  justify-content: center;
+  width: 1090px;
+  font-weight: bold;
+  font-size: 20px;
+  background: #ffe7e7;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  height: 50px;
+  border-radius: 10px;
+  align-items: center;
+}
+
+.reserve_list li {
+  padding: 20px;
+  text-align: center;
+}
+
+.reserve_list li:nth-child(5) {
+  font-size: 15px;
+}
+.box {
+  width: 1090px;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+
+.checkbox_box p {
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+}
+/*리스트*/
+/*main_content*/
+/*삭제버튼*/
+.button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.button input {
+  width: 100px;
+  height: 40px;
+  background: #ff9797;
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+  border: none;
+  border-radius: 15px;
+}
+
+.button input:hover {
+  box-shadow: inset 1px 1px 5px 1px rgb(120, 120, 120);
+}
+/*삭제버튼*/
+label {
+  width: 12px;
+  display: block;
+  height: 12px;
+  cursor: pointer;
+  margin-top: 15px;
+  margin-left: 20px;
+}
+.checkbox_box input {
+  position: absolute;
+  transform: scale(0);
+}
+input:checked ~ .checkbox {
+  transform: rotate(45deg);
+  width: 5px;
+  margin-left: 5px;
+  border-color: #ff4747;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-radius: 0;
+}
+
+.checkbox {
+  display: block;
+  width: inherit;
+  height: inherit;
+  border: 3px solid #434343;
+  border-radius: 6px;
+  transition: all 0.375s;
+}
+
+.checkbox_box {
+  width: 70px;
+}
