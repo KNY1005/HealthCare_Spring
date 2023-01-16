@@ -11,6 +11,7 @@
 	<meta name="viewport" content="width=, initial-scale=1.0">
 	<title>건강검진 예약하기</title>
 	<!--파비콘-->
+	<script type="text/javascript" src="${path }/resources/js/jquery-3.6.1.min.js"></script>
 	<link rel="icon" type="image/png" sizes="16x16"
 		href="${path }/resources/image/favicon/favicon-16x16.png" />
 	<link rel="manifest"
@@ -19,6 +20,15 @@
 	<meta name="msapplication-TileImage"
 		content="${path }/resources/image/favicon/ms-icon-144x144.png" />
 	<meta name="theme-color" content="#ffffff" />
+	<script>
+	function resbtn(){
+		 if (confirm("예약하시겠습니까?") == true){ 
+			   console.log("완료되었습니다.");
+			 }else{
+			   console.log("취소되었습니다");
+			 }
+	}
+	</script>
 
 	<style>
 		/*-----------------sub_nav_menu > start---------------*/
@@ -128,21 +138,10 @@
 			}
 		main .timetable #title p{
 			text-align:center;
+			width:250px;
+			margin-right:80px;
 			}
 			
-		main .timetable #title p:nth-child(1){
-			width:250px;
-			margin-right:80px;
-			}
-		
-		main .timetable #title p:nth-child(2){
-			width:250px;
-			margin-right:80px;
-			}
-
-		main .timetable #title p:nth-child(3){
-			width:150px;
-			}
 		
 		main .timetable #content{
 			justify-content:center;
@@ -162,53 +161,42 @@
 			background-color:#FFE7E7;}
 
 
-
-
-		main .timetable  #content span {
+		main .timetable  #content #date, #time{
+			width:250px;
+			margin-right:80px;
+			}
+			
+		main .timetable  #content #date label{
 			width: 250px;
 			height: 50px;
-			border: 1px solid#000;
-			border-radius: 10px;
-			margin-right:80px;
-		}
-
-		main .timetable #content span i {
-					
-			float: right;
+			font-size:25px;
+			text-align: center;
+	
 		}
 
 
 
-		main .timetable  #time {
-			width: 300px;
-			height: 200px;
-			margin-top: 120px;
-		}
 
-		main .timetable #content select {
-			font-size: 25px;
-			width: 150px;
-			height:50px;
-			background-size: 25px;
-			outline: 0 none;
-			border-radius: 4px;
-			padding: 5px 30px 5px 10px;
-			-webkit-appearance: none;
-			/* 네이티브 외형 감추기 */
-			-moz-appearance: none;
-			appearance: none;
-			background: url("${path }/resources/image/bottom_arrow.png") no-repeat 95% 50%;
+		main .timetable  #time label{
+			width: 250px;
+			height: 50px;
+			font-size:25px;
+			text-align: center;
+			
+			
 		}
 		
-		main .timetable #content select:hover {
-			border: 3px solid #ff8f8f;
-		}
+		#time input, #date input {
+		width: 250px;
+		height: 50px;
+		font-size: 25px;
+		border: 1px solid#000;
+		border-radius: 10px;
+		text-align: center;
 		
-		main .timetable #content option {
-			background: #ff8f8f;
-			color: #fff;
-			padding: 3px 0;
-		}
+		
+	}
+
 		
 		/*예약 버튼*/
 		main .timetable button {
@@ -264,20 +252,16 @@
 				</div><!--//#title-->				
 				<div id="content">
 					<p>일반건강검진</p>
-					<span><a href="#"><i class="xi-calendar xi-2x"></i></a></span>
-					<select>
-						<option value='' selected>-- 선택 --</option>
-						<option value='09시'>09시</option>
-						<option value='10시'>10시</option>
-						<option value='11시'>11시</option>
-						<option value='12시'>12시</option>
-						<option value='14시'>14시</option>
-						<option value='15시'>15시</option>
-						<option value='16시'>16시</option>
-						<option value='17시'>17시</option>
-					</select>
+					<div id="date">
+						<label for=""></label>
+						<input type="date">
+					</div>
+					<div id="time">
+						<label for=""></label>
+						<input type="time">
+					</div>
 				</div>
-			<button>예약</button>
+			<button onclick="resbtn"()>예약</button>
 		</div><!--//.timetable-->
 	</main>
 		<%@include file="../includes/footer.jsp"%>
@@ -288,5 +272,6 @@
 
 
 </body>
+
 </html>
 	
