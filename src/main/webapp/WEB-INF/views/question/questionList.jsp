@@ -73,7 +73,7 @@ main {
 	margin-right: -8px;
 	padding-left:10px;
 }
-
+#search input:focus{outline:none; background:#fff;}
 .hr {
 	height: 2px;
 	border: 0;
