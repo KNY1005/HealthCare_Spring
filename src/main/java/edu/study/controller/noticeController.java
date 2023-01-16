@@ -48,7 +48,7 @@ public class noticeController {
 		int result = boardService.insert(vo);
 		
 		//db작업 (insert)
-		return "notice/noticeWrite"+vo.getBidx();	//redirect되는 가상경로 -> projectpath/board/list.do
+		return "redirect:view.do"+vo.getBidx();	//redirect되는 가상경로 -> projectpath/board/list.do
 		//return "redirect:/user/list.do"; //redirect되는 가상경로 -> projectpath/user/list.do
 	}
 }

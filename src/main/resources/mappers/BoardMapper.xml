@@ -50,8 +50,8 @@
 	
 	<update id="updateByBidx" parameterType="boardVo">
 		update table_board
-			set title = #{btitle}
-			   ,content = #{bcontent}
+			set btitle = #{btitle}
+			   ,bcontent = #{bcontent}
 			where bidx = #{bidx}
 	</update>
 	

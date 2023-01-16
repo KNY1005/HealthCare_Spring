@@ -230,9 +230,9 @@ main {
 				<th>조회수</th>
 			</tr>
 		<c:forEach items="${datalist}" var="vo">
-			<tr class="content" onClick="location.href='view.do'">
+			<tr class="content" onClick="location.href='view.do?bidx=${vo.bidx}'">
 				<td><p class="title">${vo.btitle}</p> <br />
-					<p><a href="view.do?bidx=${vo.bidx}">${vo.bcontent}</a></p></td>
+					<p>${vo.bcontent}</p></td>
 				<td>${vo.bwriter}</td>
 				<td>${vo.bwdate}</td>
 				<td>${vo.bhit}</td>
@@ -240,7 +240,7 @@ main {
 		</c:forEach>
 		</table>
 		
-		<button class="button" onClick="location.href='notice4.do'">글쓰기</button>
+		<button class="button" onClick="location.href='write.do'">글쓰기</button>
 		
 
 	</main>
