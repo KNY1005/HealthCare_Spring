@@ -31,7 +31,7 @@ public class noticeController {
 		return "notice/noticeList";	//화면으로 포워드
 	}
 	
-	@RequestMapping(value = "/notice3.do", method = RequestMethod.GET)	
+	@RequestMapping(value = "/view.do", method = RequestMethod.GET)	
 	public String board2(int bidx, Model model) {	//파라미터는 무조건 스트링인데 널을 인트로 받으면 오류가 나옴(예외페이지)
 		//DB 상세데이터 조회
 		

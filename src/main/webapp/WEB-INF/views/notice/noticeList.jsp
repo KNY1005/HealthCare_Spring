@@ -230,7 +230,7 @@ main {
 				<th>조회수</th>
 			</tr>
 		<c:forEach items="${datalist}" var="vo">
-			<tr class="content" onClick="location.href='notice3.do'">
+			<tr class="content" onClick="location.href='view.do'">
 				<td><p class="title">${vo.btitle}</p> <br />
 					<p><a href="view.do?bidx=${vo.bidx}">${vo.bcontent}</a></p></td>
 				<td>${vo.bwriter}</td>
