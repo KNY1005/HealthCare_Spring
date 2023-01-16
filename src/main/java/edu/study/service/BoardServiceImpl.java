@@ -22,8 +22,26 @@ public class BoardServiceImpl implements BoardService{	//추상메소드 정의
 
 	@Override
 	public List<BoardVo> list(BoardVo vo) {
-		// TODO Auto-generated method stub
+		
 		return boardDAO.list(vo);
+	}
+
+	@Override
+	public int updateByBidx(BoardVo vo) {
+		
+		return boardDAO.updateByBidx(vo);
+	}
+
+	@Override
+	public int insert(BoardVo vo) {
+		
+		return boardDAO.insert(vo);
+	}
+
+	@Override
+	public int maxBidx() {
+		// TODO Auto-generated method stub
+		return boardDAO.maxBidx();
 	}
 
 	

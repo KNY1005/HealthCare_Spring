@@ -5,10 +5,7 @@
 <%@ page import="edu.study.vo.BoardVo"%>
 
 <%
-
 	List<BoardVo> list = (List<BoardVo>)request.getAttribute("datalist");	//형변환,컨트롤러의 키값을 가져옴
-
-	
 %>
 <!DOCTYPE html>
 <html>

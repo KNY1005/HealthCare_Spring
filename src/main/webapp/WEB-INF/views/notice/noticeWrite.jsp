@@ -228,14 +228,13 @@ hr {
 			<h2>공지사항</h2>
 		</div>
 		<hr>
-		<form action="">
+		<form action="write.do" method="post">
 			<div id="writing_view">
 				<input type="text" class="title" />
 				<textarea class="content"></textarea>
 				<ul>
-					<li>작성자</li>
-					<li>작성일</li>
-					<li>작성날짜</li>
+					<li>${vo.writer}</li>
+					<li>${vo.bwdate}</li>
 				</ul>
 			</div>
 			<div class="file">

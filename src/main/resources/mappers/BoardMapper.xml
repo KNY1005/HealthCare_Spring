@@ -48,4 +48,35 @@
 			where bidx = #{bidx}	<!-- 변수명을 이용 -->
 	</select>
 	
+	<update id="updateByBidx" parameterType="boardVo">
+		update table_board
+			set title = #{btitle}
+			   ,content = #{bcontent}
+			where bidx = #{bidx}
+	</update>
+	
+	<insert id="insert" parameterType="boardVo">
+		<![CDATA[
+		insert into table_board (
+			bidx
+			,btitle
+			,bcontent
+			,bwdate
+			,midx
+			,bhit
+		)values(
+			notice.nextval
+			,#{btitle}
+			,#{bcontent}
+			,sysdate
+			,#{midx}
+			,0
+		)
+		
+		]]>
+		<selectKey resultType="int" keyProperty="bidx" order="AFTER">
+			select max(bidx)	<!-- 하나의 맵퍼에서 두가지 처리 -->
+			from table_board
+		</selectKey> 
+	</insert>
 </mapper>
