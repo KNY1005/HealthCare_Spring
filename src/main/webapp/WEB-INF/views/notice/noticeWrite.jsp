@@ -232,10 +232,10 @@ hr {
 			<div id="writing_view">
 				<input type="text" class="title" name="btitle" />
 				<textarea class="content" name="bcontent"></textarea>
-				<!-- <ul>
+				<ul>
 					<li>${vo.bwriter}</li>
 					<li>${vo.bwdate}</li>
-				</ul> -->
+				</ul>
 			</div>
 			<div class="file">
 				<div class="filebox">

@@ -19,10 +19,10 @@
 <script src="https://code.jquery.com/jquery-latest.min.js" type="application/javascript"></script>
 	<script>
 		$(document).ready(function(){
-        $(".choice").mouseover(function(){
+        $(".choice").click(function(){
             $(this).children(".able").stop().slideDown(600);
         });
-        $(".choice").mouseleave(function(){
+        $(".choice").off(function(){
             $(this).children(".able").stop().slideUp(600);
         });
     });

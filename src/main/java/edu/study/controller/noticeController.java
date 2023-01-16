@@ -59,4 +59,27 @@ public class noticeController {
 		return "redirect:view.do?bidx="+vo.getBidx();	//redirect되는 가상경로 -> projectpath/board/list.do
 		//return "redirect:/user/list.do"; //redirect되는 가상경로 -> projectpath/user/list.do
 	}
+	
+	@RequestMapping(value = "/modify.do", method = RequestMethod.GET)	//호출
+	public String board4(int bidx, Model model) {
+		//DB 상세데이터 조회
+		
+		BoardVo vo = boardService.selectByBidx(bidx); //정의해논 서비스(업무로직에 맞게 이름 짓기) 그대로 사용
+		
+		model.addAttribute("vo",vo);	//브이오에 담아서 모델에 넘겨 처리
+		
+		return "notice/noticeModify";	
+	}
+	
+	@RequestMapping(value = "/modify.do", method = RequestMethod.POST)
+	public String modify(BoardVo vo) {	//마이바티스는 파라미터 타입 한건만 가능, 브이오가 더 수월하기 때문에 
+		
+		int result = boardService.updateByBidx(vo);
+		
+		if(result>0) {
+			return "redirect:view.do?bidx="+vo.getBidx();
+		}else {
+			return "redirect:/";
+		}
+	}	
 }
