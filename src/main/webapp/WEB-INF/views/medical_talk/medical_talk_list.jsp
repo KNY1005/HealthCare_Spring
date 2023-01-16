@@ -356,20 +356,6 @@
 		}
 	</style>
 
-	<script>
-		window.onload = function () {
-			var swiper = new Swiper(".mySwiper", {
-				slidesPerView: 3,
-				spaceBetween: 200,
-				freeMode: true,
-				autoplay: {//자동으로 슬라이드됨.
-					delay: 10000,//현재슬라이드가 보여지는 시간(5000ms=5초)
-					disableOnInteraction: false//상호작용후 다시 자동재생 실행
-				},
-
-			})
-		}
-	</script>
 </head>
 <body>
 	<%@include file="../includes/header.jsp"%>
@@ -536,6 +522,7 @@
 	</main>	
 	
 	<%@include file="../includes/footer.jsp"%>
+	<script src="${path}/resources/js/swiper.js"></script>
 
 </body>
 </html>
