@@ -52,6 +52,8 @@
 		update table_board
 			set btitle = #{btitle}
 			   ,bcontent = #{bcontent}
+			   ,blist = 'N'
+			   ,bwriter = '관리자'
 			where bidx = #{bidx}
 	</update>
 	

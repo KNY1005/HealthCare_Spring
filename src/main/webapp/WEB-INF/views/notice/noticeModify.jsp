@@ -227,14 +227,14 @@ hr {
 			<h2>공지사항</h2>
 		</div>
 		<hr>
-		<form action="">
+		<form action="modify.do" method="post">
+		<input type="hidden" name="bidx" value="${vo.bidx}">	<!-- 수정할 키값 히든으로 넘김 -->
 			<div id="writing_view">
-				<input type="text" class="title" />
-				<textarea class="content"></textarea>
+				<input type="text" class="title" name="btitle" value="${vo.btitle }"/>
+				<textarea class="content" name="bcontent">${vo.bcontent }</textarea>
 				<ul>
-					<li>작성자</li>
-					<li>작성일</li>
-					<li>작성날짜</li>
+					<li>${vo.bwriter }</li>
+					<li>${vo.bwdate }</li>
 				</ul>
 			</div>
 			<div class="file">
@@ -246,8 +246,8 @@ hr {
 				</div>
 			</div>
 			<div id="button">
-				<button type="button" onClick="location.href='notice3.do'">취소</button>
-				<button type="button" onClick="location.href='notice3.do'">완료</button>
+				<button type="button" onClick="location.href='view.do'">취소</button>
+				<button>완료</button>
 			</div>
 		</form>
 	</section>
