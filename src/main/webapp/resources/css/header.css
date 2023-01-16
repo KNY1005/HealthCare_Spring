@@ -40,6 +40,7 @@ a {
 }
 
 .nav_main_menu {
+  z-index:999;
   height: 80px;
   position: absolute;
   left: 0px;

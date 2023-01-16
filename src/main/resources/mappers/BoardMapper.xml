@@ -62,15 +62,17 @@
 			,btitle
 			,bcontent
 			,bwdate
-			,midx
 			,bhit
+			,blist
+			,bwriter
 		)values(
 			notice.nextval
 			,#{btitle}
 			,#{bcontent}
-			,sysdate
-			,#{midx}
+			,sysdate			
 			,0
+			,'N'
+			,'N'
 		)
 		
 		]]>

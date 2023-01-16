@@ -42,13 +42,21 @@ public class noticeController {
 		return "notice/noticeView";	
 	}
 	
+	@RequestMapping(value = "/write.do", method = RequestMethod.GET)
+	public String write(BoardVo vo) {	
+		
+			
+		//db작업 (insert)
+		return "notice/noticeWrite";	//redirect되는 가상경로 -> projectpath/board/list.do
+		//return "redirect:/user/list.do"; //redirect되는 가상경로 -> projectpath/user/list.do
+	}
 	@RequestMapping(value = "/write.do", method = RequestMethod.POST)
-	public String write(BoardVo vo, HttpSession session) {	//세션 객체 꺼내옴
+	public String write2(BoardVo vo) {	
 		
 		int result = boardService.insert(vo);
 		
 		//db작업 (insert)
-		return "redirect:view.do"+vo.getBidx();	//redirect되는 가상경로 -> projectpath/board/list.do
+		return "redirect:view.do?bidx="+vo.getBidx();	//redirect되는 가상경로 -> projectpath/board/list.do
 		//return "redirect:/user/list.do"; //redirect되는 가상경로 -> projectpath/user/list.do
 	}
 }

@@ -230,12 +230,12 @@ hr {
 		<hr>
 		<form action="write.do" method="post">
 			<div id="writing_view">
-				<input type="text" class="title" />
-				<textarea class="content"></textarea>
-				<ul>
-					<li>${vo.writer}</li>
+				<input type="text" class="title" name="btitle" />
+				<textarea class="content" name="bcontent"></textarea>
+				<!-- <ul>
+					<li>${vo.bwriter}</li>
 					<li>${vo.bwdate}</li>
-				</ul>
+				</ul> -->
 			</div>
 			<div class="file">
 				<div class="filebox">
@@ -246,8 +246,8 @@ hr {
 				</div>
 			</div>
 			<div id="button">
-				<button type="button" onClick="location.href='notice1.do'">취소</button>
-				<button type="button" onClick="location.href='notice1.do'">완료</button>
+				<button type="button" onClick="location.href='list.do'">취소</button>
+				<button>완료</button>
 			</div>
 		</form>
 	</section>
