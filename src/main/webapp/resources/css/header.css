@@ -33,6 +33,7 @@ a,
   background-color: rgba(192, 221, 255, 0.1);
   backdrop-filter: blur(10px);
   box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.1);
+  z-index:999;
 }
 a {
   text-decoration-line: none;
@@ -44,7 +45,6 @@ a {
   left: 0px;
   top: 0px;
   border-radius: 10px;
-  z-index: 9999;
   font-weight: bold;
 }
 

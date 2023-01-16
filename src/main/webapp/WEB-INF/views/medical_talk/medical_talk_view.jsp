@@ -16,6 +16,7 @@
 <meta name="msapplication-TileImage"
 	content="${path }/resources/image/favicon/ms-icon-144x144.png" />
 <meta name="theme-color" content="#ffffff" />
+
 <style>
 		/*-----------------sub_nav_menu > start---------------*/
 
@@ -194,21 +195,60 @@
 	}
 	/*///////////////////////////////////////////////////////////////////////////////////////////////*/
 	/*전문의 답변 작성란*/
-	main #like{
+	main .like{
 		margin-top:30px;
 		display:flex;
 		font-size:35px;
 		margin-left:110px;
 		margin-bottom:10px;
+		align-items:center;
 		}
 		
-	main #like a{
-		margin-left:915.75px;
+	main .like a{
+		margin-left:910px;
+
+  		text-decoration:none; color:inherit; cursor: pointer;
 		}
+	
+	main .like p{
+	margin-left:10px;
+ 	
+	}
 		
-	main #like a>i{
-		cursor: pointer;
-		color:red;}
+	 .like .icon{
+	    display: flex;
+	    align-items: center;
+	    justify-content: center;
+	    width: calc(100vw * (45 / 1920));
+	    height: calc(100vw * (45 / 1920));
+	
+	    border-radius: 50%;
+	    border: solid 2px #eaeaea;
+	    background-color: #fff;
+	}
+
+	.icon.heart img{
+	    width: calc(100vw * (24 / 1920));
+	    height: calc(100vw * (24 / 1920));
+	}
+
+	.icon.heart.fas{
+	  color:red
+	}
+	.heart{
+	    transform-origin: center;
+	}
+	.heart.active img{
+	    animation: animateHeart .3s linear forwards;
+	}
+
+	@keyframes animateHeart{
+	    0%{transform:scale(.2);}
+	    40%{transform:scale(1.2);}
+	    100%{transform:scale(1);}
+	  }
+			}
+		
 		
 
 		
@@ -374,9 +414,10 @@
 				</div>
 				</div>
 			</form>
-			<div id="like">
-				<h2>답변</h2>
-				<a><i class="xi-heart-o xi-x"></i></a>
+			<div class="like">
+				<h2>답변</h2><a href="javascript:;" class="icon heart">
+     <img src="https://cdn-icons-png.flaticon.com/512/812/812327.png" alt="찜하기">
+  </a>
 				<p>211</p>
 			</div><!--//#like-->
 			<div id="doctor_writing_content">
@@ -413,5 +454,30 @@
 	</main>
 	<%@include file="../includes/footer.jsp"%>
 </body>
+<script>
+	$(function(){
+	    var $likeBtn =$('.icon.heart');
+	
+	        $likeBtn.click(function(){
+	        $likeBtn.toggleClass('active');
+	
+	        if($likeBtn.hasClass('active')){          
+	           $(this).find('img').attr({
+	              'src': 'https://cdn-icons-png.flaticon.com/512/803/803087.png',
+	               alt:'찜하기 완료'
+	                });
+	          
+	          
+	         }else{
+	            $(this).find('i').removeClass('fas').addClass('far')
+	           $(this).find('img').attr({
+	              'src': 'https://cdn-icons-png.flaticon.com/512/812/812327.png',
+	              alt:"찜하기"
+	           })
+	         }
+	     })
+	})
 
+
+</script>
 </html>
