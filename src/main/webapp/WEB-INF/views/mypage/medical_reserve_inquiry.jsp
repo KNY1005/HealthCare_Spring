@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>건강검진예약조회</title>
 <!--파비콘-->
 <link rel="icon" type="image/png" sizes="16x16" href="${path}/resources/image/favicon/android-icon-144x144.png"/>
 <link rel="manifest" href="${path}/resources/image/favicon/manifest.json" />
@@ -24,7 +24,9 @@
 
 </head>
 <body>
+<div class="header">
 <%@include file="../includes/header.jsp"%>
+</div>
    <main>
       <section>
         <p class="mypage_manu_p">마이페이지</p>

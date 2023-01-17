@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>예방접종예약조회</title>
 <!--파비콘-->
 <link rel="icon" type="image/png" sizes="16x16" href="${path}/resources/image/favicon/android-icon-144x144.png"/>
 <link rel="manifest" href="${path}/resources/image/favicon/manifest.json" />
@@ -18,14 +18,15 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 <link href="${path}/resources/css/reset.css" rel="stylesheet" />
-<link href="${path}/resources/css/mypage/medical_reserve_inquiry.css" rel="stylesheet" />
+<link href="${path}/resources/css/mypage/shot_reserve_inquiry.css" rel="stylesheet" />
 
 <script src="${path}/resources/js/mypage/mypage_sub_menu.js"></script>
 
 </head>
 <body>
+<div class="header">
 <%@include file="../includes/header.jsp"%>
-    <main>
+</div>
    <main>
       <section>
         <p class="mypage_manu_p">마이페이지</p>
@@ -102,6 +103,8 @@
         <input type="button" value="삭제하기"/>
       </div>
     </main>
+
     <%@include file="../includes/footer.jsp"%>
+
 </body>
 </html>

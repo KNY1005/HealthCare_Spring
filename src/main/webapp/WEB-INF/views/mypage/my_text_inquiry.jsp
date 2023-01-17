@@ -24,7 +24,9 @@
 
 </head>
 <body>
+<div class="header">
 <%@include file="../includes/header.jsp"%>
+</div>
 
   <body>
     <main>

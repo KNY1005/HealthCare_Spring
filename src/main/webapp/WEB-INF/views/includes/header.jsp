@@ -42,39 +42,40 @@
 						</li>
 					</ul>
 					<ul>
-						<li><a href="#">예방접종</a></li>
+						<li><a href="abc1.do">예방접종</a></li>
 					</ul>
 					<ul>
-						<li><a href="#">건강검진</a></li>
+						<li><a href="medicalmain.do">건강검진</a></li>
 					</ul>
 					<ul>
-						<li><a href="#">헌혈</a></li>
+						<li><a href="blood1.do">헌혈</a></li>
 					</ul>
 					<ul>
 						<li><a href="#">모두건강</a></li>
 					</ul>
 					<ul>
-						<li><a href="#">건강광장</a></li>
+						<li><a href="notice1.do">건강광장</a></li>
 					</ul>
 				</div>
 				<div id="sliding_menu">
 					<ul>
-						<li><a href="#">예방접종 예약</a></li>
-					</ul>
-					<ul>
-						<li><a href="#">건강검진 예약</a></li>
-					</ul>
-					<ul>
-						<li><a href="#">헌혈 예약</a></li>
-					</ul>
+		              <li><a href="abc1.do">예방접종 예약</a></li>
+		            </ul>
+		            <ul>
+		              <li><a href="medicalmain.do">건강검진 예약</a></li>
+		            </ul>
+		            <ul>
+		              <li><a href="blood/main.do">헌혈 예약</a></li>
+		            </ul>
 					<ul>
 						<li><a href="#">건강소식</a></li>
 						<li><a href="#">자가검진</a></li>
 					</ul>
 					<ul>
-						<li><a href="#">공지사항</a></li>
-						<li><a href="#">문의사항</a></li>
-						<li><a href="#">건강상담소</a></li>
+		              <li><a href="<%=request.getContextPath() %>/notice/list.do">공지사항</a></li>
+		              <li><a href="question/questionList.do">문의사항</a></li>
+		              <li><a href="medicallist.do">건강상담소</a></li>
+		            </ul>
 					</ul>
 				</div>
 			</nav>
@@ -92,9 +93,9 @@
 						<li><img src="${path }/resources/image/profli.png" alt="프로필" /></li>
 						<li><p>김모모님</p></li>
 						<li><hr width="250px" /></li>
-						<li><a href="#">마이페이지</a></li>
-						<li><a href="#">내가 쓴 글</a></li>
-						<li><a href="#">개인정보 설정</a></li>
+						 <li><a href="mypage1.do">마이페이지</a></li>
+			              <li><a href="mypage4.do">내가 쓴 글</a></li>
+			              <li><a href="mypage5.do">개인정보 설정</a></li>
 						<li><hr width="250px" /></li>
 						<li>
 							<button>
