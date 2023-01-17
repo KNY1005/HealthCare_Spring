@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="edu.study.mapper.boardMapper"> 
+	<select id="list" resultType="BoardVo">
+		select bidx
+			  ,boriginbidx
+			  ,bdepth
+			  ,blvl
+			  ,blist
+			  ,bcategory
+			  ,btitle
+			  ,bwriter
+			  ,bcontent
+			  ,bwdate
+			  ,brewdate
+			  ,bstate
+			  ,bmdate
+			  ,bdelete
+			  ,bsecret
+			  ,bhit
+			  ,midx
+			from table_board
+			WHERE blist = 'N'
+	</select>
+	
+	<select id="selectByBidx" parameterType="int" resultType="BoardVo" >	<!-- 데이터 타입 정의/브이오에 담겠다 -->
+		select bidx
+			  ,boriginbidx
+			  ,bdepth
+			  ,blvl
+			  ,blist
+			  ,bcategory
+			  ,btitle
+			  ,bwriter
+			  ,bcontent
+			  ,bwdate
+			  ,brewdate
+			  ,bstate
+			  ,bmdate
+			  ,bdelete
+			  ,bsecret
+			  ,bhit
+			  ,midx
+			from table_board
+			where bidx = #{bidx}	<!-- 변수명을 이용 -->
+	</select>
+	
+	<update id="updateByBidx" parameterType="boardVo">
+		update table_board
+			set btitle = #{btitle}
+			   ,bcontent = #{bcontent}
+			where bidx = #{bidx}
+	</update>
+	
+	<delete id="deleteByBidx" parameterType="int">
+		delete 
+			from table_board
+			where bidx = #{bidx}
+	</delete>
+	
+	<insert id="insert" parameterType="boardVo">
+		<![CDATA[
+		insert into table_board (
+			bidx
+			,btitle
+			,bcontent
+			,bwdate
+			,bhit
+			,blist
+			,bwriter
+		)values(
+			notice.nextval
+			,#{btitle}
+			,#{bcontent}
+			,sysdate			
+			,0
+			,'N'
+			,'관리자'
+		)
+		
+		]]>
+		<selectKey resultType="int" keyProperty="bidx" order="AFTER">
+			select max(bidx)	<!-- 하나의 맵퍼에서 두가지 처리 -->
+			from table_board
+		</selectKey> 
+	</insert>
+</mapper>
