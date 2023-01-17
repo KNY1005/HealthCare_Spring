@@ -84,42 +84,75 @@ p {
   max-height: 150px;
 }
 
-.content {
-  position: relative;
-  height: 20vh;
-  text-align: center;
-  background-color: white;
-}
+/*제목*/
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: #f2bc94;
+      }
 
-/* Animation */
+      .main_title_content {
+        position: absolute;
+        top: 10%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .content {
+        position: relative;
+      }
 
-.parallax > use {
-  animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
-}
-.parallax > use:nth-child(1) {
-  animation-delay: -2s;
-  animation-duration: 7s;
-}
-.parallax > use:nth-child(2) {
-  animation-delay: -3s;
-  animation-duration: 10s;
-}
-.parallax > use:nth-child(3) {
-  animation-delay: -4s;
-  animation-duration: 13s;
-}
-.parallax > use:nth-child(4) {
-  animation-delay: -5s;
-  animation-duration: 20s;
-}
-@keyframes move-forever {
-  0% {
-    transform: translate3d(-90px, 0, 0);
-  }
-  100% {
-    transform: translate3d(85px, 0, 0);
-  }
-}
+      .content h2 {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        font-size: 8cm;
+      }
+
+      .content h2:nth-child(1) {
+        color: transparent;
+        -webkit-text-stroke: 5px #722620;
+      }
+
+      .content h2:nth-child(2) {
+        color: #722620;
+        animation: animate 4s ease-in-out infinite;
+      }
+
+      @keyframes animate {
+        0%,
+        100% {
+          clip-path: polygon(
+            0% 45%,
+            15% 44%,
+            32% 50%,
+            54% 60%,
+            70% 61%,
+            84% 59%,
+            100% 52%,
+            100% 100%,
+            0% 100%
+          );
+        }
+        50% {
+          clip-path: polygon(
+            0% 60%,
+            16% 65%,
+            34% 66%,
+            51% 62%,
+            667% 50%,
+            84% 45%,
+            100% 46%,
+            100% 100%,
+            0% 100%
+          );
+        }
+      }
 
 /*----------------nav_main_menu > start----------------*/
 

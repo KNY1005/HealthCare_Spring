@@ -64,20 +64,5 @@ window.onload = function () {
 
   init();
 
-  setInterval(function () {
-    const show = document.querySelector("span[data-show]");
-    const next =
-      show.nextElementSibling || document.querySelector("span:first-child");
-    const up = document.querySelector("span[data-up]");
-
-    if (up) {
-      up.removeAttribute("data-up");
-    }
-
-    show.removeAttribute("data-show");
-    show.setAttribute("data-up", "");
-
-    next.setAttribute("data-show", "");
-  }, 2000);
-  window.onload = startAnimation; // 윈도우 로드시 이미지 변환함수 실행
+ 
 };

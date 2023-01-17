@@ -116,17 +116,14 @@
       <div class="background">
         <div class="layer"></div>
       </div>
-      <div class="mask_box">
-        <h2>
-          Health..
-          <div class="mask">
-            <span data-show>건강을 챙기자</span>
-            <span>띠용</span>
-            <span>하하..</span>
-            <span>저리가세요</span>
-          </div>
-        </h2>
+
+    <div class="main_title_content">
+      <div class="content">
+        <h2>HealthCare</h2>
+        <h2>HealthCare</h2>
       </div>
+    </div>
+    
       <div class="search-box">
         <input
           class="search-txt"
