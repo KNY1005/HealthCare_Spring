@@ -35,4 +35,9 @@ public class BoardDAO {
 		
 		return sqlSession.selectOne("edu.study.mapper.boardMapper.maxBidx");
 	}
+
+	public int deleteByBidx(int bidx) {
+		// TODO Auto-generated method stub
+		return sqlSession.delete("edu.study.mapper.boardMapper.deleteByBidx", bidx);
+	}
 }

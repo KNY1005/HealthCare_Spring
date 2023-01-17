@@ -44,6 +44,12 @@ public class BoardServiceImpl implements BoardService{	//추상메소드 정의
 		return boardDAO.maxBidx();
 	}
 
+	@Override
+	public int deleteByBidx(int bidx) {
+		// TODO Auto-generated method stub
+		return boardDAO.deleteByBidx(bidx);
+	}
+
 	
 
 

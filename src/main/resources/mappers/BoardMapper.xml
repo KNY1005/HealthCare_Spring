@@ -52,10 +52,14 @@
 		update table_board
 			set btitle = #{btitle}
 			   ,bcontent = #{bcontent}
-			   ,blist = 'N'
-			   ,bwriter = '관리자'
 			where bidx = #{bidx}
 	</update>
+	
+	<delete id="deleteByBidx" parameterType="int">
+		delete 
+			from table_board
+			where bidx = #{bidx}
+	</delete>
 	
 	<insert id="insert" parameterType="boardVo">
 		<![CDATA[

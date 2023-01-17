@@ -231,7 +231,7 @@ hr {
 		<input type="hidden" name="bidx" value="${vo.bidx}">	<!-- 수정할 키값 히든으로 넘김 -->
 			<div id="writing_view">
 				<input type="text" class="title" name="btitle" value="${vo.btitle }"/>
-				<textarea class="content" name="bcontent">${vo.bcontent }</textarea>
+				<textarea class="content" name="bcontent" value="${vo.bcontent}"></textarea>
 				<ul>
 					<li>${vo.bwriter }</li>
 					<li>${vo.bwdate }</li>

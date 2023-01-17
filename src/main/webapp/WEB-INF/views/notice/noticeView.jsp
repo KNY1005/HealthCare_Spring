@@ -239,7 +239,7 @@ hr {
 			<div id="button">
 				<button type="button" onClick="location.href='list.do'">목록</button>
 				<button>삭제</button>
-				<button onclick="location.href='modify.do?bidx=${vo.bidx}'">수정</button>
+				<button type="button" onClick="location.href='modify.do?bidx=${vo.bidx}'">수정</button>
 			</div>
 		</form>
 	</section>

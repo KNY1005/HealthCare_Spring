@@ -15,6 +15,7 @@ import edu.study.vo.BoardVo;
 
 
 
+
 @RequestMapping(value="/notice",produces="text/plain;charset=UTF-8")
 @Controller
 public class noticeController {
@@ -81,5 +82,17 @@ public class noticeController {
 		}else {
 			return "redirect:/";
 		}
-	}	
+	}
+	
+	@RequestMapping(value = "/delete.do", method = RequestMethod.POST) //포스트 방식이 좋음
+	public String delete(int bidx) {	//맵퍼까지 키값을 넘김
+		
+		boardService.deleteByBidx(bidx);	//매개변수와 매개값을 사용
+		
+		return "redirect:list.do";
+		
+		
+		
+	}
+	
 }
