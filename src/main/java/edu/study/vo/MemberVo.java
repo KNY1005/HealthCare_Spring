@@ -103,7 +103,7 @@ public class MemberVo {
 	
 	@Override
 	public String toString() {
-		return "MemberVO [midx=" + midx + ", mid=" + mid + ", mname=" + mname + ", mpwd=" + mpwd + ", mphone=" + mphone
+		return "MemberVo [midx=" + midx + ", mid=" + mid + ", mname=" + mname + ", mpwd=" + mpwd + ", mphone=" + mphone
 				+ ", mlvl=" + mlvl + ", mgrade=" + mgrade + ", mdelyn=" + mdelyn + ", menter=" + menter + ", mmdate="
 				+ mmdate + ", mbreakdate=" + mbreakdate + ", mcnt=" + mcnt + ", mip=" + mip + ", memail=" + memail
 				+ "]";
