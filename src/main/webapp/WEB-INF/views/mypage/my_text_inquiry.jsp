@@ -14,39 +14,18 @@
 <meta name="msapplication-TileColor" content="#ffffff" />
 <meta name="msapplication-TileImage" content="${path}/resources/image/favicon/ms-icon-144x144.png" />
 <meta name="theme-color" content="#ffffff" />
+<!-- 제이쿼리 라이브러리 연결 -->
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 <link href="${path}/resources/css/reset.css" rel="stylesheet" />
 <link href="${path}/resources/css/mypage/my_text_inquiry.css" rel="stylesheet" />
 
-<script src="${path}/resources/js/mypage/my_text_inquiry.js"></script>
+<script src="${path}/resources/js/mypage/mypage_sub_menu.js"></script>
 
 </head>
 <body>
 <%@include file="../includes/header.jsp"%>
-    <script>
-  
-    //서브메뉴
-    $(document).ready(function(){
-        $(".menu-v1").mouseover(function(){
-            $(this).children(".submenu").stop().slideDown(600);
-        });
-        $(".menu-v1").mouseleave(function(){
-            $(this).children(".submenu").stop().slideUp(600);
-        });
-        
-    });
 
-    //전체 선택
-    function selectAll(selectAll)  {
-    const checkboxes 
-     = document.querySelectorAll('input[type="checkbox"]');
-  
-     checkboxes.forEach((checkbox) => {
-    checkbox.checked = selectAll.checked
-     })
-}
-
-  </script>
   <body>
     <main>
       <section>
@@ -55,18 +34,18 @@
           <div class="mypage_manu_1">
               <ul id="nav-v1">
                 <li class="menu-v1">
-                  <p class="a"><a href="#">조회</a></p>
+                  <p class="a"><a href="mypage2.do">조회</a></p>
                   <ul class="submenu">
-                    <li><a href="#">예방접종 조회</a></li>
-                    <li><a href="#">건강검진 조회</a></li>
-                    <li><a href="#">헌혈 스탬프 / 조회</li>
+                    <li><a href="mypage2.do">예방접종 조회</a></li>
+                    <li><a href="mypage3.do">건강검진 조회</a></li>
+                    <li><a href="mypage1.do">헌혈 스탬프 / 조회</li>
                   </ul>
                 </li>
                 <li class="menu-v1">
-                  <p class="a"><a href="#">내가 쓴 글</a></p>
+                  <p class="a"><a href="mypage4.do">내가 쓴 글</a></p>
                 </li>
                 <li class="menu-v1">
-                  <p class="a"><a href="#">개인정보 수정</a></p>
+                  <p class="a"><a href="mypage5.do">개인정보 수정</a></p>
                 </li>
               </ul>
           </div>

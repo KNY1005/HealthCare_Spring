@@ -14,11 +14,13 @@
 <meta name="msapplication-TileColor" content="#ffffff" />
 <meta name="msapplication-TileImage" content="${path}/resources/image/favicon/ms-icon-144x144.png" />
 <meta name="theme-color" content="#ffffff" />
+<!-- 제이쿼리 라이브러리 연결 -->
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 <link href="${path}/resources/css/reset.css" rel="stylesheet" />
-<link href="${path}/resources/css/mypage/shot_reserve_inquiry.css" rel="stylesheet" />
+<link href="${path}/resources/css/mypage/medical_reserve_inquiry.css" rel="stylesheet" />
 
-<script src="${path}/resources/js/mypage/shot_reserveinquiry.js"></script>
+<script src="${path}/resources/js/mypage/mypage_sub_menu.js"></script>
 
 </head>
 <body>
@@ -31,18 +33,18 @@
           <div class="mypage_manu_1">
               <ul id="nav-v1">
                 <li class="menu-v1">
-                  <p class="a"><a href="#">조회</a></p>
+                <p class="a"><a href="mypage2.do">조회</a></p>
                   <ul class="submenu">
-                    <li><a href="#">예방접종 조회</a></li>
-                    <li><a href="#">건강검진 조회</a></li>
-                    <li><a href="#">헌혈 스탬프 / 조회</li>
+                    <li><a href="mypage2.do">예방접종 조회</a></li>
+                    <li><a href="mypage3.do">건강검진 조회</a></li>
+                    <li><a href="mypage1.do">헌혈 스탬프 / 조회</li>
                   </ul>
                 </li>
                 <li class="menu-v1">
-                  <p class="a"><a href="#">내가 쓴 글</a></p>
+                  <p class="a"><a href="mypage4.do">내가 쓴 글</a></p>
                 </li>
                 <li class="menu-v1">
-                  <p class="a"><a href="#">개인정보 수정</a></p>
+                  <p class="a"><a href="mypage5.do">개인정보 수정</a></p>
                 </li>
               </ul>
           </div>
