@@ -11,12 +11,12 @@
 	var checkIdFlag = false;
 	var checkIdVal = "";
 	function checkId(){
-		var idval = $("#id").val();
+		var idval = $("#mid").val();
 		
 		$.ajax({
 			url : "checkId.do",
 			type: "post",
-			data: "id="+idval,
+			data: "mid="+idval,
 			success:function(data){
 				if(data == 1){
 					alert("중복된 id입니다.");
@@ -37,19 +37,22 @@
 			if(!checkIdFlag){
 				alert("아이디 중복확인을 하세요.");
 				return false;
-			}else if($("id").val() == ""){
+			}else if($("mid").val() == ""){
 				alert("아이디를 입력하세요")
 				return false;
-			}else if($("name").val() == ""){
+			}else if($("mname").val() == ""){
 				alert("이름을 입력하세요")
 				return false;
-			}else if($("password").val() == ""){
+			}else if($("mpwd").val() == ""){
 				alert("패스워드를 입력하세요")
 				return false;
-			}else if($("addr").val() == ""){
-				alert("주소를 입력하세요")
+			}else if($("mnumber").val() == ""){
+				alert("주민등록번호를 입력하세요")
 				return false;
-			}else if($("phone").val() == ""){
+			}else if($("mphone").val() == ""){
+				alert("연락처를 입력하세요")
+				return false;
+			}else if($("memail").val() == ""){
 				alert("연락처를 입력하세요")
 				return false;
 			}else{
