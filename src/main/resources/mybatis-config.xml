@@ -4,7 +4,7 @@
 <configuration><!-- 브이오 먼저 만들고 작업 -->
 
 	<typeAliases>
-		<typeAlias type="edu.study.vo.MemberVO" alias="memberVO"/>	<!-- alias는 별칭을 지어주는 역할-->
+		<typeAlias type="edu.study.vo.MemberVo" alias="MemberVo"/>	<!-- alias는 별칭을 지어주는 역할-->
 		<typeAlias type="edu.study.vo.BoardVo" alias="BoardVo"/>
     </typeAliases>
     	

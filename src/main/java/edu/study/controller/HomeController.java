@@ -159,10 +159,5 @@ public class HomeController {
 		return "mypage/my_information_inquiry";
 	}
 	
-	/*로그인*/
-	@RequestMapping(value = "login.do", method = RequestMethod.GET)
-	public String mypage6() {
-		
-		return "mypage/login";
-	}
+
 }

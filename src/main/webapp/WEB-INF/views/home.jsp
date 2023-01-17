@@ -85,6 +85,7 @@
             </ul>
           </div>
         </nav>
+        
         <div id="profli">
           <div class="main_profli">
            <img src="${path}/resources/image/profli.png" alt="프로필" />
@@ -109,6 +110,7 @@
           </div>
         </div>
       </div>
+      
     </header>
 <!-- 헤더(inclue랑 css 다름) -->
 <!-- 메인 -->
