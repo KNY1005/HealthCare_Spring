@@ -87,4 +87,14 @@
 			from table_board
 		</selectKey> 
 	</insert>
+	
+	<update id="updateViewCnt">
+
+        update table_board
+
+        set bhit = bhit + 1
+
+        where bidx = #{bidx}
+
+ </update>
 </mapper>
