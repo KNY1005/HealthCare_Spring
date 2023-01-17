@@ -25,6 +25,7 @@
 	<context:component-scan base-package="edu.study.controller" />
 	<context:component-scan base-package="edu.study.service" />
 	<context:component-scan base-package="edu.study.dao" />
+	<context:component-scan base-package="edu.study.vo" />
 	
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver" />
 	<!-- 아이디는 바뀌면 안됌 / 디스패쳐서블릿에서 사용 -->

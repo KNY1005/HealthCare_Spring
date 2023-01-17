@@ -21,27 +21,28 @@
 <style>
 main {
 	width: 1320px;
-	height: 1000px;
 	margin: 100px auto;
 }
-.order_box{
-        width: 790px;
-        height: 110px;
-        display: flex;
- 		align-items: flex-end;
-        justify-content: center;
-      }    
-.order{
-        width: 500px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        }
+
+.order_box {
+	width: 790px;
+	height: 110px;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+}
+
+.order {
+	width: 500px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+}
+
 .h3 {
 	font-weight: bold;
 	font-size: 40px;
 }
-
 
 #head {
 	display: flex;
@@ -53,27 +54,36 @@ main {
 	font-size: 25px;
 	vertical-align: top;
 	margin-left: 800px;
-	display:flex;
+	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
+#search button {
+	style: none;
+}
+
 #search input::-webkit-search-decoration, #search input::-webkit-search-cancel-button,
-#search input::-webkit-search-results-button, #search input::-webkit-search-results-decoration
+	#search input::-webkit-search-results-button, #search input::-webkit-search-results-decoration
 	{
 	display: none;
 } /*search내의 요소 삭제*/
 #search input {
-	height: 40px;
+	height: 36px;
 	font-size: 20px;
 	margin-left: -8px;
 	border: 1px solid #000;
 	border-left: none;
 	border-right: none;
 	margin-right: -8px;
-	padding-left:10px;
+	padding-left: 10px;
 }
-#search input:focus{outline:none; background:#fff;}
+
+#search input:focus {
+	outline: none;
+	background: #fff;
+}
+
 .hr {
 	height: 2px;
 	border: 0;
@@ -96,19 +106,24 @@ main {
 		95% 50%; /* 화살표 모양의 이미지 */
 }
 
-#search  {
+#search {
 	
 }
 
 #glass {
 	border: 1px solid #000;
-	padding: 4px 10px 4px 10px;
+	padding: 3px 10px 5px 10px;
 	border-radius: 0 10px 10px 0;
 	border-left: none;
-	
+	background: #fff;
+	font-size: 20px;
+	height: 40px;
+}
+
+#glass i {
 	
 }
-#glass i{margin-top:2px;}
+
 #glass:hover {
 	cursor: pointer;
 }
@@ -138,7 +153,6 @@ main {
 	vertical-align: middle;
 	height: 73px;
 }
-
 
 .content td:first-child {
 	border-radius: 10px 0 0 10px;
@@ -187,13 +201,33 @@ main {
 	box-shadow: inset 1px 1px 3px rgb(197, 197, 197);
 	cursor: pointer;
 }
+
+#page_div {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#page {
+	display: flex;
+}
+
+#page li {
+	margin: 0 10px 0;
+}
+
+
+
+#page li a {
+	font-size: 20px;
+}
 </style>
 </head>
 <body>
 	<%@include file="../includes/header.jsp"%>
 	<div class="order_box">
 		<ul class="order">
-			<li >공지사항</li>
+			<li>공지사항</li>
 			<li>|</li>
 			<li style="color: #CE8080;">문의사항</li>
 			<li>|</li>
@@ -206,13 +240,18 @@ main {
 		<div id="head">
 			<h3 class="h3">문의사항</h3>
 			<div id="search">
-				
-					<select class="cate">
-						<option>제목</option>
-						<option>작성자</option>
-					</select> <input type="search" name="search" placeholder="검색"> <a href="#"
-						id="glass"><i class="xi-search"></i></a>
-				
+				<form action="questionList.do" method="get">
+					<select class="cate" name="searchType">
+						<option value="btitle"
+							<c:if test="${param.searchType eq 'btitle' }">selected</c:if>>제목</option>
+						<option value="bcontent"
+							<c:if test="${param.searchType eq 'bcontent' }">selected</c:if>>내용</option>
+
+					</select> <input type="text" name="keyWord" placeholder="검색">
+					<button id="glass">
+						<i class="xi-search"></i>
+					</button>
+				</form>
 			</div>
 		</div>
 		<hr class="hr">
@@ -224,33 +263,36 @@ main {
 				<th>조회수</th>
 				<th>답변</th>
 			</tr>
-			<tr class="content" onClick="location.href='questionView.do'">
-				<td><p class="title">제목</p> <br />
-					<p>여기는 내용 입니다.</p></td>
-				<td>김모모</td>
-				<td>작성자</td>
-				<td>1000</td>
-				<td>답변완료</td>
-			</tr>
-			<tr class="content" onClick="location.href='questionView.do'">
-				<td><p class="title">제목</p> <br />
-					<p>여기는 내용 입니다.</p></td>
-				<td>김모모</td>
-				<td>작성자</td>
-				<td>1000</td>
-				<td>답변완료</td>
-			</tr>
-			<tr class="content" onClick="location.href='questionView.do'">
-				<td><p class="title">제목</p> <br />
-					<p>여기는 내용 입니다.</p></td>
-				<td>김모모</td>
-				<td>작성자</td>
-				<td>1000</td>
-				<td>답변완료</td>
-			</tr>
-
-
+			<c:forEach items="${list}" var="vo">
+				<tr class="content"
+					onClick="location.href='questionView.do?bidx=${vo.bidx }'">
+					<td><p class="title">${vo.btitle}${vo.bidx }</p> <br />
+						<p>${vo.bcontent}</p></td>
+					<td>${vo.bwriter}</td>
+					<td>${vo.bwdate}</td>
+					<td>${vo.bhit}</td>
+					<td>${vo.bstate}</td>
+				</tr>
+			</c:forEach>
 		</table>
+		<div id="page_div">
+			<ul id="page">
+				<c:if test="${page.prev}">
+					<li><a
+						href="questionList.do?page=${page.startPage - 1}&&searchType=${page.scri.searchType}&&keyWord=${page.encoding(page.scri.keyWord)}"><i
+							class="xi-angle-left"></i></a></li>
+				</c:if>
+				<c:forEach begin="${page.startPage}" end="${page.endPage}" var="vo">
+					<li><a
+						href="questionList.do?page=${vo}&&searchType=${page.scri.searchType}&&keyWord=${page.encoding(page.scri.keyWord)}">${vo}</a></li>
+				</c:forEach>
+				<c:if test="${page.next && page.endPage > 0}">
+					<li><a
+						href="questionList.do?page=${page.endPage + 1}&&searchType=${page.scri.searchType}&&keyWord=${page.encoding(page.scri.keyWord)}"><i
+							class="xi-angle-right"></i></a></li>
+				</c:if>
+			</ul>
+		</div>
 		<button class="button" onClick="location.href='questionWrite.do'">글쓰기</button>
 
 
