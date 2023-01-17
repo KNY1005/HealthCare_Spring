@@ -239,8 +239,8 @@ hr {
 			<div id="button">
 				<button type="button" onClick="location.href='list.do'">목록</button>
 				
-				<button onclick="document.delfrm.submit();">삭제</button>		
-				<form name="delfrm" action="delete.do" method="post">
+				<button type="button" onClick="location.href='delete.do?bidx=${vo.bidx}'">삭제</button>		
+				<form name="delfrm" action="delete.do" method="get">
 					<input type="hidden" name="bidx" value="${vo.bidx}">
 				</form>
 			
