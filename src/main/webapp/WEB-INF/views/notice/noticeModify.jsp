@@ -231,7 +231,7 @@ hr {
 		<input type="hidden" name="bidx" value="${vo.bidx}">	<!-- 수정할 키값 히든으로 넘김 -->
 			<div id="writing_view">
 				<input type="text" class="title" name="btitle" value="${vo.btitle }"/>
-				<textarea class="content" name="bcontent" value="${vo.bcontent}"></textarea>
+				<textarea class="content" name="bcontent">${vo.bcontent}</textarea>
 				<ul>
 					<li>${vo.bwriter }</li>
 					<li>${vo.bwdate }</li>
@@ -246,7 +246,7 @@ hr {
 				</div>
 			</div>
 			<div id="button">
-				<button type="button" onClick="location.href='view.do'">취소</button>
+				<button type="button" onClick="location.href='view.do?bidx=${vo.bidx}'">취소</button>
 				<button>완료</button>
 			</div>
 		</form>
