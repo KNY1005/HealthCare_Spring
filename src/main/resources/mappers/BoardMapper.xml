@@ -3,64 +3,62 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
-<mapper namespace="edu.study.mapper.boardMapper"> 
-	<select id="list" resultType="BoardVo">
-		select bidx
-			  ,boriginbidx
-			  ,bdepth
-			  ,blvl
-			  ,blist
-			  ,bcategory
-			  ,btitle
-			  ,bwriter
-			  ,bcontent
-			  ,bwdate
-			  ,brewdate
-			  ,bstate
-			  ,bmdate
-			  ,bdelete
-			  ,bsecret
-			  ,bhit
-			  ,midx
-			from table_board
-			WHERE blist = 'N'
-	</select>
+
+<mapper namespace="edu.study.mapper.boardMapper">
+	<select id="listSearch" parameterType="scri"
+		resultType="BoardVo">
+			SELECT * FROM (
+			SELECT rownum as rnum, A.* FROM (
+			SELECT * FROM
+			table_board
+			WHERE bdelete='N'
+			<include refid="search"></include>
+			ORDER BY bidx desc) A
+			)WHERE rnum BETWEEN #{rowStart} AND #{rowEnd}
+		</select>
 	
-	<select id="selectByBidx" parameterType="int" resultType="BoardVo" >	<!-- 데이터 타입 정의/브이오에 담겠다 -->
-		select bidx
-			  ,boriginbidx
-			  ,bdepth
-			  ,blvl
-			  ,blist
-			  ,bcategory
-			  ,btitle
-			  ,bwriter
-			  ,bcontent
-			  ,bwdate
-			  ,brewdate
-			  ,bstate
-			  ,bmdate
-			  ,bdelete
-			  ,bsecret
-			  ,bhit
-			  ,midx
-			from table_board
-			where bidx = #{bidx}	<!-- 변수명을 이용 -->
-	</select>
+		<select id="listCount" resultType="int">
+			SELECT COUNT(bidx)
+			FROM table_board
+			WHERE bidx>0 and bdelete='N'
+			<include refid="search"></include>
+		</select>
 	
+		<sql id="search">
+			<if test="searchType == 'btitle'">AND btitle LIKE '%'||#{keyWord}||'%'</if>
+			<if test="searchType == 'bcontent'"> AND bcontent LIKE '%'||#{keyWord}||'%'</if>
+		</sql>
+
+	<select id="selectByBidx" parameterType="int"
+		resultType="BoardVo">	<!-- 데이터 타입 정의/브이오에 담겠다 -->
+		select bidx
+		,boriginbidx
+		,bdepth
+		,blvl
+		,blist
+		,bcategory
+		,btitle
+		,bwriter
+		,bcontent
+		,bwdate
+		,brewdate
+		,bstate
+		,bmdate
+		,bdelete
+		,bsecret
+		,bhit
+		,midx
+		from table_board
+		where bidx = #{bidx}	<!-- 변수명을 이용 -->
+	</select>
+
 	<update id="updateByBidx" parameterType="boardVo">
 		update table_board
-			set btitle = #{btitle}
-			   ,bcontent = #{bcontent}
-			where bidx = #{bidx}
+		set btitle = #{btitle}
+		,bcontent = #{bcontent}
+		where bidx = #{bidx}
 	</update>
-	
-	<delete id="deleteByBidx" parameterType="int">
-		delete 
-			from table_board
-			where bidx = #{bidx}
-	</delete>
-	
+
 	<insert id="insert" parameterType="boardVo">
 		<![CDATA[
 		insert into table_board (
@@ -68,23 +66,21 @@
 			,btitle
 			,bcontent
 			,bwdate
+			,midx
 			,bhit
-			,blist
-			,bwriter
 		)values(
 			notice.nextval
 			,#{btitle}
 			,#{bcontent}
-			,sysdate			
+			,sysdate
+			,#{midx}
 			,0
-			,'N'
-			,'관리자'
 		)
 		
 		]]>
 		<selectKey resultType="int" keyProperty="bidx" order="AFTER">
 			select max(bidx)	<!-- 하나의 맵퍼에서 두가지 처리 -->
 			from table_board
-		</selectKey> 
+		</selectKey>
 	</insert>
 </mapper>
