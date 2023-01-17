@@ -6,6 +6,8 @@
 	<typeAliases>
 		<typeAlias type="edu.study.vo.MemberVO" alias="memberVO"/>	<!-- alias는 별칭을 지어주는 역할-->
 		<typeAlias type="edu.study.vo.BoardVo" alias="BoardVo"/>
+		<typeAlias type="edu.study.vo.SearchCriteria" alias="scri"/>
+		<typeAlias type="edu.study.vo.CriteriaVO" alias="criVo" />
     </typeAliases>
     	
 </configuration>
