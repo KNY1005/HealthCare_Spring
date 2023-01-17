@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import edu.study.dao.BoardDAO;
 import edu.study.vo.BoardVo;
+import edu.study.vo.SearchCriteria;
 
 @Service
 public class BoardServiceImpl implements BoardService{	//추상메소드 정의
@@ -21,9 +22,9 @@ public class BoardServiceImpl implements BoardService{	//추상메소드 정의
 	}
 
 	@Override
-	public List<BoardVo> list(BoardVo vo) {
+	public List<BoardVo> list(SearchCriteria scri) {
 		
-		return boardDAO.list(vo);
+		return boardDAO.list(scri);
 	}
 
 	@Override

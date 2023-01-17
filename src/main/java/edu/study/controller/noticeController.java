@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import edu.study.service.BoardService;
 import edu.study.vo.BoardVo;
+import edu.study.vo.SearchCriteria;
 
 
 
@@ -23,9 +24,9 @@ public class noticeController {
 	private BoardService boardService;	//전체 데이터 요청
 	
 	@RequestMapping(value = "/list.do", method = RequestMethod.GET)	
-	public String board1(Model model,BoardVo vo) {
+	public String board1(Model model,SearchCriteria scri) {
 		//DB list 조회
-		List<BoardVo> list = boardService.list(vo);
+		List<BoardVo> list = boardService.list(scri);
 		model.addAttribute("datalist",list);	//키값
 		System.out.println("list:"+list);		
 		return "notice/noticeList";	//화면으로 포워드

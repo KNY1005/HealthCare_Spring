@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.study.vo.BoardVo;
+import edu.study.vo.SearchCriteria;
 
 @Repository
 public class BoardDAO {
@@ -18,9 +19,9 @@ public class BoardDAO {
 		return sqlSession.selectOne("edu.study.mapper.boardMapper.selectByBidx", bidx); //마이바티스가 제공,한건 조회
 	}
 
-	public List<BoardVo> list(BoardVo vo) {
+	public List<BoardVo> list(SearchCriteria scri) {
 		
-		return sqlSession.selectList("edu.study.mapper.boardMapper.list",vo);
+		return sqlSession.selectList("edu.study.mapper.boardMapper.listSearch",scri);
 	}
 	
 	public int updateByBidx(BoardVo vo) {	//int 몇건이 처리되었는가(카운트 값)
