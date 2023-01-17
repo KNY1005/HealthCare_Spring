@@ -20,6 +20,7 @@ public class HomeController {
 		
 		return "home";
 	}
+	
 	/*예방접종*/
 	@RequestMapping(value = "abc1.do", method = RequestMethod.GET)
 	public String home1() {

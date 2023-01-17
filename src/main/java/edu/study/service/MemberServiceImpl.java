@@ -16,7 +16,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public MemberVo login(MemberVo vo) {
-
+		System.out.println("여기니");
 		return MemberDAO.login(vo);
 	}
 

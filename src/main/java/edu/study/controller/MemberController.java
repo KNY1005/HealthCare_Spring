@@ -2,6 +2,8 @@ package edu.study.controller;
 
 import java.net.http.HttpRequest;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +24,14 @@ public class MemberController {
 	
 	@RequestMapping(value="/login.do",method=RequestMethod.GET )
 	public String login() {
-		
-		return "login/login"; 
+		System.out.println("로그인");
+		return "member/login"; 
 	}
 	
 	@RequestMapping(value="/login.do",method=RequestMethod.POST )
 	public String login(MemberVo vo, HttpSession sesstion) {
-		
+	
+		System.out.println("띠용");
 		MemberVo loginVO = MemberService.login(vo);
 		
 		if(loginVO != null) {
@@ -39,6 +42,10 @@ public class MemberController {
 			
 		return "redirect:/";
 	}
+	
+	
+	
+	
 	
 	@RequestMapping(value="/logout.do", method=RequestMethod.GET)
 	public String logout(HttpSession session) {

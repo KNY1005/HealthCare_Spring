@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ page session="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+
 <c:set var="path" value="${pageContext.request.contextPath}" />
 
 <html>
@@ -85,6 +87,7 @@
             </ul>
           </div>
         </nav>
+        <%/* if(mid == null){*/ %>
         
         <div id="profli">
           <div class="main_profli">
@@ -110,7 +113,8 @@
           </div>
         </div>
       </div>
-      
+      <%/* }else if(mid != null){*/%>
+      <%/*}*/ %>
     </header>
 <!-- 헤더(inclue랑 css 다름) -->
 <!-- 메인 -->
@@ -119,6 +123,9 @@
         <div class="layer"></div>
       </div>
     
+      	<div class="login">
+      		<a href="member/login.do">로그인</a>
+      	</div>
       <div class="search-box">
         <input
           class="search-txt"
