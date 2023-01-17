@@ -16,9 +16,9 @@
 <meta name="theme-color" content="#ffffff" />
 
 <link href="${path}/resources/css/reset.css" rel="stylesheet" />
-<link href="${path}/resources/css/blood_reserve_inquiry.css" rel="stylesheet" />
+<link href="${path}/resources/css/mypage/shot_reserve_inquiry.css" rel="stylesheet" />
 
-<script src="${path}/resources/js/blood_reserve_inquiry.js"></script>
+<script src="${path}/resources/js/mypage/shot_reserveinquiry.js"></script>
 
 </head>
 <body>

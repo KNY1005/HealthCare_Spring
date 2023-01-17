@@ -99,8 +99,8 @@
               <li><p>김모모님</p></li>
               <li><hr width="250px" /></li>
               <li><a href="mypage1.do">마이페이지</a></li>
-              <li><a href="#">내가 쓴 글</a></li>
-              <li><a href="#">개인정보 설정</a></li>
+              <li><a href="mypage4.do">내가 쓴 글</a></li>
+              <li><a href="mypage5.do">개인정보 설정</a></li>
               <li><hr width="250px" /></li>
               <li>
                 <button><a href="#">로그아웃</a></button>
