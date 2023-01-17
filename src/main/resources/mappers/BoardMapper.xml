@@ -23,7 +23,7 @@
 			  ,bhit
 			  ,midx
 			from table_board
-			WHERE blist = 'N'sd
+			WHERE blist = 'N'
 	</select>
 	
 	<select id="selectByBidx" parameterType="int" resultType="BoardVo" >	<!-- 데이터 타입 정의/브이오에 담겠다 -->
