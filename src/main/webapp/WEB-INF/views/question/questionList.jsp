@@ -216,10 +216,7 @@ main {
 	margin: 0 10px 0;
 }
 
-#page li:hover {
-	transition: .3s;
-	border: 2px solid #ffe7e7;
-}
+
 
 #page li a {
 	font-size: 20px;
