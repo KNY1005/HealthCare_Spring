@@ -40,4 +40,6 @@ public class BoardDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.delete("edu.study.mapper.boardMapper.deleteByBidx", bidx);
 	}
+	
+	
 }

@@ -3,6 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
+<<<<<<< HEAD
 <mapper namespace="edu.study.mapper.boardMapper">
 	<select id="listSearch" parameterType="scri"
 		resultType="BoardVo">
@@ -15,6 +16,31 @@
 			ORDER BY bidx desc) A
 			)WHERE rnum BETWEEN #{rowStart} AND #{rowEnd}
 		</select>
+=======
+<mapper namespace="edu.study.mapper.boardMapper"> 
+	<select id="list" resultType="BoardVo">
+		select bidx
+			  ,boriginbidx
+			  ,bdepth
+			  ,blvl
+			  ,blist
+			  ,bcategory
+			  ,btitle
+			  ,bwriter
+			  ,bcontent
+			  ,bwdate
+			  ,brewdate
+			  ,bstate
+			  ,bmdate
+			  ,bdelete
+			  ,bsecret
+			  ,bhit
+			  ,midx
+			from table_board
+			WHERE blist = 'N'
+			
+	</select>
+>>>>>>> branch 'main' of https://github.com/JAM1004/HealthCare_Spring.git
 	
 		<select id="listCount" resultType="int">
 			SELECT COUNT(bidx)
@@ -82,4 +108,14 @@
 			from table_board
 		</selectKey>
 	</insert>
+	
+	<update id="updateViewCnt">
+
+        update table_board
+
+        set bhit = bhit + 1
+
+        where bidx = #{bidx}
+
+ </update>
 </mapper>
