@@ -116,13 +116,6 @@
       <div class="background">
         <div class="layer"></div>
       </div>
-
-    <div class="main_title_content">
-      <div class="content">
-        <h2>HealthCare</h2>
-        <h2>HealthCare</h2>
-      </div>
-    </div>
     
       <div class="search-box">
         <input
