@@ -137,4 +137,32 @@ public class HomeController {
 		
 		return "mypage/blood_reserve_inquiry";
 	}
+	
+	@RequestMapping(value = "mypage2.do", method = RequestMethod.GET)
+	public String mypage2() {
+		
+		return "mypage/shot_reserve_inquiry";
+	}
+	@RequestMapping(value = "mypage3.do", method = RequestMethod.GET)
+	public String mypage3() {
+		
+		return "mypage/medical_reserve_inquiry";
+	}
+	@RequestMapping(value = "mypage4.do", method = RequestMethod.GET)
+	public String mypage4() {
+		
+		return "mypage/my_text_inquiry";
+	}
+	@RequestMapping(value = "mypage5.do", method = RequestMethod.GET)
+	public String mypage5() {
+		
+		return "mypage/my_information_inquiry";
+	}
+	
+	/*로그인*/
+	@RequestMapping(value = "login.do", method = RequestMethod.GET)
+	public String mypage6() {
+		
+		return "mypage/login";
+	}
 }

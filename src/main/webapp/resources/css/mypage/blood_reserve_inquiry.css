@@ -2,11 +2,13 @@
 a {
   text-decoration-line: none;
 }
+
+.header{
+	margin-top:-20px;
+}
+
 main {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin: 200px auto;
   width: 1320px;
   height: 700px;
   display: flex;
@@ -14,9 +16,6 @@ main {
   z-index:-10;
 }
 
-.boxbox{
-	height: 1000px;
-}
 .mypage_manu {
   display: flex;
   flex-direction: column;
@@ -221,8 +220,8 @@ body::before {
 /*삭제버튼*/
 .button {
   position: absolute;
-  bottom: 0;
-  right: 0;
+  bottom: 17%;
+  right: 17%;
 }
 
 .button input {
@@ -269,6 +268,8 @@ input:checked ~ .checkbox {
   border: 3px solid #434343;
   border-radius: 6px;
   transition: all 0.375s;
+  margin-top: 15px;
+  margin-left: 20px;
 }
 
 .checkbox_box {
