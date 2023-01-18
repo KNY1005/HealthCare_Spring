@@ -6,7 +6,6 @@ import edu.study.vo.MemberVo;
 
 
 public interface MemberService {
-
 	MemberVo login(MemberVo vo);
 	int selectById(String mid);
 }

@@ -20,6 +20,7 @@ public class HomeController {
 		
 		return "home";
 	}
+	
 	/*예방접종*/
 	@RequestMapping(value = "abc1.do", method = RequestMethod.GET)
 	public String home1() {
@@ -131,33 +132,6 @@ public class HomeController {
 		
 		return "notice/noticeWrite";
 	}		
-	
-	@RequestMapping(value = "mypage1.do", method = RequestMethod.GET)
-	public String mypage1() {
-		
-		return "mypage/blood_reserve_inquiry";
-	}
-	
-	@RequestMapping(value = "mypage2.do", method = RequestMethod.GET)
-	public String mypage2() {
-		
-		return "mypage/shot_reserve_inquiry";
-	}
-	@RequestMapping(value = "mypage3.do", method = RequestMethod.GET)
-	public String mypage3() {
-		
-		return "mypage/medical_reserve_inquiry";
-	}
-	@RequestMapping(value = "mypage4.do", method = RequestMethod.GET)
-	public String mypage4() {
-		
-		return "mypage/my_text_inquiry";
-	}
-	@RequestMapping(value = "mypage5.do", method = RequestMethod.GET)
-	public String mypage5() {
-		
-		return "mypage/my_information_inquiry";
-	}
 	
 
 }

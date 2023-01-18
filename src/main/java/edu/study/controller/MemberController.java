@@ -2,6 +2,8 @@ package edu.study.controller;
 
 import java.net.http.HttpRequest;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +24,14 @@ public class MemberController {
 	
 	@RequestMapping(value="/login.do",method=RequestMethod.GET )
 	public String login() {
-		
-		return "login/login"; 
+		System.out.println("로그인");
+		return "member/login"; 
 	}
 	
 	@RequestMapping(value="/login.do",method=RequestMethod.POST )
 	public String login(MemberVo vo, HttpSession sesstion) {
-		
+	
+		System.out.println("띠용");
 		MemberVo loginVO = MemberService.login(vo);
 		
 		if(loginVO != null) {
@@ -40,6 +43,7 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
+	
 	@RequestMapping(value="/logout.do", method=RequestMethod.GET)
 	public String logout(HttpSession session) {
 		
@@ -50,7 +54,7 @@ public class MemberController {
 	
 	@RequestMapping(value="/join.do",method=RequestMethod.GET)
 	public String join() {
-		return "login/join";
+		return "member/join";
 	}
 	
 	@ResponseBody
@@ -65,6 +69,44 @@ public class MemberController {
 			return "0";
 		}
 	}
+	
+	
+	
+	@RequestMapping(value = "mypage1.do", method = RequestMethod.GET)
+	public String mypage1() {
+		
+		return "member/blood_reserve_inquiry";
+	}
+	
+	@RequestMapping(value = "mypage2.do", method = RequestMethod.GET)
+	public String mypage2() {
+		
+		return "member/shot_reserve_inquiry";
+	}
+	@RequestMapping(value = "mypage3.do", method = RequestMethod.GET)
+	public String mypage3() {
+		
+		return "member/medical_reserve_inquiry";
+	}
+	
+	@RequestMapping(value = "mypage4.do", method = RequestMethod.GET)
+	public String mypage4() {
+		
+		return "member/my_text_inquiry";
+	}
+	
+	@RequestMapping(value = "mypage5.do", method = RequestMethod.GET)
+	public String mypage5() {
+		
+		return "member/my_information_inquiry";
+	}
+	
+	
+	
+	
+	
+	
+	
 }
 
 

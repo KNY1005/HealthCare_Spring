@@ -228,7 +228,7 @@ a {
 
 .search-box {
   position: absolute;
-  top: 35%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -241,6 +241,8 @@ a {
   border: none;
   border-radius: 50px;
   font-size: 20px;
+  text-align: center;
+  
 }
 
 .search-box button {
@@ -255,7 +257,6 @@ a {
   height: 4vh;
   width: 4vh;
   border-radius: 50px;
-  box-shadow: 1px 1px 3px rgb(119, 119, 119);
 }
 
 .search-box button:hover {
@@ -263,52 +264,150 @@ a {
 }
 
 /*main_hover_menu*/
+
 .main_hover_menu {
-  height: 400px;
-  width: 800px;
   position: absolute;
   top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
-  margin-top: 100px;
 }
 
-.main_hover_menu_left li {
-  background: #fff;
-  border-radius: 50px;
+.main_hover_menu img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 100px;
-  height: 100px;
+  opacity: 0.5;
+  z-index: -5;
+}
+.main_hover_menu li p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  font-weight: bold;
+}
+.main_hover_menu_1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 1500px;
+}
+
+.main_hover_menu_1 li {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffe7e7;
+  font-size: 20px;
+  margin: 70px 50px 0 50px;
+  transition: all ease 0.3s;
+}
+/*호버*/
+.snip1489 {
+  position: relative;
+  font-size: 40px;
+  color: #e6e6e6;
+  width: 75px;
+  margin: 40px;
+  height: 75px;
+  line-height: 75px;
+  display: inline-block;
+  text-align: center;
+  -webkit-perspective: 50em;
+  perspective: 50em;
+  text-decoration: none;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.snip1489:after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border: 5px solid #e6e6e6;
+  content: "";
+  z-index: -1;
+  border-radius: 50%;
+}
+.snip1489:before {
+  color: #fff;
+}
+.snip1489:before,
+.snip1489:after {
+  -webkit-transition: all 0.45s ease-in-out;
+  transition: all 0.45s ease-in-out;
+}
+.snip1489:hover,
+.snip1489:active,
+.snip1489.hover {
+  color: #c0392b;
+}
+.snip1489:hover:after,
+.snip1489:active:after,
+.snip1489.hover:after {
+  border-color: transparent #c0392b;
+  -webkit-transform: rotate(360deg);
+  transform: rotate(360deg);
+}
+
+/*제목*/
+/* Non essential CSS - Just for example centering */
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.center-outer {
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+
+.center-inner {
+  display: table-cell;
+  vertical-align: middle;
   text-align: center;
 }
 
-.main_hover_menu_left li:nth-child(1) {
+/* Essential CSS - Makes the effect work */
+.content_box {
   position: absolute;
-  top: 20px;
-  left: 0;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.bubbles {
+  display: inline-block;
+  font-family: arial;
+  position: relative;
 }
 
-.main_hover_menu_left li:nth-child(2) {
-  position: absolute;
-  top: 150px;
-  left: 0;
+.bubbles h1 {
+  position: relative;
+  margin: 1em 0 0;
+  font-family: "Luckiest Guy", cursive;
+  color: rgb(255, 202, 202);
+  z-index: 2;
+  font-size: 100px;
+  font-weight: bold;
 }
 
-.main_hover_menu_right li {
-  background: #fff;
-  border-radius: 50px;
-  width: 100px;
-  height: 100px;
-  text-align: center;
-}
-
-.main_hover_menu_right li:nth-child(1) {
+.individual-bubble {
   position: absolute;
-  top: 20px;
-  right: 0;
-}
-
-.main_hover_menu_right li:nth-child(2) {
-  position: absolute;
-  top: 150px;
-  right: 0;
+  border-radius: 100%;
+  bottom: 10px;
+  background-color: rgb(255, 232, 232);
+  z-index: 1;
+  width: 80px;
 }
