@@ -17,12 +17,12 @@ public class MemberDAO {
 	
 	public MemberVo login(MemberVo vo){
 		
-		return sqlSession.selectOne("edu.study.mapper.MemberMapper.login", vo);
+		return sqlSession.selectOne("edu.study.mapper.memberMapper.login", vo);
 	}
 	
 	public int selectById(String mid) {
 		
-		return sqlSession.selectOne("edu.study.mapper.MemberMapper.selectById", mid);
+		return sqlSession.selectOne("edu.study.mapper.memberMapper.selectById", mid);
 	}
 
 

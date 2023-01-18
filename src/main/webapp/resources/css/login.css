@@ -53,7 +53,7 @@ form {
   background: #f03699;
   margin: 0px 10px 50px;
   border: none;
-  color: #000;
+  color: #fff;
   font-family: "Open Sans", sans-serif;
   text-transform: uppercase;
   font-weight: 600;
@@ -79,7 +79,7 @@ a {
 }
 
 form h1 {
-  color: #000;
+  color: #fff;
   font-family: "Open Sans", sans-serif;
   text-transform: uppercase;
   font-weight: 600;
@@ -191,7 +191,7 @@ fieldset input:focus {
   border: none;
   border-radius: 10em;
   background: #f03699;
-  color: #000;
+  color: #fff;
   font-family: "Open Sans", sans-serif;
   text-transform: uppercase;
   font-weight: 600;
@@ -240,7 +240,7 @@ a {
 @media (max-width: 500px) {
   html,
   body {
-    background: url(https://picsum.photos/3695/5543?image=827) #000;
+    background: url(https://picsum.photos/3695/5543?image=827) #fff;
     background-repeat: no-repeat;
     background-position: top center;
     background-size: cover;

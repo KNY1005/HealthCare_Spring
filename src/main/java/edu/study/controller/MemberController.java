@@ -38,15 +38,17 @@ public class MemberController {
 		
 		HttpSession session = rep.getSession();
 		MemberVo login = MemberService.login(vo);
-		
+		 
 		if(login == null) {
 			session.setAttribute("member", null);
 			rttr.addFlashAttribute("msg", false);
+			return "member/login";
 		}else {
 			session.setAttribute("member", login);
+			return "redirect:/";
 		}
 			
-		return "redirect:/";
+		
 	}
 	
 	

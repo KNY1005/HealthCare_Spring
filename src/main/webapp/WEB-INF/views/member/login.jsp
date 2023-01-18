@@ -36,7 +36,7 @@
   <body>
     <div>
       <div class="panel shadow1">
-        <form class="login-form" method="post" name='loginForm' action="/member/login">
+        <form class="login" id="login"method="post" name='login' action="/controller/member/login.do">
           <div class="panel-switch animated fadeIn">
             <button type="button" id="sign_up" class="active-button">
               Sign Up
@@ -52,7 +52,7 @@
           <fieldset id="login-fieldset">
             <input
               class="login animated fadeInUp animate2"
-              name="UserId"
+              name="mid"
               type="textbox"
               required
               placeholder="UserId"
@@ -60,13 +60,25 @@
             />
             <input
               class="login animated fadeInUp animate3"
-              name="password"
+              name="mpwd"
               type="password"
               required
               placeholder="Password"
               value=""
             />
           </fieldset>
+          <input
+            type="submit"
+            id="login-form-submit"
+            class="login_form button animated fadeInUp animate4"
+            value="Login"
+          />
+          <p>
+            <a id="lost-password-link" href="" class="animated fadeIn animate5"
+              >아이디 비밀번호 찾기
+            </a>
+          </p>
+          </form>
           <fieldset id="signup-fieldset" class="hidden">
             <input
               class="login animated fadeInUp animate2"
@@ -125,26 +137,16 @@
               value=""
             />
           </fieldset>
-          <input
-            type="submit"
-            id="login-form-submit"
-            class="login_form button animated fadeInUp animate4"
-            value="Log in"
-          />
+          
           <input
             type="submit"
             id="signup-form-submit"
             class="login_form button animated fadeInUp animate4 hidden"
             value="Sign up"
           />
-          <p>
-            <a id="lost-password-link" href="" class="animated fadeIn animate5"
-              >아이디 비밀번호 찾기
-            </a>
-          </p>
-        </form>
+          
+        
       </div>
     </div>
-    <script src="form.js"></script>
   </body>
 </html>

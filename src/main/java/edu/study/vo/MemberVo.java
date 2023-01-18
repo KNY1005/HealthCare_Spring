@@ -4,7 +4,7 @@ public class MemberVo {
 	private int midx;
 	private String mid;
 	private String mname;
-	private int mpwd;
+	private String mpwd;
 	private int mphone;
 	private String mlvl;
 	private String mgrade;
@@ -16,6 +16,12 @@ public class MemberVo {
 	private String mip;
 	private String memail;
 	
+	public String getMpwd() {
+		return mpwd;
+	}
+	public void setMpwd(String mpwd) {
+		this.mpwd = mpwd;
+	}
 	public int getMidx() {
 		return midx;
 	}
@@ -34,12 +40,7 @@ public class MemberVo {
 	public void setMname(String mname) {
 		this.mname = mname;
 	}
-	public int getMpwd() {
-		return mpwd;
-	}
-	public void setMpwd(int mpwd) {
-		this.mpwd = mpwd;
-	}
+
 	public int getMphone() {
 		return mphone;
 	}

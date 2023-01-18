@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
-
 <c:set var="path" value="${pageContext.request.contextPath}" />
 
 <html>
@@ -95,14 +93,13 @@ $(document).ready(function(){
           </div>
         </nav>
         <div id="profli">
-        <form name="login" id="login" method="post" action="member/login.do">
-        <c:if test="${member != null}">
+        <c:if test="${vo.getMid() != null}">
           <div class="main_profli">
            <img src="${path}/resources/image/profli.png" alt="프로필" />
             <button type="submit" class="btn">
               <i class="xi-plus" alt="검색"></i>
             </button>
-            <p>${member.mname}님</p>
+            <p>${mname}님</p>
           </div>
           <div id="profli_menu">
             <ul>
@@ -114,17 +111,16 @@ $(document).ready(function(){
               <li><a href="<%=request.getContextPath() %>/mypage5.do">개인정보 설정</a></li>
               <li><hr width="250px" /></li>
               <li>
-                <button id="logoutBtn">로그아웃</button>
+                <button id="logoutBtn"><a href="/member/logout">로그아웃</a></button>
               </li>
             </ul>
           </div>
       </c:if>
-      <c:if test="${member == null}">
+      <c:if test="${vo.getMid() == null}">
       	<div class="login" >
-      		<button href="<%=request.getContextPath() %>/member/login.do">시작하기</button>
+      		<button><a href="<%=request.getContextPath() %>/member/login.do">시작하기</a></button>
       	</div>
       </c:if>
-        </form>
         </div>
       </div>
       
