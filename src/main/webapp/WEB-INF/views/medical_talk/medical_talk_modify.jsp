@@ -269,14 +269,14 @@
 			<hr>
 		</div>
 
-		<form action="">
+		<form action="medicalmodify.do" method="post">
+			<input type="hidden" name="bidx" value="${vo.bidx}">
 			<div id="writing_view">
-				<input type="text" class="title" placeholder="제목" />
-				<textarea class="content" placeholder="수정 할 내용을 입력해주세요."></textarea>
+				<input type="text" class="title" name="btitle"value="${vo.btitle }" />
+				<textarea class="content" name="bcontent">${vo.bcontent}</textarea>
 				<ul>
-					<li>작성자</li>
-					<li>2023.01.10</li>
-					<li>AM 00:00</li>
+					<li>${vo.bwriter }</li>
+					<li>${vo.bwdate }</li>
 				</ul>
 			</div>
 			<div class="filebox">
@@ -286,7 +286,7 @@
 				<input type="file" id="ex_filename" class="upload-hidden">
 			</div>
 			<div id="btn">
-				<button type="button" onclick="location.href='medicalview.do'">취소</button>
+				<button type="button" onclick="location.href='medicalview.do?bidx=${vo.bidx}'">취소</button>
 				<button type="button" onclick="location.href='medicalview.do'">완료</button>
 			</div>
 		</form>

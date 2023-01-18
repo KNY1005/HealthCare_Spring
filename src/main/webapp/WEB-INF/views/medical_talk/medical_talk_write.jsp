@@ -270,9 +270,10 @@
 		</div>
 
 		<form action="">
+			<input type="hidden" name="blist" value="Q">
 			<div id="writing_view">
-				<input type="text" class="title" placeholder="제목" />
-				<textarea class="content" placeholder="수정 할 내용을 입력해주세요."></textarea>
+				<input type="text" class="title" />
+				<textarea class="content" placeholder="내용을 입력해주세요."></textarea>
 				<ul>
 					<li>작성자</li>
 					<li>2023.01.10</li>

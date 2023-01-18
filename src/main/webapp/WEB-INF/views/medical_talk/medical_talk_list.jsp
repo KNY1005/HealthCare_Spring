@@ -58,7 +58,7 @@
 			
 			width: 1320px;
 			height:1300px;
-			margin: 200px auto 0;
+			margin: 100px auto;
 			
 		}
 
@@ -196,51 +196,90 @@
 			display: inline-block;
 		}
 
-		main #head {
-			position: relative;
+		#head {
+			display: flex;
+			flex-direction: row;
 		}
 
-		main #search {
-			bottom: 4px;
+		#search {
 			font-weight: bold;
-			font-size: 36px;
+			font-size: 25px;
 			vertical-align: top;
-			position: absolute;
-			right: 10px;
+			margin-left: 760px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
 		}
-
-		main input {
-			display: inline-block;
+		
+		#search button {
+			style: none;
 		}
-
-		main #search_n {
-			position: absolute;
-			left: -50px;
-			top: 5px;
-		}
-
-		main input::-webkit-search-decoration,
-		main input::-webkit-search-cancel-button,
-		main input::-webkit-search-results-button,
-		main input::-webkit-search-results-decoration {
+		
+		#search input::-webkit-search-decoration, #search input::-webkit-search-cancel-button,
+			#search input::-webkit-search-results-button, #search input::-webkit-search-results-decoration
+			{
 			display: none;
-		}
-
-		/*search내의 요소 삭제*/
-		main input {
-			height: 40px;
+		} /*search내의 요소 삭제*/
+		#search input {
+			height: 36px;
 			font-size: 20px;
-			margin-left: 20px;
+			margin-left: -8px;
 			border: 1px solid #000;
-			border-radius: 10px;
-			padding-right: 40px;
+			border-left: none;
+			border-right: none;
+			margin-right: -8px;
+			padding-left: 10px;
 		}
+		
+		#search input:focus {
+			outline: none;
+			background: #fff;
+		}
+		
+		.hr {
+			height: 2px;
+			border: 0;
+			background: #ff7373;
+		}
+		
+		.cate {
+			-webkit-appearance: none; /* 네이티브 외형 감추기 */
+			-moz-appearance: none;
+			appearance: none;
+			font-weight: bold;
+			width: 100px;
+			padding-left: 10px;
+			height: 40px;
+			border: 1px solid #000;
+			border-radius: 10px 0 0 10px;
+			outline: 0 none;
+			font-size: 20px;
+			background: url("${path }/resources/image/bottom_arrow.png") no-repeat
+				95% 50%; /* 화살표 모양의 이미지 */
+		}
+		#glass {
+			border: 1px solid #000;
+			padding: 3px 10px 5px 10px;
+			border-radius: 0 10px 10px 0;
+			border-left: none;
+			background: #fff;
+			font-size: 20px;
+			height: 40px;
+		}
+		
+		
+		#glass:hover {
+			cursor: pointer;
+		}
+		
+		#medical_list {
+			border-collapse: separate;
+			border-spacing: 0 20px;
+		} /*tr간 간격*/
+				
 
-		main #search div a {
-			position: absolute;
-			right: 5px;
-			bottom: -2px;
-		}
+
+
 
 		main hr {
 			height: 2px;
@@ -248,47 +287,24 @@
 			background: #ff7373;
 		}
 
-		main #glass:hover {
+		#glass:hover {
 			cursor: pointer;
 		}
 
-		main table {
-			border-collapse: separate;
-			border-spacing: 0 20px;
-		}
-
-		/*tr간 간격*/
-		main table tr {
+		.content {
 			background: #ffe7e7;
 		}
-
-		main table tr:nth-child(1) {
+		
+		.title {
+			font-size: 30px;
+		}
+		
+		.column {
+			cursor: pointer;
 			background: #fff;
 		}
-
-		main table td:first-child,
-		main table th:first-child {
-			border-radius: 10px 0 0 10px;
-			width: 1000px;
-		}
-
-		/*td테두리 첫번쨰와 마지막만 둥글게 하기위해서*/
-		main table td:first-child {
-			text-align: left;
-			padding-left: 20px;
-		}
-
-		main table #tit {
-			font-size: 36px;
-		}
-
-		main table td:last-child,
-		main table th:last-child {
-			border-radius: 0 10px 10px 0;
-		}
-
-		main table th,
-		main table td {
+		
+		.column th {
 			width: 350px;
 			font-weight: bold;
 			font-size: 20px;
@@ -296,20 +312,36 @@
 			vertical-align: middle;
 			height: 73px;
 		}
-
-		main table td {
+		
+		.content td:first-child {
+			border-radius: 10px 0 0 10px;
+			width: 1000px;
+			text-align: left;
+			padding-left: 20px;
+		} /*td테두리 첫번쨰와 마지막만 둥글게 하기위해서*/
+		.content td:last-child {
+			border-radius: 0 10px 10px 0;
+		}
+		
+		.content td {
+			width: 350px;
+			font-weight: bold;
+			font-size: 20px;
+			text-align: center;
+			vertical-align: middle;
+			height: 73px;
 			padding: 10px 0;
 		}
-
-		main table tr:nth-child(n+2):hover {
+		
+		.content:hover {
 			background: #fff;
 			box-shadow: 0 0 0 3px #ff8f8f inset;
 			border-radius: 10px;
 			transition: .2s;
 			cursor: pointer;
 		}
-
-		main button {
+		
+		.button {
 			border: 0;
 			background: #ffe7e7;
 			width: 180px;
@@ -317,15 +349,36 @@
 			border-radius: 10px;
 			font-size: 20px;
 			font-weight: bold;
+			display: inline-block;
 			float: right;
 			margin-right: 20px;
 		}
-
-		main button:hover {
+		
+		.button:hover {
 			border-radius: 10px;
 			transition: .2s;
 			box-shadow: inset 1px 1px 3px rgb(197, 197, 197);
 			cursor: pointer;
+		}
+		
+		#page_div {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		
+		#page {
+			display: flex;
+		}
+		
+		#page li {
+			margin: 0 10px 0;
+		}
+
+
+	
+		#page li a {
+			font-size: 20px;
 		}
 
 		/* swiper start*/
@@ -371,11 +424,18 @@
 		<div id="head">
 			<h2>건강상담소</h2>
 			<div id="search">
-				<P id="search_n">검색</P>
-				<div>
-					<input type="search" name="search">
-					<a href="#" id="glass"><i class="xi-search"></i></a>
-				</div>
+				<form action="medicallist.do" method="get">
+				<select class="cate" name="searchType">
+					<option value="btitle"
+							<c:if test="${param.searchType eq 'btitle' }">selected</c:if>>제목</option>
+						<option value="bcontent"
+							<c:if test="${param.searchType eq 'bcontent' }">selected</c:if>>내용</option>
+
+					</select> <input type="text" name="keyWord" placeholder="검색">
+					<button id="glass">
+						<i class="xi-search"></i>
+					</button>
+				</form>
 			</div><!--//#search-->
 		</div><!--//#head-->
 		<hr>
@@ -458,67 +518,48 @@
 				</div><!--//.swiper-wrapper-->
 			</div><!--//.swiper mySwiper-->
 		</div><!--//#rank-->
-		<hr>
-		<table>
-			<tr onclick="location.href='medicalview.do'">
+		<hr class="hr">
+		<table id="medical_list">
+			<tr class="column">
 				<th>제목 및 내용</th>
 				<th>작성자</th>
 				<th>작성일</th>
 				<th>조회수</th>
 				<th>답변</th>
 			</tr>
-			<tr onclick="location.href='medicalview.do'">
+			<c:forEach items="${list}" var="vo">
+			<tr class="content"
+				onclick="location.href='medicalview.do?bidx=${vo.bidx}'">
 				<td>
-					<p id="tit">제목</p><br />
-					<p>여기는 내용 입니다.</p>
+					<p class="title">${vo.btitle}${vo.bidx }</p><br />
+					<p>${vo.bcontent}</p>
 				</td>
-				<td>김모모</td>
-				<td>작성자</td>
-				<td>1000</td>
-				<td>답변완료</td>
+				<td>${vo.bwriter}</td>
+				<td>${vo.bwdate}</td>
+				<td>${vo.bhit}</td>
+				<td>${vo.bstate}</td>
 			</tr>
-			<tr onclick="location.href='medicalview.do'">
-				<td>
-					<p id="tit">제목</p><br />
-					<p>여기는 내용 입니다.</p>
-				</td>
-				<td>김모모</td>
-				<td>작성자</td>
-				<td>1000</td>
-				<td>답변완료</td>
-			</tr>
-			<tr onclick="location.href='medicalview.do'">
-				<td>
-					<p id="tit">제목</p><br />
-					<p>여기는 내용 입니다.</p>
-				</td>
-				<td>김모모</td>
-				<td>작성자</td>
-				<td>1000</td>
-				<td>답변완료</td>
-			</tr>
-			<tr onclick="location.href='medicalview.do'">
-				<td>
-					<p id="tit">제목</p><br />
-					<p>여기는 내용 입니다.</p>
-				</td>
-				<td>김모모</td>
-				<td>작성자</td>
-				<td>1000</td>
-				<td>답변완료</td>
-			</tr>
-			<tr onclick="location.href='medicalview.do'">
-				<td>
-					<p id="tit">제목</p><br />
-					<p>여기는 내용 입니다.</p>
-				</td>
-				<td>김모모</td>
-				<td>작성자</td>
-				<td>1000</td>
-				<td>답변완료</td>
-			</tr>
+		</c:forEach>
 		</table>
-		<button type="button" onclick="location.href='medicalwrite.do'">글쓰기</button>
+			<div id="page_div">
+			<ul id="page">
+				<c:if test="${page.prev}">
+					<li><a
+						href="medicallist.do?page=${page.startPage - 1}&&searchType=${page.scri.searchType}&&keyWord=${page.encoding(page.scri.keyWord)}"><i
+							class="xi-angle-left"></i></a></li>
+				</c:if>
+				<c:forEach begin="${page.startPage}" end="${page.endPage}" var="vo">
+					<li><a
+						href="medicallist.do?page=${vo}&&searchType=${page.scri.searchType}&&keyWord=${page.encoding(page.scri.keyWord)}">${vo}</a></li>
+				</c:forEach>
+				<c:if test="${page.next && page.endPage > 0}">
+					<li><a
+						href="medicallist.do?page=${page.endPage + 1}&&searchType=${page.scri.searchType}&&keyWord=${page.encoding(page.scri.keyWord)}"><i
+							class="xi-angle-right"></i></a></li>
+				</c:if>
+			</ul>
+		</div>
+		<button class="button" onclick="location.href='medicalwrite.do'">글쓰기</button>
 	</main>	
 	
 	<%@include file="../includes/footer.jsp"%>

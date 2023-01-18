@@ -313,7 +313,7 @@
 				<th>연락처</th>
 			</tr>
 			<tr onclick="location.href='medical2.do'">
-				<td>땡땡 병원</td>
+				<td>병원명 : <fmt:formatNumber value="${hmcNm}" type="number" />원</td>
 				<td>00:00 ~ 00:00</td>
 				<td>전라북도 전주시 완산구 땡땡로 77</td>
 				<td>010-0000-1234</td>

@@ -394,12 +394,11 @@
 			<hr>
 			<form action="">
 				<div id="writing_view">
-					<div class="title">제목</div>
-					<div class="content">내용</div>
+					<div class="title">${vo.btitle}</div>
+					<div class="content">${vo.bcontent}</div>
 					<ul>
-						<li>작성자</li>
-						<li>작성일</li>
-						<li>작성날짜</li>
+						<li>${vo.bwriter}</li>
+						<li>${vo.bwdate}</li>
 					</ul>
 					<div class="file">
 					<div class="filebox">
@@ -409,7 +408,7 @@
 				</div>
 				<div id="button">
 					<button>답변</button>
-					<button type="button" onClick="location.href='medicalmodify.do'">수정</button>
+					<button type="button" onClick="location.href='medicalmodify.do?bidx=${vo.bidx}'">수정</button>
 					<button>삭제</button>
 				</div>
 				</div>
