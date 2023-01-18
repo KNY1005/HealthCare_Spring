@@ -231,14 +231,14 @@ hr {
 			<h2>문의사항 글 수정</h2>
 		</div>
 		<hr>
-		<form>
+		<form action="questionModify.do" method="post">
+			<input type="hidden" name="bidx" value="${vo.bidx}">
 			<div id="writing_view">
-				<input type="text" class="title" value="제목" />
-				<textarea class="content">내용</textarea>
+				<input type="text" class="title" name="btitle"value="${vo.btitle }" />
+				<textarea class="content" name="bcontent">${vo.bcontent}</textarea>
 				<ul>
-					<li>작성자</li>
-					<li>작성일</li>
-					<li>작성날짜</li>
+					<li>${vo.bwriter }</li>
+					<li>${vo.bwdate }</li>					
 				</ul>
 			</div>
 			<div class="file">
@@ -250,8 +250,8 @@ hr {
 				</div>
 			</div>
 			<div id="button">
-				<button type="button" onclick="location.href='questionView.do'">취소</button>
-				<button type="button" onclick="location.href='questionView.do'">완료</button>
+				<button type="button" onClick="location.href='questionView.do?bidx=${vo.bidx}'">취소</button>
+				<button>완료</button>
 			</div>
 		</form>
 
