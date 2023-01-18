@@ -168,7 +168,7 @@ fieldset input {
   margin: 10px 0;
   padding: 5px;
   text-indent: 10px;
-  color: #fff;
+  color: #000;
   font-weight: 600;
 }
 
@@ -191,7 +191,7 @@ fieldset input:focus {
   border: none;
   border-radius: 10em;
   background: #f03699;
-  color: #fff;
+  color: #000;
   font-family: "Open Sans", sans-serif;
   text-transform: uppercase;
   font-weight: 600;
@@ -240,7 +240,7 @@ a {
 @media (max-width: 500px) {
   html,
   body {
-    background: url(https://picsum.photos/3695/5543?image=827) #fff;
+    background: url(https://picsum.photos/3695/5543?image=827) #000;
     background-repeat: no-repeat;
     background-position: top center;
     background-size: cover;

@@ -5,7 +5,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <title>시작하기</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -50,7 +49,6 @@
           <h1 class="animated fadeInUp animate1 hidden" id="title-signup">
             Welcome !
           </h1>
-         <form action="loginok.jsp" mehod="post" />
           <fieldset id="login-fieldset">
             <input
               class="login animated fadeInUp animate2"
@@ -69,7 +67,6 @@
               value=""
             />
           </fieldset>
-          </form>
           <fieldset id="signup-fieldset" class="hidden">
             <input
               class="login animated fadeInUp animate2"

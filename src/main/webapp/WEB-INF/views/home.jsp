@@ -131,8 +131,10 @@
       </div>
     
       	<div class="login">
-      		<a href="<%=request.getContextPath() %>/member/login.do">로그인</a>
+      		<button><a href="<%=request.getContextPath() %>/member/login.do">시작하기</a></button>
       	</div>
+      	
+      	
     <div class="content_box">
         <div class="center-outer">
           <div class="center-inner">
