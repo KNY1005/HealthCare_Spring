@@ -8,9 +8,11 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.study.service.MemberService;
 import edu.study.vo.MemberVo;
@@ -31,15 +33,17 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/login.do",method=RequestMethod.POST )
-	public String login(MemberVo vo, HttpSession sesstion) {
-	
+	public String login(MemberVo vo, HttpServletRequest rep, RedirectAttributes rttr) throws Exception {
+		System.out.println("로그인중");
 		
-		MemberVo loginVO = MemberService.login(vo);
+		HttpSession session = rep.getSession();
+		MemberVo login = MemberService.login(vo);
 		
-		if(loginVO != null) {
-			sesstion.setAttribute("login", loginVO);
-			
-			System.out.println(loginVO.toString());
+		if(login == null) {
+			session.setAttribute("member", null);
+			rttr.addFlashAttribute("msg", false);
+		}else {
+			session.setAttribute("member", login);
 		}
 			
 		return "redirect:/";

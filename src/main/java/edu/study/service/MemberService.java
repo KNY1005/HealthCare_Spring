@@ -6,6 +6,7 @@ import edu.study.vo.MemberVo;
 
 
 public interface MemberService {
-	MemberVo login(MemberVo vo);
-	int selectById(String mid);
+	public MemberVo login(MemberVo vo)throws Exception;
+	
+	public int selectById(String mid);
 }

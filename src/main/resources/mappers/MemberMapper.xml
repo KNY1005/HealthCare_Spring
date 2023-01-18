@@ -3,10 +3,9 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="edu.study.mapper.memberMapper">	<!-- dao에서 마이바티스를 이용해 쿼리를 찾는 역할 -->
+    <!-- 로그인 -->
 	<select id="login" parameterType="MemberVo" resultType="MemberVo">
-		SELECT midx
-		     , mid
-		     , mname
+		SELECT mid, mpwd
 		  FROM table_member
 		 WHERE mid = #{mid}
 		   AND mpwd = #{mpwd}
@@ -16,4 +15,13 @@
 		  FROM table_member
 		 WHERE mid = #{mid}
 	</select>
+	<!-- 회원가입 
+	<select id="join">
+		 INSERT INTO MP_MEMBER(   mid
+	   					       , mpwd 
+	   					       , USERNAME 	)
+	                  VALUES(    #{userId} 
+	                 		   , #{userPass}
+	                 		   , #{userName})
+	</select> -->
 </mapper>

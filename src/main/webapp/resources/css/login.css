@@ -53,7 +53,7 @@ form {
   background: #f03699;
   margin: 0px 10px 50px;
   border: none;
-  color: #fff;
+  color: #000;
   font-family: "Open Sans", sans-serif;
   text-transform: uppercase;
   font-weight: 600;
@@ -79,7 +79,7 @@ a {
 }
 
 form h1 {
-  color: #fff;
+  color: #000;
   font-family: "Open Sans", sans-serif;
   text-transform: uppercase;
   font-weight: 600;
@@ -168,7 +168,7 @@ fieldset input {
   margin: 10px 0;
   padding: 5px;
   text-indent: 10px;
-  color: #000;
+  color: #000000;
   font-weight: 600;
 }
 

@@ -36,7 +36,7 @@
   <body>
     <div>
       <div class="panel shadow1">
-        <form class="login-form">
+        <form class="login-form" method="post" name='loginForm' action="/member/login">
           <div class="panel-switch animated fadeIn">
             <button type="button" id="sign_up" class="active-button">
               Sign Up

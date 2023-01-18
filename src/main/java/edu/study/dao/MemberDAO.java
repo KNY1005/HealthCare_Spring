@@ -15,7 +15,6 @@ public class MemberDAO {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	/*·Î±×ÀÎ*/
 	public MemberVo login(MemberVo vo){
 		
 		return sqlSession.selectOne("edu.study.mapper.MemberMapper.login", vo);

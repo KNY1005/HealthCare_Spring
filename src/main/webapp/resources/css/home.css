@@ -27,11 +27,20 @@ a,
 
 
 
-.login a{
-	color:#000;
+.login {
+	position: absolute;
+  	right: 30px;
+  	top: 20px;
 }
-
-
+.login button{
+	background: #ffc4c4;
+	color:fff;
+	font-weight:bold;
+	border-radius: 20px;
+    width: 100px;
+    height: 30px;
+    border:none;
+	}
 
 /*----------------nav_main_menu > start----------------*/
 
@@ -39,7 +48,7 @@ a,
   z-index: 999;
   position: fixed;
   width: 100%;
-  
+  height: 70px;
 }
 a {
   text-decoration-line: none;

@@ -36,16 +36,15 @@
 }
 </style>
 </head>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#logoutBtn").on("click", function(){
+		location.href="member/logout";
+	})
+	
+})
+</script>
 <body>
-<%
-	if(session.getAttribute("mid")==null){
-		out.println("<a href='login.jsp'>로그인</a>");
-	}else{
-		String mid = (String)session.getAttribute("mid");
-		out.println(mid+"님 반갑습니다.<br>");
-		out.println("<a href='logout.jsp'>로그아웃</a>");
-	}
-%>
 <!-- 헤더(inclue랑 css 다름) -->
 	<header>
       <div class="nav_background">
@@ -96,30 +95,38 @@
           </div>
         </nav>
         <div id="profli">
+        <form name="login" id="login" method="post" action="member/login.do">
+        <c:if test="${member != null}">
           <div class="main_profli">
            <img src="${path}/resources/image/profli.png" alt="프로필" />
             <button type="submit" class="btn">
               <i class="xi-plus" alt="검색"></i>
             </button>
-            <p>김모모님</p>
+            <p>${member.mname}님</p>
           </div>
           <div id="profli_menu">
             <ul>
               <li><img src="${path}/resources/image/profli.png" alt="프로필" /></li>
-              <li><p>김모모님</p></li>
+              <li><p>${member.mname}님</p></li>
               <li><hr width="250px" /></li>
               <li><a href="<%=request.getContextPath() %>/mypage2.do">마이페이지</a></li>
               <li><a href="<%=request.getContextPath() %>/mypage4.do">내가 쓴 글</a></li>
               <li><a href="<%=request.getContextPath() %>/mypage5.do">개인정보 설정</a></li>
               <li><hr width="250px" /></li>
               <li>
-                <button><a href="#">로그아웃</a></button>
+                <button id="logoutBtn">로그아웃</button>
               </li>
             </ul>
           </div>
+      </c:if>
+      <c:if test="${member == null}">
+      	<div class="login" >
+      		<button href="<%=request.getContextPath() %>/member/login.do">시작하기</button>
+      	</div>
+      </c:if>
+        </form>
         </div>
       </div>
-      
       
       
     </header>
@@ -130,9 +137,6 @@
         <div class="layer"></div>
       </div>
     
-      	<div class="login">
-      		<button><a href="<%=request.getContextPath() %>/member/login.do">시작하기</a></button>
-      	</div>
       	
       	
     <div class="content_box">
@@ -173,7 +177,7 @@
             </a>
           </li>
           <li class="snip1489 ion-ios-star-outline">
-            <a href="<%=request.getContextPath() %>/healthnews2.do">자가검진">
+            <a href="<%=request.getContextPath() %>/healthnews2.do">
               <p>자가검진</p>
               <img src="${path}/resources/image/self.png" alt="설문이미지" />
             </a>
