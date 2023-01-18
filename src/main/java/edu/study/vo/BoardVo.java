@@ -16,22 +16,25 @@ public class BoardVo {
 	private String bmdate;
 	private String bdelete;
 	private String bsecret;
-	private int bhit;
+	private Integer bhit;
 	private int midx;
 	
 	
+	
+	
+	public Integer getBhit() {
+		return bhit;
+	}
+	public void setBhit(Integer bhit) {
+		this.bhit = bhit;
+	}
 	public String getBwriter() {
 		return bwriter;
 	}
 	public void setBwriter(String bwriter) {
 		this.bwriter = bwriter;
 	}
-	public int getBhit() {
-		return bhit;
-	}
-	public void setBhit(int bhit) {
-		this.bhit = bhit;
-	}
+	
 	public int getBidx() {
 		return bidx;
 	}

@@ -57,6 +57,14 @@ public class BoardServiceImpl implements BoardService{	//추상메소드 정의
 		return boardDAO.listCount(scri);
 	}
 
+	@Override
+	public int boardHitUpdate(int midx) {
+		// TODO Auto-generated method stub
+		return boardDAO.boardHitUpdate(midx);
+	}
+
+	
+
 	
 
 

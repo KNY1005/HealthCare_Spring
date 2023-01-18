@@ -16,5 +16,6 @@ public interface BoardService {
 	int deleteByBidx(int bidx);
 	int insert(BoardVo vo);
 	int maxBidx();
+	int boardHitUpdate(int midx);
 	
 }

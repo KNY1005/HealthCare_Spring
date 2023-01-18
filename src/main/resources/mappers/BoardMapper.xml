@@ -92,4 +92,9 @@
 			where bidx = #{bidx}
 	</delete>
 	
+	<update id="boardHitUpdate" parameterType="int">
+		update table_board 
+		set bhit = bhit + 1 
+		where bidx = #{bidx}
+	</update>
 </mapper>

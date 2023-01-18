@@ -68,13 +68,14 @@ main {
 	display: none;
 } /*search내의 요소 삭제*/
 #search input {
-	height: 40px;
+	height: 36px;
 	font-size: 20px;
 	margin-left: -8px;
 	border: 1px solid #000;
 	border-left: none;
 	border-right: none;
 	margin-right: -8px;
+	padding-left: 10px;
 }
 #search input:focus {outline: none; background:#fff;}
 
@@ -232,7 +233,7 @@ main {
 		<div id="head">
 			<h3 class="h3">공지사항</h3>
 			<div id="search">
-				<form action="noticeList.do" method="get">
+				<form action="list.do" method="get">
 					<select class="cate" name="searchType">
 						<option value="btitle"
 							<c:if test="${param.searchType eq 'btitle' }">selected</c:if>>제목</option>
@@ -256,7 +257,7 @@ main {
 			</tr>
 		<c:forEach items="${datalist}" var="vo">
 			<tr class="content" onClick="location.href='view.do?bidx=${vo.bidx}'">
-				<td><p class="title">${vo.btitle}</p> ${vo.bidx }<br />
+				<td><p class="title">${vo.btitle}</p><br />
 					<p>${vo.bcontent}</p></td>
 				<td>${vo.bwriter}</td>
 				<td>${vo.bwdate}</td>
@@ -268,16 +269,16 @@ main {
 			<ul id="page">
 				<c:if test="${page.prev}">
 					<li><a
-						href="noticeList.do?page=${page.startPage - 1}&&searchType=${page.scri.searchType}&&keyWord=${page.encoding(page.scri.keyWord)}"><i
+						href="list.do?page=${page.startPage - 1}&&searchType=${page.scri.searchType}&&keyWord=${page.encoding(page.scri.keyWord)}"><i
 							class="xi-angle-left"></i></a></li>
 				</c:if>
 				<c:forEach begin="${page.startPage}" end="${page.endPage}" var="vo">
 					<li><a
-						href="noticeList.do?page=${vo}&&searchType=${page.scri.searchType}&&keyWord=${page.encoding(page.scri.keyWord)}">${vo}</a></li>
+						href="list.do?page=${vo}&&searchType=${page.scri.searchType}&&keyWord=${page.encoding(page.scri.keyWord)}">${vo}</a></li>
 				</c:forEach>
 				<c:if test="${page.next && page.endPage > 0}">
 					<li><a
-						href="noticeList.do?page=${page.endPage + 1}&&searchType=${page.scri.searchType}&&keyWord=${page.encoding(page.scri.keyWord)}"><i
+						href="list.do?page=${page.endPage + 1}&&searchType=${page.scri.searchType}&&keyWord=${page.encoding(page.scri.keyWord)}"><i
 							class="xi-angle-right"></i></a></li>
 				</c:if>
 			</ul>

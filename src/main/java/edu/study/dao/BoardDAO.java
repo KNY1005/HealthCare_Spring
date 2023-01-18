@@ -5,6 +5,9 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.GenericXmlApplicationContext;
+import javax.sql.DataSource;
 
 import edu.study.vo.BoardVo;
 import edu.study.vo.SearchCriteria;
@@ -46,5 +49,7 @@ public class BoardDAO {
 		return sqlSession.delete("edu.study.mapper.boardMapper.deleteByBidx", bidx);
 	}
 	
-	
+	public int boardHitUpdate(int midx){
+		return sqlSession.update("edu.study.mapper.boardMapper.boardHitUpdate", midx);
+	}
 }

@@ -46,6 +46,8 @@ public class noticeController {
 		
 		model.addAttribute("vo",vo);
 		
+		
+		boardService.boardHitUpdate(bidx);
 		return "notice/noticeView";	
 	}
 	
