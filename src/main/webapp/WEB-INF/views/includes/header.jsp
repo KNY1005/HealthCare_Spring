@@ -93,9 +93,9 @@
 						<li><img src="${path }/resources/image/profli.png" alt="프로필" /></li>
 						<li><p>김모모님</p></li>
 						<li><hr width="250px" /></li>
-						 <li><a href="/member/mypage1.do">마이페이지</a></li>
-			              <li><a href="/member/mypage4.do">내가 쓴 글</a></li>
-			              <li><a href="/member/mypage5.do">개인정보 설정</a></li>
+						 <li><a href="/mypage1.do">마이페이지</a></li>
+			              <li><a href="/mypage4.do">내가 쓴 글</a></li>
+			              <li><a href="/mypage5.do">개인정보 설정</a></li>
 						<li><hr width="250px" /></li>
 						<li>
 							<button>

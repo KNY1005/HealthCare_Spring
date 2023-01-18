@@ -130,8 +130,7 @@
         <input type="button" value="삭제하기"/>
       </div>
     </main>
-    <div class="boxbox">
-	</div>
+
     <%@include file="../includes/footer.jsp"%>
 </body>
 </html>

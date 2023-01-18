@@ -102,9 +102,9 @@
               <li><img src="${path}/resources/image/profli.png" alt="프로필" /></li>
               <li><p>김모모님</p></li>
               <li><hr width="250px" /></li>
-              <li><a href="<%=request.getContextPath() %>/member/mypage2.do">마이페이지</a></li>
-              <li><a href="<%=request.getContextPath() %>/member/mypage4.do">내가 쓴 글</a></li>
-              <li><a href="<%=request.getContextPath() %>/member/mypage5.do">개인정보 설정</a></li>
+              <li><a href="<%=request.getContextPath() %>/mypage2.do">마이페이지</a></li>
+              <li><a href="<%=request.getContextPath() %>/mypage4.do">내가 쓴 글</a></li>
+              <li><a href="<%=request.getContextPath() %>/mypage5.do">개인정보 설정</a></li>
               <li><hr width="250px" /></li>
               <li>
                 <button><a href="#">로그아웃</a></button>
@@ -164,13 +164,13 @@
             </a>
           </li>
           <li class="snip1489 ion-ios-star-outline">
-            <a href="#">
+            <a href="<%=request.getContextPath() %>/healthnews2.do">자가검진">
               <p>자가검진</p>
               <img src="${path}/resources/image/self.png" alt="설문이미지" />
             </a>
           </li>
           <li class="snip1489 ion-ios-star-outline">
-            <a href="#">
+            <a href="<%=request.getContextPath() %>/healthnews1.do">
               <p>건강소식</p>
               <img src="${path}/resources/image/healthnews.png" alt="신문지이미지" />
             </a>

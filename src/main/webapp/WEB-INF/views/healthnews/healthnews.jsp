@@ -17,62 +17,115 @@
 	content="${path }/resources/image/favicon/ms-icon-144x144.png" />
 <meta name="theme-color" content="#ffffff" />
 <style>
-      main {
-        width: 1320px;
-        height: 800px;
-        margin: 200px auto 0;
-      }
-      #head h3 {
-        font-weight: bold;
-        font-size: 48px;
-        display: inline-block;
-      }
+main {
+	width: 1320px;
+	margin: 100px auto;
+}
+.order_box{
+        width: 790px;
+        height: 110px;
+        display: flex;
+ 		align-items: flex-end;
+        justify-content: center;
+      }    
+.order{
+        width: 500px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        }
+.h3 {
+	font-weight: bold;
+	font-size: 40px;
+	margin-right:63% ;
+}
 
-      #head {
-        position: relative;
-      }
-      #search {
-        bottom: 4px;
-        font-weight: bold;
-        font-size: 36px;
-        vertical-align: top;
-        position: absolute;
-        right: 10px;
-      }
-      input {
-        display: inline-block;
-      }
-      #search_n {
-        position: absolute;
-        left: -50px;
-        top: 5px;
-      }
-      input::-webkit-search-decoration,
-      input::-webkit-search-cancel-button,
-      input::-webkit-search-results-button,
-      input::-webkit-search-results-decoration {
-        display: none;
-      }
-      input {
-        height: 40px;
-        font-size: 20px;
-        margin-left: 20px;
-        border: 1px solid #000;
-        border-radius: 10px;
-        padding-right: 40px;
-      }
-      #search div a {
-        position: absolute;
-        right: 5px;
-        bottom: -2px;
-      }
-      hr {
-        height: 2px;
-        border: 0;
-        background: #ff7373;
-      }
 
-      .content_box {
+#head {
+	display: flex;
+	flex-direction: row;
+}
+
+#search button {
+	style: none;
+}
+
+#search input::-webkit-search-decoration, #search input::-webkit-search-cancel-button,
+	#search input::-webkit-search-results-button, #search input::-webkit-search-results-decoration
+	{
+	display: none;
+} /*search내의 요소 삭제*/
+#search input {
+	height: 36px;
+	font-size: 20px;
+	margin-left: -8px;
+	border: 1px solid #000;
+	border-left: none;
+	border-right: none;
+	margin-right: -8px;
+	padding-left: 10px;
+}
+
+#search input:focus {
+	outline: none;
+	background: #fff;
+}
+
+.hr {
+	height: 2px;
+	border: 0;
+	background: #ff7373;
+}
+
+.cate {
+	-webkit-appearance: none; /* 네이티브 외형 감추기 */
+	-moz-appearance: none;
+	appearance: none;
+	font-weight: bold;
+	width: 80px;
+	padding-left: 10px;
+	height: 40px;
+	border: 1px solid #000;
+	border-radius: 10px 0 0 10px;
+	outline: 0 none;
+	font-size: 20px;
+	background: url("${path }/resources/image/bottom_arrow.png") no-repeat
+		95% 50%; /* 화살표 모양의 이미지 */
+}
+
+#glass {
+	border: 1px solid #000;
+	padding: 3px 10px 5px 10px;
+	border-radius: 0 10px 10px 0;
+	border-left: none;
+	background: #fff;
+	font-size: 20px;
+	height: 40px;
+}
+
+#glass i {
+	
+}
+#glass {
+	border: 1px solid #000;
+	padding: 3px 10px 5px 10px;
+	border-radius: 0 10px 10px 0;
+	border-left: none;
+	background: #fff;
+	font-size: 20px;
+	height: 40px;
+}
+
+#glass i {
+	
+}
+#glass:hover {
+	cursor: pointer;
+}
+
+
+
+.content_box {
         display: flex;
         flex-direction: row;
         background: #fff;
@@ -117,27 +170,39 @@
       .content_list li {
         margin-top: 20px;
       }
-    </style>
-  </head>
-  <body>
-  <%@include file="../includes/header.jsp"%>
-    <main>
-      <div id="head">
-        <h3>건강소식</h3>
-        <div id="search">
-          <p id="search_n">검색</p>
-          <div>
-            <input type="search" name="search" />
-            <a href="#" id="glass"><i class="xi-search"></i></a>
-          </div>
-        </div>
-      </div>
-      <hr />
-      <ul class="content_list">
+</style>
+</head>
+<body>
+	<%@include file="../includes/header.jsp"%>
+	<div class="order_box">
+
+	</div>
+
+
+	<main>
+		<div id="head">
+			<h3 class="h3">건강소식</h3>
+			<div id="search">
+				<form action="noticeList.do" method="get">
+					<select class="cate" name="searchType">
+						<option value="btitle"
+							<c:if test="${param.searchType eq 'btitle' }">selected</c:if>>제목</option>
+						<option value="bcontent"
+							<c:if test="${param.searchType eq 'bcontent' }">selected</c:if>>내용</option>
+
+					</select> <input type="text" name="keyWord" placeholder="검색">
+					<button id="glass">
+						<i class="xi-search"></i>
+					</button>
+				</form>
+			</div>
+		</div>
+		<hr class="hr">
+		<ul class="content_list">
         <li>
           <div class="content_box">
             <div class="content_img">
-              <img src="../image/로고2.png" />
+              <img src="${path}/resources/image/logo2.png" />
             </div>
             <div class="content_text">
               <p>제목</p>
@@ -145,9 +210,9 @@
             </div>
           </div>
         </li>
-        
+       
       </ul>
-    </main>
+	</main>
 	<%@include file="../includes/footer.jsp"%>
 </body>
 </html>

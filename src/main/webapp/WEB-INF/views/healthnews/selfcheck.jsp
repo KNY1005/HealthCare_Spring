@@ -125,11 +125,11 @@
           alert("총점 : " + total); // 총점 표시
 
           // 각 점수의 구간에 따라 우울증의 정도를 출력
-          if (total >= 0 && total <= 20) {
+          if (total >= 0 && total <= 5) {
             alert("감기");
-          } else if (total >= 21 && total <= 40) {
+          } else if (total >= 5 && total <= 10) {
             alert("독감");
-          } else if (total >= 41 && total <= 60) {
+          } else if (total >= 10 && total <= 15) {
             alert("코로나");
           }
         } else {
