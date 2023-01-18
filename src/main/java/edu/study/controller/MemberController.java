@@ -24,14 +24,16 @@ public class MemberController {
 	
 	@RequestMapping(value="/login.do",method=RequestMethod.GET )
 	public String login() {
+		
 		System.out.println("로그인");
+		
 		return "member/login"; 
 	}
 	
 	@RequestMapping(value="/login.do",method=RequestMethod.POST )
 	public String login(MemberVo vo, HttpSession sesstion) {
 	
-		System.out.println("띠용");
+		
 		MemberVo loginVO = MemberService.login(vo);
 		
 		if(loginVO != null) {

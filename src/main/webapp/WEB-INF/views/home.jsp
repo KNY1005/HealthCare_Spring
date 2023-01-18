@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page session="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 
@@ -38,6 +37,15 @@
 </style>
 </head>
 <body>
+<%
+	if(session.getAttribute("mid")==null){
+		out.println("<a href='login.jsp'>로그인</a>");
+	}else{
+		String mid = (String)session.getAttribute("mid");
+		out.println(mid+"님 반갑습니다.<br>");
+		out.println("<a href='logout.jsp'>로그아웃</a>");
+	}
+%>
 <!-- 헤더(inclue랑 css 다름) -->
 	<header>
       <div class="nav_background">
@@ -87,8 +95,6 @@
             </ul>
           </div>
         </nav>
-        <%/* if(mid == null){*/ %>
-        
         <div id="profli">
           <div class="main_profli">
            <img src="${path}/resources/image/profli.png" alt="프로필" />
@@ -113,8 +119,9 @@
           </div>
         </div>
       </div>
-      <%/* }else if(mid != null){*/%>
-      <%/*}*/ %>
+      
+      
+      
     </header>
 <!-- 헤더(inclue랑 css 다름) -->
 <!-- 메인 -->
@@ -123,6 +130,9 @@
         <div class="layer"></div>
       </div>
     
+      	<div class="login">
+      		<a href="<%=request.getContextPath() %>/member/login.do">로그인</a>
+      	</div>
     <div class="content_box">
         <div class="center-outer">
           <div class="center-inner">
@@ -134,9 +144,6 @@
       </div>
     
     
-      	<div class="login">
-      		<a href="member/login.do">로그인</a>
-      	</div>
       	
       <div class="search-box">
         <input
