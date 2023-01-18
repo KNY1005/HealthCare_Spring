@@ -60,7 +60,7 @@
               <li><a href="<%=request.getContextPath() %>/blood/main.do">헌혈</a></li>
             </ul>
             <ul>
-              <li><a href="#">모두건강</a></li>
+              <li><a href="<%=request.getContextPath() %>">모두건강</a></li>
             </ul>
             <ul>
               <li><a href="<%=request.getContextPath() %>/notice1.do">건강광장</a></li>
@@ -77,8 +77,8 @@
               <li><a href="<%=request.getContextPath() %>/blood/main.do">헌혈 예약</a></li>
             </ul>
             <ul>
-              <li><a href="#">건강소식</a></li>
-              <li><a href="#">자가검진</a></li>
+              <li><a href="<%=request.getContextPath() %>">건강소식</a></li>
+              <li><a href="<%=request.getContextPath() %>">자가검진</a></li>
             </ul>
             <ul>
               <li><a href="<%=request.getContextPath() %>/notice/list.do">공지사항</a></li>
@@ -123,74 +123,60 @@
         <div class="layer"></div>
       </div>
     
+    <div class="content_box">
+        <div class="center-outer">
+          <div class="center-inner">
+            <div class="bubbles">
+              <h1>HealthCare</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    
       	<div class="login">
       		<a href="member/login.do">로그인</a>
       	</div>
+      	
       <div class="search-box">
         <input
           class="search-txt"
           type="text"
           placeholder="검색어를 입력해 주세요"
-          autofocus
         />
         <button class="search-btn" type="submit">
           <i class="xi-search"></i>
         </button>
       </div>
 
-        <!-- 수정중 -->
-      <div class="main_hover_menu">
-        <div>
-          <ul class="main_hover_menu_left">
-            <li><a href="#">예방접종 예약</a></li>
-            <li><a href="#">건강검진 예약</a></li>
-          </ul>
-        </div>
-        <div class="gref">
-          <div class="graph_wrap">
-            <strong class="tit">국민건강현황</strong>
-            <p>날짜</p>
-            <div class="graph">
-              <!-- 기준 -->
-              <ul class="y-axis">
-                <li><span></span></li>
-                <li><span></span></li>
-                <li><span></span></li>
-                <li><span></span></li>
-                <li><span></span></li>
-                <li><span></span></li>
-                <li><span></span></li>
-                <li><span></span></li>
-              </ul>
-
-              <!-- 목록 -->
-              <ul class="x-axis">
-                <li><span>독감</span></li>
-                <li><span>식중독</span></li>
-                <li><span>감기</span></li>
-                <li><span>코로나</span></li>
-              </ul>
-
-              <!-- 바 그래프 (백분율 만큼 height값) -->
-              <ul class="bar">
-                <li>
-                  <div style="height: 100%"><span></span></div>
-                </li>
-                <li style="height: 70%"><span></span></li>
-                <li style="height: 30%"><span></span></li>
-                <li style="height: 70%"><span></span></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div>
-          <ul class="main_hover_menu_right">
-            <li><a href="#">자가진단</a></li>
-            <li><a href="#">건강소식</a></li>
-          </ul>
-        </div>
+  <div class="main_hover_menu">
+        <ul class="main_hover_menu_1">
+          <li class="snip1489 ion-ios-star-outline">
+            <a href="<%=request.getContextPath() %>/abc1.do">
+              <p>예방접종 예약</p>
+              <img src="${path}/resources/image/shot.png" alt="주사기이미지" />
+            </a>
+          </li>
+          <li class="snip1489 ion-ios-star-outline">
+            <a href="<%=request.getContextPath() %>/medicalmain.do">
+              <p>건강검진 예약</p>
+              <img src="${path}/resources/image/medical.png" alt="하트이미지" />
+            </a>
+          </li>
+          <li class="snip1489 ion-ios-star-outline">
+            <a href="#">
+              <p>자가검진</p>
+              <img src="${path}/resources/image/self.png" alt="설문이미지" />
+            </a>
+          </li>
+          <li class="snip1489 ion-ios-star-outline">
+            <a href="#">
+              <p>건강소식</p>
+              <img src="${path}/resources/image/healthnews.png" alt="신문지이미지" />
+            </a>
+          </li>
+        </ul>
       </div>
-      <!-- 수정중 -->
     </main>
 <!-- 메인 -->
 <!-- 메인은 푸터 없음 -->

@@ -68,8 +68,8 @@
 		              <li><a href="<%=request.getContextPath() %>/blood/main.do">헌혈 예약</a></li>
 		            </ul>
 					<ul>
-						<li><a href="#">건강소식</a></li>
-						<li><a href="#">자가검진</a></li>
+						<li><a href="<%=request.getContextPath() %>">건강소식</a></li>
+						<li><a href="<%=request.getContextPath() %>">자가검진</a></li>
 					</ul>
 					<ul>
 		              <li><a href="<%=request.getContextPath() %>/notice/list.do">공지사항</a></li>
