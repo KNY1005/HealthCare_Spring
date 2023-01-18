@@ -16,7 +16,7 @@ public class QuestionDAO {
 	private SqlSession sqlSession;
 
 	public BoardVo selectByBidx(int bidx) {	
-		return sqlSession.selectOne("edu.study.mapper.boardMapper.selectByBidx", bidx); //留덉씠諛뷀떚�뒪媛� �젣怨�,�븳嫄� 議고쉶
+		return sqlSession.selectOne("edu.study.mapper.boardMapper.selectByBidx", bidx); //筌띾뜆�뵠獄쏅��뼒占쎈뮞揶쏉옙 占쎌젫�⑨옙,占쎈립椰꾬옙 鈺곌퀬�돳
 	}
 
 	public List<BoardVo> listSearch(SearchCriteria scri) {
@@ -28,15 +28,15 @@ public class QuestionDAO {
 	}
 	
 	
-	public int updateByBidx(BoardVo vo) {	//int 紐뉕굔�씠 泥섎━�릺�뿀�뒗媛�(移댁슫�듃 媛�)
-		return sqlSession.update("edu.study.mapper.boardMapper.updateByBidx", vo); //�뾽�뜲�씠�듃�뒗 寃곌낵異쒕젰 �뾾�쓬
+	public int updateByBidx(BoardVo vo) {	//int 筌뤿돂援뷂옙�뵠 筌ｌ꼶�봺占쎈┷占쎈�占쎈뮉揶쏉옙(燁삳똻�뒲占쎈뱜 揶쏉옙)
+		return sqlSession.update("edu.study.mapper.boardMapper.updateByBidx", vo); //占쎈씜占쎈쑓占쎌뵠占쎈뱜占쎈뮉 野껉퀗�궢�빊�뮆�젾 占쎈씨占쎌벉
 	}
 	
 	public int insert(BoardVo vo) {	
 		return sqlSession.insert("edu.study.mapper.boardMapper.insert", vo);
 	}
 
-	public int maxBidx() {	//由ъ젅�듃 ���엯�씠 int 諛섑솚�룄 int
+	public int maxBidx() {	//�뵳�딆쟿占쎈뱜 占쏙옙占쎌뿯占쎌뵠 int 獄쏆꼹�넎占쎈즲 int
 		
 		return sqlSession.selectOne("edu.study.mapper.boardMapper.maxBidx");
 	}
