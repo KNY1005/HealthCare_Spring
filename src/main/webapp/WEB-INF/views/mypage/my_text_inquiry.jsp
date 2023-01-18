@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>건강검진예약조회</title>
+<title>Insert title here</title>
 <!--파비콘-->
 <link rel="icon" type="image/png" sizes="16x16" href="${path}/resources/image/favicon/android-icon-144x144.png"/>
 <link rel="manifest" href="${path}/resources/image/favicon/manifest.json" />
@@ -18,7 +18,7 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 <link href="${path}/resources/css/reset.css" rel="stylesheet" />
-<link href="${path}/resources/css/mypage/medical_reserve_inquiry.css" rel="stylesheet" />
+<link href="${path}/resources/css/mypage/my_text_inquiry.css" rel="stylesheet" />
 
 <script src="${path}/resources/js/mypage/mypage_sub_menu.js"></script>
 
@@ -27,7 +27,9 @@
 <div class="header">
 <%@include file="../includes/header.jsp"%>
 </div>
-   <main>
+
+  <body>
+    <main>
       <section>
         <p class="mypage_manu_p">마이페이지</p>
         <div class="mypage_manu">
@@ -36,16 +38,16 @@
                 <li class="menu-v1">
                   <p class="a"><a href="mypage2.do">조회</a></p>
                   <ul class="submenu">
-                    <li><a href="mypage2.do">예방접종 조회</a></li>
-                    <li><a href="mypage3.do">건강검진 조회</a></li>
-                    <li><a href="mypage1.do">헌혈 스탬프 / 조회</li>
+                    <li><a href="<%=request.getContextPath() %>mypage2.do">예방접종 조회</a></li>
+                    <li><a href="<%=request.getContextPath() %>mypage3.do">건강검진 조회</a></li>
+                    <li><a href="<%=request.getContextPath() %>mypage1.do">헌혈 스탬프 / 조회</li>
                   </ul>
                 </li>
                 <li class="menu-v1">
-                  <p class="a"><a href="mypage4.do">내가 쓴 글</a></p>
+                  <p class="a"><a href="<%=request.getContextPath() %>mypage4.do">내가 쓴 글</a></p>
                 </li>
                 <li class="menu-v1">
-                  <p class="a"><a href="mypage5.do">개인정보 수정</a></p>
+                  <p class="a"><a href="<%=request.getContextPath() %>mypage5.do">개인정보 수정</a></p>
                 </li>
               </ul>
           </div>
@@ -53,8 +55,16 @@
       </section>
       <section class="main_content">
         <div class="main_content_title">
-            <h2>건강검진 예약 조회</h2>
+            <h2>내가 쓴 글</h2>
+
+             <select name="게시판" class="select">
+              <option disabled selected>-게시판-</option>
+                <option value="문의사항">문의사항</option>
+                <option value="건강상담소">건강상담소</option>
+            </select>
         </div>
+
+
         <hr />
         <div class="list">
             <div class="box">
@@ -93,6 +103,9 @@
                 <li>전라북도 전쥐시 땡떙동 땡땡길 10 4층</li>
               </ul>
             </div>
+
+             
+
         </div>
         <!--.reserve_list-->
       </section>

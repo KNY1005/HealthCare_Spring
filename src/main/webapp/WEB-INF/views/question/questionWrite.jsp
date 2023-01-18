@@ -221,6 +221,7 @@ hr {
 		</div>
 		<hr>
 		<form action="">
+			<input type="hidden" name="blist" value="Q">
 			<div id="writing_view">
 				<input type="text" class="title" />
 				<textarea class="content"></textarea>

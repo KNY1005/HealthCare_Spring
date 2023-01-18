@@ -19,13 +19,12 @@ import edu.study.vo.SearchCriteria;
 public class QuestionController {
 
 	@Autowired
-	private QuestionService questionService;
+	private QuestionService questionService;	
 	
 	@RequestMapping(value = "/questionList.do", method = RequestMethod.GET)	
 	public String questionList(SearchCriteria scri, Model model) {	
 		List<BoardVo> list = questionService.list(scri);
-		model.addAttribute("list", list);
-		System.out.println(model);
+		model.addAttribute("list", list);		
 		PageVO pageVo = new PageVO();
 		pageVo.setScri(scri);
 		pageVo.setTotalCount(questionService.listCount(scri));
@@ -33,16 +32,34 @@ public class QuestionController {
 		
 		return "question/questionList";	
 	}
-	@RequestMapping(value = "/questionModify.do", method = RequestMethod.GET)	
-	public String questionModify() {	
-		
-		return "question/questionModify";	
-	}
+	
 	@RequestMapping(value = "/questionView.do", method = RequestMethod.GET)	
-	public String questionView() {	
+	public String questionView(int bidx, Model model) {	
+		BoardVo vo = questionService.selectByBidx(bidx); 
 		
+		model.addAttribute("vo",vo);
 		return "question/questionView";	
 	}
+	
+	@RequestMapping(value = "/questionModify.do", method = RequestMethod.GET)	
+	public String questionModify(int bidx, Model model) {
+				
+		BoardVo vo = questionService.selectByBidx(bidx); 
+		
+		model.addAttribute("vo",vo);
+		return "question/questionModify";	
+	}
+	@RequestMapping(value = "/questionModify.do", method = RequestMethod.POST)	
+	public String questionModify2(BoardVo vo) {
+				
+		int result = questionService.updateByBidx(vo); 		
+		if(result>0) {
+		return "redirect:questionView.do?bidx="+vo.getBidx();	
+		}else {
+			return "/";
+		}
+	}
+	
 	@RequestMapping(value = "/questionWrite.do", method = RequestMethod.GET)	
 	public String questionWrite() {	
 		

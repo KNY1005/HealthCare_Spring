@@ -16,9 +16,7 @@ margin: 200px auto;
   z-index:-10;
 }
 
-.boxbox{
-	height: 1000px;
-}
+
 .mypage_manu {
   display: flex;
   flex-direction: column;

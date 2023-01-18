@@ -323,17 +323,15 @@ hr {
 	<main id="main">
 		<section id="view">
 			<h2>문의사항 상세</h2>
-			<hr>
-			<form action="">
+			<hr>			
 				<div id="writing_view">
-					<div class="title">제목</div>
-					<div class="content">내용</div>
-					<ul>
-						<li>작성자</li>
-						<li>작성일</li>
-						<li>작성날짜</li>
-					</ul>
-				</div>
+				<div class="title">${vo.btitle}</div>
+                <div class="content">${vo.bcontent}</div>
+				<ul>
+					<li>${vo.bwriter}</li>
+					<li>${vo.bwdate}</li>
+				</ul>
+			</div>
 				<div class="file">
 					<div class="filebox">
 						<p class="file1">첨부파일</p>
@@ -343,10 +341,8 @@ hr {
 				<div id="button">
 					<button type="button" onClick="location.href='questionList.do'">목록</button>
 					<button>삭제</button>
-					<button type="button" onClick="location.href='questionModify.do'">수정</button>
+					<button type="button" onClick="location.href='questionModify.do?bidx=${vo.bidx}'">수정</button>
 				</div>
-			</form>
-
 
 
 			<h3>답변</h3>
