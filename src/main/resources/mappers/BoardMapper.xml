@@ -75,7 +75,7 @@
 			,#{bcontent}
 			,sysdate			
 			,0
-			,'N'
+			,#{blist}
 			,'관리자'
 		)
 		

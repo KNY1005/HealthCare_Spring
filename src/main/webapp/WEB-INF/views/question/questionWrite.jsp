@@ -220,15 +220,15 @@ hr {
 			<h2>문의사항 글 쓰기</h2>
 		</div>
 		<hr>
-		<form action="">
+		<form action="questionWrite.do" method="post">
 			<input type="hidden" name="blist" value="Q">
 			<div id="writing_view">
-				<input type="text" class="title" />
-				<textarea class="content"></textarea>
+				<input type="text" class="title" name="btitle"/>
+				<textarea class="content" name="bcontent"></textarea>
 				<ul>
-					<li>작성자</li>
-					<li>작성일</li>
-					<li>작성날짜</li>
+					<li>${vo.bwriter }</li>
+					<li>${vo.bwdate }</li>
+					
 				</ul>
 			</div>
 			<div class="file">
