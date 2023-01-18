@@ -65,6 +65,10 @@ public class QuestionController {
 		
 		return "question/questionWrite";	
 	}		
-	
+	@RequestMapping(value = "/questionWrite.do", method = RequestMethod.POST)	
+	public String questionWrite2(BoardVo vo) {	
+		int result = questionService.insert(vo);
+		return "redirect:questionView.do?bidx="+vo.getBidx();	
+	}	
 	
 }
