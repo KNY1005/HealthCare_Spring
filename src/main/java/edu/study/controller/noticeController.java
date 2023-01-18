@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import edu.study.service.BoardService;
 import edu.study.vo.BoardVo;
+import edu.study.vo.PageVO;
 import edu.study.vo.SearchCriteria;
 
 
@@ -28,7 +29,12 @@ public class noticeController {
 		//DB list 조회
 		List<BoardVo> list = boardService.list(scri);
 		model.addAttribute("datalist",list);	//키값
-		System.out.println("list:"+list);		
+		System.out.println("list:"+list);	
+		PageVO pageVo = new PageVO();
+		pageVo.setScri(scri);
+		pageVo.setTotalCount(boardService.listCount(scri));
+		model.addAttribute("page", pageVo);
+		
 		return "notice/noticeList";	//화면으로 포워드
 	}
 	

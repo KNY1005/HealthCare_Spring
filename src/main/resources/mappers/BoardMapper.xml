@@ -66,22 +66,24 @@
 			,btitle
 			,bcontent
 			,bwdate
-			,midx
 			,bhit
+			,blist
+			,bwriter
 		)values(
-			notice.nextval
+			bidx_seq.nextval
 			,#{btitle}
 			,#{bcontent}
-			,sysdate
-			,#{midx}
+			,sysdate			
 			,0
+			,'N'
+			,'관리자'
 		)
 		
 		]]>
 		<selectKey resultType="int" keyProperty="bidx" order="AFTER">
 			select max(bidx)	<!-- 하나의 맵퍼에서 두가지 처리 -->
 			from table_board
-		</selectKey>
+		</selectKey> 
 	</insert>
 	
 	<delete id="deleteByBidx" parameterType="int">

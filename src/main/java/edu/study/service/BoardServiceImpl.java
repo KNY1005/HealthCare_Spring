@@ -51,6 +51,12 @@ public class BoardServiceImpl implements BoardService{	//추상메소드 정의
 		return boardDAO.deleteByBidx(bidx);
 	}
 
+	@Override
+	public int listCount(SearchCriteria scri) {
+		// TODO Auto-generated method stub
+		return boardDAO.listCount(scri);
+	}
+
 	
 
 

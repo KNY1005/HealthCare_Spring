@@ -100,19 +100,20 @@ main {
 		95% 50%; /* 화살표 모양의 이미지 */
 }
 
-#search  {
+#glass {
+	border: 1px solid #000;
+	padding: 3px 10px 5px 10px;
+	border-radius: 0 10px 10px 0;
+	border-left: none;
+	background: #fff;
+	font-size: 20px;
+	height: 40px;
+}
+
+#glass i {
 	
 }
 
-#glass {
-	border: 1px solid #000;
-	padding: 4px 10px 4px 10px;
-	border-radius: 0 10px 10px 0;
-	border-left: none;
-	
-	
-}
-#glass i{margin-top:2px;}
 #glass:hover {
 	cursor: pointer;
 }
@@ -193,6 +194,25 @@ main {
 	box-shadow: inset 1px 1px 3px rgb(197, 197, 197);
 	cursor: pointer;
 }
+#page_div {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#page {
+	display: flex;
+}
+
+#page li {
+	margin: 0 10px 0;
+}
+
+
+
+#page li a {
+	font-size: 20px;
+}
 </style>
 </head>
 <body>
@@ -212,13 +232,18 @@ main {
 		<div id="head">
 			<h3 class="h3">공지사항</h3>
 			<div id="search">
-				
-					<select class="cate">
-						<option>제목</option>
-						<option>작성자</option>
-					</select> <input type="search" name="search" placeholder="검색"> <a href="#"
-						id="glass"><i class="xi-search"></i></a>
-				
+				<form action="noticeList.do" method="get">
+					<select class="cate" name="searchType">
+						<option value="btitle"
+							<c:if test="${param.searchType eq 'btitle' }">selected</c:if>>제목</option>
+						<option value="bcontent"
+							<c:if test="${param.searchType eq 'bcontent' }">selected</c:if>>내용</option>
+
+					</select> <input type="text" name="keyWord" placeholder="검색">
+					<button id="glass">
+						<i class="xi-search"></i>
+					</button>
+				</form>
 			</div>
 		</div>
 		<hr class="hr">
@@ -231,7 +256,7 @@ main {
 			</tr>
 		<c:forEach items="${datalist}" var="vo">
 			<tr class="content" onClick="location.href='view.do?bidx=${vo.bidx}'">
-				<td><p class="title">${vo.btitle}</p> <br />
+				<td><p class="title">${vo.btitle}</p> ${vo.bidx }<br />
 					<p>${vo.bcontent}</p></td>
 				<td>${vo.bwriter}</td>
 				<td>${vo.bwdate}</td>
@@ -239,7 +264,24 @@ main {
 			</tr>
 		</c:forEach>
 		</table>
-		
+		<div id="page_div">
+			<ul id="page">
+				<c:if test="${page.prev}">
+					<li><a
+						href="noticeList.do?page=${page.startPage - 1}&&searchType=${page.scri.searchType}&&keyWord=${page.encoding(page.scri.keyWord)}"><i
+							class="xi-angle-left"></i></a></li>
+				</c:if>
+				<c:forEach begin="${page.startPage}" end="${page.endPage}" var="vo">
+					<li><a
+						href="noticeList.do?page=${vo}&&searchType=${page.scri.searchType}&&keyWord=${page.encoding(page.scri.keyWord)}">${vo}</a></li>
+				</c:forEach>
+				<c:if test="${page.next && page.endPage > 0}">
+					<li><a
+						href="noticeList.do?page=${page.endPage + 1}&&searchType=${page.scri.searchType}&&keyWord=${page.encoding(page.scri.keyWord)}"><i
+							class="xi-angle-right"></i></a></li>
+				</c:if>
+			</ul>
+		</div>
 		<button class="button" onClick="location.href='write.do'">글쓰기</button>
 		
 

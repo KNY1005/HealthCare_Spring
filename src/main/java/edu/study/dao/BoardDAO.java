@@ -24,6 +24,10 @@ public class BoardDAO {
 		return sqlSession.selectList("edu.study.mapper.boardMapper.listSearch",scri);
 	}
 	
+	public int listCount(SearchCriteria scri) {
+		return sqlSession.selectOne("edu.study.mapper.boardMapper.listCount");
+	}
+	
 	public int updateByBidx(BoardVo vo) {	//int 몇건이 처리되었는가(카운트 값)
 		return sqlSession.update("edu.study.mapper.boardMapper.updateByBidx", vo); //업데이트는 결과출력 없음
 	}
