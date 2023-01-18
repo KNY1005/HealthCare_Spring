@@ -23,7 +23,7 @@ public class BoardDAO {
 	}
 
 	public List<BoardVo> list(SearchCriteria scri) {
-		
+		scri.setBlist("N");
 		return sqlSession.selectList("edu.study.mapper.boardMapper.listSearch",scri);
 	}
 	

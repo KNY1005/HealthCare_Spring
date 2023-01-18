@@ -229,6 +229,7 @@ hr {
 		</div>
 		<hr>
 		<form action="write.do" method="post">
+			<input type="hidden" name="blist" value="N">
 			<div id="writing_view">
 				<input type="text" class="title" name="btitle" />
 				<textarea class="content" name="bcontent"></textarea>

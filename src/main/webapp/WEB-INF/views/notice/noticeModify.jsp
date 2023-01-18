@@ -227,7 +227,7 @@ hr {
 			<h2>공지사항</h2>
 		</div>
 		<hr>
-		<form action="questionModify.do" method="post">
+		<form action="modify.do" method="post">
 		<input type="hidden" name="bidx" value="${vo.bidx}">	<!-- 수정할 키값 히든으로 넘김 -->
 			<div id="writing_view">
 				<input type="text" class="title" name="btitle" value="${vo.btitle }"/>
@@ -246,7 +246,7 @@ hr {
 				</div>
 			</div>
 			<div id="button">
-				<button type="button" onClick="location.href='questionView.do?bidx=${vo.bidx}'">취소</button>
+				<button type="button" onClick="location.href='list.do?bidx=${vo.bidx}'">취소</button>
 				<button>완료</button>
 			</div>
 		</form>
