@@ -240,7 +240,7 @@ hr {
 				</div>
 			</div>
 			<div id="button">
-				<button>취소</button>
+				<button type="button" onclick="location.href='questionList.do'">취소</button>
 				<button>완료</button>
 			</div>
 		</form>

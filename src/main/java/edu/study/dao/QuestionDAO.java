@@ -40,4 +40,11 @@ public class QuestionDAO {
 		
 		return sqlSession.selectOne("edu.study.mapper.boardMapper.maxBidx");
 	}
+	public int deleteByBidx(int bidx) {
+		// TODO Auto-generated method stub
+		return sqlSession.delete("edu.study.mapper.boardMapper.deleteByBidx", bidx);
+	}
+	public int boardHitUpdate(int midx){
+		return sqlSession.update("edu.study.mapper.boardMapper.boardHitUpdate", midx);
+	}
 }
