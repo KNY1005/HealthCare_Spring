@@ -60,7 +60,7 @@
               <li><a href="<%=request.getContextPath() %>/blood/main.do">헌혈</a></li>
             </ul>
             <ul>
-              <li><a href="<%=request.getContextPath() %>">모두건강</a></li>
+              <li><a href="<%=request.getContextPath()%>/healthnews1.do">모두건강</a></li>
             </ul>
             <ul>
               <li><a href="<%=request.getContextPath() %>/notice1.do">건강광장</a></li>
@@ -77,8 +77,8 @@
               <li><a href="<%=request.getContextPath() %>/blood/main.do">헌혈 예약</a></li>
             </ul>
             <ul>
-              <li><a href="<%=request.getContextPath() %>">건강소식</a></li>
-              <li><a href="<%=request.getContextPath() %>">자가검진</a></li>
+              <li><a href="<%=request.getContextPath() %>/healthnews1.do">건강소식</a></li>
+              <li><a href="<%=request.getContextPath() %>/healthnews2.do">자가검진</a></li>
             </ul>
             <ul>
               <li><a href="<%=request.getContextPath() %>/notice/list.do">공지사항</a></li>
@@ -102,9 +102,9 @@
               <li><img src="${path}/resources/image/profli.png" alt="프로필" /></li>
               <li><p>김모모님</p></li>
               <li><hr width="250px" /></li>
-              <li><a href="mypage2.do">마이페이지</a></li>
-              <li><a href="mypage4.do">내가 쓴 글</a></li>
-              <li><a href="mypage5.do">개인정보 설정</a></li>
+              <li><a href="<%=request.getContextPath() %>/member/mypage2.do">마이페이지</a></li>
+              <li><a href="<%=request.getContextPath() %>/member/mypage4.do">내가 쓴 글</a></li>
+              <li><a href="<%=request.getContextPath() %>/member/mypage5.do">개인정보 설정</a></li>
               <li><hr width="250px" /></li>
               <li>
                 <button><a href="#">로그아웃</a></button>

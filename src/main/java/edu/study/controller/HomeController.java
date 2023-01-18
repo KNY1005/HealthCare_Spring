@@ -133,5 +133,17 @@ public class HomeController {
 		return "notice/noticeWrite";
 	}		
 	
+	@RequestMapping(value = "healthnews1.do", method = RequestMethod.GET)
+	public String healthnews1() {
+		
+		return "healthnews/healthnews";
+	}
+	
+	@RequestMapping(value = "healthnews2.do", method = RequestMethod.GET)
+	public String healthnews2() {
+		
+		return "healthnews/selfcheck";
+	}
+
 
 }
