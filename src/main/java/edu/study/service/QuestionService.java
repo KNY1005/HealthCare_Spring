@@ -19,4 +19,6 @@ public interface QuestionService {
 	int updateByBidx(BoardVo vo);
 	int insert(BoardVo vo);
 	int maxBidx();
+	int deleteByBidx(int bidx);
+	int boardHitUpdate(int midx);
 }

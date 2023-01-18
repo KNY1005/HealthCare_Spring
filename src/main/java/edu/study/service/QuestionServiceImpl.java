@@ -18,7 +18,7 @@ public class QuestionServiceImpl implements QuestionService{
 	@Override
 	public BoardVo selectByBidx(int bidx) {	
 		
-		return questionDAO.selectByBidx(bidx);	//�뜲�씠�꽣踰좎씠�뒪�뿉 �젒洹쇳븯�뒗 �뵒�뿉�씠�삤
+		return questionDAO.selectByBidx(bidx);	//占쎈�뀐옙��占쎄숲甕곗���占쎈�わ옙肉� 占쎌��域뱀�노릭占쎈�� 占쎈�占쎈�占쎌��占쎌��
 	}
 
 	
@@ -52,6 +52,20 @@ public class QuestionServiceImpl implements QuestionService{
 	public int listCount(SearchCriteria scri) {
 		// TODO Auto-generated method stub
 		return questionDAO.listCount(scri);
+	}
+
+
+	@Override
+	public int deleteByBidx(int bidx) {
+		// TODO Auto-generated method stub
+		return questionDAO.deleteByBidx(bidx);
+	}
+
+
+	@Override
+	public int boardHitUpdate(int midx) {
+		// TODO Auto-generated method stub
+		return questionDAO.boardHitUpdate(midx);
 	}
 
 	
