@@ -11,7 +11,7 @@
 			SELECT rownum as rnum, A.* FROM (
 			SELECT * FROM
 			table_board
-			WHERE bdelete='N'
+			WHERE bdelete='N' AND blist=#{blist}
 			<include refid="search"></include>
 			ORDER BY bidx desc) A
 			)WHERE rnum BETWEEN #{rowStart} AND #{rowEnd}

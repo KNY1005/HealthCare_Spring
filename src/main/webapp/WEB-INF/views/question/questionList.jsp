@@ -270,7 +270,7 @@ main {
 						<p>${vo.bcontent}</p></td>
 					<td>${vo.bwriter}</td>
 					<td>${vo.bwdate}</td>
-					<td>${vo.bhit}</td>
+					<td>${vo.bhit}${vo.blist}</td>
 					<td>${vo.bstate}</td>
 				</tr>
 			</c:forEach>

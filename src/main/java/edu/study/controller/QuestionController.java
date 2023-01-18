@@ -23,7 +23,7 @@ public class QuestionController {
 	
 	@RequestMapping(value = "/questionList.do", method = RequestMethod.GET)	
 	public String questionList(SearchCriteria scri, Model model) {	
-		List<BoardVo> list = questionService.list(scri);
+		List<BoardVo> list = questionService.list(scri);		
 		model.addAttribute("list", list);		
 		PageVO pageVo = new PageVO();
 		pageVo.setScri(scri);
