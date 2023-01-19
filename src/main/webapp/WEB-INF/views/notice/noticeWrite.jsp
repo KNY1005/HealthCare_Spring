@@ -228,7 +228,7 @@ hr {
 			<h2>공지사항</h2>
 		</div>
 		<hr>
-		<form action="write.do" method="post">
+		<form action="write.do" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="blist" value="N">
 			<div id="writing_view">
 				<input type="text" class="title" name="btitle" />
@@ -243,7 +243,7 @@ hr {
 					<p class="file1">첨부파일</p>
 					<input class="upload-name" value="파일선택" disabled="disabled">
 					<label for="ex_filename">업로드</label> <input type="file"
-						id="ex_filename" class="upload-hidden">
+						id="ex_filename" class="upload-hidden" name="upload">
 				</div>
 			</div>
 			<div id="button">

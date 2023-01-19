@@ -15,7 +15,7 @@
         IMP.init("imp08752868"); 
     
         function requestPay() {
-            IMP.request_pay({
+            IMP.request_pay({	// param
                 pg : 'kakaopay',
                 pay_method : 'card',
                 merchant_uid: "57008833-33001",  // 예약번호
@@ -28,9 +28,9 @@
                 buyer_postcode : '123-456'
             }, function (rsp) { // callback
                 if (rsp.success) {
-                    console.log(rsp);
+                    console.log(rsp);	// 결제 성공 시 로직,
                 } else {
-                    console.log(rsp);
+                    console.log(rsp);	// 결제 실패 시 로직,
                 }
             });
         }

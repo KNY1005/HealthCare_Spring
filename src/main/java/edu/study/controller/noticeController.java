@@ -1,6 +1,12 @@
 package edu.study.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 import edu.study.service.BoardService;
 import edu.study.vo.BoardVo;
@@ -60,13 +67,31 @@ public class noticeController {
 		//return "redirect:/user/list.do"; //redirect되는 가상경로 -> projectpath/user/list.do
 	}
 	@RequestMapping(value = "/write.do", method = RequestMethod.POST)
-	public String write2(BoardVo vo) {	
+	public String write2(BoardVo vo, MultipartFile upload,HttpServletRequest req)throws IllegalStateException, IOException {
 		
 		int result = boardService.insert(vo);
 		
-		//db작업 (insert)
-		return "redirect:view.do?bidx="+vo.getBidx();	//redirect되는 가상경로 -> projectpath/board/list.do
-		//return "redirect:/user/list.do"; //redirect되는 가상경로 -> projectpath/user/list.do
+		String path = req.getSession().getServletContext().getRealPath("/resources/upload");
+		System.out.println(path);
+		File dir = new File(path);		
+		if(!dir.exists()) {	//directory가 있는지 없는지 
+			dir.mkdirs();
+		}
+		if(!upload.getOriginalFilename().isEmpty()) {
+			int pos = upload.getOriginalFilename().lastIndexOf(".");
+	        String ext = upload.getOriginalFilename().substring(pos + 1);
+	            
+	        Date now = new Date();
+	        String today = new SimpleDateFormat("yyyyMMddHHmmss").format(now);
+
+	        int random = (int) ((Math.random() * 100) + 1);
+	        String result2 = today + random;
+	        
+			upload.transferTo(new File(path,result2+"."+ext));
+			System.out.println("upload는"+upload);
+		
+	}
+		return "redirect:view.do?bidx="+vo.getBidx();
 	}
 	
 	@RequestMapping(value = "/modify.do", method = RequestMethod.GET)	//호출
