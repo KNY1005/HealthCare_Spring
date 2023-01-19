@@ -24,7 +24,7 @@
 			function() {
 				var fileTarget = $('.filebox .upload-hidden');
 
-				fileTarget.on('change', function() { // 값이 변경되면
+				fileTarget.on('change', function() { // 값이 변경되면, on : 실행하고자하는 jQuery코드
 					if (window.FileReader) { // modern browser
 						var filename = $(this)[0].files[0].name;
 					} else { // old IE
@@ -220,7 +220,7 @@ hr {
 			<h2>문의사항 글 쓰기</h2>
 		</div>
 		<hr>
-		<form action="questionWrite.do" method="post">
+		<form action="questionWrite.do" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="blist" value="Q">
 			<div id="writing_view">
 				<input type="text" class="title" name="btitle"/>
@@ -236,7 +236,7 @@ hr {
 					<p class="file1">첨부파일</p>
 					<input class="upload-name" value="파일선택" disabled="disabled">
 					<label for="ex_filename">업로드</label> <input type="file"
-						id="ex_filename" class="upload-hidden">
+						id="ex_filename" class="upload-hidden" name="upload">					
 				</div>
 			</div>
 			<div id="button">
@@ -244,8 +244,9 @@ hr {
 				<button>완료</button>
 			</div>
 		</form>
+		
 	</section>
-
+	
 	<%@include file="../includes/footer.jsp"%>
 </body>
 </html>
