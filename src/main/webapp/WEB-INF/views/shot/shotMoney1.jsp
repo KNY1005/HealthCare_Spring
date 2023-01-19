@@ -18,22 +18,44 @@
             IMP.request_pay({	// param
                 pg : 'kakaopay',
                 pay_method : 'card',
-                merchant_uid: "57008833-33001",  // 예약번호
+                merchant_uid: 'merchant_' + new Date().getTime(),  // 예약번호
                 name : '독감 백신',
                 amount : 1004,
                 buyer_email : 'Iamport@chai.finance',
-                buyer_name : '아임포트 기술지원팀',
+                buyer_name : '구매자 이름',
                 buyer_tel : '010-1234-5678',
-                buyer_addr : '서울특별시 강남구 삼성동',
+                buyer_addr : '전라북도 전주시',
                 buyer_postcode : '123-456'
-            }, function (rsp) { // callback
-                if (rsp.success) {
-                    console.log(rsp);	// 결제 성공 시 로직,
-                } else {
-                    console.log(rsp);	// 결제 실패 시 로직,
-                }
+            }, function (rsp) {		// callback
+            	/** 결제 검증 **/
+                $.ajax({
+                    type: 'POST',
+                    url: '/verifyIamport/'+rsp.imp_uid,
+                    beforeSend: function(xhr){
+                        xhr.setRequestHeader(header, token);
+                    }
+                }).done(function(result){
+
+                    // rsp.paid_amount와 result.response.amount(서버 검증) 비교 후 로직 실행
+                    if(rsp.paid_amount === result.response.amount){
+                        alert("결제가 완료되었습니다.");
+                        $.ajax({
+                            type:'POST',
+                            url:'http://localhost:8090/controller/abc9.do',
+                            beforeSend: function(xhr){
+                                xhr.setRequestHeader(header, token);
+                            }
+                        }).done(function() {
+                        	window.location.href = "abc9.do";
+                        }).fail(function(error){
+                                alert(JSON.stringify(error));
+                        })
+                    } else{
+                    	alert("결제에 실패하였습니다. 에러 내용: ${rsp.error_msg}");
+                    }
+                })
             });
-        }
+        };
     </script>
 <meta charset="UTF-8">
 <title>유료결제</title>
