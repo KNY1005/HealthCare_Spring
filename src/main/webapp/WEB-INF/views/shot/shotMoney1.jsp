@@ -5,6 +5,36 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<!-- 카카오페이 -->
+	<!-- jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+    <!-- iamport.payment.js -->
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+    <script>
+        var IMP = window.IMP; 
+        IMP.init("imp08752868"); 
+    
+        function requestPay() {
+            IMP.request_pay({
+                pg : 'kakaopay',
+                pay_method : 'card',
+                merchant_uid: "57008833-33001",  // 예약번호
+                name : '독감 백신',
+                amount : 1004,
+                buyer_email : 'Iamport@chai.finance',
+                buyer_name : '아임포트 기술지원팀',
+                buyer_tel : '010-1234-5678',
+                buyer_addr : '서울특별시 강남구 삼성동',
+                buyer_postcode : '123-456'
+            }, function (rsp) { // callback
+                if (rsp.success) {
+                    console.log(rsp);
+                } else {
+                    console.log(rsp);
+                }
+            });
+        }
+    </script>
 <meta charset="UTF-8">
 <title>유료결제</title>
 	<!--파비콘-->
@@ -16,6 +46,7 @@
 	<meta name="msapplication-TileImage"
 		content="${path }/resources/image/favicon/ms-icon-144x144.png" />
 	<meta name="theme-color" content="#ffffff" />
+	
     <style>
     *{
       font-weight: bold;
@@ -137,7 +168,7 @@
                 <button style="background-color: #05CF00;"
                  onClick="location.href='abc8.do'">네이버페이</button>
                 <button style="background-color: #FFE800;"
-                 onClick="location.href='abc8.do'">카카오페이</button>
+                 onClick="requestPay()">카카오페이</button>
                 <button onClick="location.href='abc8.do'">카드결제</button>
             </div>
             
