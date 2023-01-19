@@ -1,5 +1,6 @@
 package edu.study.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,12 +28,7 @@ public class QuestionServiceImpl implements QuestionService{
 		
 		return questionDAO.updateByBidx(vo);
 	}
-
-	@Override
-	public int insert(BoardVo vo) {
-		
-		return questionDAO.insert(vo);
-	}
+	
 
 	@Override
 	public int maxBidx() {
@@ -66,6 +62,13 @@ public class QuestionServiceImpl implements QuestionService{
 	public int boardHitUpdate(int midx) {
 		// TODO Auto-generated method stub
 		return questionDAO.boardHitUpdate(midx);
+	}
+
+
+	@Override
+	public int insert(BoardVo vo) {
+		// TODO Auto-generated method stub
+		return questionDAO.insert(vo);
 	}
 
 	
