@@ -70,12 +70,12 @@ public class QuestionController {
 		int result = questionService.insert(vo);
 		return "redirect:questionView.do?bidx="+vo.getBidx();	
 	}	
-	@RequestMapping(value = "/delete.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/questionDelete.do", method = RequestMethod.GET)
 	public String delete(int bidx) {	
 		
 		questionService.deleteByBidx(bidx);	
 		
-		return "redirect:list.do";
+		return "redirect:questionList.do";
 		
 	}
 }

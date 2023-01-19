@@ -87,8 +87,8 @@
 	</insert>
 	
 	<delete id="deleteByBidx" parameterType="int">
-		delete 
-			from table_board
+		update table_board
+			set bdelete = 'Y'
 			where bidx = #{bidx}
 	</delete>
 	
