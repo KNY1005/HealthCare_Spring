@@ -134,7 +134,7 @@ $(document).ready(function(){
       </div>
     
       	
-      	
+      	<a href="member/god.jsp">회원 관리</a>
     <div class="content_box">
         <div class="center-outer">
           <div class="center-inner">

@@ -11,20 +11,32 @@
 		   AND mpwd = #{mpwd}
 	</select>
 	<select id="selectById" parameterType="String" resultType="int">
-		SELECT COUNT(*)
+		SELECT COUNT(mid)
 		  FROM table_member
 		 WHERE mid = #{mid}
 	</select>
-	<select id="join">
-		 inser into table_member(   mid
+	
+	<insert id="register" parameterType="MemberVo">
+		 insert into table_member(  midx 
+		 							,mid
 	   					       		, mpwd
 	   					       		, mname
 	   					       		, mnumber
 	   					       		, mphone
-	   					       		, maddr
-	   					       		, memail 	)
-	                  values(    #{mId} 
+	   					       		, maddrdetail
+	   					       		, mmaddzipnum
+	   					       		, memail
+	   					       		 	)
+	                  values(   midx_seq.nextval
+	                  			, #{mid} 
 	                 		   , #{mpwd}
-	                 		   , #{mname})
-	</select>
+	                 		   , #{mname}
+	                 		   , #{mnumber}
+	                 		   , #{mphone}
+	                 		   , #{maddrdetail}
+	                 		   , #{mmaddzipnum}
+	                 		   , #{memail}
+	                 		   )
+	                 		   
+	</insert>
 </mapper>

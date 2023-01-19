@@ -9,4 +9,7 @@ public interface MemberService {
 	public MemberVo login(MemberVo vo)throws Exception;
 	
 	public int selectById(String mid);
+	
+	/*회원가입*/
+	public int register(MemberVo vo);
 }

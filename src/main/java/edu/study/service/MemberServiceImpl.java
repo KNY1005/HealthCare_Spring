@@ -26,6 +26,20 @@ public class MemberServiceImpl implements MemberService {
 		return MemberDAO.selectById(mid);
 	}
 
+	@Override
+	public int register(MemberVo vo){
+		System.out.println("회원가입2");
+		System.out.println(vo.getMid());
+		System.out.println(vo.getMpwd());
+		System.out.println(vo.getMname());
+		System.out.println(vo.getMnumber());
+		System.out.println(vo.getMphone());
+		System.out.println(vo.getMaddrdetail());
+		System.out.println(vo.getMmaddzipnum());
+		System.out.println(vo.getMemail());
+		return MemberDAO.register(vo);
+	}
+
 
 
 

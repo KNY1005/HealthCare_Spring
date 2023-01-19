@@ -296,8 +296,14 @@ a {
   	background: #b52773;
   	color:#fff;
   }
+  
  input:nth-child(4){
   width: 60%;
+	}
+	
+.id_ok,
+.id_already{
+	display:none;
 }
-  .
+ 
 }

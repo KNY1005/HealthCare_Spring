@@ -24,7 +24,14 @@ public class MemberDAO {
 		
 		return sqlSession.selectOne("edu.study.mapper.memberMapper.selectById", mid);
 	}
+	
+	
+	public int register(MemberVo vo) {
+		System.out.println("회원가입3");
+		return sqlSession.insert("edu.study.mapper.memberMapper.register", vo);
+	}
 
+	
 
 
 

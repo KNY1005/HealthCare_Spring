@@ -15,7 +15,38 @@ public class MemberVo {
 	private int mcnt;
 	private String mip;
 	private String memail;
+	private String maddrdetail;
+	private String mmaddzipnum;
+	private int mnumber;
 	
+	@Override
+	public String toString() {
+		return "MemberVo [midx=" + midx + ", mid=" + mid + ", mname=" + mname + ", mpwd=" + mpwd + ", mphone=" + mphone
+				+ ", mlvl=" + mlvl + ", mgrade=" + mgrade + ", mdelyn=" + mdelyn + ", menter=" + menter + ", mmdate="
+				+ mmdate + ", mbreakdate=" + mbreakdate + ", mcnt=" + mcnt + ", mip=" + mip + ", memail=" + memail
+				+ ", maddrdetail=" + maddrdetail + ", mmaddzipnum=" + mmaddzipnum + ", mnumber=" + mnumber + "]";
+	}
+
+	public int getMnumber() {
+		return mnumber;
+	}
+
+	public void setMnumber(int mnumber) {
+		this.mnumber = mnumber;
+	}
+
+	public String getMaddrdetail() {
+		return maddrdetail;
+	}
+	public void setMaddrdetail(String maddrdetail) {
+		this.maddrdetail = maddrdetail;
+	}
+	public String getMmaddzipnum() {
+		return mmaddzipnum;
+	}
+	public void setMmaddzipnum(String mmaddzipnum) {
+		this.mmaddzipnum = mmaddzipnum;
+	}
 	public String getMpwd() {
 		return mpwd;
 	}
@@ -102,13 +133,7 @@ public class MemberVo {
 		this.memail = memail;
 	}
 	
-	@Override
-	public String toString() {
-		return "MemberVo [midx=" + midx + ", mid=" + mid + ", mname=" + mname + ", mpwd=" + mpwd + ", mphone=" + mphone
-				+ ", mlvl=" + mlvl + ", mgrade=" + mgrade + ", mdelyn=" + mdelyn + ", menter=" + menter + ", mmdate="
-				+ mmdate + ", mbreakdate=" + mbreakdate + ", mcnt=" + mcnt + ", mip=" + mip + ", memail=" + memail
-				+ "]";
-	}
+
 	
 	
 }

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,7 +23,7 @@ import edu.study.vo.MemberVo;
 public class MemberController {
 	
 	@Autowired
-	private MemberService MemberService;
+	private MemberService memberService;
 	
 	@RequestMapping(value="/login.do",method=RequestMethod.GET )
 	public String login() {
@@ -37,7 +38,7 @@ public class MemberController {
 		System.out.println("로그인중");
 		
 		HttpSession session = rep.getSession();
-		MemberVo login = MemberService.login(vo);
+		MemberVo login = memberService.login(vo);
 		 
 		if(login == null) {
 			session.setAttribute("member", null);
@@ -60,16 +61,22 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
-	@RequestMapping(value="/join.do",method=RequestMethod.GET)
-	public String join() {
-		return "member/join";
+	
+	@RequestMapping(value="/join.do",method=RequestMethod.POST)
+	public String join(MemberVo vo){
+		System.out.println("회원가입중");
+		
+		memberService.register(vo);
+		
+		return "home";
 	}
+	
 	
 	@ResponseBody
 	@RequestMapping(value="/checkId.do", method=RequestMethod.POST)
 	public String checkId(String mid) {
 		
-		int result = MemberService.selectById(mid);
+		int result = memberService.selectById(mid);
 		
 		if(result >0) {
 			return "1";
@@ -78,7 +85,12 @@ public class MemberController {
 		}
 	}
 	
-	
+	@RequestMapping(value="/god.do", method=RequestMethod.GET)
+	public String god() {
+		
+		
+		return "member/god";
+	}
 	
 	
 	

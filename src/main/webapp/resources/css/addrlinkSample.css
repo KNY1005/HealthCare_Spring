@@ -6,7 +6,7 @@
 /* 바탕 배경 이미지 최적의 이미지 크기는 468 * 251px */
 .pop-address-search { background-image: url(이용기관사이트 이미지 url); }
 /* 회사 로고 이미지 이미지 크기는 149 * 14px */
-.pop-address-search .logo { background: url(이용기관사이트 로고 이미지 url) no-repeat; background-position:center; }
+.pop-address-search .logo { background: url("${path}/resources/image/logo2.png") no-repeat; background-position:center; }
 
 /***************************************************/
 /* 배경색상 */
