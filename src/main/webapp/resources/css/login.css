@@ -37,7 +37,7 @@ body {
 }
 
 form {
-  height: 700px;
+  height: 40px;
   padding: 50px;
 }
 
@@ -255,9 +255,7 @@ a {
     box-shadow: none;
   }
 
-  form {
-    padding: 50px;
-  }
+
 
   .panel-switch {
     margin-top: 30px;
@@ -280,4 +278,26 @@ a {
     width: 70%;
     margin-top: 100px;
   }
+  
+  .join{
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  
+  margin:-100px;
+  }
+  
+  .button_join{
+  	width:70px;
+  	height:20px;
+  	border:none;
+  	border-radius: 30px;
+  	background: #b52773;
+  	color:#fff;
+  }
+ input:nth-child(4){
+  width: 60%;
+}
+  .
 }

@@ -15,13 +15,16 @@
 		  FROM table_member
 		 WHERE mid = #{mid}
 	</select>
-	<!-- 회원가입 
 	<select id="join">
-		 INSERT INTO MP_MEMBER(   mid
-	   					       , mpwd 
-	   					       , USERNAME 	)
-	                  VALUES(    #{userId} 
-	                 		   , #{userPass}
-	                 		   , #{userName})
-	</select> -->
+		 inser into table_member(   mid
+	   					       		, mpwd
+	   					       		, mname
+	   					       		, mnumber
+	   					       		, mphone
+	   					       		, maddr
+	   					       		, memail 	)
+	                  values(    #{mId} 
+	                 		   , #{mpwd}
+	                 		   , #{mname})
+	</select>
 </mapper>

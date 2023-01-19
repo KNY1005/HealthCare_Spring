@@ -46,6 +46,66 @@ $(document).ready(function () {
     $("#log_in").toggleClass("active-button", false);
     $("#sign_up").removeAttr("disabled");
   });
+  
+  	var checkIdFlag = false;
+	var checkIdVal = "";
+	function checkId(){
+		var idval = $("input[name=mid]").val();
+		
+		$.ajax({
+			url : "checkId.do",
+			type: "post",
+			data: "mid="+idval,
+			success:function(data){
+				if(data == 1){
+					alert("중복된 id입니다.");
+					checkIdFlag = false;
+					checkIdVal = "";
+				}else{
+					alert("사용할 수 있는 id입니다.");
+					checkIdFlag = true;
+					checkIdVal = idval;
+				}
+			}
+		});
+	}
+	
+	$(function() {
+		$(".join").submit(function() {
+			
+			if(!checkIdFlag){
+				alert("아이디 중복확인을 하세요.");
+				return false;
+			}else if($("id").val() == ""){
+				alert("아이디를 입력하세요")
+				return false;
+			}else if($("name").val() == ""){
+				alert("이름을 입력하세요")
+				return false;
+			}else if($("password").val() == ""){
+				alert("패스워드를 입력하세요")
+				return false;
+			}else if($("addr").val() == ""){
+				alert("주소를 입력하세요")
+				return false;
+			}else if($("phone").val() == ""){
+				alert("연락처를 입력하세요")
+				return false;
+			}else{
+				return true;
+			}
+			
+		});
+	})
+	
+	function blurId(obj){
+		var val = obj.value;
+		
+		if(checkIdFlag && val != checkIdVal){
+			checkIdFlag = false;
+		}
+	}
+	
 });
 
 
