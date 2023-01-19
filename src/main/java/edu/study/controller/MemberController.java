@@ -85,6 +85,7 @@ public class MemberController {
 		}
 	}
 	
+	/*관리자페이지*/
 	@RequestMapping(value="/god.do", method=RequestMethod.GET)
 	public String god() {
 		

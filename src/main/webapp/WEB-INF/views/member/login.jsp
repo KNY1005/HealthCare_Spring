@@ -53,10 +53,11 @@
             <input
               class="login animated fadeInUp animate2"
               name="mid"
-              type="textbox"
+              type="text"
               required
               placeholder="UserId"
               value=""
+              style="ime-mode:disabled"
             />
             <input
               class="login animated fadeInUp animate3"
@@ -65,6 +66,7 @@
               required
               placeholder="Password"
               value=""
+              style="ime-mode:disabled"
             />
           </fieldset>
           <input
@@ -81,25 +83,33 @@
           </form>
           <form class="join" id="join" method="post" name='join' action="/controller/member/join.do">
           <fieldset id="signup-fieldset" class="hidden">
+          
+           <!-- style="ime-mode:disabled는 한영키를 무시하고 영어로만 입력됨  -->
             <input
               class="login animated fadeInUp animate2"
               name="mid"
-              type="textbox"
+              type="text"
               required
               placeholder="아이디"
               value=""
+              style="ime-mode:disabled"
               onblur="blurId(this)"
-            /><button class="login animated fadeInUp animate2 button_join" type="button" onclick="checkId()">중복체크</button>
-            <span class="id_ok">사용 가능한 아이디입니다.</span><br>
-			<span class="id_already">누군가 이 아이디를 사용하고 있어요.</span>
+            /><button class="login animated fadeInUp animate2" id="button_join" type="button" onclick="checkId()">중복체크</button>
+            <span  style="display: none; color: green;" class="id_ok">사용 가능한 아이디입니다.</span><br>
+			<span style="display: none; color: #d92742; class="id_already">누군가 이 아이디를 사용하고 있어요.</span>
             <input
               class="login animated fadeInUp animate3"
               name="mpwd"
               type="password"
-              placeholder="비밀번호"
+              placeholder="최소 하나의 영문 또는 숫자를 포함하여 6자리"
               required
               value=""
+              style="ime-mode:disabled"
             />
+            <span id="alert-success" style="display: none; color: green;">비밀번호가 일치합니다.</span>
+            <span id="alert-danger" style="display: none; color: #d92742; font-weight: bold; ">비밀번호가 일치하지 않습니다.</span>
+            <span id="alert-null" style="display: none; color: black;">비밀번호 확인 칸 을 입력하세요.</span>
+            <span id="alert-null2" style="display: none; color: black;">비밀번호 칸 을 입력하세요.</span>
             <input
               class="login animated fadeInUp animate3"
               name="mpwdcheck"
@@ -143,7 +153,7 @@
               required
               value=""
               IsReadOnly="True"
-            /><button class="login animated fadeInUp animate2 button_join" onclick="goPopup()" type="button">주소찾기</button>
+            /><button class="login animated fadeInUp animate2 " id="button_join" onclick="goPopup()" type="button">주소찾기</button>
             
             <input
               class="login animated fadeInUp animate3"
@@ -162,7 +172,36 @@
               placeholder="Email"
               required
               value=""
-            />
+            />&#64;<input type="text" name="emaddress" value="" ReadOnly="true" />
+                        <select id="emailselect" onchange="SetEmailTail(emailselect.options[this.selectedIndex].value)" >
+                            <option value="notSelected">::선택하세요::</option>
+                            <option value="etc" id="etc">직접입력</option>
+                            <option value="naver.com">naver.com</option>
+                            <option value="nate.com">nate.com</option>
+                            <option value="google.com">google.com</option>
+                            <!--이메일 확인 스크립트-->
+                            <script type="text/javascript" th:inline="javascript">
+                        function SetEmailTail(emailValue) {
+                            var email = document.all("email")    // 사용자 입력
+                            var emailTail = document.all("emaddress") // Select box
+                           var esw = $("#etc1");
+                               if ( emailValue == "notSelected" ){
+                              emailTail.readOnly = true;
+                              emailTail.value = '';
+                              alert("이메일을 선택or입력하세요  ");
+                           }
+                            else if ( emailValue == "etc" ) {
+                               emailTail.readOnly = false;
+                               emailTail.value = "";
+                              emailTail.focus();
+                           }
+                           else {
+                               emailTail.readOnly = true;
+                               emailTail.value = emailValue;
+                           }
+                        }
+                            </script>
+            
             
           </fieldset>
           <input

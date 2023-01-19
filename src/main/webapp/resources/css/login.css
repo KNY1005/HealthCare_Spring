@@ -37,13 +37,13 @@ body {
 }
 
 form {
-  height: 40px;
+  height: 0px;
   padding: 50px;
 }
 
 .panel-switch {
   text-align: center;
-  margin-top: 30px;
+  margin-top: -16px;
 }
 
 .panel-switch button {
@@ -288,7 +288,7 @@ a {
   margin:-100px;
   }
   
-  .button_join{
+  #button_join{
   	width:70px;
   	height:20px;
   	border:none;
