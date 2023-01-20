@@ -1,20 +1,25 @@
 package edu.study.controller;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import edu.study.service.QuestionService;
@@ -23,120 +28,173 @@ import edu.study.vo.FileVO;
 import edu.study.vo.PageVO;
 import edu.study.vo.SearchCriteria;
 
-@RequestMapping(value="/question")	
+@RequestMapping(value = "/question")
 @Controller
 public class QuestionController {
 
 	@Autowired
-	private QuestionService questionService;	
-	
-	@RequestMapping(value = "/questionList.do", method = RequestMethod.GET)	
-	public String questionList(SearchCriteria scri, Model model) {	
-		List<BoardVo> list = questionService.list(scri);		
-		model.addAttribute("list", list);		
+	private QuestionService questionService;
+
+	@RequestMapping(value = "/questionList.do", method = RequestMethod.GET)
+	public String questionList(SearchCriteria scri, Model model) {
+		List<BoardVo> list = questionService.list(scri);
+		model.addAttribute("list", list);
 		PageVO pageVo = new PageVO();
 		pageVo.setScri(scri);
 		pageVo.setTotalCount(questionService.listCount(scri));
 		model.addAttribute("page", pageVo);
-		
-		return "question/questionList";	
+
+		return "question/questionList";
 	}
-	
-	@RequestMapping(value = "/questionView.do", method = RequestMethod.GET)	
-	public String questionView(int bidx, Model model) {	
-		BoardVo vo = questionService.selectByBidx(bidx); 
+
+	@RequestMapping(value = "/questionView.do", method = RequestMethod.GET)
+	public String questionView(int bidx, Model model) {
+		BoardVo vo = questionService.selectByBidx(bidx);
 		FileVO fvo = questionService.selectFileByBidx(bidx);
-			
-		model.addAttribute("vo",vo);
-		model.addAttribute("fvo",fvo);
-		return "question/questionView";	
+
+		model.addAttribute("vo", vo);
+		model.addAttribute("fvo", fvo);
+		return "question/questionView";
 	}
-	
-	@RequestMapping(value = "/questionModify.do", method = RequestMethod.GET)	
+
+	@RequestMapping(value = "/questionModify.do", method = RequestMethod.GET)
 	public String questionModify(int bidx, Model model) {
-				
-		BoardVo vo = questionService.selectByBidx(bidx); 
-		
-		model.addAttribute("vo",vo);
-		return "question/questionModify";	
+
+		BoardVo vo = questionService.selectByBidx(bidx);
+
+		model.addAttribute("vo", vo);
+		return "question/questionModify";
 	}
-	@RequestMapping(value = "/questionModify.do", method = RequestMethod.POST)	
+
+	@RequestMapping(value = "/questionModify.do", method = RequestMethod.POST)
 	public String questionModify2(BoardVo vo) {
-				
-		int result = questionService.updateByBidx(vo); 		
-		if(result>0) {
-		return "redirect:questionView.do?bidx="+vo.getBidx();	
-		}else {
+
+		int result = questionService.updateByBidx(vo);
+		if (result > 0) {
+			return "redirect:questionView.do?bidx=" + vo.getBidx();
+		} else {
 			return "/";
 		}
 	}
-	
-	@RequestMapping(value = "/questionWrite.do", method = RequestMethod.GET)	
-	public String questionWrite() {	
-		
-		return "question/questionWrite";	
-	}		
-	@RequestMapping(value = "/questionWrite.do", method = RequestMethod.POST)	
-	public String questionWrite2(BoardVo vo,MultipartFile upload,HttpServletRequest req)throws IllegalStateException, IOException {	
-		//HashMap 매개변수로 넣어줘야 전달이 되는데 파일 업로드를 할경우가 있고 안할경우가 있다.
+
+	@RequestMapping(value = "/questionWrite.do", method = RequestMethod.GET)
+	public String questionWrite() {
+
+		return "question/questionWrite";
+	}
+
+	@RequestMapping(value = "/questionWrite.do", method = RequestMethod.POST)
+	public String questionWrite2(BoardVo vo, MultipartFile upload, HttpServletRequest req)
+			throws IllegalStateException, IOException {
+		// HashMap 매개변수로 넣어줘야 전달이 되는데 파일 업로드를 할경우가 있고 안할경우가 있다.
 		questionService.insert(vo);
-		String path = req.getSession().getServletContext().getRealPath("/resources/upload");		
+		String path = req.getSession().getServletContext().getRealPath("/resources/upload");
 		File dir = new File(path);
-		System.out.println("bidx값은?"+vo.getBidx());
-		HashMap<String,Object> file_name = new HashMap<String,Object>(); 
-		
-		
-		//System.out.println("파일이름은1?"+vo.getFilename());
-		//for(String key : keys) {sum += map.get(key);	}
-		if(!dir.exists()) {	//directory가 있는지 없는지 
+		System.out.println("bidx값은?" + vo.getBidx());
+
+		// System.out.println("파일이름은1?"+vo.getFilename());
+		// for(String key : keys) {sum += map.get(key); }
+		if (!dir.exists()) { // directory가 있는지 없는지
 			dir.mkdirs();
 		}
-		if(!upload.getOriginalFilename().isEmpty()) {
-			System.out.println("파일이름은2?"+upload.getOriginalFilename());
-			System.out.println("업로드는?"+upload);	
+		if (!upload.getOriginalFilename().isEmpty()) {
+			HashMap<String, Object> file_name = new HashMap<String, Object>();
+			System.out.println("파일이름은2?" + upload.getOriginalFilename());
+			System.out.println("업로드는?" + upload);
 			int pos = upload.getOriginalFilename().lastIndexOf(".");
-	        String ext = upload.getOriginalFilename().substring(pos + 1);	        
-	        Date now = new Date();
-	        String today = new SimpleDateFormat("yyyyMMddHHmmss").format(now);
+			String ext = upload.getOriginalFilename().substring(pos + 1);
+			Date now = new Date();
+			String today = new SimpleDateFormat("yyyyMMddHHmmss").format(now);
 
-	        int random = (int) ((Math.random() * 100) + 1);
-	        String result2 = today + random;
-	        String changeName=result2+"."+ext;
-	        String originName = upload.getOriginalFilename();
-			upload.transferTo(new File(changeName));	
-			System.out.println("변환된 파일이름은?"+changeName);
-			file_name.put("originname",originName);
-			file_name.put("storedname",changeName);
-			file_name.put("bidx",vo.getBidx());
-			
-			System.out.println("파일의 값은?"+file_name.values());
+			int random = (int) ((Math.random() * 100) + 1);
+			String result2 = today + random;
+			String changeName = result2 + "." + ext;
+			String originName = upload.getOriginalFilename();
+			upload.transferTo(new File(changeName));
+			System.out.println("변환된 파일이름은?" + changeName);
+			file_name.put("originname", originName);
+			file_name.put("storedname", changeName);
+			file_name.put("bidx", vo.getBidx());
+
+			System.out.println("파일의 값은?" + file_name.values());
 			questionService.fileInsert(file_name);
-			
-		}		
-		return "redirect:questionView.do?bidx="+vo.getBidx();	
-		
-	}	
-	@RequestMapping(value = "/questionDelete.do", method = RequestMethod.GET)
-	public String delete(int bidx) {	
-		
-		questionService.deleteByBidx(bidx);	
-		
-		return "redirect:questionList.do";
-		
+
+		}
+		return "redirect:questionView.do?bidx=" + vo.getBidx();
+
 	}
-	
-	
-	
+
+	@RequestMapping(value = "/questionDelete.do", method = RequestMethod.GET)
+	public String delete(int bidx) {
+
+		questionService.deleteByBidx(bidx);
+
+		return "redirect:questionList.do";
+
+	}
+
+	@RequestMapping(value = "/fileDown.do")
+	public void fileDown(int bidx, HttpServletResponse response, HttpServletRequest req) throws Exception {
+		FileVO fvo = questionService.selectFileByBidx(bidx);
+		String path = req.getSession().getServletContext().getRealPath("/resources/upload");
+		String fileName = fvo.getStoredname();
+		File file = new File(path);
+
+		FileInputStream fileInputStream = null;
+		ServletOutputStream servletOutputStream = null;
+		System.out.println(fvo.getOriginname());
+		System.out.println(fvo.getStoredname());
+		System.out.println(path);
+		try {
+			String downName = null;
+			String browser = req.getHeader("User-Agent");
+			// 파일 인코딩
+			if (browser.contains("MSIE") || browser.contains("Trident") || browser.contains("Chrome")) {// 브라우저 확인 파일명
+																										// encode
+
+				downName = URLEncoder.encode(fileName, "UTF-8").replaceAll("\\+", "%20");
+
+			} else {
+
+				downName = new String(fileName.getBytes("UTF-8"), "ISO-8859-1");
+
+			}
+
+			response.setHeader("Content-Disposition", "attachment;filename=\"" + downName + "\"");
+			response.setContentType("application/octer-stream");
+			response.setHeader("Content-Transfer-Encoding", "binary;");
+
+			fileInputStream = new FileInputStream(file);
+			servletOutputStream = response.getOutputStream();
+
+			byte b[] = new byte[1024];
+			int data = 0;
+
+			while ((data = (fileInputStream.read(b, 0, b.length))) != -1) {
+
+				servletOutputStream.write(b, 0, data);
+
+			}
+
+			servletOutputStream.flush();// 출력
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (servletOutputStream != null) {
+				try {
+					servletOutputStream.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			if (fileInputStream != null) {
+				try {
+					fileInputStream.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
 }
-
-
-
-
-
-
-
-
-
-
-
-

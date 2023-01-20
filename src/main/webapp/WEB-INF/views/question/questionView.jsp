@@ -335,7 +335,7 @@ hr {
 				<div class="file">
 					<div class="filebox">
 						<p class="file1">첨부파일</p>
-						<input class="upload-name" value="${fvo.originname }" disabled="disabled">
+						<a href="fileDown.do?bidx=${vo.bidx }"><input class="upload-name" value="${fvo.originname }" disabled="disabled"></a>
 					</div>
 				</div>
 				<div id="button">
