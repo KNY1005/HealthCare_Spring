@@ -19,7 +19,7 @@
       rel="stylesheet"
     />
 
-    <!--        Animate.css-->
+    <!-- Animate.css-->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
@@ -36,9 +36,9 @@
   <body>
     <div>
       <div class="panel shadow1">   
-        <form class="login" id="login"method="post" name='login' action="/controller/member/join.do">
+        <form class="login" id="login"method="post" name='login' action="/controller/member/login.do">
           <div class="panel-switch animated fadeIn">
-            <button type="button" id="sign_up" class="active-button" scr="<%=request.getContextPath() %>/member/join.do">
+            <button type="button" id="sign_up" class="active-button">
               Sign Up
             </button>
             <button type="button" id="log_in" class="" disabled>Log in</button>
@@ -74,7 +74,7 @@
             id="login-form-submit"
             class="login_form button animated fadeInUp animate4"
             value="Login"
-          />
+          >
           <p>
             <a id="lost-password-link" href="" class="animated fadeIn animate5"
               >아이디 비밀번호 찾기
@@ -213,21 +213,5 @@
 		</form>
       </div>
     </div>
-    <script type="text/javascript">
- // 주소 팝업
-	  function goPopup() {
-	  	var pop = window.open("${path}/resources/popup/jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes");
-	  }
-
-	  function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo){
-	    // 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
-
-	    document.getElementById("addrBasic").value = roadAddrPart1;
-
-	    document.getElementById("addrDetail").value = addrDetail
-	  }
-    
-	  
-    </script>
   </body>
 </html>

@@ -126,15 +126,17 @@ $(document).ready(function(){
       
       
     </header>
-<!-- 헤더(inclue랑 css 다름) -->
-<!-- 메인 -->
+	<!-- 헤더(inclue랑 css 다름) -->
+	<!-- 메인 -->
     <main>
       <div class="background">
         <div class="layer"></div>
       </div>
     
       	
-      	<a href="member/god.jsp">회원 관리</a>
+      	<a href="<%=request.getContextPath() %>/admin/god.do">회원 관리</a>
+      	
+      	
     <div class="content_box">
         <div class="center-outer">
           <div class="center-inner">

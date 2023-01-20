@@ -1,7 +1,10 @@
 package edu.study.controller;
 
 import java.net.http.HttpRequest;
+import java.util.List;
 
+import javax.print.attribute.standard.PrinterInfo;
+import javax.print.attribute.standard.PrinterLocation;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -9,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,6 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.study.service.MemberService;
 import edu.study.vo.MemberVo;
+import oracle.net.aso.l;
 
 @RequestMapping("/member")
 @Controller
@@ -85,15 +90,7 @@ public class MemberController {
 		}
 	}
 	
-	/*관리자페이지*/
-	@RequestMapping(value="/god.do", method=RequestMethod.GET)
-	public String god() {
-		
-		
-		return "member/god";
-	}
-	
-	
+
 	
 	
 	
