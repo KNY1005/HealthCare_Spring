@@ -81,7 +81,7 @@ public class QuestionController {
 		String path = req.getSession().getServletContext().getRealPath("/resources/upload");		
 		File dir = new File(path);
 		System.out.println("bidx값은?"+vo.getBidx());
-		HashMap<String,String> file_name = new HashMap<String,String>(); 
+		HashMap<String,Object> file_name = new HashMap<String,Object>(); 
 		
 		
 		//System.out.println("파일이름은1?"+vo.getFilename());
@@ -105,6 +105,7 @@ public class QuestionController {
 			System.out.println("변환된 파일이름은?"+changeName);
 			file_name.put("originname",originName);
 			file_name.put("storedname",changeName);
+			file_name.put("bidx",vo.getBidx());
 			
 			System.out.println("파일의 값은?"+file_name.values());
 			questionService.fileInsert(file_name);

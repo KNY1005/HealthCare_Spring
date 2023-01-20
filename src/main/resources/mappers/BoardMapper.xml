@@ -111,7 +111,8 @@
 			#{storedname}
 		)
 	</insert>
-	<!-- <select id="selectFromFile" resultType="fileVO">
+	<select id="selectFileByBidx" resultType="fileVO">
+		SELECT * FROM table_file
+	</select> 
 	
-	</select> -->
 </mapper>

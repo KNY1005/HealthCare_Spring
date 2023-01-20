@@ -77,7 +77,7 @@ public class QuestionServiceImpl implements QuestionService{
 
 
 	@Override
-	public int fileInsert(HashMap<String,String> file_name) {
+	public int fileInsert(HashMap<String,Object> file_name) {
 		// TODO Auto-generated method stub
 		return questionDAO.fileInsert(file_name);
 	}
