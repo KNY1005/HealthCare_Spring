@@ -45,8 +45,10 @@ public class QuestionController {
 	@RequestMapping(value = "/questionView.do", method = RequestMethod.GET)	
 	public String questionView(int bidx, Model model) {	
 		BoardVo vo = questionService.selectByBidx(bidx); 
-		
+		FileVO fvo = questionService.selectFileByBidx(bidx);
+			
 		model.addAttribute("vo",vo);
+		model.addAttribute("fvo",fvo);
 		return "question/questionView";	
 	}
 	
@@ -122,6 +124,8 @@ public class QuestionController {
 		return "redirect:questionList.do";
 		
 	}
+	
+	
 	
 }
 

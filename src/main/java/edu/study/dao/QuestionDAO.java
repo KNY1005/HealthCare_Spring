@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.study.vo.BoardVo;
+import edu.study.vo.FileVO;
 import edu.study.vo.SearchCriteria;
 
 @Repository
@@ -51,5 +52,7 @@ public class QuestionDAO {
 	public int fileInsert(HashMap<String,Object> file_name) {
 		return sqlSession.update("edu.study.mapper.boardMapper.fileInsert", file_name);
 	}
-	
+	public FileVO selectFileByBidx(int bidx) {
+		return sqlSession.selectOne("edu.study.mapper.boardMapper.selectFileByBidx", bidx);
+	}
 }

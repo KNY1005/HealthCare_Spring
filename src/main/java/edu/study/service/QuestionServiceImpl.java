@@ -82,5 +82,12 @@ public class QuestionServiceImpl implements QuestionService{
 		return questionDAO.fileInsert(file_name);
 	}
 
+
+	@Override
+	public FileVO selectFileByBidx(int bidx) {
+		
+		return questionDAO.selectFileByBidx(bidx);
+	}
+
 	
 }

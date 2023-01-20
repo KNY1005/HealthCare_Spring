@@ -8,6 +8,8 @@
 		<typeAlias type="edu.study.vo.BoardVo" alias="BoardVo"/>
 		<typeAlias type="edu.study.vo.SearchCriteria" alias="scri"/>
 		<typeAlias type="edu.study.vo.CriteriaVO" alias="criVo" />
+		<typeAlias type="edu.study.vo.FileVO" alias="fileVO" />
+		
     </typeAliases>
     	
 </configuration>

@@ -111,8 +111,8 @@
 			#{storedname}
 		)
 	</insert>
-	<select id="selectFileByBidx" resultType="fileVO">
-		SELECT * FROM table_file
+	<select id="selectFileByBidx" parameterType="int" resultType="fileVO">
+		SELECT * FROM table_file where bidx = #{bidx}
 	</select> 
 	
 </mapper>
