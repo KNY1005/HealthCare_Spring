@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import edu.study.service.QuestionService;
 import edu.study.vo.BoardVo;
+import edu.study.vo.FileVO;
 import edu.study.vo.PageVO;
 import edu.study.vo.SearchCriteria;
 
@@ -74,14 +75,17 @@ public class QuestionController {
 		return "question/questionWrite";	
 	}		
 	@RequestMapping(value = "/questionWrite.do", method = RequestMethod.POST)	
-	public String questionWrite2(BoardVo vo,HashMap<String,String> file,MultipartFile upload,HttpServletRequest req)throws IllegalStateException, IOException {	
+	public String questionWrite2(BoardVo vo,MultipartFile upload,HttpServletRequest req)throws IllegalStateException, IOException {	
 		//HashMap 매개변수로 넣어줘야 전달이 되는데 파일 업로드를 할경우가 있고 안할경우가 있다.
 		questionService.insert(vo);
 		String path = req.getSession().getServletContext().getRealPath("/resources/upload");		
 		File dir = new File(path);
+		System.out.println("bidx값은?"+vo.getBidx());
+		HashMap<String,String> file_name = new HashMap<String,String>(); 
+		
 		
 		//System.out.println("파일이름은1?"+vo.getFilename());
-		Map<String,String> file2 = new HashMap<String, String>();
+		//for(String key : keys) {sum += map.get(key);	}
 		if(!dir.exists()) {	//directory가 있는지 없는지 
 			dir.mkdirs();
 		}
@@ -96,10 +100,15 @@ public class QuestionController {
 	        int random = (int) ((Math.random() * 100) + 1);
 	        String result2 = today + random;
 	        String changeName=result2+"."+ext;
-			upload.transferTo(new File(path,result2+"."+ext));	
+	        String originName = upload.getOriginalFilename();
+			upload.transferTo(new File(changeName));	
 			System.out.println("변환된 파일이름은?"+changeName);
-			file.put("originalName",upload.getOriginalFilename());
-			file.put("storedName",changeName);			
+			file_name.put("originname",originName);
+			file_name.put("storedname",changeName);
+			
+			System.out.println("파일의 값은?"+file_name.values());
+			questionService.fileInsert(file_name);
+			
 		}		
 		return "redirect:questionView.do?bidx="+vo.getBidx();	
 		

@@ -48,4 +48,8 @@ public class QuestionDAO {
 	public int boardHitUpdate(int midx){
 		return sqlSession.update("edu.study.mapper.boardMapper.boardHitUpdate", midx);
 	}
+	public int fileInsert(HashMap<String,String> file_name) {
+		return sqlSession.update("edu.study.mapper.boardMapper.fileInsert", file_name);
+	}
+	
 }

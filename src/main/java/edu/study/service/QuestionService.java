@@ -22,4 +22,5 @@ public interface QuestionService {
 	int maxBidx();
 	int deleteByBidx(int bidx);
 	int boardHitUpdate(int midx);
+	int fileInsert(HashMap<String,String> file_name);
 }

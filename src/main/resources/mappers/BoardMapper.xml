@@ -97,4 +97,21 @@
 		set bhit = bhit + 1 
 		where bidx = #{bidx}
 	</update>
+	
+	<insert id="fileInsert" parameterType="HashMap">
+		INSERT INTO TABLE_FILE(
+	 		fidx, 
+			bidx,
+			originname,
+			storedname
+		)VALUES(
+	  		fidx_seq.nextval,
+			#{bidx},
+			#{originname},
+			#{storedname}
+		)
+	</insert>
+	<!-- <select id="selectFromFile" resultType="fileVO">
+	
+	</select> -->
 </mapper>

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import edu.study.dao.QuestionDAO;
 import edu.study.vo.BoardVo;
+import edu.study.vo.FileVO;
 import edu.study.vo.SearchCriteria;
 
 @Service
@@ -69,6 +70,16 @@ public class QuestionServiceImpl implements QuestionService{
 	public int insert(BoardVo vo) {
 		// TODO Auto-generated method stub
 		return questionDAO.insert(vo);
+	}
+
+
+	
+
+
+	@Override
+	public int fileInsert(HashMap<String,String> file_name) {
+		// TODO Auto-generated method stub
+		return questionDAO.fileInsert(file_name);
 	}
 
 	
