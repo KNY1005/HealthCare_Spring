@@ -13,7 +13,5 @@ public interface MemberService {
 	/*회원가입*/
 	public int register(MemberVo vo);
 
-	/*회원리스트조회*/
-	public List<MemberVo> memberlist();
 
 }

@@ -32,13 +32,4 @@ public class MemberServiceImpl implements MemberService {
 		return memberdao.register(vo);
 	}
 
-	@Override
-	public List<MemberVo> memberlist() {
-		System.out.println("회원조회");
-		return null;
-	}
-
-
-
-
 	}

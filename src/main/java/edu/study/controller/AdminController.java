@@ -46,13 +46,14 @@ public class AdminController {
 		return "admin/god";
 	}
 	
+	/*
 	@RequestMapping(value="/memberlist.do", method=RequestMethod.GET)
 	public String memberlist(Model model){
 		List<MemberVo> list = memberService.memberlist();
 		model.addAttribute("list", list);
 		return "admin/memberlist";
 	}
-	
+	*/
 	
 	
 	

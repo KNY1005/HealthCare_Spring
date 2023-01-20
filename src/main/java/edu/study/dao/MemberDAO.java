@@ -31,18 +31,5 @@ public class MemberDAO {
 		return sqlSession.insert("edu.study.mapper.memberMapper.register", vo);
 	}
 
-
-
-	public List<MemberVo> getMemberList() {
-		//while문 대신 selectList하면 됨! 세상간단!
-		List<MemberVo> memberList = sqlSession.selectList(sqlSession+".memberList");
-		System.out.println("DAO: getMemberList결과 - "+memberList);
-		return sqlSession.selectOne("edu.study.mapper.memberMapper.findMembers", memberList);
-	}
-
-
-
-	
-
 	
 }
