@@ -1,5 +1,7 @@
 package edu.study.vo;
 
+import java.util.List;
+
 public class MemberVo {
 	private int midx;
 	private String mid;
@@ -26,7 +28,19 @@ public class MemberVo {
 				+ mmdate + ", mbreakdate=" + mbreakdate + ", mcnt=" + mcnt + ", mip=" + mip + ", memail=" + memail
 				+ ", maddrdetail=" + maddrdetail + ", mmaddzipnum=" + mmaddzipnum + ", mnumber=" + mnumber + "]";
 	}
-
+	
+	
+	private List<MemberVo> memberVoList;
+	
+	public List<MemberVo> getBoardVoList() {
+		return memberVoList;
+	}
+	public void setMemberVoList(List<MemberVo> memberVoList) {
+		this.memberVoList = memberVoList;
+	}
+	
+	
+	
 	public int getMnumber() {
 		return mnumber;
 	}

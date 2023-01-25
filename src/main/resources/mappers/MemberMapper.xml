@@ -39,6 +39,20 @@
 	                 		   )
 	                 		   
 	</insert>
-	
-	
+	<select id="memberlist" parameterType="MemberVo" resultType="MemberVo">
+		select
+			 midx
+			,mid
+       		, mpwd
+       		, mname
+       		, mnumber
+       		, mphone
+       		, maddrdetail
+       		, mmaddzipnum
+       		, memail
+       		, mgrade
+       	from table_member
+       	order by mname
+       		
+	</select>
 </mapper>

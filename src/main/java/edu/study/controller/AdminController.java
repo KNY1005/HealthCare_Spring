@@ -33,7 +33,7 @@ public class AdminController {
 	@RequestMapping(value="/god.do", method=RequestMethod.GET)
 	public String god(HttpSession session) {
 		
-		/*
+		
 		//관리자 세션 제어
 		String mgrade = (String) session.getAttribute("mgrade");
 		String mid = (String) session.getAttribute("mid");
@@ -41,19 +41,19 @@ public class AdminController {
 			System.out.println("관리자가아닙니다");
 			return "";
 		}
-		*/
+		
 		
 		return "admin/god";
 	}
 	
-	/*
+	
 	@RequestMapping(value="/memberlist.do", method=RequestMethod.GET)
 	public String memberlist(Model model){
 		List<MemberVo> list = memberService.memberlist();
 		model.addAttribute("list", list);
 		return "admin/memberlist";
 	}
-	*/
+	
 	
 	
 	

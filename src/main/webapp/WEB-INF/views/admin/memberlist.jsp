@@ -9,14 +9,12 @@
     <!-- Required meta tags -->
     <meta charset="utf-8" />
   </head>
+  <script type="text/javascript">
+  	function updateRole(midx) {
+		location.href="membercontroller.jsp?command=updaterolePage&midx="+midx;
+	}
+  </script>
   <body>
-   <%
-//1. 로그인세션제어(관리자는 제외)
-String id = (String) session.getAttribute("id");//다운캐스팅
-if(id == null || !id.equals("admin")){ //순서바뀌면 에러발생하므로 항상 null 먼저 비교할 것
-	response.sendRedirect("/test/member/main");
-}
-%>
 <h2 style="text-align: center;">회원목록</h2>
 <table border="1">
 	<tr>
@@ -24,17 +22,17 @@ if(id == null || !id.equals("admin")){ //순서바뀌면 에러발생하므로 �
 		<td>비밀번호</td>
 		<td>이름</td>
 		<td>이메일</td>
-		<td>회원가입일</td>
-		<td>최근회원정보수정일</td>
+		<td>등급</td>
+		<td>등급변경</td>
 	</tr>
-	<c:forEach items="${memberList}" var="mb">	
+	<c:forEach var="mb" items="${list}">
 		<tr>
 			<td><c:out value="${mb.mid}"></c:out></td>
 			<td><c:out value="${mb.mpwd}"></c:out></td>
 			<td><c:out value="${mb.mname}"></c:out></td>
 			<td><c:out value="${mb.memail}"></c:out></td>
-			<td><c:out value="${mb.regdate}"></c:out></td>?
-			<td><c:out value="${mb.updatedate}"></c:out></td>?
+			<td><c:out value="${mb.mgrade}"></c:out></td>
+			<td>등급 변경</td>
 		</tr>
 	</c:forEach>
 </table>

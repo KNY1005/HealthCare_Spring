@@ -32,4 +32,32 @@ public class MemberServiceImpl implements MemberService {
 		return memberdao.register(vo);
 	}
 
+	@Override
+	public List<MemberVo> memberlist() {
+		
+		return memberdao.memberlist();
+	}
+
+	@Override
+	public void inserMember(MemberVo vo) {
+		
+	}
+
+	@Override
+	public MemberVo viewMember() {
+		return null;
+	}
+
+	@Override
+	public void deleteMember(String mid) {
+		
+		
+	}
+
+	@Override
+	public void updateMember(MemberVo vo) {
+
+		
+	}
+
 	}

@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
-
+<%@ page import="edu.study.vo.MemberVo" %>
 <html>
 <head>
 <!--파비콘sss-->
@@ -92,19 +92,19 @@ $(document).ready(function(){
             </ul>
           </div>
         </nav>
+        <c:forEach var="mb" items="${list}">
         <div id="profli">
-        <c:if test="${vo.getMid() != null}">
           <div class="main_profli">
            <img src="${path}/resources/image/profli.png" alt="프로필" />
             <button type="submit" class="btn">
               <i class="xi-plus" alt="검색"></i>
             </button>
-            <p>${mname}님</p>
+            <p>${mb.mname}님</p>
           </div>
           <div id="profli_menu">
             <ul>
               <li><img src="${path}/resources/image/profli.png" alt="프로필" /></li>
-              <li><p>${member.mname}님</p></li>
+              <li><p>${mb.mname}님</p></li>
               <li><hr width="250px" /></li>
               <li><a href="<%=request.getContextPath() %>/mypage2.do">마이페이지</a></li>
               <li><a href="<%=request.getContextPath() %>/mypage4.do">내가 쓴 글</a></li>
@@ -115,13 +115,11 @@ $(document).ready(function(){
               </li>
             </ul>
           </div>
-      </c:if>
-      <c:if test="${vo.getMid() == null}">
       	<div class="login" >
       		<button><a href="<%=request.getContextPath() %>/member/login.do">시작하기</a></button>
       	</div>
-      </c:if>
         </div>
+       </c:forEach>
       </div>
       
       

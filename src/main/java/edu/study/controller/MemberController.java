@@ -43,6 +43,7 @@ public class MemberController {
 		System.out.println("로그인중");
 		
 		HttpSession session = rep.getSession();
+		session.setAttribute("mid", "smart");
 		MemberVo login = memberService.login(vo);
 		 
 		if(login == null) {
