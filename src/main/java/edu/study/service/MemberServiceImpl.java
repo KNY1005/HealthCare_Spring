@@ -60,4 +60,10 @@ public class MemberServiceImpl implements MemberService {
 		
 	}
 
+	@Override
+	public String changeStotus(MemberVo vo) throws Exception {
+		
+		return memberdao.changeStotus(vo);
+	}
+
 	}

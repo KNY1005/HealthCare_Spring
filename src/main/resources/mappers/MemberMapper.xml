@@ -55,4 +55,11 @@
        	order by mname
        		
 	</select>
+	
+	<!-- 등급변경 -->
+	<update id="changeStotus">
+		update table_member
+		set mgrade = #{mgrade}
+		where mid = #{mid}
+	</update>
 </mapper>

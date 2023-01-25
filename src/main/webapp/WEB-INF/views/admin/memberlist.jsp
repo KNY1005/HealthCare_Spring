@@ -11,7 +11,7 @@
   </head>
   <script type="text/javascript">
   	function updateRole(midx) {
-		location.href="membercontroller.jsp?command=updaterolePage&midx="+midx;
+		location.href="memberlist_center.do;
 	}
   </script>
   <body>
@@ -32,7 +32,7 @@
 			<td><c:out value="${mb.mname}"></c:out></td>
 			<td><c:out value="${mb.memail}"></c:out></td>
 			<td><c:out value="${mb.mgrade}"></c:out></td>
-			<td>등급 변경</td>
+			<td><button onclick="updateRole(${mb.midx});">변경</button></td>
 		</tr>
 	</c:forEach>
 </table>

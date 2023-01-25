@@ -23,12 +23,13 @@ public class MemberDAO {
 	public List<MemberVo> memberlist(){
 		return sqlSession.selectList("edu.study.mapper.memberMapper.memberlist");
 	}
+	
 	//가입 회원 정보 풀력
 	public List<MemberVo> selectEnabled(){
 		return null;
 	}
 		
-	// 회원 전체 정보 출력(탈퇴회원포함)
+	// 
 	public int updateRole(int midx, String mgrade){
 		return 0;
 	}
@@ -51,6 +52,12 @@ public class MemberDAO {
 	public int register(MemberVo vo) {
 
 		return sqlSession.insert("edu.study.mapper.memberMapper.register", vo);
+	}
+	
+	/*회원등급변경*/
+	public String changeStotus(MemberVo vo) {
+		
+		return sqlSession.selectOne("edu.study.mapper.memberMapper.changeStotus", vo);
 	}
 
 	

@@ -16,6 +16,11 @@ public interface MemberService {
 	/*회원목록*/
 	public List<MemberVo> memberlist();
 	
+	/*등급변경*/
+	public String changeStotus(MemberVo vo)throws Exception;
+	
+	
+	
 	/*회원 입력*/
 	public void inserMember(MemberVo vo);
 	

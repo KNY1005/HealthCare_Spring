@@ -92,7 +92,6 @@ $(document).ready(function(){
             </ul>
           </div>
         </nav>
-        <c:forEach var="mb" items="${list}">
         <div id="profli">
           <div class="main_profli">
            <img src="${path}/resources/image/profli.png" alt="프로필" />
@@ -119,10 +118,7 @@ $(document).ready(function(){
       		<button><a href="<%=request.getContextPath() %>/member/login.do">시작하기</a></button>
       	</div>
         </div>
-       </c:forEach>
       </div>
-      
-      
     </header>
 	<!-- 헤더(inclue랑 css 다름) -->
 	<!-- 메인 -->

@@ -40,7 +40,6 @@ public class MemberController {
 	
 	@RequestMapping(value="/login.do",method=RequestMethod.POST )
 	public String login(MemberVo vo, HttpServletRequest rep, RedirectAttributes rttr) throws Exception {
-		System.out.println("로그인중");
 		
 		HttpSession session = rep.getSession();
 		session.setAttribute("mid", "smart");
@@ -49,9 +48,11 @@ public class MemberController {
 		if(login == null) {
 			session.setAttribute("member", null);
 			rttr.addFlashAttribute("msg", false);
+			System.out.println("로그인실패");
 			return "member/login";
 		}else {
 			session.setAttribute("member", login);
+			System.out.println("로그인완료");
 			return "redirect:/";
 		}
 			

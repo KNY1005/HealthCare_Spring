@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.javassist.util.proxy.ProxyObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.study.service.MemberService;
+import edu.study.vo.CriteriaVO;
 import edu.study.vo.MemberVo;
 import oracle.net.aso.l;
 
@@ -33,7 +35,7 @@ public class AdminController {
 	@RequestMapping(value="/god.do", method=RequestMethod.GET)
 	public String god(HttpSession session) {
 		
-		
+		/*
 		//관리자 세션 제어
 		String mgrade = (String) session.getAttribute("mgrade");
 		String mid = (String) session.getAttribute("mid");
@@ -41,7 +43,7 @@ public class AdminController {
 			System.out.println("관리자가아닙니다");
 			return "";
 		}
-		
+		*/
 		
 		return "admin/god";
 	}
@@ -54,7 +56,22 @@ public class AdminController {
 		return "admin/memberlist";
 	}
 	
+	@RequestMapping(value="/memberlist_center.do", method=RequestMethod.GET)
+	public String memberlist_center(Model model){
+		List<MemberVo> list = memberService.memberlist();
+		model.addAttribute("list", list);
+		return "admin/memberlist_center";
+	}
 	
+	/*등급변경*/
+	@RequestMapping(value="/changeStotus.do", method=RequestMethod.POST)
+	public String changeStotus(CriteriaVO criteriaVO, MemberVo vo) throws Exception{
+		
+		//DB에서 상태변경을 시킨다.
+		memberService.changeStotus(vo);
+		
+		return "redirect:memberlist_center?id=" + vo.getMid() + "&page=" + criteriaVO.getPage() + "&perPageNum" + criteriaVO.getPerPageNum();
+	}
 	
 	
 	
