@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class MoneyController {
 	@ResponseBody	//ajax 응답데이터 만들어서 넘김(화면에 뿌림),ResponseBody 어노테이션 필수
-	@RequestMapping(value="/money.do", method = RequestMethod.GET)
+	@RequestMapping(value="/payments/complete", method = RequestMethod.GET)
 	public String callStr() {
 		return "shot/shotMoney3";	//스프링이 알아서 출력
 	}

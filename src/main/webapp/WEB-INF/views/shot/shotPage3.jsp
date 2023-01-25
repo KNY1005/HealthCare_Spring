@@ -87,6 +87,9 @@
 		margin-bottom: 15px;
 		text-align: center;
 	}
+	.choice{
+		cursor:pointer;
+	}
     .list li{
 		width: 160px;
 	}
