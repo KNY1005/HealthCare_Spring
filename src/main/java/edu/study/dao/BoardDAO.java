@@ -1,5 +1,6 @@
 package edu.study.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -10,6 +11,7 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 import javax.sql.DataSource;
 
 import edu.study.vo.BoardVo;
+import edu.study.vo.FileVO;
 import edu.study.vo.SearchCriteria;
 
 @Repository
@@ -51,5 +53,14 @@ public class BoardDAO {
 	
 	public int boardHitUpdate(int midx){
 		return sqlSession.update("edu.study.mapper.boardMapper.boardHitUpdate", midx);
+	}
+
+	public int fileInsert(HashMap<String, Object> file_name) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("edu.study.mapper.boardMapper.fileInsert", file_name);
+	}
+	
+	public FileVO selectFileByBidx(int bidx) {
+		return sqlSession.selectOne("edu.study.mapper.boardMapper.selectFileByBidx", bidx);
 	}
 }

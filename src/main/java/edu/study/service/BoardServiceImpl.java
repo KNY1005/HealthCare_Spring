@@ -1,5 +1,6 @@
 package edu.study.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import edu.study.dao.BoardDAO;
 import edu.study.vo.BoardVo;
+import edu.study.vo.FileVO;
 import edu.study.vo.SearchCriteria;
 
 @Service
@@ -61,6 +63,18 @@ public class BoardServiceImpl implements BoardService{	//추상메소드 정의
 	public int boardHitUpdate(int midx) {
 		// TODO Auto-generated method stub
 		return boardDAO.boardHitUpdate(midx);
+	}
+
+	@Override
+	public int fileInsert(HashMap<String, Object> file_name) {
+		// TODO Auto-generated method stub
+		return boardDAO.fileInsert(file_name);
+	}
+
+	@Override
+	public FileVO selectFileByBidx(int bidx) {
+		// TODO Auto-generated method stub
+		return boardDAO.selectFileByBidx(bidx);
 	}
 
 	

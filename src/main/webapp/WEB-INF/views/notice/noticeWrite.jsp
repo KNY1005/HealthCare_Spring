@@ -241,7 +241,7 @@ hr {
 			<div class="file">
 				<div class="filebox">
 					<p class="file1">첨부파일</p>
-					<input class="upload-name" value="파일선택" disabled="disabled">
+					<input class="upload-name" value="파일선택" disabled="disabled" name=filename>
 					<label for="ex_filename">업로드</label> <input type="file"
 						id="ex_filename" class="upload-hidden" name="upload">
 				</div>

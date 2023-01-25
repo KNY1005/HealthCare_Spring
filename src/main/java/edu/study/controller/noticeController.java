@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
 import edu.study.service.BoardService;
+import edu.study.service.QuestionService;
 import edu.study.vo.BoardVo;
+import edu.study.vo.FileVO;
 import edu.study.vo.PageVO;
 import edu.study.vo.SearchCriteria;
 
@@ -30,7 +33,8 @@ public class noticeController {
 
 	@Autowired
 	private BoardService boardService;	//전체 데이터 요청
-	
+	@Autowired
+	private QuestionService questionService;
 	@RequestMapping(value = "/list.do", method = RequestMethod.GET)	
 	public String board1(Model model,SearchCriteria scri) {
 		//DB list 조회
@@ -48,11 +52,11 @@ public class noticeController {
 	@RequestMapping(value = "/view.do", method = RequestMethod.GET)	
 	public String board2(int bidx, Model model) {	//파라미터는 무조건 스트링인데 널을 인트로 받으면 오류가 나옴(예외페이지)
 		//DB 상세데이터 조회
-		
+		FileVO fvo = questionService.selectFileByBidx(bidx);
 		BoardVo vo = boardService.selectByBidx(bidx); //서비스-디에이오 순으로 데이터 가져오기
 		
 		model.addAttribute("vo",vo);
-		
+		model.addAttribute("fvo", fvo);
 		
 		boardService.boardHitUpdate(bidx);
 		return "notice/noticeView";	
@@ -70,27 +74,33 @@ public class noticeController {
 	public String write2(BoardVo vo, MultipartFile upload,HttpServletRequest req)throws IllegalStateException, IOException {
 		
 		int result = boardService.insert(vo);
-		
+		questionService.insert(vo);
 		String path = req.getSession().getServletContext().getRealPath("/resources/upload");
-		System.out.println(path);
-		File dir = new File(path);		
-		if(!dir.exists()) {	//directory가 있는지 없는지 
+		File dir = new File(path);
+		System.out.println("경로"+path);
+		if (!dir.exists()) { 
 			dir.mkdirs();
 		}
-		if(!upload.getOriginalFilename().isEmpty()) {
+		if (!upload.getOriginalFilename().isEmpty()) {
+			HashMap<String, Object> file_name = new HashMap<String, Object>();			
 			int pos = upload.getOriginalFilename().lastIndexOf(".");
-	        String ext = upload.getOriginalFilename().substring(pos + 1);
-	            
-	        Date now = new Date();
-	        String today = new SimpleDateFormat("yyyyMMddHHmmss").format(now);
+			String ext = upload.getOriginalFilename().substring(pos + 1);
+			Date now = new Date();
+			String today = new SimpleDateFormat("yyyyMMddHHmmss").format(now);
 
-	        int random = (int) ((Math.random() * 100) + 1);
-	        String result2 = today + random;
-	        
-			upload.transferTo(new File(path,result2+"."+ext));
-			System.out.println("upload는"+upload);
-		
-	}
+			int random = (int) ((Math.random() * 100) + 1);
+			String result2 = today + random;
+			String changeName = result2 + "." + ext;
+			String originName = upload.getOriginalFilename();
+			upload.transferTo(new File(path,changeName));
+			
+			file_name.put("originname", originName);
+			file_name.put("storedname", changeName);
+			file_name.put("bidx", vo.getBidx());
+
+			boardService.fileInsert(file_name);
+
+		}
 		return "redirect:view.do?bidx="+vo.getBidx();
 	}
 	
