@@ -14,6 +14,7 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -86,21 +87,16 @@ public class QuestionController {
 	@RequestMapping(value = "/questionWrite.do", method = RequestMethod.POST)
 	public String questionWrite2(BoardVo vo, MultipartFile upload, HttpServletRequest req)
 			throws IllegalStateException, IOException {
-		// HashMap 매개변수로 넣어줘야 전달이 되는데 파일 업로드를 할경우가 있고 안할경우가 있다.
+		
 		questionService.insert(vo);
 		String path = req.getSession().getServletContext().getRealPath("/resources/upload");
 		File dir = new File(path);
-		System.out.println("bidx값은?" + vo.getBidx());
-
-		// System.out.println("파일이름은1?"+vo.getFilename());
-		// for(String key : keys) {sum += map.get(key); }
-		if (!dir.exists()) { // directory가 있는지 없는지
+		System.out.println("경로"+path);
+		if (!dir.exists()) { 
 			dir.mkdirs();
 		}
 		if (!upload.getOriginalFilename().isEmpty()) {
-			HashMap<String, Object> file_name = new HashMap<String, Object>();
-			System.out.println("파일이름은2?" + upload.getOriginalFilename());
-			System.out.println("업로드는?" + upload);
+			HashMap<String, Object> file_name = new HashMap<String, Object>();			
 			int pos = upload.getOriginalFilename().lastIndexOf(".");
 			String ext = upload.getOriginalFilename().substring(pos + 1);
 			Date now = new Date();
@@ -110,13 +106,12 @@ public class QuestionController {
 			String result2 = today + random;
 			String changeName = result2 + "." + ext;
 			String originName = upload.getOriginalFilename();
-			upload.transferTo(new File(changeName));
-			System.out.println("변환된 파일이름은?" + changeName);
+			upload.transferTo(new File(path,changeName));
+			
 			file_name.put("originname", originName);
 			file_name.put("storedname", changeName);
 			file_name.put("bidx", vo.getBidx());
 
-			System.out.println("파일의 값은?" + file_name.values());
 			questionService.fileInsert(file_name);
 
 		}
@@ -134,67 +129,28 @@ public class QuestionController {
 	}
 
 	@RequestMapping(value = "/fileDown.do")
-	public void fileDown(int bidx, HttpServletResponse response, HttpServletRequest req) throws Exception {
-		FileVO fvo = questionService.selectFileByBidx(bidx);
-		String path = req.getSession().getServletContext().getRealPath("/resources/upload");
-		String fileName = fvo.getStoredname();
-		File file = new File(path);
+	public void downloadFile(int bidx, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		//https://velog.io/@oyeon/%ED%8C%8C%EC%9D%BC-%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C-%EA%B5%AC%ED%98%84
+		FileVO fvo = new FileVO();
+		fvo = questionService.selectFileByBidx(bidx);
+		String path = request.getSession().getServletContext().getRealPath("/resources/upload/");
+		String saveFileName = fvo.getStoredname();
+		String originalFileName = fvo.getOriginname();
+		System.out.println("다운로드 경로는"+path);
+		File downloadFile = new File(path + saveFileName);
 
-		FileInputStream fileInputStream = null;
-		ServletOutputStream servletOutputStream = null;
-		System.out.println(fvo.getOriginname());
-		System.out.println(fvo.getStoredname());
-		System.out.println(path);
-		try {
-			String downName = null;
-			String browser = req.getHeader("User-Agent");
-			// 파일 인코딩
-			if (browser.contains("MSIE") || browser.contains("Trident") || browser.contains("Chrome")) {// 브라우저 확인 파일명
-																										// encode
+		byte fileByte[] = FileUtils.readFileToByteArray(downloadFile);
 
-				downName = URLEncoder.encode(fileName, "UTF-8").replaceAll("\\+", "%20");
+		response.setContentType("application/octet-stream");
+		response.setContentLength(fileByte.length);
 
-			} else {
+		response.setHeader("Content-Disposition",
+				"attachment; fileName=\"" + URLEncoder.encode(originalFileName, "UTF-8") + "\";");
+		response.setHeader("Content-Transfer-Encoding", "binary");
 
-				downName = new String(fileName.getBytes("UTF-8"), "ISO-8859-1");
+		response.getOutputStream().write(fileByte);
+		response.getOutputStream().flush();
+		response.getOutputStream().close();
 
-			}
-
-			response.setHeader("Content-Disposition", "attachment;filename=\"" + downName + "\"");
-			response.setContentType("application/octer-stream");
-			response.setHeader("Content-Transfer-Encoding", "binary;");
-
-			fileInputStream = new FileInputStream(file);
-			servletOutputStream = response.getOutputStream();
-
-			byte b[] = new byte[1024];
-			int data = 0;
-
-			while ((data = (fileInputStream.read(b, 0, b.length))) != -1) {
-
-				servletOutputStream.write(b, 0, data);
-
-			}
-
-			servletOutputStream.flush();// 출력
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			if (servletOutputStream != null) {
-				try {
-					servletOutputStream.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-			if (fileInputStream != null) {
-				try {
-					fileInputStream.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
 	}
 }
