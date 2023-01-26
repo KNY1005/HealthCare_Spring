@@ -42,7 +42,6 @@ public class MemberController {
 	public String login(MemberVo vo, HttpServletRequest rep, RedirectAttributes rttr) throws Exception {
 		
 		HttpSession session = rep.getSession();
-		session.setAttribute("mid", "smart");
 		MemberVo login = memberService.login(vo);
 		 
 		if(login == null) {

@@ -37,6 +37,7 @@ public class noticeController {
 	private QuestionService questionService;
 	@RequestMapping(value = "/list.do", method = RequestMethod.GET)	
 	public String board1(Model model,SearchCriteria scri) {
+		
 		//DB list 조회
 		List<BoardVo> list = boardService.list(scri);
 		model.addAttribute("datalist",list);	//키값

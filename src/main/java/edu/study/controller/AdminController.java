@@ -67,10 +67,10 @@ public class AdminController {
 	@RequestMapping(value="/changeStotus.do", method=RequestMethod.POST)
 	public String changeStotus(CriteriaVO criteriaVO, MemberVo vo) throws Exception{
 		
-		//DB에서 상태변경을 시킨다.
+		//DB에서 등급변경을 시킨다.
 		memberService.changeStotus(vo);
 		
-		return "redirect:memberlist_center?id=" + vo.getMid() + "&page=" + criteriaVO.getPage() + "&perPageNum" + criteriaVO.getPerPageNum();
+		return "redirect:memberlist_center?id="+vo.getMid()+"&page="+criteriaVO.getPage()+"&perPageNum"+criteriaVO.getPerPageNum();
 	}
 	
 	

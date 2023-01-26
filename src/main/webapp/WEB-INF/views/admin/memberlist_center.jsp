@@ -9,11 +9,6 @@
     <!-- Required meta tags -->
     <meta charset="utf-8" />
   </head>
-  <script type="text/javascript">
-  	function updateRole() {
-		location.href="memberlist_center.do?command=updaterolePage&midx="+${mb.midx};
-	}
-  </script>
   <body>
 	<c:forEach var="mb" items="${list}">
 	<input type="hidden" name="command"  value="updaterole">
@@ -45,10 +40,10 @@
 		<td>
 		<form action="">
 			<select name="">
-				<option>일반회원</option>
-				<option>전문의회원</option>
-				<option>예비전문의회원</option>
-				<option>관리자</option>
+				<option>탈퇴</option>
+				<option>강퇴</option>
+				<option>정상</option>
+				<option>휴면</option>
 			</select>
 		</form>
 		</td>
@@ -60,7 +55,7 @@
 		<input type="hidden" name="midx" value="${mb.midx }">
 		<input type="hidden" name="page" value="${param.page }">
 		<input type="hidden" name="parPageNum" value="${param.perPageNum }">
-			<select name="Stotus">
+			<select name="stotus">
 				<option ${(mb.mgrade == "G")?"selected":"" } >일반회원</option>
 				<option ${(mb.mgrade == "D")?"selected":"" } >전문의회원</option>
 				<option ${(mb.mgrade == "E")?"selected":"" } >예비전문의회원</option>

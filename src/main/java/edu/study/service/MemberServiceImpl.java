@@ -44,11 +44,6 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public MemberVo viewMember() {
-		return null;
-	}
-
-	@Override
 	public void deleteMember(String mid) {
 		
 		

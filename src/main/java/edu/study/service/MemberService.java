@@ -6,8 +6,10 @@ import edu.study.vo.MemberVo;
 
 
 public interface MemberService {
-	public MemberVo login(MemberVo vo)throws Exception;
 	
+	/*로그인*/
+	public MemberVo login(MemberVo vo)throws Exception;
+	/*아이디 중복확인*/
 	public int selectById(String mid);
 	
 	/*회원가입*/
@@ -19,13 +21,8 @@ public interface MemberService {
 	/*등급변경*/
 	public String changeStotus(MemberVo vo)throws Exception;
 	
-	
-	
 	/*회원 입력*/
 	public void inserMember(MemberVo vo);
-	
-	/*회원 정보 상세보기*/
-	public MemberVo viewMember();
 	
 	/*회원삭제*/
 	public void deleteMember(String mid);

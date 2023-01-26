@@ -43,7 +43,6 @@
 		select
 			 midx
 			,mid
-       		, mpwd
        		, mname
        		, mnumber
        		, mphone
@@ -53,7 +52,6 @@
        		, mgrade
        	from table_member
        	order by mname
-       		
 	</select>
 	
 	<!-- 등급변경 -->

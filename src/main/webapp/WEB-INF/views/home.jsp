@@ -43,6 +43,10 @@ $(document).ready(function(){
 })
 </script>
 <body>
+<%
+String mid = (String)session.getAttribute("mid");
+String mname = (String)session.getAttribute("mname");
+%>
 <!-- 헤더(inclue랑 css 다름) -->
 	<header>
       <div class="nav_background">
@@ -92,18 +96,19 @@ $(document).ready(function(){
             </ul>
           </div>
         </nav>
+        
         <div id="profli">
           <div class="main_profli">
            <img src="${path}/resources/image/profli.png" alt="프로필" />
             <button type="submit" class="btn">
               <i class="xi-plus" alt="검색"></i>
             </button>
-            <p>${mb.mname}님</p>
+            <p><%=mname %>님</p>
           </div>
           <div id="profli_menu">
             <ul>
               <li><img src="${path}/resources/image/profli.png" alt="프로필" /></li>
-              <li><p>${mb.mname}님</p></li>
+              <li><p><%=mid %>님</p></li>
               <li><hr width="250px" /></li>
               <li><a href="<%=request.getContextPath() %>/mypage2.do">마이페이지</a></li>
               <li><a href="<%=request.getContextPath() %>/mypage4.do">내가 쓴 글</a></li>
