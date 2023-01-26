@@ -92,7 +92,7 @@ String mname = (String)session.getAttribute("mname");
             <ul>
               <li><a href="<%=request.getContextPath() %>/notice/list.do">공지사항</a></li>
               <li><a href="<%=request.getContextPath() %>/question/questionList.do">문의사항</a></li>
-              <li><a href="<%=request.getContextPath() %>/medicallist.do">건강상담소</a></li>
+              <li><a href="<%=request.getContextPath() %>/medicalTalk/medicalList.do">건강상담소</a></li>
             </ul>
           </div>
         </nav>

@@ -75,28 +75,7 @@ public class HomeController {
 		
 		return "shot/shotMoney3";
 	}
-	/*건강상담소*/
-	@RequestMapping(value = "medicallist.do", method = RequestMethod.GET)
-	public String medicall() {
-		
-		return "medical_talk/medical_talk_list";
-	}
-	
-	@RequestMapping(value = "medicalview.do", method = RequestMethod.GET)
-	public String medicalv() {
-		
-		return "medical_talk/medical_talk_view";
-	}
-	@RequestMapping(value = "medicalmodify.do", method = RequestMethod.GET)
-	public String medicalm() {
-		
-		return "medical_talk/medical_talk_modify";
-	}
-	@RequestMapping(value = "medicalwrite.do", method = RequestMethod.GET)
-	public String medicalw() {
-		
-		return "medical_talk/medical_talk_write";
-	}
+
 	/*건강검진예약*/
 	@RequestMapping(value = "medicalmain.do", method = RequestMethod.GET)
 	public String medicalmain() {
