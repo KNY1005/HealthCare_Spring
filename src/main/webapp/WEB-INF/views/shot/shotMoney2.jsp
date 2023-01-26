@@ -22,8 +22,8 @@
             Cnum : 'merchant_' + new Date().getTime(),
             name : '예방접종 결제',
             amount : 1,
-            buyer_email : '22',
-            buyer_name : '윤채',
+            buyer_email : 'dbsco0322@naver.com',
+            buyer_name : '박윤채',
             buyer_tel : '22',
             buyer_addr : '22',
             buyer_postcode : '123-456',
@@ -62,7 +62,7 @@
                 alert(msg);
                 //실패시 이동할 페이지
                 location.href="<%=request.getContextPath()%>/abc6.do";
-                alert(msg);
+                
             }
         });
         

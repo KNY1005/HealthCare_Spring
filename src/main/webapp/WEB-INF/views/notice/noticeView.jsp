@@ -233,17 +233,15 @@ hr {
 			<div class="file">
 				<div class="filebox">
 					<p class="file1">첨부파일</p>
-					<input class="upload-name" value="파일선택" value="${fvo.originname }"disabled="disabled">
+					
+					<a href="fileDown.do?bidx=${vo.bidx }"><input class="upload-name" value="${fvo.originname }" disabled="disabled"></a>
 				</div>
 			</div>
 			<div id="button">
 				<button type="button" onClick="location.href='list.do'">목록</button>
 				
 				<button type="button" onClick="location.href='delete.do?bidx=${vo.bidx}'">삭제</button>		
-				<form name="delfrm" action="delete.do" method="get">
-					<input type="hidden" name="bidx" value="${vo.bidx}">
-				</form>
-			
+				
 				<button type="button" onClick="location.href='modify.do?bidx=${vo.bidx}'">수정</button>
 			</div>
 		</form>
