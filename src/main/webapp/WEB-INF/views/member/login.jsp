@@ -74,7 +74,8 @@
             id="login-form-submit"
             class="login_form button animated fadeInUp animate4"
             value="Login"
-          >
+            onclick="alert('로그인이 완료되었습니다');"
+          />
           <p>
             <a id="lost-password-link" href="" class="animated fadeIn animate5"
               >아이디 비밀번호 찾기
@@ -172,6 +173,7 @@
               placeholder="Email"
               required
               value=""
+              
             />&#64;<input type="text" name="emaddress" value="" ReadOnly="true" />
                         <select id="emailselect" onchange="SetEmailTail(emailselect.options[this.selectedIndex].value)" >
                             <option value="notSelected">::선택하세요::</option>
@@ -209,6 +211,7 @@
             id="signup-form-submit"
             class="login_form button animated fadeInUp animate4 hidden"
             value="Sign up"
+            onclick="alert('회원가입이 완료되었습니다');"
           />
 		</form>
       </div>

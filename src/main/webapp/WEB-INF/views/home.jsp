@@ -115,7 +115,7 @@ String mname = (String)session.getAttribute("mname");
               <li><a href="<%=request.getContextPath() %>/mypage5.do">개인정보 설정</a></li>
               <li><hr width="250px" /></li>
               <li>
-                <button id="logoutBtn"><a href="/member/logout">로그아웃</a></button>
+                <button id="logoutBtn"><a href="/member/logout.do">로그아웃</a></button>
               </li>
             </ul>
           </div>

@@ -51,6 +51,7 @@ public class MemberController {
 			return "member/login";
 		}else {
 			session.setAttribute("member", login);
+			rttr.addFlashAttribute("msg", true);
 			System.out.println("로그인완료");
 			return "redirect:/";
 		}
@@ -74,7 +75,7 @@ public class MemberController {
 		
 		memberService.register(vo);
 		
-		return "home";
+		return "member/login";
 	}
 	
 	

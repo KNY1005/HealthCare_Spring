@@ -37,7 +37,7 @@
 			<nav class="nav">
 				<div class="nav_main_menu">
 					<ul class="nav_main_menu_1">
-						<li><a href="#"><img
+						<li><a href="home"><img
 								src="${path}/resources/image/logo2.png" alt="로고이미지" /></a>
 						</li>
 					</ul>
