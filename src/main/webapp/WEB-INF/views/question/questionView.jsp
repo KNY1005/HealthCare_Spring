@@ -17,21 +17,24 @@
 	content="${path }/resources/image/favicon/ms-icon-144x144.png" />
 <meta name="theme-color" content="#ffffff" />
 <style>
+.order_box {
+	width: 790px;
+	height: 110px;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+}
 
-.order_box{
-        width: 790px;
-        height: 110px;
-        display: flex;
- 		align-items: flex-end;
-        justify-content: center;
-      }    
-.order{
-        width: 500px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        }
-.order li:nth-child(3){color:#ce8080;}
+.order {
+	width: 500px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+}
+
+.order li:nth-child(3) {
+	color: #ce8080;
+}
 
 * {
 	font-weight: bold;
@@ -53,7 +56,7 @@
 }
 
 #view {
-	width: 1320px;	
+	width: 1320px;
 	margin: 100px auto;
 }
 
@@ -116,6 +119,10 @@ hr {
 	margin: 10px auto 0;
 	border: 3px solid #FF8F8F;
 	border-radius: 30px;
+}
+
+.filebox a input {
+	cursor: pointer;
 }
 
 .filebox p {
@@ -311,9 +318,9 @@ hr {
 
 <body>
 	<%@include file="../includes/header.jsp"%>
-<div class="order_box">
+	<div class="order_box">
 		<ul class="order">
-			<li >공지사항</li>
+			<li>공지사항</li>
 			<li>|</li>
 			<li>문의사항</li>
 			<li>|</li>
@@ -323,26 +330,28 @@ hr {
 	<main id="main">
 		<section id="view">
 			<h2>문의사항 상세</h2>
-			<hr>			
-				<div id="writing_view">
+			<hr>
+			<div id="writing_view">
 				<div class="title">${vo.btitle}</div>
-                <div class="content">${vo.bcontent}</div>
+				<div class="content">${vo.bcontent}</div>
 				<ul>
 					<li>${vo.bwriter}</li>
 					<li>${vo.bwdate}</li>
 				</ul>
 			</div>
-				<div class="file">
-					<div class="filebox">
-						<p class="file1">첨부파일</p>
-						<a href="fileDown.do?bidx=${vo.bidx }"><input class="upload-name" value="${fvo.originname }" disabled="disabled"></a>
-					</div>
+			<div class="file">
+				<div class="filebox">
+					<p class="file1">첨부파일</p>
+					<a href="fileDown.do?bidx=${vo.bidx }"><div	class="upload-name">${fvo.originname }</div></a>
 				</div>
-				<div id="button">
-					<button type="button" onClick="location.href='questionList.do'">목록</button>
-					<button type="button" onClick="location.href='questionDelete.do?bidx=${vo.bidx}'">삭제</button>
-					<button type="button" onClick="location.href='questionModify.do?bidx=${vo.bidx}'">수정</button>
-				</div>
+			</div>
+			<div id="button">
+				<button type="button" onClick="location.href='questionList.do'">목록</button>
+				<button type="button"
+					onClick="location.href='questionDelete.do?bidx=${vo.bidx}'">삭제</button>
+				<button type="button"
+					onClick="location.href='questionModify.do?bidx=${vo.bidx}'">수정</button>
+			</div>
 
 
 			<h3>답변</h3>
