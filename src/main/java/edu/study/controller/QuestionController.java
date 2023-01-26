@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import edu.study.service.BoardService;
 import edu.study.service.QuestionService;
 import edu.study.vo.BoardVo;
 import edu.study.vo.FileVO;
@@ -35,7 +36,8 @@ public class QuestionController {
 
 	@Autowired
 	private QuestionService questionService;
-
+	@Autowired
+	private BoardService boardService;
 	@RequestMapping(value = "/questionList.do", method = RequestMethod.GET)
 	public String questionList(SearchCriteria scri, Model model) {
 		List<BoardVo> list = questionService.list(scri);
@@ -55,6 +57,8 @@ public class QuestionController {
 
 		model.addAttribute("vo", vo);
 		model.addAttribute("fvo", fvo);
+		
+		boardService.boardHitUpdate(bidx);
 		return "question/questionView";
 	}
 
@@ -91,7 +95,7 @@ public class QuestionController {
 		questionService.insert(vo);
 		String path = req.getSession().getServletContext().getRealPath("/resources/upload");
 		File dir = new File(path);
-		System.out.println("경로"+path);
+		System.out.println("寃쎈�"+path);
 		if (!dir.exists()) { 
 			dir.mkdirs();
 		}
@@ -136,7 +140,7 @@ public class QuestionController {
 		String path = request.getSession().getServletContext().getRealPath("/resources/upload/");
 		String saveFileName = fvo.getStoredname();
 		String originalFileName = fvo.getOriginname();
-		System.out.println("다운로드 경로는"+path);
+		System.out.println("�ㅼ�대��� 寃쎈���"+path);
 		File downloadFile = new File(path + saveFileName);
 
 		byte fileByte[] = FileUtils.readFileToByteArray(downloadFile);

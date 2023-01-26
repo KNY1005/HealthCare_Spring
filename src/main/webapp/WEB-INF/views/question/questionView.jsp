@@ -16,6 +16,7 @@
 <meta name="msapplication-TileImage"
 	content="${path }/resources/image/favicon/ms-icon-144x144.png" />
 <meta name="theme-color" content="#ffffff" />
+
 <style>
 .order_box {
 	width: 790px;
@@ -352,7 +353,7 @@ hr {
 				<button type="button"
 					onClick="location.href='questionModify.do?bidx=${vo.bidx}'">수정</button>
 			</div>
-
+	
 
 			<h3>답변</h3>
 			<div id="doctor_writing_content">
@@ -383,8 +384,9 @@ hr {
 					<button>수정</button>
 				</div>
 			</div>
+			
 		</section>
-
+		
 	</main>
 	<%@include file="../includes/footer.jsp"%>
 </body>
