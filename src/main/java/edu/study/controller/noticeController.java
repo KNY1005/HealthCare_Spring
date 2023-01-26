@@ -2,13 +2,16 @@ package edu.study.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -75,7 +78,7 @@ public class noticeController {
 	public String write2(BoardVo vo, MultipartFile upload,HttpServletRequest req)throws IllegalStateException, IOException {
 		
 		int result = boardService.insert(vo);
-		questionService.insert(vo);
+		
 		String path = req.getSession().getServletContext().getRealPath("/resources/upload");
 		File dir = new File(path);
 		System.out.println("경로"+path);
@@ -146,5 +149,30 @@ public class noticeController {
         return "board/update";
     }
 	
+    @RequestMapping(value = "/fileDown.do")
+	public void downloadFile(int bidx, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		//https://velog.io/@oyeon/%ED%8C%8C%EC%9D%BC-%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C-%EA%B5%AC%ED%98%84
+		FileVO fvo = new FileVO();
+		fvo = questionService.selectFileByBidx(bidx);
+		String path = request.getSession().getServletContext().getRealPath("/resources/upload/");
+		String saveFileName = fvo.getStoredname();
+		String originalFileName = fvo.getOriginname();
+		System.out.println("다운로드 경로는"+path);
+		File downloadFile = new File(path + saveFileName);
+
+		byte fileByte[] = FileUtils.readFileToByteArray(downloadFile);
+
+		response.setContentType("application/octet-stream");
+		response.setContentLength(fileByte.length);
+
+		response.setHeader("Content-Disposition",
+				"attachment; fileName=\"" + URLEncoder.encode(originalFileName, "UTF-8") + "\";");
+		response.setHeader("Content-Transfer-Encoding", "binary");
+
+		response.getOutputStream().write(fileByte);
+		response.getOutputStream().flush();
+		response.getOutputStream().close();
+
+	}
 	
 }

@@ -154,18 +154,12 @@ main {
 	height: 73px;
 }
 
-.content td:first-child {
-	border-radius: 10px 0 0 10px;
-	width: 1000px;
-	text-align: left;
-	padding-left: 20px;
-} /*td테두리 첫번쨰와 마지막만 둥글게 하기위해서*/
 .content td:last-child {
 	border-radius: 0 10px 10px 0;
 }
 
 .content td {
-	width: 350px;
+	
 	font-weight: bold;
 	font-size: 20px;
 	text-align: center;
@@ -174,6 +168,15 @@ main {
 	padding: 10px 0;
 }
 
+.content td:first-child {
+	border-radius: 10px 0 0 10px;
+	text-align: left;
+	padding-left: 20px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	max-width: 650px;	
+} /*td테두리 첫번쨰와 마지막만 둥글게 하기위해서*/
 .content:hover {
 	background: #fff;
 	box-shadow: 0 0 0 3px #ff8f8f inset;
@@ -215,8 +218,6 @@ main {
 #page li {
 	margin: 0 10px 0;
 }
-
-
 
 #page li a {
 	font-size: 20px;
