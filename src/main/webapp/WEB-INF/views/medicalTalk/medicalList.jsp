@@ -417,14 +417,14 @@
 		<ul>
 			<li><a href="notice1.do">공지사항</a></li>
 			<li><a href="question/questionList.do">문의사항</a></li>
-			<li><a href="medicallist.do">건강상담소</a></li>
+			<li><a href="medicalList.do">건강상담소</a></li>
 		</ul>
 	</div>
 	<main>
 		<div id="head">
 			<h2>건강상담소</h2>
 			<div id="search">
-				<form action="medicallist.do" method="get">
+				<form action="medicalList.do" method="get">
 				<select class="cate" name="searchType">
 					<option value="btitle"
 							<c:if test="${param.searchType eq 'btitle' }">selected</c:if>>제목</option>
@@ -529,7 +529,7 @@
 			</tr>
 			<c:forEach items="${list}" var="vo">
 			<tr class="content"
-				onclick="location.href='medicalview.do?bidx=${vo.bidx}'">
+				onclick="location.href='medicalView.do?bidx=${vo.bidx}'">
 				<td>
 					<p class="title">${vo.btitle}${vo.bidx }</p><br />
 					<p>${vo.bcontent}</p>
@@ -545,21 +545,21 @@
 			<ul id="page">
 				<c:if test="${page.prev}">
 					<li><a
-						href="medicallist.do?page=${page.startPage - 1}&&searchType=${page.scri.searchType}&&keyWord=${page.encoding(page.scri.keyWord)}"><i
+						href="medicalList.do?page=${page.startPage - 1}&&searchType=${page.scri.searchType}&&keyWord=${page.encoding(page.scri.keyWord)}"><i
 							class="xi-angle-left"></i></a></li>
 				</c:if>
 				<c:forEach begin="${page.startPage}" end="${page.endPage}" var="vo">
 					<li><a
-						href="medicallist.do?page=${vo}&&searchType=${page.scri.searchType}&&keyWord=${page.encoding(page.scri.keyWord)}">${vo}</a></li>
+						href="medicalList.do?page=${vo}&&searchType=${page.scri.searchType}&&keyWord=${page.encoding(page.scri.keyWord)}">${vo}</a></li>
 				</c:forEach>
 				<c:if test="${page.next && page.endPage > 0}">
 					<li><a
-						href="medicallist.do?page=${page.endPage + 1}&&searchType=${page.scri.searchType}&&keyWord=${page.encoding(page.scri.keyWord)}"><i
+						href="medicalList.do?page=${page.endPage + 1}&&searchType=${page.scri.searchType}&&keyWord=${page.encoding(page.scri.keyWord)}"><i
 							class="xi-angle-right"></i></a></li>
 				</c:if>
 			</ul>
 		</div>
-		<button class="button" onclick="location.href='medicalwrite.do'">글쓰기</button>
+		<button class="button" onclick="location.href='medicalWrite.do'">글쓰기</button>
 	</main>	
 	
 	<%@include file="../includes/footer.jsp"%>

@@ -403,50 +403,49 @@
 					<div class="file">
 					<div class="filebox">
 						<p class="file1">첨부파일</p>
-						<input class="upload-name" value="파일선택" disabled="disabled">
+						<a href="fileDown.do?bidx=${vo.bidx}"><div class="upload-name">${fvo.originname }</div></a>
 					</div>
 				</div>
 				<div id="button">
 					<button>답변</button>
-					<button type="button" onClick="location.href='medicalmodify.do?bidx=${vo.bidx}'">수정</button>
-					<button>삭제</button>
+					<button type="button" onClick="location.href='medicalModify.do?bidx=${vo.bidx}'">수정</button>
+					<button type="button"
+					onClick="location.href='medicalDelete.do?bidx=${vo.bidx}'">삭제</button>
 				</div>
 				</div>
 			</form>
 			<div class="like">
 				<h2>답변</h2><a href="javascript:;" class="icon heart">
-     <img src="https://cdn-icons-png.flaticon.com/512/812/812327.png" alt="찜하기">
-  </a>
+     			<img src="https://cdn-icons-png.flaticon.com/512/812/812327.png" alt="찜하기">
+  					</a>
 				<p>211</p>
 			</div><!--//#like-->
-			<div id="doctor_writing_content">
-				<div class="reply_input">
-					<input type="text" name="title" Placeholder="제목을 입력해주세요." /><br>
-					<textarea name="content" Placeholder="내용을 입력해주세요."></textarea>
-					<div class="button">
-						<button>완료</button>
-						<button>취소</button>
+			<!-- 답변 시작 -->
+			<div class="doctor_writing_content" id="reply_card${tmp.no}">
+				<section class="modal-section">
+					<div class="card card-body">
+						<!-- 답글목록 -->
+						<div class="reply-list reply-list${tmp.no}">
+							<!-- 댓글의 목록이 들어가는 속 -->
+						</div>
+						<!-- 댓글작성 >로그인한 상태여야만 댓글작성 칸이 나온다. -->
+						<c:if test="${not empty sessionScope.name}">
+							<div class="row reply_write">
+								<div class="col-1">
+									${vo.mname}							
+								</div>
+								<div class="col-8"  class="input_reply_div">
+									<input class="w-100 form-control" id="input_reply${tmp.no}"
+										type="text" placeholder="답글입력">
+								</div>
+								<div class="col-3">
+									<button type="button" id="${tmp.no }"
+										class="btn btn-success mb-1 write_reply">완료</button>
+								</div>
+							</div>
+						</c:if>
 					</div>
-				</div>
-			</div>
-
-
-
-
-			<div id="doctor_writing_view">
-				<div class="title">제목</div>
-				<div class="content">여기는 내용 입니다.</div>
-				<div class="hob">
-					<ul id="date">
-						<li>작성자</li>
-						<li>작성일</li>
-						<li>작성날짜</li>
-					</ul>
-					<div class="button">
-						<button>삭제</button>
-						<button>수정</button>
-					</div>
-				</div><!--//#hob-->
+				</section>
 			</div>
 		</section>
 
@@ -454,28 +453,108 @@
 	<%@include file="../includes/footer.jsp"%>
 </body>
 <script>
-	$(function(){
-	    var $likeBtn =$('.icon.heart');
+	const ReplyList = function(pidx) {
+		$.ajax({
+			url : 'replyList.do',
+			type : 'get',
+			data : {
+				pidx : pidx
+			},
+			success : function(data){
+				
+				console.log("댓글 리스트 가져오기 성공");
+				
+				//댓글 목록을 html로 담기
+				
+				let listHtml = "";
+				for(const i in data){
+					let pidx = data[i].no;
+					let bidx = data[i].bidx;
+					let grp = data[i].grp;
+					let grps = data[i].grps;
+					let midx = data[i].midx;
+					let pcontent = data[i].pcontent;
+					let pdate = data[i].pdata;
+					let pdelete = data[i].pdelete;
+					
+					listHtml += "<div class='row replyrow reply" + pidx + "'>";
+					
+					if(content == ""){
+						listHtml += "<div>";
+						listHtml += "(삭제된 댓글입니다)";
+						listHtml += "</div>";
+					}else{
+						listHtml += "</div>";
+					}else{
+						listHtml += "<div class='col-1'>"
+						listHtml += "</div>";
+						listHtml += "<div class='col-1'>";
+						listHtml += "답변";
+						listHtml += "</div>";
+						listHtml +="<span>";
+						listHtml +="<b>"+midx+"</b>";
+						listHtml +="</span>";
+						listHtml +="<span>";
+						listHtml += pcontent;
+						listHtml +="</span>";
+						listHtml +="</div>";
+						listHtml +="</div>";
+					}
+
+					listHtml += "<div class='col-3 reply-right'>";
+					listHtml += "<div>";
+					listHtml += pdate;
+					listHtml += "</div>";
+					if("${name}" != ""){
+						if("${name}" == midx){
+							listHtml += "<div>";
+							listHtml += "<a href='javascript:'pidx='"+pidx+"'bidx='"+bidx+"'midx='"+midx+"'grp='"+grp+"'grps='"+grps+"' class='reply_delete'>삭제</a>";
+							listHtml += "</div>";
+							}
+						}
+					listHtml +="</div>";
+					listHtml += "</div>";
+			
+					$(".reply-list"+pidx).html(listHtml);
+						
+					$('.reply_delete').on('click',function(){
+					DeleteReply($(this).attr('pidx'),$(this).attr('bidx'));
+					}
+				}
+		
+			},
+			error: function(){
+				alert('서버 에러');
+			}
+		});
+	};
 	
-	        $likeBtn.click(function(){
-	        $likeBtn.toggleClass('active');
 	
-	        if($likeBtn.hasClass('active')){          
-	           $(this).find('img').attr({
-	              'src': 'https://cdn-icons-png.flaticon.com/512/803/803087.png',
-	               alt:'찜하기 완료'
-	                });
-	          
-	          
-	         }else{
-	            $(this).find('i').removeClass('fas').addClass('far')
-	           $(this).find('img').attr({
-	              'src': 'https://cdn-icons-png.flaticon.com/512/812/812327.png',
-	              alt:"찜하기"
-	           })
-	         }
-	     })
-	})
+	const DeleteReply = function(pidx, bidx){
+		$.ajax({
+			url : 'deleteReply.do',
+			type : 'get',
+			data : {
+				pidx : pidx,
+				bidx : bidx
+			},
+			success : function(pto){
+				let reply = pto.reply;
+				
+				$('#m_reply'+bidx).text(reply);
+				$('#reply'+bidx).text(reply);
+				
+				console.log("답글 삭제 성공");
+				
+				ReplyList(bidx);
+		
+			},
+			error :function(){
+				alert('서버 에러');
+			}
+		});
+	};
+	
 
 
 </script>

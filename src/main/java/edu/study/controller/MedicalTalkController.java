@@ -10,6 +10,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +18,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import edu.study.service.MedicalTalkService;
 import edu.study.vo.BoardVo;
 import edu.study.vo.FileVO;
 import edu.study.vo.PageVO;
+import edu.study.vo.ReplyVO;
 import edu.study.vo.SearchCriteria;
+import edu.study.vo.TalkVO;
 
 @RequestMapping(value="/medicalTalk")
 
@@ -76,7 +81,7 @@ public class MedicalTalkController{
 	@RequestMapping(value = "/medicalWrite.do", method = RequestMethod.GET)
 	public String medicalWrite() {
 
-		return "medical/medicalWrite";
+		return "medicalTalk/medicalWrite";
 	}
 	
 	
@@ -139,4 +144,19 @@ public class MedicalTalkController{
 		response.getOutputStream().close();
 
 	}
+	@RequestMapping(value = "/medicalDelete.do", method = RequestMethod.GET)
+	public String delete(int bidx) {
+
+		medicaltalkService.deleteByBidx(bidx);
+
+		return "redirect:medicalList.do";
+
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/replyList.do")
+	public TalkVO write_reply(@RequestParam String pidx, @RequestParam String pcontent, HttpSession session) {
+		ReplyVO to =  new ReplyVO();
+		return null;
+}
 }

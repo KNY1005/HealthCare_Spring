@@ -23,7 +23,7 @@ public class MedicalTalkDAO {
 
 	
 	public List<BoardVo> listSearch(SearchCriteria scri) {
-		scri.setBlist("Q");
+		scri.setBlist("H");
 		return sqlSession.selectList("edu.study.mapper.boardMapper.listSearch",scri);
 	}	
 	public int listCount(SearchCriteria scri) {

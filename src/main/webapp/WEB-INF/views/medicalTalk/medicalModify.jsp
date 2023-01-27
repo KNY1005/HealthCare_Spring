@@ -20,21 +20,22 @@
 		content="${path }/resources/image/favicon/ms-icon-144x144.png" />
 	<meta name="theme-color" content="#ffffff" />
 	<script>
-		$(document).ready(function () {
-			var fileTarget = $('.filebox .upload-hidden');
+	$(document).ready(
+			function() {
+				var fileTarget = $('.filebox .upload-hidden');
 
-			fileTarget.on('change', function () {  // 값이 변경되면
-				if (window.FileReader) {  // modern browser
-					var filename = $(this)[0].files[0].name;
-				}
-				else {  // old IE
-					var filename = $(this).val().split('/').pop().split('\\').pop();  // 파일명만 추출
-				}
+				fileTarget.on('change', function() { // 값이 변경되면
+					if (window.FileReader) { // modern browser
+						var filename = $(this)[0].files[0].name;
+					} else { // old IE
+						var filename = $(this).val().split('/').pop().split(
+								'\\').pop(); // 파일명만 추출
+					}
 
-				// 추출한 파일명 삽입
-				$(this).siblings('.upload-name').val(filename);
+					// 추출한 파일명 삽입
+					$(this).siblings('.upload-name').val(filename);
+				});
 			});
-		}); 
 	</script>
 	<style>
 		/*-----------------sub_nav_menu > start---------------*/
@@ -260,7 +261,7 @@
 		<ul>
 			<li><a href="notice1.do">공지사항</a></li>
 			<li><a href="question/questionList.do">문의사항</a></li>
-			<li><a href="medicallist.do">건강상담소</a></li>
+			<li><a href="medicalList.do">건강상담소</a></li>
 		</ul>
 	</div><!--//.sub_nav_menu-->
 	<main>
@@ -269,7 +270,7 @@
 			<hr>
 		</div>
 
-		<form action="medicalmodify.do" method="post">
+		<form action="medicalModify.do" method="post">
 			<input type="hidden" name="bidx" value="${vo.bidx}">
 			<div id="writing_view">
 				<input type="text" class="title" name="btitle"value="${vo.btitle }" />
@@ -282,12 +283,12 @@
 			<div class="filebox">
 				<p class="file1">첨부파일</p>
 				<input class="upload-name" value="파일선택" disabled="disabled">
-				<label for="ex_filename">업로드</label>
-				<input type="file" id="ex_filename" class="upload-hidden">
+				<label for="ex_filename">업로드</label> <input type="file"
+					id="ex_filename" class="upload-hidden">
 			</div>
 			<div id="btn">
-				<button type="button" onclick="location.href='medicalview.do?bidx=${vo.bidx}'">취소</button>
-				<button type="button" onclick="location.href='medicalview.do'">완료</button>
+				<button type="button" onclick="location.href='medicalView.do?bidx=${vo.bidx}'">취소</button>
+				<button>완료</button>
 			</div>
 		</form>
 	</main>
