@@ -285,6 +285,28 @@ option {
 				<td>010-0000-1234</td>
 			</tr>
 		</table>
+		<script>
+		function GetAPI()
+		{
+				$.ajax({
+					url:'https://api.odcloud.kr/api/15050729/v1/uddi:03c4700e-0d6d-4dc1-914b-d0b8720dfaa9?page=1&perPage=10&serviceKey=fc7neVxfegjd7ptkZnQkV3YyKVGajgKxKhSkn060LiBCg%2FZwkO1cig1cNX34Eox3dEtjy6vBoFUsekWcZ4%2BmeQ%3D%3D',
+					type: 'GET',						
+					success:function(response){						
+						
+						console.log(response);
+						// Expected output: 42
+						$("#msg").html(response);
+						
+					}
+			});
+				}
+				
+		</script>
+		<input type="button" value="ajax" onclick="GetAPI();">
+		<br>
+		<div id="msg"></div>
+		
+		
 				<div id="map" style="width:300px;height:350px;"></div>
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=63268fc81295082dacca97ed3dbadbee&libraries=services,clusterer,drawing"></script>
 	<script>
