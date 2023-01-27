@@ -44,22 +44,6 @@ $(document).ready(function(){
 })
 </script>
 <body>
-<%
-String ls_name = "";
-String ls_value = "";
-
-
-Enumeration enum_app = session.getAttributeNames();
-	while(enum_app.hasMoreElements()) {
-	
-	    ls_name = enum_app.nextElement().toString();
-	    ls_value = session.getAttribute(ls_name).toString();
-	    
-		session.removeAttribute("Validate");
-	    out.println(ls_name);
-	    out.println(ls_value);
-	}
-%>
 <!-- 헤더(inclue랑 css 다름) -->
 	<header>
       <div class="nav_background">
@@ -109,18 +93,20 @@ Enumeration enum_app = session.getAttributeNames();
             </ul>
           </div>
         </nav>
+        
         <div id="profli">
+        <c:if test="${member!= null }">
           <div class="main_profli">
            <img src="${path}/resources/image/profli.png" alt="프로필" />
             <button type="submit" class="btn">
               <i class="xi-plus" alt="검색"></i>
             </button>
-            <p>님</p>
+            <p>${member.mid}님</p>
           </div>
           <div id="profli_menu">
             <ul>
               <li><img src="${path}/resources/image/profli.png" alt="프로필" /></li>
-              <li><p>님</p></li>
+              <li><p>${member.mid}님</p></li>
               <li><hr width="250px" /></li>
               <li><a href="<%=request.getContextPath() %>/mypage2.do">마이페이지</a></li>
               <li><a href="<%=request.getContextPath() %>/mypage4.do">내가 쓴 글</a></li>
@@ -131,10 +117,15 @@ Enumeration enum_app = session.getAttributeNames();
               </li>
             </ul>
           </div>
+      	 <c:if test="${member != null }">
+		      	<a href="<%=request.getContextPath() %>/admin/god.do">회원 관리</a>
+		</c:if>
+          </c:if>
+          <c:if test="${member == null }">
       	<div class="login" >
       		<button><a href="<%=request.getContextPath() %>/member/login.do">시작하기</a></button>
       	</div>
-
+      	</c:if>
         </div>
       </div>
     </header>
@@ -146,7 +137,6 @@ Enumeration enum_app = session.getAttributeNames();
       </div>
     
       	
-      	<a href="<%=request.getContextPath() %>/admin/god.do">회원 관리</a>
       	
       	
     <div class="content_box">

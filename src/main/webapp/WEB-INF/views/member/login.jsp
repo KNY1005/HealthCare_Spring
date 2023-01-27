@@ -68,16 +68,12 @@
               value=""
               style="ime-mode:disabled"
             />
-            <label>
-                    <form:checkbox path="rememberId"/>아이디 기억
-            </label>
           </fieldset>
           <input
             type="submit"
             id="login-form-submit"
             class="login_form button animated fadeInUp animate4"
             value="Login"
-            onclick="alert('로그인이 완료되었습니다');"
           />
           <p>
             <a id="lost-password-link" href="" class="animated fadeIn animate5"

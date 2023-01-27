@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.print.attribute.standard.PrinterInfo;
 import javax.print.attribute.standard.PrinterLocation;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -39,7 +40,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/login.do",method=RequestMethod.POST )
-	public String login(MemberVo vo, HttpServletRequest rep, RedirectAttributes rttr) throws Exception {
+	public String login( MemberVo vo, HttpServletRequest rep, RedirectAttributes rttr) throws Exception {
 		
 		HttpSession session = rep.getSession();
 		MemberVo login = memberService.login(vo);
@@ -47,11 +48,10 @@ public class MemberController {
 		if(login == null) {
 			session.setAttribute("member", null);
 			System.out.println("로그인실패");
-			System.out.println(login);
 			return "member/login";
 		}else {
 			session.setAttribute("member", login);
-			System.out.println(login);
+			
 			System.out.println("로그인완료");
 			return "redirect:/";
 		}
