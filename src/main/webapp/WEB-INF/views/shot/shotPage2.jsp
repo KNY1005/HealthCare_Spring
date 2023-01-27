@@ -319,7 +319,7 @@
                 <td>땡땡 병원</td>
                 <td>00:00 ~ 00:00</td>
                 <td>전라북도 전주시 땡땡</td>
-                <td>010-0000-1234</td>
+                <td>${tel}</td>
             </tr>
             <tr class="content"
             onClick="location.href='abc3.do'">
@@ -329,6 +329,17 @@
                 <td>010-0000-1234</td>
             </tr>
           </table>
+          <script>
+          fetch("https://api.odcloud.kr/api/apnmOrg/v2/list?page=1&perPage=100&serviceKey=WMYt954ER1qV9fi8xf2kgPxHFVXPiJl8GTJHSVT8LQr%2F4j6%2F6Lp2qSmjiBMa9KcCUWC6BbtkeLevU9HrSZP3KA%3D%3D")
+          .then(res => res.json())
+		  .then(myJson => {
+		      const obj= myJson.data[5];
+		      console.log(obj);
+		      displayObj(obj);
+		  })
+		  
+		</script>
+		
           <table id="page_num">
             <tr>
               <td></td>
