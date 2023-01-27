@@ -101,9 +101,10 @@ $(document).ready(function(){
             <button type="submit" class="btn">
               <i class="xi-plus" alt="검색"></i>
             </button>
-            <p>${member.mid}님</p>
+            <p>${member.mid}님 환영합니다!</p>
           </div>
           <div id="profli_menu">
+		      	<a href="<%=request.getContextPath() %>/admin/god.do">회원 관리</a>
             <ul>
               <li><img src="${path}/resources/image/profli.png" alt="프로필" /></li>
               <li><p>${member.mid}님</p></li>
@@ -113,15 +114,12 @@ $(document).ready(function(){
               <li><a href="<%=request.getContextPath() %>/mypage5.do">개인정보 설정</a></li>
               <li><hr width="250px" /></li>
               <li>
-                <button id="logoutBtn"><a href="/member/logout.do">로그아웃</a></button>
+                <button id="logoutBtn"><a href="<%=request.getContextPath() %>/member/logout.do">로그아웃</a></button>
               </li>
             </ul>
           </div>
-      	 <c:if test="${member != null }">
-		      	<a href="<%=request.getContextPath() %>/admin/god.do">회원 관리</a>
-		</c:if>
           </c:if>
-          <c:if test="${member == null }">
+          <c:if test="${member == null}">
       	<div class="login" >
       		<button><a href="<%=request.getContextPath() %>/member/login.do">시작하기</a></button>
       	</div>
@@ -136,8 +134,6 @@ $(document).ready(function(){
         <div class="layer"></div>
       </div>
     
-      	
-      	
       	
     <div class="content_box">
         <div class="center-outer">

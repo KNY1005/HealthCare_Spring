@@ -61,11 +61,15 @@ public class MemberController {
 	
 	
 	@RequestMapping(value="/logout.do", method=RequestMethod.GET)
-	public String logout(HttpSession session) {
+	public String logout(HttpServletRequest request) {
 		
-		session.invalidate();
+		System.out.println("logout메서드 진입");
 		
-		return "redirect:/";
+		 HttpSession session = request.getSession();
+	        
+	      session.invalidate();
+	        
+		return "home";
 	}
 	
 	
