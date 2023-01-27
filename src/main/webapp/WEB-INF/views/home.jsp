@@ -1,3 +1,4 @@
+<%@page import="java.util.Enumeration"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -44,8 +45,20 @@ $(document).ready(function(){
 </script>
 <body>
 <%
-String mid = (String)session.getAttribute("mid");
-String mname = (String)session.getAttribute("mname");
+String ls_name = "";
+String ls_value = "";
+
+
+Enumeration enum_app = session.getAttributeNames();
+	while(enum_app.hasMoreElements()) {
+	
+	    ls_name = enum_app.nextElement().toString();
+	    ls_value = session.getAttribute(ls_name).toString();
+	    
+		session.removeAttribute("Validate");
+	    out.println(ls_name);
+	    out.println(ls_value);
+	}
 %>
 <!-- 헤더(inclue랑 css 다름) -->
 	<header>
@@ -96,19 +109,18 @@ String mname = (String)session.getAttribute("mname");
             </ul>
           </div>
         </nav>
-        
         <div id="profli">
           <div class="main_profli">
            <img src="${path}/resources/image/profli.png" alt="프로필" />
             <button type="submit" class="btn">
               <i class="xi-plus" alt="검색"></i>
             </button>
-            <p><%=mname %>님</p>
+            <p>님</p>
           </div>
           <div id="profli_menu">
             <ul>
               <li><img src="${path}/resources/image/profli.png" alt="프로필" /></li>
-              <li><p><%=mid %>님</p></li>
+              <li><p>님</p></li>
               <li><hr width="250px" /></li>
               <li><a href="<%=request.getContextPath() %>/mypage2.do">마이페이지</a></li>
               <li><a href="<%=request.getContextPath() %>/mypage4.do">내가 쓴 글</a></li>
@@ -122,6 +134,7 @@ String mname = (String)session.getAttribute("mname");
       	<div class="login" >
       		<button><a href="<%=request.getContextPath() %>/member/login.do">시작하기</a></button>
       	</div>
+
         </div>
       </div>
     </header>

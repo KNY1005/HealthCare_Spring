@@ -68,6 +68,9 @@
               value=""
               style="ime-mode:disabled"
             />
+            <label>
+                    <form:checkbox path="rememberId"/>아이디 기억
+            </label>
           </fieldset>
           <input
             type="submit"

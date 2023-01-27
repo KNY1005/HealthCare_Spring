@@ -46,12 +46,12 @@ public class MemberController {
 		 
 		if(login == null) {
 			session.setAttribute("member", null);
-			rttr.addFlashAttribute("msg", false);
 			System.out.println("로그인실패");
+			System.out.println(login);
 			return "member/login";
 		}else {
 			session.setAttribute("member", login);
-			rttr.addFlashAttribute("msg", true);
+			System.out.println(login);
 			System.out.println("로그인완료");
 			return "redirect:/";
 		}
