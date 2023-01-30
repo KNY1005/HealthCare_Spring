@@ -8,32 +8,37 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.study.service.MedicalTalkService;
+import edu.study.service.ReplyService;
 import edu.study.vo.BoardVo;
 import edu.study.vo.FileVO;
 import edu.study.vo.PageVO;
 import edu.study.vo.ReplyVO;
 import edu.study.vo.SearchCriteria;
-import edu.study.vo.TalkVO;
 
 @RequestMapping(value="/medicalTalk")
-
 @Controller
 public class MedicalTalkController{
+	
+	private static final Logger logger = LoggerFactory.getLogger(MedicalTalkController.class);
+	
+	@Inject
+	ReplyService replyService;
 	
 	@Autowired
 	private MedicalTalkService medicaltalkService;
@@ -51,13 +56,19 @@ public class MedicalTalkController{
 	}
 	
 	@RequestMapping(value = "/medicalView.do", method = RequestMethod.GET)
-	public String medicalview(int bidx, Model model) {
+	public String medicalview(int bidx, Model model) throws Exception {
 		BoardVo vo = medicaltalkService.selectByBidx(bidx);
 		FileVO fvo = medicaltalkService.selectFileByBidx(bidx);
 		
 		model.addAttribute("vo",vo);
 		model.addAttribute("fvo", fvo);
+		
+		List<ReplyVO> reply = null;
+		reply = replyService.readReply(bidx);
+		model.addAttribute("reply",reply);
+		
 		return "medicalTalk/medicalView";
+		
 	}
 	@RequestMapping(value = "/medicalModify.do", method = RequestMethod.GET)	
 	public String medicalmodify(int bidx, Model model) {
@@ -153,10 +164,16 @@ public class MedicalTalkController{
 
 	}
 	
-	@ResponseBody
-	@RequestMapping(value = "/replyList.do")
-	public TalkVO write_reply(@RequestParam String pidx, @RequestParam String pcontent, HttpSession session) {
-		ReplyVO to =  new ReplyVO();
-		return null;
-}
+	@RequestMapping(value="/replyWrite.do", method = RequestMethod.POST)
+		String replyWrite(ReplyVO vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception{
+		logger.info("replyWrite");
+		System.out.println("컨트롤러까지 넘어오니?");
+	    replyService.writeReply(vo);
+		
+		rttr.addAttribute("bidx", vo.getBidx());
+		
+		return "redirect:/medicalTalk/medicalView.do";
+	}
+	
+	
 }

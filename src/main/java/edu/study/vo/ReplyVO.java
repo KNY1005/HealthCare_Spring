@@ -23,7 +23,7 @@ public class ReplyVO {
 	public int getPgrps() {
 		return pgrps;
 	}
-	public void setPGrps(int pgrps) {
+	public void setPgrps(int pgrps) {
 		this.pgrps = pgrps;
 	}
 	public int getMidx() {
@@ -50,6 +50,14 @@ public class ReplyVO {
 	private int midx;
 	private String pcontent;
 	private String pdate;
+	private String pwriter;
+	
+	public String getPwriter() {
+		return pwriter;
+	}
+	public void setPwriter(String pwriter) {
+		this.pwriter = pwriter;
+	}
 	
 	
 

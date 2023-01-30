@@ -116,64 +116,51 @@
 		SELECT * FROM table_file where bidx = #{bidx}
 	</select> 
 	
-	<!-- 댓글쓰기 -->
+	<select id="readReply" parameterType="int" resultType="ReplyVO">
+    	SELECT
+    		 BIDX, PIDX, PWRITER, PCONTENT, PGRP, PGRPS
+    	 FROM TABLE_REPLY
+    	WHERE BIDX = #{BIDX}
+	</select>
 	
-	
-	
-<!-- 	<insert id="reply_write" parameterType="ReplyVO">
-		insert into TABLE_REPLY
-		values(0, #{bidx}, #{midx}, #{pgrp}, 0, #{pcontent}, sysdate)
+	<insert id="writeReply" parameterType="ReplyVO">
+		INSERT INTO TABLE_REPLY(
+			BIDX
+			, PIDX
+			, PCONTENT
+			, PWRITER
+			, PGRP
+			, PGRPS
+		)
+		VALUES(    
+			#{bidx}
+			, PIDX_SEQ.NEXTVAL
+			, #{pcontent}
+			, #{pwriter}	
+			, #{pgrp}
+			, #{pgrps}
+			)
 	</insert>
 	
-	no, grp일치하게함
-	<update id="reply_check" parameterType="ReplyVO">
-		update TABLE_REPLY set pgrp=#{pgrp}
-		where pidx != pgrp
+	<update id="updateReply" parameterType="ReplyVO">
+		UPDATE TABLE_REPLY SET CONTENT = #{pcontent}
+		WHERE PIDX = #{pidx}
 	</update>
-	
-	보드에 댓글수 증가
-	<update id="reply_up" parameterType="boardVo">
-		update TABLE_BOARD set reply=reply+1
-		where pidx=#{pidx}
-	</update>
-	
-	댓글리스트 가져오기
-	<select id="replyList" parameterType="ReplyVO" resultType="ReplyVO">
-		select p.pidx, p.bidx, p.pgrp, p.midx, p.pcontent, p.pdate, m.midx from table_reply p left outer join member m
-		on p.name = m.mid
-		where p.bidx = #{bidx}
-		order by pgrp asc, pgrps desc 
-	</select>
-	
-	댓글 추가/삭제시 댓글 갯수 가져오기
-	<select id="reply_count" parameterType="boardVo" resultType="boardVo">
-		select reply
-		from table_board
-		where pidx=#{pidx}
-	</select>
-	
-	댓글수 카운트
-	<select id="count_rereply" parameterType="ReplyVO" resultType="int">
-		select count(pidx)
-		from table_reply
-		where pidx=#{pidx}
-	</select>
-	
-	댓글 삭제
-	<delete id="reply_delete" parameterType="ReplyVO">
-		delete from table_reply
-		where pidx=#{pidx}
+		
+	<delete id="deleteReply" parameterType="ReplyVO">
+		DELETE FROM TABLE_REPLY
+		WHERE PIDX = #{pidx}
 	</delete>
 	
-	보드에 댓글수 감소
-	<update id="reply_down" parameterType="boardVo">
-		update table_board set reply=reply-1
-		where pidx=#{pidx}
-	</update> -->
-	
-	
-	
-	
-	
-	
+	<select id="selectReply" resultType="ReplyVO">
+		SELECT
+				BIDX
+			  , PIDX
+			  , PCONTENT
+			  , PWRITER
+			  , PGRP
+			  , PGRPS
+		  FROM TABLE_REPLY
+		 WHERE PIDX = #{pidx}
+	</select>
 </mapper>

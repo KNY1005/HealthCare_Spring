@@ -257,7 +257,7 @@
 		margin: 0 0 20px 120px;
 	}
 	
-	#doctor_writing_content {
+/* 	#doctor_writing_content {
 		height:280px;
 		width: 1100px;
 		margin: 0 auto 0;
@@ -303,17 +303,17 @@
 		border-radius: 30px;
 		margin-left:10px;
 		
-	}
+	} */
 	
 	/*전문의 답변 뷰박스*/
-	#main #doctor_writing_view {
+	#main #doctor_writing_content {
 		height:280px;
 		width: 1100px;
 		margin-left: 110px;
 		margin-top: 30px;
 	}
 	
-	#main  #doctor_writing_view {
+	#main  #doctor_writing_content .replyList {
 		width: 1100px;
 		border: 3px solid #FF8F8F;
 		border-radius: 25px;
@@ -327,7 +327,7 @@
 		font-size: 25px;
 	}
 
-	#main #doctor_writing_view .content {
+	#main  #doctor_writing_content li {
 		width: 1000px;
 		height: 150px;
 	}
@@ -421,141 +421,35 @@
 				<p>211</p>
 			</div><!--//#like-->
 			<!-- 답변 시작 -->
-			<div class="doctor_writing_content" id="reply_card${tmp.no}">
-				<section class="modal-section">
-					<div class="card card-body">
-						<!-- 답글목록 -->
-						<div class="reply-list reply-list${tmp.no}">
-							<!-- 댓글의 목록이 들어가는 속 -->
-						</div>
-						<!-- 댓글작성 >로그인한 상태여야만 댓글작성 칸이 나온다. -->
-						<c:if test="${not empty sessionScope.name}">
-							<div class="row reply_write">
-								<div class="col-1">
-									${vo.mname}							
-								</div>
-								<div class="col-8"  class="input_reply_div">
-									<input class="w-100 form-control" id="input_reply${tmp.no}"
-										type="text" placeholder="답글입력">
-								</div>
-								<div class="col-3">
-									<button type="button" id="${tmp.no }"
-										class="btn btn-success mb-1 write_reply">완료</button>
-								</div>
-							</div>
-						</c:if>
-					</div>
-				</section>
+			<div class="doctor_writing_content" >
+				<form action ="replyWrite.do" method="POST">
+				  <input type="hidden" id="bidx" name="bidx" value="${vo.bidx}" />
+				
+				  <div>
+				    <label for="pwriter">댓글 작성자</label><input type="text" id="pwriter" name="pwriter" />
+				    <br/>
+				    <label for="pcontent">댓글 내용</label><input type="text" id="pcontent" name="pcontent" />
+				  </div>
+				  <div>
+				 	 <button class="replyWriteBtn">작성</button>
+				  </div>
+				</form>
+				<ol class="replyList">
+					<c:forEach items="${reply }" var="replyList">
+						<li>
+							<p>
+							작성자: ${replyList.pwriter}<br/>
+							</p>
+							
+							<p>${replyList.pcontent }</p>
+						</li>
+					</c:forEach>
+				</ol>
 			</div>
 		</section>
 
 	</main>
 	<%@include file="../includes/footer.jsp"%>
+	
 </body>
-<script>
-	const ReplyList = function(pidx) {
-		$.ajax({
-			url : 'replyList.do',
-			type : 'get',
-			data : {
-				pidx : pidx
-			},
-			success : function(data){
-				
-				console.log("댓글 리스트 가져오기 성공");
-				
-				//댓글 목록을 html로 담기
-				
-				let listHtml = "";
-				for(const i in data){
-					let pidx = data[i].no;
-					let bidx = data[i].bidx;
-					let grp = data[i].grp;
-					let grps = data[i].grps;
-					let midx = data[i].midx;
-					let pcontent = data[i].pcontent;
-					let pdate = data[i].pdata;
-					let pdelete = data[i].pdelete;
-					
-					listHtml += "<div class='row replyrow reply" + pidx + "'>";
-					
-					if(content == ""){
-						listHtml += "<div>";
-						listHtml += "(삭제된 댓글입니다)";
-						listHtml += "</div>";
-					}else{
-						listHtml += "</div>";
-					}else{
-						listHtml += "<div class='col-1'>"
-						listHtml += "</div>";
-						listHtml += "<div class='col-1'>";
-						listHtml += "답변";
-						listHtml += "</div>";
-						listHtml +="<span>";
-						listHtml +="<b>"+midx+"</b>";
-						listHtml +="</span>";
-						listHtml +="<span>";
-						listHtml += pcontent;
-						listHtml +="</span>";
-						listHtml +="</div>";
-						listHtml +="</div>";
-					}
-
-					listHtml += "<div class='col-3 reply-right'>";
-					listHtml += "<div>";
-					listHtml += pdate;
-					listHtml += "</div>";
-					if("${name}" != ""){
-						if("${name}" == midx){
-							listHtml += "<div>";
-							listHtml += "<a href='javascript:'pidx='"+pidx+"'bidx='"+bidx+"'midx='"+midx+"'grp='"+grp+"'grps='"+grps+"' class='reply_delete'>삭제</a>";
-							listHtml += "</div>";
-							}
-						}
-					listHtml +="</div>";
-					listHtml += "</div>";
-			
-					$(".reply-list"+pidx).html(listHtml);
-						
-					$('.reply_delete').on('click',function(){
-					DeleteReply($(this).attr('pidx'),$(this).attr('bidx'));
-					}
-				}
-		
-			},
-			error: function(){
-				alert('서버 에러');
-			}
-		});
-	};
-	
-	
-	const DeleteReply = function(pidx, bidx){
-		$.ajax({
-			url : 'deleteReply.do',
-			type : 'get',
-			data : {
-				pidx : pidx,
-				bidx : bidx
-			},
-			success : function(pto){
-				let reply = pto.reply;
-				
-				$('#m_reply'+bidx).text(reply);
-				$('#reply'+bidx).text(reply);
-				
-				console.log("답글 삭제 성공");
-				
-				ReplyList(bidx);
-		
-			},
-			error :function(){
-				alert('서버 에러');
-			}
-		});
-	};
-	
-
-
-</script>
 </html>
