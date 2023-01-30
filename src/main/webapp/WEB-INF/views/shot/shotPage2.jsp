@@ -132,7 +132,7 @@
 			padding: 3px 0;
 		}
 		
-      .btn2{
+      #btn2{
         background-color:#FFAEAE;
         border: #FFAEAE;
         border-radius: 10px; 
@@ -162,10 +162,10 @@
         td:first-child,th:first-child {border-radius: 10px 0 0 10px;}   /*td테두리 첫번쨰와 마지막만 둥글게 하기위해서*/
         td:last-child,th:last-child {border-radius: 0 10px 10px 0;}       
         th,td{width:350px; text-align:center; vertical-align:middle; height:73px;}
-        .content{
+        #content{
         	background:#ffe7e7;
         }            
-       .content:hover {
+       #content:hover {
 	background:#fff;
 	box-shadow: 0 0 0 3px #ff8f8f inset;
 	border-radius: 10px;
@@ -301,7 +301,7 @@
                   <select id="sido"><option disabled selected>시/도</option></select>
                   <select id="sigugun"><option disabled selected>시/구/군</option></select>
                   <select id="dong"><option disabled selected>읍/면/동</option></select> 
-                  <button class="btn2"><i class="xi-search xi-2x"></i></button>                 
+                  <button id="btn2" onClick="api"><i class="xi-search xi-2x"></i></button>                 
           </div>
         </div>
         <hr id="line">
@@ -314,33 +314,53 @@
                 <th>주소</th>
                 <th>연락처</th>
             </tr>
-            <tr class="content"
+            <tr id="content"
             onClick="location.href='abc3.do'">
                 <td>땡땡 병원</td>
                 <td>00:00 ~ 00:00</td>
                 <td>전라북도 전주시 땡땡</td>
                 <td>${tel}</td>
             </tr>
-            <tr class="content"
+            <tr id="content"
             onClick="location.href='abc3.do'">
-                <td>땡땡 병원</td>
+                <td id="getPost">땡땡 병원</td>
                 <td>00:00 ~ 00:00</td>
                 <td>전라북도 전주시 땡땡</td>
                 <td>010-0000-1234</td>
             </tr>
           </table>
           <script>
-          fetch("https://api.odcloud.kr/api/apnmOrg/v2/list?page=1&perPage=100&serviceKey=WMYt954ER1qV9fi8xf2kgPxHFVXPiJl8GTJHSVT8LQr%2F4j6%2F6Lp2qSmjiBMa9KcCUWC6BbtkeLevU9HrSZP3KA%3D%3D")
-          .then(res => res.json())
-		  .then(myJson => {
-		      const obj= myJson.data[5];
-		      console.log(obj);
-		      displayObj(obj);
-		  })
-		  
-		</script>
-		
-          <table id="page_num">
+          const tr = document.getElementById('content');
+          const list = document.createDocumentFragment();
+          const url = 'https://api.odcloud.kr/api/apnmOrg/v2/list?page=1&perPage=100&serviceKey=WMYt954ER1qV9fi8xf2kgPxHFVXPiJl8GTJHSVT8LQr%2F4j6%2F6Lp2qSmjiBMa9KcCUWC6BbtkeLevU9HrSZP3KA%3D%3D';
+          
+          fetch(url)
+          	.then((response) => {
+      		return response.json();
+    		})
+    		 .then((data) => {
+     		 let content = data;
+     		 
+     		 content.items.map(function(content) {
+     			let td = document.createElement('td');
+     	        let orgnm = document.createElement('h2');
+     	        let orgZipaddr = document.createElement('span');
+     	        
+     	       orgnm.innerHTML = `${content.orgnm}`;
+     	       orgZipaddr.innerHTML = `${content.orgZipaddr}`;
+     	       
+     	       td.appendChild(orgnm);
+     	       td.appendChild(orgZipaddr);
+     	       list.appendChild(td);
+     	      });
+    		})
+    		.catch(function(error) {
+      			console.log(error);
+    		});
+    		tr.appendChild(list);
+		  </script>
+		<div id="Info"></div>
+          <table id="output">
             <tr>
               <td></td>
               <td></td>
