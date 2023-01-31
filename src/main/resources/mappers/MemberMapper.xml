@@ -21,7 +21,6 @@
 		 							,mid
 	   					       		, mpwd
 	   					       		, mname
-	   					       		, mnumber
 	   					       		, mphone
 	   					       		, maddrdetail
 	   					       		, mmaddzipnum
@@ -31,7 +30,6 @@
 	                  			, #{mid} 
 	                 		   , #{mpwd}
 	                 		   , #{mname}
-	                 		   , #{mnumber}
 	                 		   , #{mphone}
 	                 		   , #{maddrdetail}
 	                 		   , #{mmaddzipnum}

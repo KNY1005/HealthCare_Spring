@@ -19,6 +19,7 @@ body {
 }
 
 .panel {
+	position:relative;
   width: 450px;
   max-width: 90%;
   height: 700px;
@@ -31,6 +32,7 @@ body {
 }
 
 .shadow1 {
+	position:relative;
   -webkit-box-shadow: 0 20px 15px -15px rgba(119, 119, 119, 0.85);
   -moz-box-shadow: 0 20px 15px -15px rgba(119, 119, 119, 0.85);
   box-shadow: 0 40px 30px -30px rgba(119, 119, 119, 0.85);
@@ -284,18 +286,9 @@ a {
   top:50%;
   left:50%;
   transform: translate(-50%,-50%);
-  
   margin:-100px;
   }
   
-  #button_join{
-  	width:70px;
-  	height:20px;
-  	border:none;
-  	border-radius: 30px;
-  	background: #b52773;
-  	color:#fff;
-  }
   
  input:nth-child(4){
   width: 60%;
@@ -305,5 +298,6 @@ a {
 .id_already{
 	display:none;
 }
+
  
 }

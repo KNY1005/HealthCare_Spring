@@ -34,6 +34,7 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
   </head>
   <body>
+ 
     <div>
       <div class="panel shadow1">   
         <form class="login" id="login"method="post" name='login' action="/controller/member/login.do">
@@ -58,6 +59,7 @@
               placeholder="UserId"
               value=""
               style="ime-mode:disabled"
+              oninput="handleOnInput(this)"
             />
             <input
               class="login animated fadeInUp animate3"
@@ -67,6 +69,7 @@
               placeholder="Password"
               value=""
               style="ime-mode:disabled"
+              oninput="handleOnInput(this)"
             />
           </fieldset>
           <input
@@ -88,132 +91,338 @@
             <input
               class="login animated fadeInUp animate2"
               name="mid"
+              id="mid"
               type="text"
               required
               placeholder="아이디"
               value=""
-              style="ime-mode:disabled"
               onblur="blurId(this)"
-            /><button class="login animated fadeInUp animate2" id="button_join" type="button" onclick="checkId()">중복체크</button>
-            <span  style="display: none; color: green;" class="id_ok">사용 가능한 아이디입니다.</span><br>
-			<span style="display: none; color: #d92742; class="id_already">누군가 이 아이디를 사용하고 있어요.</span>
+            	oninput="handleOnInput(this)"
+            	maxlength="20"
+            /><button class="login animated fadeInUp animate2 join-button"  
+            style="background:#ff7575; border:none; color:#fff; position: absolute; top:164px; left:295px; border-radius: 15px; padding:2px; width:70px;" 
+            type="button" onclick="checkId();">중복체크</button>
+            <span  style="display: none; color: #d92742; font-size:12px; margin:-8px;" class="id_ok" id="span_id_0">공백은 아이디로 쓸수 없습니다.</span>
+            <span  style="display: none; color: green; font-size:12px; margin:-8px;" class="id_ok" id="span_id_1">사용 가능한 아이디입니다.</span>
+			<span  style="display: none; color: #d92742; font-size:12px; margin:-8px;" class="id_already" id="span_id_2">누군가 이 아이디를 사용하고 있어요.</span>
+			<span  style="display: none; color: #d92742; font-size:12px; margin:-8px; class="id_already" id="span_id_3">중복체크를 해주세요</span>
             <input
               class="login animated fadeInUp animate3"
               name="mpwd"
+              id="password1"
               type="password"
-              placeholder="최소 하나의 영문 또는 숫자를 포함하여 6자리"
+              placeholder="영문 또는 숫자를 포함하여 최소 6자리이상"
               required
               value=""
               style="ime-mode:disabled"
+              oninput="handleOnInput(this)"
+              maxlength='10'
+              minlength = "6"
             />
-            <span id="alert-success" style="display: none; color: green;">비밀번호가 일치합니다.</span>
-            <span id="alert-danger" style="display: none; color: #d92742; font-weight: bold; ">비밀번호가 일치하지 않습니다.</span>
-            <span id="alert-null" style="display: none; color: black;">비밀번호 확인 칸 을 입력하세요.</span>
-            <span id="alert-null2" style="display: none; color: black;">비밀번호 칸 을 입력하세요.</span>
             <input
               class="login animated fadeInUp animate3"
               name="mpwdcheck"
+              id="password2"
               type="password"
               placeholder="비밀번호 확인"
               required
               value=""
+              oninput="handleOnInput(this)"
+               maxlength='10'
+              minlength = "6"
             />
+            <span id="alert1" style="display: none; color: green; font-size:12px; margin:-8px;" >비밀번호가 일치합니다.</span>
+            <span id="alert2" style="display: none; color: #d92742; font-size:12px; margin:-8px;" >비밀번호가 일치하지 않습니다.</span>
+            
             <input
               class="login animated fadeInUp animate3"
               name="mname"
+              id="mname"
               type="textbox"
               placeholder="이름"
               required
               value=""
-            />
-            <input
-              class="login animated fadeInUp animate3"
-              name="mnumber"
-              type="textbox"
-              placeholder="주민등록번호"
-              required
-              value=""
+              oninput="handleOnInput1(this)"
             />
             <input
               class="login animated fadeInUp animate3"
               name="mphone"
+              id="mphone"
               type="textbox"
-              placeholder="휴대전화번호"
+              placeholder="휴대전화번호 ex)01012341234"
               required
               value=""
+              oninput="handleOnInput2(this)"
             />
-            
-            
+            <br>
+                        
             <input
               class="login animated fadeInUp animate3"
               name="maddrdetail"
-              id="addrBasic"
+              id="maddrdetail"
               type="textbox"
               placeholder="도로명주소"
               required
               value=""
               IsReadOnly="True"
-            /><button class="login animated fadeInUp animate2 " id="button_join" onclick="goPopup()" type="button">주소찾기</button>
+              
+              onblur="bluraddr(this)"
+            /><button class="login animated fadeInUp animate2 join-button"
+            style="background:#ff7575; border:none; color:#fff; position: absolute; top:414px; left:295px; border-radius: 15px; padding:2px; width:70px;" 
+             onclick="goPopup()" type="button" onclick="checkaddr();">주소찾기</button>
             
             <input
               class="login animated fadeInUp animate3"
               name="mmaddzipnum"
-              id="addrDetail"
+              id="mmaddzipnum"
               type="textbox"
               placeholder="상세주소"
               required
               value=""
-            />
+            /> <span id="alert3" style="display: none; color: #d92742; font-size:12px; margin:-8px;" >주소를 입력해주세요.</span>
             
             <input
               class="login animated fadeInUp animate3"
               name="memail"
-              type="textbox"
+              id="memail"
+               type="email"
               placeholder="Email"
               required
               value=""
+              maxlength="30"
               
-            />&#64;<input type="text" name="emaddress" value="" ReadOnly="true" />
-                        <select id="emailselect" onchange="SetEmailTail(emailselect.options[this.selectedIndex].value)" >
-                            <option value="notSelected">::선택하세요::</option>
-                            <option value="etc" id="etc">직접입력</option>
-                            <option value="naver.com">naver.com</option>
-                            <option value="nate.com">nate.com</option>
-                            <option value="google.com">google.com</option>
-                            <!--이메일 확인 스크립트-->
-                            <script type="text/javascript" th:inline="javascript">
-                        function SetEmailTail(emailValue) {
-                            var email = document.all("email")    // 사용자 입력
-                            var emailTail = document.all("emaddress") // Select box
-                           var esw = $("#etc1");
-                               if ( emailValue == "notSelected" ){
-                              emailTail.readOnly = true;
-                              emailTail.value = '';
-                              alert("이메일을 선택or입력하세요  ");
-                           }
-                            else if ( emailValue == "etc" ) {
-                               emailTail.readOnly = false;
-                               emailTail.value = "";
-                              emailTail.focus();
-                           }
-                           else {
-                               emailTail.readOnly = true;
-                               emailTail.value = emailValue;
-                           }
-                        }
-                            </script>
+            /> <span id="alert4" style="display: none; color: #d92742; font-size:12px; margin:-8px;" >이메일 형식으로 적어주세요.</span>
             
             
           </fieldset>
           <input
-            type="submit"
+           type="submit"
             id="signup-form-submit"
             class="login_form button animated fadeInUp animate4 hidden"
             value="Sign up"
-            onclick="alert('회원가입이 완료되었습니다');"
+            onclick="loadFn()"
           />
 		</form>
       </div>
     </div>
+      <script type="text/javascript">
+    // 주소 팝업
+	  function goPopup() {
+	  	var pop = window.open("${path}/resources/popup/jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes");
+	  }
+
+	  function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo){
+	    // 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
+
+	    document.getElementById("maddrdetail").value = roadAddrPart1;
+
+	    document.getElementById("mmaddzipnum").value = addrDetail
+	  }
+	  
+	  
+	  //알파벳 숫자만
+	  function handleOnInput(e)  {
+		  e.value = e.value.replace(/[^A-Za-z0-9]/ig, '')
+		}
+	  
+		//한글만
+	  function handleOnInput1(e)  {
+		  e.value = e.value.replace(/[^ㄱ-힣]/ig, '')
+		}
+	  
+		//숫자만
+	  function handleOnInput2(e)  {
+		  e.value = e.value.replace(/[^0-9]/ig, '')
+		}
+	  
+	  
+		//이메일 형식
+		var alert4 = document.getElementById('alert4'); //주소 입력좀
+		
+	  function email_check( email ) {    
+		    var regex=/([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+		    return (email != '' && email != 'undefined' && regex.test(email)); 
+		}
+
+		$("input[type=email]").blur(function(){
+		  var email = $(this).val();
+		  if( email == '' || email == 'undefined') return;
+		  if(! email_check(email) ) {
+			  alert4.style.display = 'block';
+		    $(this).focus();
+		    return false;
+		  }else {
+			  alert4.style.display = 'none';
+		  }
+		});
+		
+	  
+	  //아이디 중복확인 및 공백불가 처리
+	   var span_id_0 = document.getElementById('span_id_0'); //공백안됨
+	  var span_id_1 = document.getElementById('span_id_1'); //사용가능 아이디
+	  var span_id_2 = document.getElementById('span_id_2'); //불가능 아이디
+	  var span_id_3 = document.getElementById('span_id_3'); //중복체크
+	  
+	  var alert1 = document.getElementById('alert1'); //비밀번호 일치
+	  var alert2 = document.getElementById('alert2'); //불일치
+	  
+	  var alert3 = document.getElementById('alert3'); //주소 입력좀
+	  
+	var checkIdFlag = false;
+   var checkIdVal = "";
+   function loadFn(){
+      var join = document.join;
+     
+      if (checkIdFlag != true)
+      {
+    	  span_id_3.style.display = 'block';
+         join.mid.focus();
+         return false;
+      }
+      
+      if( join.mid.value != checkIdVal)
+      {
+    	  span_id_3.style.display = 'block';
+         join.mid.focus();
+         return false;      
+      }
+      span_id_3.style.display = 'none';
+      
+      if ($("#password1").val() == null || $("#password1").val() == "") {
+	    return false;
+	    }
+      
+      if ($("#password2").val() == null || $("#password2").val() == "") {
+	    return false;
+	    }
+    	   
+   	  if ($("#password1").val() != $("#password2").val()) {
+   			alert2.style.display = 'block';
+   			alert1.style.display = 'none';
+   	  return false;
+   	  }
+   	  
+   		alert1.style.display = 'block';
+   		alert2.style.display = 'none';
+   		
+
+	   	if( join.mname.val() == null || $("#mname").val() == "")
+	    {
+
+	       join.mname.focus();
+	       return false;      
+	    }
+		if( join.mphone.val() == null || $("#mphone").val() == "")
+	    {
+	       join.mphone.focus();
+	       return false;      
+	    }
+
+		
+		if( join.maddrdetail.val() == null || $("#maddrdetail").val() == "")
+	    {
+			alert3.style.display = 'block';
+	       join.maddrdetail.focus();
+	       return false;      
+	    }
+		
+		if( join.mmaddzipnum.val() == null || $("#mmaddzipnum").val() == "")
+	    {
+			alert3.style.display = 'block';
+	       join.mmaddzipnum.focus();
+	       return false;      
+	    }
+		alert3.style.display = 'none';
+		
+		
+		if( join.memail.val() == null || $("#memail").val() == "")
+	    {
+			alert4.style.display = 'block';
+	       join.memail.focus();
+	       return false;      
+	    }
+	      
+      join.action = "<%=request.getContextPath()%>/member/join.do";
+      join.method = "post"; //감춰져서 넘기는 방식 Post   
+      join.submit();
+      }
+
+   
+	 
+
+	  
+	  
+	  //아이디중복 확인
+	  var checkIdFlag = false;
+	  var checkIdVal = "";
+	  var span_id_0 = document.getElementById('span_id_0');
+	  var span_id_1 = document.getElementById('span_id_1');
+	  var span_id_2 = document.getElementById('span_id_2');
+	  
+	  var alert1 = document.getElementById('alert1');
+	  var alert2 = document.getElementById('alert2');
+	  
+
+	  function checkId()
+	  {
+	     var idval = $("#mid").val();
+	     if (idval == "")
+	     {
+	    	span_id_0.style.display = 'block';
+       	  	span_id_1.style.display = 'none';
+       	 	span_id_2.style.display = 'none';
+       		 span_id_3.style.display = 'none';
+	        return false;
+	     } else if (idval != "")
+	     {
+	        $.ajax({
+	           url : "checkId.do",
+	           type : "post",
+	           data : "mid=" + idval,
+	           success : function(data)
+	           {
+	              if (data == 1)
+	              {
+	            	  span_id_0.style.display = 'none';
+	            	  span_id_1.style.display = 'none';
+	            	  span_id_2.style.display = 'block';
+	            	  span_id_3.style.display = 'none';
+	                 checkIdFlag = false;
+	                 checkIdVal = "";
+	              } else
+	              {
+	            	  span_id_0.style.display = 'none';
+	            	  span_id_1.style.display = 'block';
+	            	  span_id_2.style.display = 'none';
+	            	  span_id_3.style.display = 'none';
+	                 checkIdFlag = true;
+	                 checkIdVal = idval;
+	                 console.log(checkIdVal);
+	                 console.log(checkIdFlag);
+	              }
+	           }
+	        });
+	     }
+	  }
+
+	  function blurId(obj) {
+	     var val = obj.value;
+	     if (checkIdFlag && val != checkIdVal)
+	     {
+	        checkIdFlag = false;
+	     }else if ($("#mid").val() == "")
+	     { // name이 id인 값을 불러와 공백이라면
+	        checkIdFlag = false;
+	        console.log(checkIdFlag);
+	        console.log(val);
+	     } else
+	     {
+	        console.log(val);
+	        console.log(checkIdFlag);
+	     }
+	     
+	  }
+	  
+    </script>
   </body>
 </html>
