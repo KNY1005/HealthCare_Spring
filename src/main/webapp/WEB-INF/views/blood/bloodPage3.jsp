@@ -25,6 +25,12 @@
 	src="https://zelkun.tistory.com/attachment/cfile8.uf@99BB7A3D5D45C065343307.js"></script>
 <script type="application/javascript">
 	
+	
+	
+	
+	
+	
+	
         jQuery(document).ready(function(){
             jQuery('#table1').css('color', 'red');
             jQuery('#table_header').css('font-size', '30pt');
@@ -88,6 +94,12 @@
             jQuery('#iframe').attr('src', url);
         }
     
+
+
+
+
+
+
 </script>
 <style>
 body, h1, h2, h3, h4, h5, h6, li, p, #nav li a, #topbar, input, button,
@@ -99,24 +111,29 @@ body, h1, h2, h3, h4, h5, h6, li, p, #nav li a, #topbar, input, button,
 
 main {
 	width: 1320px;
-	height:700px;	
+	height: 700px;
 	margin: 100px auto;
 }
 
-.order_box{
-        width: 790px;
-        height: 110px;
-        display: flex;
- 		align-items: flex-end;
-        justify-content: center;
-      }    
-.order{
-        width: 500px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        }
-.order li:nth-child(5){color:#ce8080;}
+.order_box {
+	width: 790px;
+	height: 110px;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+}
+
+.order {
+	width: 500px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+}
+
+.order li:nth-child(5) {
+	color: #ce8080;
+}
+
 .h3 {
 	font-weight: bold;
 	font-size: 40px;
@@ -161,7 +178,7 @@ option {
 	width: 40px;
 	height: 45px;
 	border-radius: 4px;
-	margin-left:10px;
+	margin-left: 10px;
 }
 
 .button:hover {
@@ -184,7 +201,7 @@ option {
 }
 
 #addr #address_search {
-	display:flex;
+	display: flex;
 	justify-content: center;
 	align-items: center;
 }
@@ -238,7 +255,7 @@ option {
 </head>
 <body>
 	<%@include file="../includes/header.jsp"%>
-	
+
 	<div class="order_box">
 		<ul class="order">
 			<li>헌혈 유의사항</li>
@@ -265,7 +282,8 @@ option {
 			</div>
 		</div>
 		<hr class="hr">
-		<table class="blood_info">
+
+		<table class="blood_info" id="info">
 			<tr class="column">
 				<th>헌혈의집명</th>
 				<th>운영시간</th>
@@ -285,31 +303,58 @@ option {
 				<td>010-0000-1234</td>
 			</tr>
 		</table>
+		<script>		
+        function getInfo() {
+     // 	  alert("call");
+      	  const config = {
+      	    method: "post"
+      	  };
+      	  fetch("https://api.odcloud.kr/api/15050729/v1/uddi:03c4700e-0d6d-4dc1-914b-d0b8720dfaa9?page=1&perPage=10&serviceKey=fc7neVxfegjd7ptkZnQkV3YyKVGajgKxKhSkn060LiBCg%2FZwkO1cig1cNX34Eox3dEtjy6vBoFUsekWcZ4%2BmeQ%3D%3D", config)
+      	    .then(response => response.json())
+      	    .then(data => {
+      //	    	alert("데이터 받았음");
+      			var list = data.data;
+      	    	for( idx in list)
+      	    	{
+      	    		var item = list[idx];
+	        	    	console.log(item);
+	        	   // $('#info > .content').empty(); //기존 테이블데이터 삭제	
+	          /* const createTr = document.createElement("tr");	          
+      	      const name = document.createElement("td");
+      	      const addr = document.createElement("td");
+      	      const phone = document.createElement("td");
+      	      name.textContent = item.주소지;
+      	      phone.textContent = item.전화번호;
+      	      const userInfo = document.getElementById("getPost");
+      	      
+      	      userInfo.appendChild(name);
+      	      userInfo.appendChild(phone); */
+      	      var output = "";
+      	    output += "<tr class='column content'>";
+      	    output += '<td>'+list[idx].헌혈의집+'</td>'
+      		output += '<td>'+'00:00 ~ 00:00'+'</td>'
+            output += '<td>'+list[idx].주소지+'</td>';
+            output += '<td>'+list[idx].전화번호+'</td>';            
+            output += '</tr>'
+      	    
+      	    	}
+            alert("asdf");
+      	    	$("#info").append(output); // 새로운 데이터 덮어쓰기	
+      	    })
+           
+      	    
+      	}
+        
+		  </script>
+
+		<input type="button" value="ajax" onclick="getInfo();"> 
+		<div id="getPost"></div>
+
+
+		<div id="map" style="width: 300px; height: 350px;"></div>
+		<script type="text/javascript"
+			src="//dapi.kakao.com/v2/maps/sdk.js?appkey=63268fc81295082dacca97ed3dbadbee&libraries=services,clusterer,drawing"></script>
 		<script>
-		function GetAPI()
-		{
-				$.ajax({
-					url:'https://api.odcloud.kr/api/15050729/v1/uddi:03c4700e-0d6d-4dc1-914b-d0b8720dfaa9?page=1&perPage=10&serviceKey=fc7neVxfegjd7ptkZnQkV3YyKVGajgKxKhSkn060LiBCg%2FZwkO1cig1cNX34Eox3dEtjy6vBoFUsekWcZ4%2BmeQ%3D%3D',
-					type: 'GET',						
-					success:function(response){						
-						
-						console.log(response);
-						// Expected output: 42
-						$("#msg").html(response);
-						
-					}
-			});
-				}
-				
-		</script>
-		<input type="button" value="ajax" onclick="GetAPI();">
-		<br>
-		<div id="msg"></div>
-		
-		
-				<div id="map" style="width:300px;height:350px;"></div>
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=63268fc81295082dacca97ed3dbadbee&libraries=services,clusterer,drawing"></script>
-	<script>
 		var container = document.getElementById('map');
 		var options = {
 			center: new kakao.maps.LatLng(33.450701, 126.570667),
