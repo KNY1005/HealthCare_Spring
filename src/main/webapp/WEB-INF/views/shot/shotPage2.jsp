@@ -179,7 +179,7 @@
     ></script>
     <script
       type="application/javascript"
-      src="https://zelkun.tistory.com/attachment/cfile8.uf@99BB7A3D5D45C065343307.js"
+      src="${path}/resources/js/hangjungdong2.js"
     ></script>
     <script type="application/javascript">
       jQuery(document).ready(function () {
@@ -237,6 +237,12 @@
           var sigugun = jQuery("#sigugun option:selected").val();
           var dong = jQuery("#dong option:selected").val();
           var dongCode = sido + sigugun + dong + "00";
+          
+        //동네예보 URL
+          var url = 'https://api.odcloud.kr/api/apnmOrg/v2/list?page=1&perPage=500&serviceKey=WMYt954ER1qV9fi8xf2kgPxHFVXPiJl8GTJHSVT8LQr%2F4j6%2F6Lp2qSmjiBMa9KcCUWC6BbtkeLevU9HrSZP3KA%3D%3D' + dongCode + '&unit=K';
+
+          //iframe으로 결과 보기
+          fn_iframe(url);
         });
       });
 
@@ -301,65 +307,83 @@
                   <select id="sido"><option disabled selected>시/도</option></select>
                   <select id="sigugun"><option disabled selected>시/구/군</option></select>
                   <select id="dong"><option disabled selected>읍/면/동</option></select> 
-                  <button id="btn2" onClick="getUser()"><i class="xi-search xi-2x"></i></button>                 
+                  <button id="btn2" onClick="getUser()" value="ajax"><i class="xi-search xi-2x"></i></button>                 
           </div>
         </div>
         <hr id="line">
         </div>
+        <div>
+    <iframe id="iframe" style="width:100%; height:500px;"></iframe>
+  </div>
         <div id="hospital_list">
-          <table>
+          <table id="info">
             <tr>
                 <th>병원명</th>
                 <th>진료시간</th>
                 <th>주소</th>
                 <th>연락처</th>
             </tr>
-            <tr id="content"
+           <!--  <tr id="content"
             onClick="location.href='abc3.do'">
-                <td>땡땡 병원</td>
-                <td>00:00 ~ 00:00</td>
-                <td>전라북도 전주시 땡땡</td>
-                <td>${tel}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
             </tr>
             <tr id="content"
             onClick="location.href='abc3.do'">
-                <td id="getPost">땡땡 병원</td>
-                <td>00:00 ~ 00:00</td>
-                <td>전라북도 전주시 땡땡</td>
-                <td>010-0000-1234</td>
-            </tr>
+                <td id="getPost"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr> -->
           </table>
           <script>
+          function goPage(){
+        	  location.href='abc3.do';
+          }
           function getUser() {
        // 	  alert("call");
         	  const config = {
-        	    method: "get"
+        	    method: "post"
         	  };
-        	  fetch("https://api.odcloud.kr/api/apnmOrg/v2/list?page=1&perPage=100&serviceKey=WMYt954ER1qV9fi8xf2kgPxHFVXPiJl8GTJHSVT8LQr%2F4j6%2F6Lp2qSmjiBMa9KcCUWC6BbtkeLevU9HrSZP3KA%3D%3D", config)
+        	  fetch("https://api.odcloud.kr/api/apnmOrg/v2/list?page=1&perPage=6500&serviceKey=WMYt954ER1qV9fi8xf2kgPxHFVXPiJl8GTJHSVT8LQr%2F4j6%2F6Lp2qSmjiBMa9KcCUWC6BbtkeLevU9HrSZP3KA%3D%3D", config)
         	    .then(response => response.json())
         	    .then(data => {
         //	    	alert("데이터 받았음");
         			var list = data.data;
+	       	    	var output = "";
         	    	for( idx in list)
         	    	{
         	    		var item = list[idx];
 	        	    	console.log(item);
         	    	
-        	      const name = document.createElement("td");
+        	      /* const name = document.createElement("td");
         	      const addr = document.createElement("td");
         	      const phone = document.createElement("td");
         	      name.textContent = item.orgnm;
         	      addr.textContent = item.orgZipaddr;
         	      phone.textContent = item.orgTlno;
-        	      const userInfo = document.getElementById("getPost");
+        	      const userInfo = document.getElementById("content");
         	      userInfo.appendChild(name);
         	      userInfo.appendChild(addr);
-        	      userInfo.appendChild(phone);
-        	    	}})
-        	    .catch(error => console.log("fetch 에러!"));
-        	}
+        	      userInfo.appendChild(phone); */
+	              	    output += "<tr id='content' onClick='goPage()'>";
+	              	    output += '<td>'+list[idx].orgnm+'</td>'
+	              		output += '<td>'+'00:00 ~ 00:00'+'</td>'
+	                    output += '<td>'+list[idx].orgZipaddr+'</td>';
+	                    output += '<td>'+list[idx].orgTlno+'</td>';            
+	                    output += '</tr>'
+	              	    
+	              	    }
+        	   
+        	    	alert("api!");
+          	    	$("#info").append(output); // 새로운 데이터 덮어쓰기	
+          	    })
+               
+          	    
+          	}
 		  </script>
-		<div id="userInfo"></div>
           <table id="output">
             <tr>
               <td></td>
