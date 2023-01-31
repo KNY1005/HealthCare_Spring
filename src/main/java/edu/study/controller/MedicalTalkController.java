@@ -21,7 +21,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 
 import edu.study.service.MedicalTalkService;
 import edu.study.service.ReplyService;
@@ -35,10 +35,6 @@ import edu.study.vo.SearchCriteria;
 @Controller
 public class MedicalTalkController{
 	
-	private static final Logger logger = LoggerFactory.getLogger(MedicalTalkController.class);
-	
-	@Inject
-	ReplyService replyService;
 	
 	@Autowired
 	private MedicalTalkService medicaltalkService;
@@ -63,9 +59,6 @@ public class MedicalTalkController{
 		model.addAttribute("vo",vo);
 		model.addAttribute("fvo", fvo);
 		
-		List<ReplyVO> reply = null;
-		reply = replyService.readReply(bidx);
-		model.addAttribute("reply",reply);
 		
 		return "medicalTalk/medicalView";
 		
@@ -164,16 +157,6 @@ public class MedicalTalkController{
 
 	}
 	
-	@RequestMapping(value="/replyWrite.do", method = RequestMethod.POST)
-		String replyWrite(ReplyVO vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception{
-		logger.info("replyWrite");
-		System.out.println("컨트롤러까지 넘어오니?");
-	    replyService.writeReply(vo);
-		
-		rttr.addAttribute("bidx", vo.getBidx());
-		
-		return "redirect:/medicalTalk/medicalView.do";
-	}
 	
 	
 }

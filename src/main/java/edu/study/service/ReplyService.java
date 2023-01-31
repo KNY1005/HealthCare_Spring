@@ -5,7 +5,16 @@ import java.util.List;
 import edu.study.vo.ReplyVO;
 
 public interface ReplyService {
-	public List<ReplyVO> readReply(int bidx) throws Exception;
+	
+	
+	int replyInsert(ReplyVO ro);
+	
+	int replyUpdate(ReplyVO ro);
+	
+	int replyDelete(int pidx);
 
-	public void writeReply(ReplyVO vo) throws Exception;
+	List<ReplyVO> replyList(int bidx);
+	
+	
+	
 }
