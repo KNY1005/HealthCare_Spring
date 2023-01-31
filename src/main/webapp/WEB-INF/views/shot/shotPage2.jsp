@@ -301,7 +301,7 @@
                   <select id="sido"><option disabled selected>시/도</option></select>
                   <select id="sigugun"><option disabled selected>시/구/군</option></select>
                   <select id="dong"><option disabled selected>읍/면/동</option></select> 
-                  <button id="btn2" onClick="api"><i class="xi-search xi-2x"></i></button>                 
+                  <button id="btn2" onClick="getUser()"><i class="xi-search xi-2x"></i></button>                 
           </div>
         </div>
         <hr id="line">
@@ -330,36 +330,36 @@
             </tr>
           </table>
           <script>
-          const tr = document.getElementById('content');
-          const list = document.createDocumentFragment();
-          const url = 'https://api.odcloud.kr/api/apnmOrg/v2/list?page=1&perPage=100&serviceKey=WMYt954ER1qV9fi8xf2kgPxHFVXPiJl8GTJHSVT8LQr%2F4j6%2F6Lp2qSmjiBMa9KcCUWC6BbtkeLevU9HrSZP3KA%3D%3D';
-          
-          fetch(url)
-          	.then((response) => {
-      		return response.json();
-    		})
-    		 .then((data) => {
-     		 let content = data;
-     		 
-     		 content.items.map(function(content) {
-     			let td = document.createElement('td');
-     	        let orgnm = document.createElement('h2');
-     	        let orgZipaddr = document.createElement('span');
-     	        
-     	       orgnm.innerHTML = `${content.orgnm}`;
-     	       orgZipaddr.innerHTML = `${content.orgZipaddr}`;
-     	       
-     	       td.appendChild(orgnm);
-     	       td.appendChild(orgZipaddr);
-     	       list.appendChild(td);
-     	      });
-    		})
-    		.catch(function(error) {
-      			console.log(error);
-    		});
-    		tr.appendChild(list);
+          function getUser() {
+       // 	  alert("call");
+        	  const config = {
+        	    method: "get"
+        	  };
+        	  fetch("https://api.odcloud.kr/api/apnmOrg/v2/list?page=1&perPage=100&serviceKey=WMYt954ER1qV9fi8xf2kgPxHFVXPiJl8GTJHSVT8LQr%2F4j6%2F6Lp2qSmjiBMa9KcCUWC6BbtkeLevU9HrSZP3KA%3D%3D", config)
+        	    .then(response => response.json())
+        	    .then(data => {
+        //	    	alert("데이터 받았음");
+        			var list = data.data;
+        	    	for( idx in list)
+        	    	{
+        	    		var item = list[idx];
+	        	    	console.log(item);
+        	    	
+        	      const name = document.createElement("td");
+        	      const addr = document.createElement("td");
+        	      const phone = document.createElement("td");
+        	      name.textContent = item.orgnm;
+        	      addr.textContent = item.orgZipaddr;
+        	      phone.textContent = item.orgTlno;
+        	      const userInfo = document.getElementById("getPost");
+        	      userInfo.appendChild(name);
+        	      userInfo.appendChild(addr);
+        	      userInfo.appendChild(phone);
+        	    	}})
+        	    .catch(error => console.log("fetch 에러!"));
+        	}
 		  </script>
-		<div id="Info"></div>
+		<div id="userInfo"></div>
           <table id="output">
             <tr>
               <td></td>
