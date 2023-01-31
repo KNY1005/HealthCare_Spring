@@ -111,7 +111,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, #nav li a, #topbar, input, button,
 
 main {
 	width: 1320px;
-	height: 700px;
+	
 	margin: 100px auto;
 }
 
@@ -304,45 +304,27 @@ option {
 			</tr>
 		</table>
 		<script>		
-        function getInfo() {
-     // 	  alert("call");
-      	  const config = {
-      	    method: "post"
-      	  };
-      	  fetch("https://api.odcloud.kr/api/15050729/v1/uddi:03c4700e-0d6d-4dc1-914b-d0b8720dfaa9?page=1&perPage=10&serviceKey=fc7neVxfegjd7ptkZnQkV3YyKVGajgKxKhSkn060LiBCg%2FZwkO1cig1cNX34Eox3dEtjy6vBoFUsekWcZ4%2BmeQ%3D%3D", config)
-      	    .then(response => response.json())
-      	    .then(data => {
-      //	    	alert("데이터 받았음");
-      			var list = data.data;
-      	    	for( idx in list)
-      	    	{
-      	    		var item = list[idx];
-	        	    	console.log(item);
-	        	   // $('#info > .content').empty(); //기존 테이블데이터 삭제	
-	          /* const createTr = document.createElement("tr");	          
-      	      const name = document.createElement("td");
-      	      const addr = document.createElement("td");
-      	      const phone = document.createElement("td");
-      	      name.textContent = item.주소지;
-      	      phone.textContent = item.전화번호;
-      	      const userInfo = document.getElementById("getPost");
-      	      
-      	      userInfo.appendChild(name);
-      	      userInfo.appendChild(phone); */
-      	      var output = "";
-      	    output += "<tr class='column content'>";
-      	    output += '<td>'+list[idx].헌혈의집+'</td>'
-      		output += '<td>'+'00:00 ~ 00:00'+'</td>'
-            output += '<td>'+list[idx].주소지+'</td>';
-            output += '<td>'+list[idx].전화번호+'</td>';            
-            output += '</tr>'
-      	    
-      	    	}
-            alert("asdf");
-      	    	$("#info").append(output); // 새로운 데이터 덮어쓰기	
-      	    })
-           
-      	    
+			function getInfo() {
+			const config = {
+				method: "post"
+			};
+			fetch("https://api.odcloud.kr/api/15050729/v1/uddi:03c4700e-0d6d-4dc1-914b-d0b8720dfaa9?page=1&perPage=10&serviceKey=fc7neVxfegjd7ptkZnQkV3YyKVGajgKxKhSkn060LiBCg%2FZwkO1cig1cNX34Eox3dEtjy6vBoFUsekWcZ4%2BmeQ%3D%3D", config)
+			.then(response => response.json())
+			.then(data => {
+   
+			var list = data.data;
+			var output = "";
+			for( idx in list){				
+				var item = list[idx];
+	      	    output += "<tr class='column content'>";
+    	  	    output += '<td>'+item['헌혈의 집']+'</td>'
+      			output += '<td>'+'00:00 ~ 00:00'+'</td>'
+            	output += '<td>'+item.주소지+'</td>';
+            	output += '<td>'+item.전화번호+'</td>';            
+            	output += '</tr>'
+			}           
+      	    $("#info").append(output); // 새로운 데이터 덮어쓰기	
+      	    })      	    
       	}
         
 		  </script>
