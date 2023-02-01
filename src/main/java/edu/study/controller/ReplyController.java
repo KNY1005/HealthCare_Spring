@@ -21,6 +21,7 @@ public class ReplyController {
     @RequestMapping("/list") 
     @ResponseBody
     public List<ReplyVO> replyList(Model model, int bidx) throws Exception{
+    	System.out.println("reply cont \n bidx : " + bidx);
         
         return replyService.replyList(bidx);
     }

@@ -378,7 +378,7 @@
 </head>
 
 <body>
-	<%-- <%@include file="../includes/header.jsp"%> --%>
+	 <%@include file="../includes/header.jsp"%>
 
 	<div id="height"></div>
 	<div class="sub_nav_menu">

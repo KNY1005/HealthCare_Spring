@@ -19,7 +19,7 @@ public class ReplyDAO {
 	}
 	
 	public List<ReplyVO> replyList(int bidx){
-		return sqlSession.selectList("edu.study.mapper.boardMapper.replyList");
+		return sqlSession.selectList("edu.study.mapper.boardMapper.replyList", bidx);
 	}
 	 
     // ¥Ò±€ ¿€º∫
