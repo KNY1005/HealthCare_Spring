@@ -85,9 +85,20 @@
           </p>
           </form>
           <form class="join" id="join" method="post" name='join' action="/controller/member/join.do">
+         
           <fieldset id="signup-fieldset" class="hidden">
-          
            <!-- style="ime-mode:disabled는 한영키를 무시하고 영어로만 입력됨  -->
+           
+           <div id="mgrade">
+           <input type="radio" name="mgrade" value="A"
+           style="width:30px;" 
+           >전문의<input type="radio" name="mgrade" value="G checked"
+           style="width:30px;" 
+           >일반           
+           </div>
+            
+          	
+           
             <input
               class="login animated fadeInUp animate2"
               name="mid"
@@ -100,7 +111,7 @@
             	oninput="handleOnInput(this)"
             	maxlength="20"
             /><button class="login animated fadeInUp animate2 join-button"  
-            style="background:#ff7575; border:none; color:#fff; position: absolute; top:164px; left:295px; border-radius: 15px; padding:2px; width:70px;" 
+            style="background:#ff7575; border:none; color:#fff; position: absolute; top:204px; left:295px; border-radius: 15px; padding:2px; width:70px;" 
             type="button" onclick="checkId();">중복체크</button>
             <span  style="display: none; color: #d92742; font-size:12px; margin:-8px;" class="id_ok" id="span_id_0">공백은 아이디로 쓸수 없습니다.</span>
             <span  style="display: none; color: green; font-size:12px; margin:-8px;" class="id_ok" id="span_id_1">사용 가능한 아이디입니다.</span>
@@ -108,6 +119,8 @@
 			<span  style="display: none; color: #d92742; font-size:12px; margin:-8px; class="id_already" id="span_id_3">중복체크를 해주세요</span>
             <input
               class="login animated fadeInUp animate3"
+              maxlength='10'
+              minlength = "6"
               name="mpwd"
               id="password1"
               type="password"
@@ -116,11 +129,11 @@
               value=""
               style="ime-mode:disabled"
               oninput="handleOnInput(this)"
-              maxlength='10'
-              minlength = "6"
             />
             <input
               class="login animated fadeInUp animate3"
+               maxlength='10'
+              minlength = "6"
               name="mpwdcheck"
               id="password2"
               type="password"
@@ -128,8 +141,6 @@
               required
               value=""
               oninput="handleOnInput(this)"
-               maxlength='10'
-              minlength = "6"
             />
             <span id="alert1" style="display: none; color: green; font-size:12px; margin:-8px;" >비밀번호가 일치합니다.</span>
             <span id="alert2" style="display: none; color: #d92742; font-size:12px; margin:-8px;" >비밀번호가 일치하지 않습니다.</span>
@@ -168,7 +179,7 @@
               
               onblur="bluraddr(this)"
             /><button class="login animated fadeInUp animate2 join-button"
-            style="background:#ff7575; border:none; color:#fff; position: absolute; top:414px; left:295px; border-radius: 15px; padding:2px; width:70px;" 
+            style="background:#ff7575; border:none; color:#fff; position: absolute; top:454px; left:295px; border-radius: 15px; padding:2px; width:70px;" 
              onclick="goPopup()" type="button" onclick="checkaddr();">주소찾기</button>
             
             <input
@@ -194,6 +205,7 @@
             /> <span id="alert4" style="display: none; color: #d92742; font-size:12px; margin:-8px;" >이메일 형식으로 적어주세요.</span>
             
             
+            
           </fieldset>
           <input
            type="submit"
@@ -202,10 +214,21 @@
             value="Sign up"
             onclick="loadFn()"
           />
+          
+          
+         
+          
+          
+          
+          
+          
+          
 		</form>
       </div>
     </div>
       <script type="text/javascript">
+      
+      
     // 주소 팝업
 	  function goPopup() {
 	  	var pop = window.open("${path}/resources/popup/jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes");
@@ -276,6 +299,7 @@
       if (checkIdFlag != true)
       {
     	  span_id_3.style.display = 'block';
+    	  
          join.mid.focus();
          return false;
       }
@@ -322,6 +346,9 @@
 		if( join.maddrdetail.val() == null || $("#maddrdetail").val() == "")
 	    {
 			alert3.style.display = 'block';
+			span_id_1.style.display = 'none';
+       	 	span_id_2.style.display = 'none';
+       		 span_id_0.style.display = 'none';
 	       join.maddrdetail.focus();
 	       return false;      
 	    }
@@ -329,6 +356,9 @@
 		if( join.mmaddzipnum.val() == null || $("#mmaddzipnum").val() == "")
 	    {
 			alert3.style.display = 'block';
+			span_id_1.style.display = 'none';
+       	 	span_id_2.style.display = 'none';
+       		 span_id_0.style.display = 'none';
 	       join.mmaddzipnum.focus();
 	       return false;      
 	    }

@@ -6,16 +6,28 @@
 
     <!-- 로그인 -->
 	<select id="login" parameterType="MemberVo" resultType="MemberVo">
-		SELECT mid, mpwd
+		SELECT
+			midx  
+			, mid
+			, mpwd
+			, mphone
+       		, maddrdetail
+       		, mmaddzipnum
+       		, memail
+       		, mname
+       		, mgrade
+       		, mlvl
 		  FROM table_member
 		 WHERE mid = #{mid}
 		   AND mpwd = #{mpwd}
 	</select>
+	
 	<select id="selectById" parameterType="String" resultType="int">
 		SELECT COUNT(mid)
 		  FROM table_member
 		 WHERE mid = #{mid}
 	</select>
+	
 	<insert id="register" parameterType="MemberVo">
 		 insert into table_member(  midx 
 		 							,mid
@@ -25,6 +37,8 @@
 	   					       		, maddrdetail
 	   					       		, mmaddzipnum
 	   					       		, memail
+	   					       		, mgrade
+	   					       		, mip
 	   					       		 	)
 	                  values(   midx_seq.nextval
 	                  			, #{mid} 
@@ -34,6 +48,8 @@
 	                 		   , #{maddrdetail}
 	                 		   , #{mmaddzipnum}
 	                 		   , #{memail}
+	                 		   , #{mgrade}
+	                 		   , #{mip}
 	                 		   )
 	                 		   
 	</insert>

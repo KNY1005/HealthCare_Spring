@@ -86,12 +86,12 @@
 					<button type="submit" class="btn">
 						<i class="xi-plus" alt="검색"></i>
 					</button>
-					<p>${member.mid}님 환영합니다!</p>
+					<p>${member.mname}님 환영합니다!</p>
 				</div>
 				<div id="profli_menu">
 					<ul>
 						<li><img src="${path }/resources/image/profli.png" alt="프로필" /></li>
-						<li><p>${member.mid}님</p></li>
+						<li><p>${member.mname}님</p></li>
 						<li><hr width="250px" /></li>
 						 <li><a href="/mypage1.do">마이페이지</a></li>
 			              <li><a href="/mypage4.do">내가 쓴 글</a></li>
