@@ -23,14 +23,7 @@
 	type="application/javascript"></script>
 <script type="application/javascript"
 	src="https://zelkun.tistory.com/attachment/cfile8.uf@99BB7A3D5D45C065343307.js"></script>
-<script type="application/javascript">
-	
-	
-	
-	
-	
-	
-	
+<script type="application/javascript">	
         jQuery(document).ready(function(){
             jQuery('#table1').css('color', 'red');
             jQuery('#table_header').css('font-size', '30pt');
@@ -93,14 +86,61 @@
         function fn_iframe(url){
             jQuery('#iframe').attr('src', url);
         }
-    
-
-
-
-
-
 
 </script>
+<script>	
+		function goPage4() {			
+			location.href = "page4.do";				
+		}
+		function getInfo(){			
+			var select = $("#sigugun option:selected").text();
+			$("#sido option:selected")
+			$.ajax({
+				url:"https://api.odcloud.kr/api/15050729/v1/uddi:03c4700e-0d6d-4dc1-914b-d0b8720dfaa9?page=1&perPage=143&serviceKey=fc7neVxfegjd7ptkZnQkV3YyKVGajgKxKhSkn060LiBCg%2FZwkO1cig1cNX34Eox3dEtjy6vBoFUsekWcZ4%2BmeQ%3D%3D",
+				method:"GET",
+				data :{},
+				success:function(data){
+					alert("abc2");					
+					//console.log(data.data[6]);
+					var list = data.data;
+					var output = "";
+					//var addr = item.주소지;
+					for( i in list){
+        	    		var item = list[i];
+        	    		var addr = list[i].주소지;
+						if(addr.includes(" "+select)){
+        	    			output += "<tr class='column content' onclick='goPage4()'>";
+     		    	  	    output += '<td>'+item['헌혈의 집']+'</td>';
+     		      			output += '<td>'+'00:00 ~ 00:00'+'</td>';
+     		            	output += '<td>'+item.주소지+'</td>';
+     		            	output += '<td>'+item.전화번호+'</td>';            
+     		            	output += '</tr>';	
+        	    		}	             	
+					}					
+					//alert(list[6].주소지);
+					var output2 = "";
+					var totalPage = Math.floor(data.totalCount/data.perPage+1);
+					
+					for(var i=1; i<=totalPage; i++){
+						//console.log(i);
+						if(i<totalPage){
+							output2 += "<a class='pagination' onclick='page()'>"+i+"</a> | ";
+						}else{output2 += "<a class='pagination' onclick='page()'>"+i+"</a>";}
+					}
+						
+					//console.log(data);
+					//alert('abcdf='+list);
+					$("#page").empty();			//#page안의 자식요소 비우기
+					$("#page").append(output2);	
+					$(".content").remove();		//데이터 지우기
+		      	    $("#info").append(output);  // 새로운 데이터 덮어쓰기
+				}
+			})
+			
+		}
+		
+</script>
+
 <style>
 body, h1, h2, h3, h4, h5, h6, li, p, #nav li a, #topbar, input, button,
 	select, textarea, a, .wf-container>*, .widget-title, .dwqa-container,
@@ -111,7 +151,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, #nav li a, #topbar, input, button,
 
 main {
 	width: 1320px;
-	
+	min-height:529px;
 	margin: 100px auto;
 }
 
@@ -261,7 +301,7 @@ option {
 			<li>헌혈 유의사항</li>
 			<li><i class="xi-angle-right"></i></li>
 			<li>헌혈 전자문진</li>
-			<li><i class="xi-angle-right"></i></li>
+			<li><i class="xi-angle-right"></i></li>	
 			<li>헌혈 예약</li>
 			<li><i class="xi-angle-right"></i></li>
 			<li>헌혈 예약 완료</li>
@@ -271,16 +311,19 @@ option {
 
 		<h3 class="h3">헌혈 예약</h3>
 		<hr class="hr">
-		<div id="addr">
-			<div id="address_search">
-				지역 <select class="addr" id="sido"><option disabled selected>시/도</option></select>
-				<select class="addr" id="sigugun"><option disabled selected>시/구/군</option></select>
-				<select class="addr" id="dong"><option disabled selected>동</option></select>
-				<button class="button">
-					<i class="xi-search xi-2x"></i>
-				</button>
+		
+		<form name="form_1" id="form_1" method="post" action="ajax.jsp" onsubmit="return getInfo();">
+			<div id="addr">
+				<div id="address_search">
+					지역 <select class="addr" name="sido" id="sido"><option disabled selected>시/도</option></select>
+					<select class="addr" name="sigugun" id="sigugun"><option disabled selected>시/구/군</option></select>
+					<select class="addr" name="dong" id="dong"><option disabled selected>동</option></select>
+					<button class="button" type="button" onclick="getInfo();">
+						<i class="xi-search xi-2x"></i>
+					</button>
+				</div>
 			</div>
-		</div>
+		</form>
 		<hr class="hr">
 
 		<table class="blood_info" id="info">
@@ -289,89 +332,10 @@ option {
 				<th>운영시간</th>
 				<th>주소</th>
 				<th>연락처</th>
-			</tr>
-			<tr class="column content" onClick="location.href='page4.do'">
-				<td>땡땡 헌혈의 집</td>
-				<td>00:00 ~ 00:00</td>
-				<td>전라북도 전주시 땡땡</td>
-				<td>010-0000-1234</td>
-			</tr>
-			<tr class="column content" onClick="location.href='page4.do'">
-				<td>땡땡 헌혈의 집</td>
-				<td>00:00 ~ 00:00</td>
-				<td>전라북도 전주시 땡땡</td>
-				<td>010-0000-1234</td>
-			</tr>
-		</table>
-		<script>		
-			function getInfo() {
-			const config = {
-				method: "post"
-			};
-			fetch("https://api.odcloud.kr/api/15050729/v1/uddi:03c4700e-0d6d-4dc1-914b-d0b8720dfaa9?page=1&perPage=10&serviceKey=fc7neVxfegjd7ptkZnQkV3YyKVGajgKxKhSkn060LiBCg%2FZwkO1cig1cNX34Eox3dEtjy6vBoFUsekWcZ4%2BmeQ%3D%3D", config)
-			.then(response => response.json())
-			.then(data => {
-   
-			var list = data.data;
-			var output = "";
-			for( idx in list){				
-				var item = list[idx];
-	      	    output += "<tr class='column content'>";
-    	  	    output += '<td>'+item['헌혈의 집']+'</td>'
-      			output += '<td>'+'00:00 ~ 00:00'+'</td>'
-            	output += '<td>'+item.주소지+'</td>';
-            	output += '<td>'+item.전화번호+'</td>';            
-            	output += '</tr>'
-			}           
-      	    $("#info").append(output); // 새로운 데이터 덮어쓰기	
-      	    })      	    
-      	}
-        
-		  </script>
-
-		<input type="button" value="ajax" onclick="getInfo();"> 
-		<div id="getPost"></div>
-
-
-		<div id="map" style="width: 300px; height: 350px;"></div>
-		<script type="text/javascript"
-			src="//dapi.kakao.com/v2/maps/sdk.js?appkey=63268fc81295082dacca97ed3dbadbee&libraries=services,clusterer,drawing"></script>
-		<script>
-		var container = document.getElementById('map');
-		var options = {
-			center: new kakao.maps.LatLng(33.450701, 126.570667),
-			level: 3
-		};
-
-		var map = new kakao.maps.Map(container, options);
-		// 주소-좌표 변환 객체를 생성합니다
-		var geocoder = new kakao.maps.services.Geocoder();
-
-		// 주소로 좌표를 검색합니다
-		geocoder.addressSearch('서울 강서구 공항대로 591 대한적십자사 서울중앙혈액원 3층', function(result, status) {
-
-		    // 정상적으로 검색이 완료됐으면 
-		     if (status === kakao.maps.services.Status.OK) {
-
-		        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-
-		        // 결과값으로 받은 위치를 마커로 표시합니다
-		        var marker = new kakao.maps.Marker({
-		            map: map,
-		            position: coords
-		        });
-
-		        // 인포윈도우로 장소에 대한 설명을 표시합니다
-		        var infowindow = new kakao.maps.InfoWindow({
-		            content: '<div style="width:150px;text-align:center;padding:6px 0;">대한적십자사 서울중앙혈액원 3층</div>'
-		        });
-		        infowindow.open(map, marker);
-
-		        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-		        map.setCenter(coords);
-		    } 
-		});    
-	</script>
+			</tr>			
+		</table>			
+		
+		<div id="page"></div>
 	</main>
 
 	<%@include file="../includes/footer.jsp"%>

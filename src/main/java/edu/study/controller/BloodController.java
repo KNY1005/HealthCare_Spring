@@ -1,8 +1,12 @@
 package edu.study.controller;
 
+
+
 import org.springframework.stereotype.Controller;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
 
 @RequestMapping(value="/blood")	
 @Controller
@@ -33,4 +37,5 @@ public class BloodController {
 		
 		return "blood/bloodPage5";	
 	}
+	
 }
