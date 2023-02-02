@@ -378,7 +378,7 @@
 </head>
 
 <body>
-	<%@include file="../includes/header.jsp"%>
+	 <%@include file="../includes/header.jsp"%>
 
 	<div id="height"></div>
 	<div class="sub_nav_menu">
@@ -422,30 +422,25 @@
 			</div><!--//#like-->
 			<!-- 답변 시작 -->
 			<div class="doctor_writing_content" >
-				<form action ="replyWrite.do" method="POST">
-				  <input type="hidden" id="bidx" name="bidx" value="${vo.bidx}" />
-				
-				  <div>
-				    <label for="pwriter">댓글 작성자</label><input type="text" id="pwriter" name="pwriter" />
-				    <br/>
-				    <label for="pcontent">댓글 내용</label><input type="text" id="pcontent" name="pcontent" />
-				  </div>
-				  <div>
-				 	 <button class="replyWriteBtn">작성</button>
-				  </div>
-				</form>
-				<ol class="replyList">
-					<c:forEach items="${reply }" var="replyList">
-						<li>
-							<p>
-							작성자: ${replyList.pwriter}<br/>
-							</p>
-							
-							<p>${replyList.pcontent }</p>
-						</li>
-					</c:forEach>
-				</ol>
+				<div class="container">
+			    	<label for="pcontent">답변</label>
+			        	<form name="replyInsertForm">
+			            	<div class="input-group">
+			               	<input type="hidden" name="bidx" value="${vo.bidx}"/>
+			               	<input type="text" class="form-control" id="pcontent" name="pcontent" placeholder="내용을 입력하세요.">
+			               		<span class="input-group-btn">
+			                   		<button class="btn btn-default" type="button" name="replyInsertBtn">등록</button>
+			               		</span>
+			              	</div>
+			        	</form>
+			    </div>
+			    
+			   	<div class="container">
+			   		<div class="replyList"></div>
+			    </div>
 			</div>
+			 
+		<%@ include file="reply.jsp" %>
 		</section>
 
 	</main>

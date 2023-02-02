@@ -1,10 +1,9 @@
 package edu.study.service;
-
 import java.util.List;
 
-import javax.inject.Inject;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 import edu.study.dao.ReplyDAO;
 import edu.study.vo.ReplyVO;
@@ -12,19 +11,34 @@ import edu.study.vo.ReplyVO;
 @Service
 public class ReplyServiceImpl implements ReplyService{
 	
-	@Inject
-	private ReplyDAO dao;
+	@Autowired
+	private ReplyDAO replyDAO;
 
 	@Override
-	public List<ReplyVO> readReply(int bidx) throws Exception {
+	public List<ReplyVO> replyList(int bidx){
 		
-		return dao.readReply(bidx);
+		return replyDAO.replyList(bidx);
 	}
 
 	@Override
-	public void writeReply(ReplyVO vo) throws Exception {
-		dao.writeReply(vo);
+	public int replyInsert(ReplyVO ro){
 		
+		return replyDAO.replyInsert(ro);
 	}
+
+	@Override
+	public int replyUpdate(ReplyVO ro){
+		
+		return replyDAO.replyUpdate(ro);
+	}
+
+	@Override
+	public int replyDelete(int pidx){
+		
+		return replyDAO.replyDelete(pidx);
+	}
+
+	
+	
 
 }

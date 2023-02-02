@@ -116,14 +116,13 @@
 		SELECT * FROM table_file where bidx = #{bidx}
 	</select> 
 	
-	<select id="readReply" parameterType="int" resultType="ReplyVO">
-    	SELECT
-    		 BIDX, PIDX, PWRITER, PCONTENT, PGRP, PGRPS
-    	 FROM TABLE_REPLY
-    	WHERE BIDX = #{BIDX}
-	</select>
+	<select id="replyCount" resultType="int">
+        SELECT
+            COUNT(*)
+        FROM TABLE_REPLY
+    </select>
 	
-	<insert id="writeReply" parameterType="ReplyVO">
+	<insert id="replyInsert" parameterType="ReplyVO">
 		INSERT INTO TABLE_REPLY(
 			BIDX
 			, PIDX
@@ -142,25 +141,20 @@
 			)
 	</insert>
 	
-	<update id="updateReply" parameterType="ReplyVO">
-		UPDATE TABLE_REPLY SET CONTENT = #{pcontent}
-		WHERE PIDX = #{pidx}
-	</update>
+	<update id="replyUpdate" parameterType="ReplyVO">
+		 UPDATE TABLE_REPLY
+            SET
+            PCONTENT = #{pcontent}
+        WHERE PIDX = #{pidx}
+    </update>
 		
-	<delete id="deleteReply" parameterType="ReplyVO">
-		DELETE FROM TABLE_REPLY
-		WHERE PIDX = #{pidx}
-	</delete>
+	<delete id="replyDelete" parameterType="int">
+		 DELETE FROM TABLE_REPLY WHERE PIDX = #{pidx}
+    </delete>
 	
-	<select id="selectReply" resultType="ReplyVO">
-		SELECT
-				BIDX
-			  , PIDX
-			  , PCONTENT
-			  , PWRITER
-			  , PGRP
-			  , PGRPS
-		  FROM TABLE_REPLY
-		 WHERE PIDX = #{pidx}
+	<select id="replyList"  parameterType="int" resultType="ReplyVO">
+		SELECT *
+		FROM TABLE_REPLY
+		where BIDX = #{bidx}
 	</select>
 </mapper>
