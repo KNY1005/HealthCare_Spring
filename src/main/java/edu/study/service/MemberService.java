@@ -29,6 +29,9 @@ public interface MemberService {
 	
 	/*회원정보 수정*/
 	public void updateMember(MemberVo vo);
+	
+	//아이디찾기
+	public String get_searchId(String mname, String mphone);
 
 
 }

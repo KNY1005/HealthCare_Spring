@@ -40,25 +40,28 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public void inserMember(MemberVo vo) {
-		
 	}
 
 	@Override
 	public void deleteMember(String mid) {
-		
-		
 	}
 
 	@Override
 	public void updateMember(MemberVo vo) {
 
-		
 	}
 
 	@Override
 	public String changeStotus(MemberVo vo) throws Exception {
 		
 		return memberdao.changeStotus(vo);
+	}
+
+	//아이디찾기
+	@Override
+	public String get_searchId(String mname, String mphone) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	}

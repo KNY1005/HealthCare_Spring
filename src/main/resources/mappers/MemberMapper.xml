@@ -38,7 +38,6 @@
 	   					       		, mmaddzipnum
 	   					       		, memail
 	   					       		, mgrade
-	   					       		, mip
 	   					       		 	)
 	                  values(   midx_seq.nextval
 	                  			, #{mid} 
@@ -49,7 +48,6 @@
 	                 		   , #{mmaddzipnum}
 	                 		   , #{memail}
 	                 		   , #{mgrade}
-	                 		   , #{mip}
 	                 		   )
 	                 		   
 	</insert>
