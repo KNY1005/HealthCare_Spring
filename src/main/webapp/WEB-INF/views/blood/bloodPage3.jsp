@@ -33,7 +33,25 @@
             jQuery.each(hangjungdong.sido, function(idx, code){
                 //append를 이용하여 option 하위에 붙여넣음
                 jQuery('#sido').append(fn_option(code.sido, code.codeNm));
+               
             });
+            $("#sido option:eq(1)").text("서울");
+            $("#sido option:eq(2)").text("부산");
+            $("#sido option:eq(3)").text("대구");
+            $("#sido option:eq(4)").text("인천");
+            $("#sido option:eq(5)").text("광주");
+            $("#sido option:eq(6)").text("대전");
+            $("#sido option:eq(7)").text("울산");
+            $("#sido option:eq(8)").text("세종");
+            $("#sido option:eq(9)").text("경기");
+            $("#sido option:eq(10)").text("강원");
+            $("#sido option:eq(11)").text("충북");
+            $("#sido option:eq(12)").text("충남");
+            $("#sido option:eq(13)").text("전북");
+            $("#sido option:eq(14)").text("전남");
+            $("#sido option:eq(15)").text("경북");
+            $("#sido option:eq(16)").text("경남");
+            $("#sido option:eq(17)").text("제주");                         
 
             //sido 변경시 시군구 option 추가
             jQuery('#sido').change(function(){
@@ -93,14 +111,16 @@
 			location.href = "page4.do";				
 		}
 		function getInfo(){			
-			var select = $("#sigugun option:selected").text();
+			var sido = $("#sido option:selected").text();
+			var sigugun = $("#sigugun option:selected").text();			
 			$("#sido option:selected")
 			$.ajax({
 				url:"https://api.odcloud.kr/api/15050729/v1/uddi:03c4700e-0d6d-4dc1-914b-d0b8720dfaa9?page=1&perPage=143&serviceKey=fc7neVxfegjd7ptkZnQkV3YyKVGajgKxKhSkn060LiBCg%2FZwkO1cig1cNX34Eox3dEtjy6vBoFUsekWcZ4%2BmeQ%3D%3D",
 				method:"GET",
 				data :{},
 				success:function(data){
-					alert("abc2");					
+					alert("abc2");
+					
 					//console.log(data.data[6]);
 					var list = data.data;
 					var output = "";
@@ -108,7 +128,7 @@
 					for( i in list){
         	    		var item = list[i];
         	    		var addr = list[i].주소지;
-						if(addr.includes(" "+select)){
+						if(addr.includes(sido+" "+sigugun)){
         	    			output += "<tr class='column content' onclick='goPage4()'>";
      		    	  	    output += '<td>'+item['헌혈의 집']+'</td>';
      		      			output += '<td>'+'00:00 ~ 00:00'+'</td>';
