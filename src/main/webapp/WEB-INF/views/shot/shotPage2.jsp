@@ -352,17 +352,17 @@
         	  const config = {
         	    method: "post"
         	  };
-        	  fetch("https://api.odcloud.kr/api/apnmOrg/v2/list?page=1&perPage=6500&serviceKey=WMYt954ER1qV9fi8xf2kgPxHFVXPiJl8GTJHSVT8LQr%2F4j6%2F6Lp2qSmjiBMa9KcCUWC6BbtkeLevU9HrSZP3KA%3D%3D", config)
+        	  fetch("https://api.odcloud.kr/api/apnmOrg/v2/list?page=1&perPage=100&serviceKey=WMYt954ER1qV9fi8xf2kgPxHFVXPiJl8GTJHSVT8LQr%2F4j6%2F6Lp2qSmjiBMa9KcCUWC6BbtkeLevU9HrSZP3KA%3D%3D", config)
         	    .then(response => response.json())
         	    .then(data => {
-        //	    	alert("데이터 받았음");
+       			  	alert("데이터 받았음");
         			var list = data.data;
 	       	    	var output = "";
-	       	    	
+	       	    	console.log(list[6]);
         	    	for( idx in list)
         	    	{
         	    		var select = $("#sigugun option:selected").text();
-        	    		var item = list[idx];
+        	    		/*var item = list[idx];
 	        	    	//console.log(item);
         	    		var addr = item.orgZipaddr;
         	    		console.log("test"+select);
@@ -371,7 +371,7 @@
         	    		}else{
         	    			console.log("문자열 불일치");
         	    		}
-        	    	
+        	    	*/
         	    		
         	      /* const name = document.createElement("td");
         	      const addr = document.createElement("td");
@@ -383,13 +383,16 @@
         	      userInfo.appendChild(name);
         	      userInfo.appendChild(addr);
         	      userInfo.appendChild(phone); */
-	              	    output += "<tr id='content' onClick='goPage()'>";
-	              	    output += '<td>'+list[idx].orgnm+'</td>'
-	              		output += '<td>'+'00:00 ~ 00:00'+'</td>'
-	                    output += '<td>'+list[idx].orgZipaddr+'</td>';
-	                    output += '<td>'+list[idx].orgTlno+'</td>';            
-	                    output += '</tr>'
-	              	    
+        	    		var item = list[idx];
+  	    				var addr = list[idx].orgZipaddr;
+  	    				if(addr.includes(" "+select)){
+							output += "<tr id='content' onClick='goPage()'>";
+			           	    output += '<td>'+list[idx].orgnm+'</td>'
+			           		output += '<td>'+'00:00 ~ 00:00'+'</td>'
+			                output += '<td>'+list[idx].orgZipaddr+'</td>';
+			                output += '<td>'+list[idx].orgTlno+'</td>';            
+			                output += '</tr>'
+  	    				}
 	              	}
         	   
         	    	//alert("api!");
@@ -408,7 +411,7 @@
             </tr>
           </table>
         </div>
-      </div>
+      
     </main>
     <%@include file="../includes/footer.jsp"  %>
   </body>
