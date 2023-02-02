@@ -238,11 +238,16 @@
           var dong = jQuery("#dong option:selected").val();
           var dongCode = sido + sigugun + dong + "00";
           
-        //동네예보 URL
-          var url = 'https://api.odcloud.kr/api/apnmOrg/v2/list?page=1&perPage=500&serviceKey=WMYt954ER1qV9fi8xf2kgPxHFVXPiJl8GTJHSVT8LQr%2F4j6%2F6Lp2qSmjiBMa9KcCUWC6BbtkeLevU9HrSZP3KA%3D%3D' + dongCode + '&unit=K';
-
-          //iframe으로 결과 보기
-          fn_iframe(url);
+          function handleOnChange(e) {
+        	  // 선택된 데이터의 텍스트값 가져오기
+        	  const text = e.options[e.selectedIndex].text;
+        	  
+        	  console.log(e.options);
+        	  
+        	  // 선택한 텍스트 출력
+        	  document.getElementById('result').innerText
+        	    = text;
+        	}
         });
       });
 
@@ -307,14 +312,12 @@
                   <select id="sido"><option disabled selected>시/도</option></select>
                   <select id="sigugun"><option disabled selected>시/구/군</option></select>
                   <select id="dong"><option disabled selected>읍/면/동</option></select> 
-                  <button id="btn2" onClick="getUser()" value="ajax"><i class="xi-search xi-2x"></i></button>                 
+                  <button id="btn2" onClick="getList()" value="ajax"><i class="xi-search xi-2x"></i></button>                 
           </div>
         </div>
         <hr id="line">
         </div>
-        <div>
-    <iframe id="iframe" style="width:100%; height:500px;"></iframe>
-  </div>
+        <div id='result'></div>
         <div id="hospital_list">
           <table id="info">
             <tr>
@@ -338,12 +341,14 @@
                 <td></td>
             </tr> -->
           </table>
+          <div id='result'></div>
           <script>
           function goPage(){
         	  location.href='abc3.do';
           }
-          function getUser() {
-       // 	  alert("call");
+          function getList() {
+        	  var select = $("#sigugun option:selected").text();
+      	 	  console.log(select);
         	  const config = {
         	    method: "post"
         	  };
@@ -353,11 +358,21 @@
         //	    	alert("데이터 받았음");
         			var list = data.data;
 	       	    	var output = "";
+	       	    	
         	    	for( idx in list)
         	    	{
+        	    		var select = $("#sigugun option:selected").text();
         	    		var item = list[idx];
-	        	    	console.log(item);
+	        	    	//console.log(item);
+        	    		var addr = item.orgZipaddr;
+        	    		console.log("test"+select);
+        	    		if(addr.matches("'.*"+select+".*'")){
+        	    			console.log("일치");
+        	    		}else{
+        	    			console.log("문자열 불일치");
+        	    		}
         	    	
+        	    		
         	      /* const name = document.createElement("td");
         	      const addr = document.createElement("td");
         	      const phone = document.createElement("td");
@@ -375,10 +390,11 @@
 	                    output += '<td>'+list[idx].orgTlno+'</td>';            
 	                    output += '</tr>'
 	              	    
-	              	    }
+	              	}
         	   
-        	    	alert("api!");
+        	    	//alert("api!");
           	    	$("#info").append(output); // 새로운 데이터 덮어쓰기	
+          	    	
           	    })
                
           	    
