@@ -341,7 +341,6 @@
                 <td></td>
             </tr> -->
           </table>
-          <div id='result'></div>
           <script>
           function goPage(){
         	  location.href='abc3.do';
@@ -371,11 +370,11 @@
     				list.forEach(function(item){						
     						//console.log('아이템은?'+item.orgZipaddr);
     						output += "<tr class='content' onclick='goPage()'>";
-    			    	  	    output += '<td>'+item['orgnm']+'</td>';
-    			      			output += '<td>'+'00:00 ~ 00:00'+'</td>';
-    			            	output += '<td>'+item.orgZipaddr+'</td>';
-    			            	output += '<td>'+item.orgTlno+'</td>';            
-    			            	output += '</tr>';							
+    			    	  	output += '<td>'+item['orgnm']+'</td>';
+    			      		output += '<td>'+'00:00 ~ 00:00'+'</td>';
+    			            output += '<td>'+item.orgZipaddr+'</td>';
+    			            output += '<td>'+item.orgTlno+'</td>';            
+    			            output += '</tr>';							
     				});
     				
     				$(".content").remove();		//데이터 지우기
