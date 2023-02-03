@@ -66,6 +66,14 @@
        	order by mname
 	</select>
 	
+	<!-- 아이디찾기 -->
+	<select id="searchId" resultType="String">
+		select ifnull(mid, 0) from table_member
+        where mname = #{mname} 
+        and mphone = #{mphone} 
+        and mdelyn = 'N';
+	</select>
+
 	<!-- 등급변경 -->
 	<update id="changeStotus">
 		update table_member

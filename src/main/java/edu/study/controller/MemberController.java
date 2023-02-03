@@ -36,6 +36,10 @@ public class MemberController {
 	
 	@Autowired
 	private MemberService memberService;
+
+
+
+	
 	
 	@RequestMapping(value="/login.do",method=RequestMethod.GET )
 	public String login() {
@@ -104,14 +108,14 @@ public class MemberController {
 		}
 	}
 	
-	@RequestMapping(value="/membersearch.do",method=RequestMethod.POST)
+	@RequestMapping(value="/membersearch.do",method=RequestMethod.GET)
 	public String membersearch(MemberVo vo, HttpServletRequest request){
 		System.out.println("아이디 비밀번호 찾기중");
 		
 		
-		return "member/membersearch";
+		return "member/memberSearch";
 	}
-	
+/*
 	//아이디찾기
 	@RequestMapping(value = "/memberSearch", method = RequestMethod.POST)
 	@ResponseBody
@@ -124,15 +128,14 @@ public class MemberController {
 	}
 
 
-	/*
 	//비밀번호찾기
 	@RequestMapping(value = "/user/searchPassword", method = RequestMethod.GET)
 	@ResponseBody
-	public String passwordSearch(@RequestParam("userId")String user_id,
-			@RequestParam("userEmail")String user_email,
+	public String passwordSearch(@RequestParam("userId")String mid,
+			@RequestParam("userEmail")String memail,
 			HttpServletRequest request) {
 
-		mailsender.mailSendWithPassword(user_id, user_email, request);
+		mailsender.mailSendWithPassword(mid, memail, request);
 		
 		return "user/userSearchPassword";
 	}

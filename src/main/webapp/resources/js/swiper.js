@@ -1,4 +1,15 @@
 window.onload = function () {
+
+var swiper = new Swiper(".mySwiper", {
+			slidesPerView: 3,
+			spaceBetween: 200,
+			freeMode: true,
+			autoplay: {//자동으로 슬라이드됨.
+				delay: 10000,//현재슬라이드가 보여지는 시간(5000ms=5초)
+				disableOnInteraction: false//상호작용후 다시 자동재생 실행
+			},
+		})
+
   //nav script - start
   $(document).ready(function () {
     //브라우저가 열렸을 때 이 기능을 수행함
@@ -22,7 +33,7 @@ window.onload = function () {
 
   function a2_over() {
     onHoverText = true;
-    a1.style.display = "block";
+    a1.style.visibility = "visible";
   }
 
   function a2_out() {
@@ -30,7 +41,7 @@ window.onload = function () {
 
     setTimeout(() => {
       if (!onHoverText && !onHoverBMenu) {
-        a1.style.display = "none";
+        a1.style.visibility = "hidden";
       }
     }, 1000);
   }
@@ -44,7 +55,7 @@ window.onload = function () {
 
     setTimeout(() => {
       if (!onHoverText && !onHoverBMenu) {
-        a1.style.display = "none";
+        a1.style.visibility = "hidden";
       }
     }, 1000);
   }
@@ -63,14 +74,7 @@ window.onload = function () {
   }
 
   init();
-		var swiper = new Swiper(".mySwiper", {
-			slidesPerView: 3,
-			spaceBetween: 200,
-			freeMode: true,
-			autoplay: {//자동으로 슬라이드됨.
-				delay: 10000,//현재슬라이드가 보여지는 시간(5000ms=5초)
-				disableOnInteraction: false//상호작용후 다시 자동재생 실행
-			},
-		})
+  
+		
 	
 };

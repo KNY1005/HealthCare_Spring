@@ -71,6 +71,11 @@
               style="ime-mode:disabled"
               oninput="handleOnInput(this)"
             />
+          <p>
+            <a id="lost-password-link" class="animated fadeIn animate5"
+              href="<%=request.getContextPath() %>/member/membersearch.do" >아이디 비밀번호 찾기
+            </a>
+          </p>
           </fieldset>
           <input
             type="submit"
@@ -78,11 +83,6 @@
             class="login_form button animated fadeInUp animate4"
             value="Login"
           />
-          <p>
-            <a id="lost-password-link" href="" class="animated fadeIn animate5"
-              href="<%=request.getContextPath() %>/member/membersearch.do" >아이디 비밀번호 찾기
-            </a>
-          </p>
           </form>
           <form class="join" id="join" method="post" name='join' action="/controller/member/join.do">
          

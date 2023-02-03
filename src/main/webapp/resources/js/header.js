@@ -22,7 +22,7 @@ window.onload = function () {
 
   function a2_over() {
     onHoverText = true;
-    a1.style.display = "block";
+    a1.style.visibility = "visible";
   }
 
   function a2_out() {
@@ -30,7 +30,7 @@ window.onload = function () {
 
     setTimeout(() => {
       if (!onHoverText && !onHoverBMenu) {
-        a1.style.display = "none";
+        a1.style.visibility = "hidden";
       }
     }, 1000);
   }
@@ -44,7 +44,7 @@ window.onload = function () {
 
     setTimeout(() => {
       if (!onHoverText && !onHoverBMenu) {
-        a1.style.display = "none";
+        a1.style.visibility = "hidden";
       }
     }, 1000);
   }

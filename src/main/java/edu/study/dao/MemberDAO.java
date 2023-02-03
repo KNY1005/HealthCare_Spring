@@ -60,5 +60,10 @@ public class MemberDAO {
 		return sqlSession.selectOne("edu.study.mapper.memberMapper.changeStotus", vo);
 	}
 
+	public String searchId(String mname, String mphone) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }
