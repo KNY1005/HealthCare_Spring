@@ -107,58 +107,60 @@
 
 </script>
 <script>	
-		function goPage4() {			
-			location.href = "page4.do";				
-		}
-		function getInfo(){			
-			var sido = $("#sido option:selected").text();
-			var sigugun = $("#sigugun option:selected").text();			
-			$("#sido option:selected")
-			$.ajax({
-				url:"https://api.odcloud.kr/api/15050729/v1/uddi:03c4700e-0d6d-4dc1-914b-d0b8720dfaa9?page=1&perPage=143&serviceKey=fc7neVxfegjd7ptkZnQkV3YyKVGajgKxKhSkn060LiBCg%2FZwkO1cig1cNX34Eox3dEtjy6vBoFUsekWcZ4%2BmeQ%3D%3D",
-				method:"GET",
-				data :{},
-				success:function(data){
-					alert("abc2");
-					
-					//console.log(data.data[6]);
-					var list = data.data;
-					var output = "";
-					//var addr = item.주소지;
-					for( i in list){
-        	    		var item = list[i];
-        	    		var addr = list[i].주소지;
-						if(addr.includes(sido+" "+sigugun)){
-        	    			output += "<tr class='column content' onclick='goPage4()'>";
-     		    	  	    output += '<td>'+item['헌혈의 집']+'</td>';
-     		      			output += '<td>'+'00:00 ~ 00:00'+'</td>';
-     		            	output += '<td>'+item.주소지+'</td>';
-     		            	output += '<td>'+item.전화번호+'</td>';            
-     		            	output += '</tr>';	
-        	    		}	             	
-					}					
-					//alert(list[6].주소지);
-					var output2 = "";
-					var totalPage = Math.floor(data.totalCount/data.perPage+1);
-					
-					for(var i=1; i<=totalPage; i++){
-						//console.log(i);
-						if(i<totalPage){
-							output2 += "<a class='pagination' onclick='page()'>"+i+"</a> | ";
-						}else{output2 += "<a class='pagination' onclick='page()'>"+i+"</a>";}
-					}
-						
-					//console.log(data);
-					//alert('abcdf='+list);
-					$("#page").empty();			//#page안의 자식요소 비우기
-					$("#page").append(output2);	
-					$(".content").remove();		//데이터 지우기
-		      	    $("#info").append(output);  // 새로운 데이터 덮어쓰기
-				}
-			})
-			
-		}
+	function goPage4() {			
+		location.href = "page4.do";				
+	}
+	function getInfo(){			
+		var sido = $("#sido option:selected").text();
+		var sigugun = $("#sigugun option:selected").text();
+		var result_list=[];
+		$("#sido option:selected")
+		$.ajax({
+			url:"https://api.odcloud.kr/api/15050729/v1/uddi:03c4700e-0d6d-4dc1-914b-d0b8720dfaa9?page=1&perPage=143&serviceKey=fc7neVxfegjd7ptkZnQkV3YyKVGajgKxKhSkn060LiBCg%2FZwkO1cig1cNX34Eox3dEtjy6vBoFUsekWcZ4%2BmeQ%3D%3D",
+			method:"GET",
+			data :{},
+			success:function(data){
+				alert("abc2343");
+				//console.log(data);
+				//console.log(data.data[6]);
+				var list = data.data;
+				var output = "";
+				if($("#sigugun").text()=='선택'){
+					$.each(list,function(index,value){
+						var addr = list[index].주소지;
+						if(addr.includes(sido)){
+							result_list.push(value);
+						console.log('>?'+addr);
+						}		
+				});
+				}else($.each(list,function(index,value){
+					var addr = list[index].주소지;
+					if(addr.includes(sido+" "+sigugun)){
+						result_list.push(value);
+					console.log('>?'+addr);
+					}			
+				}));	
+	
+			},
+			complete : function(data){
+				var output = "";
+				result_list.forEach(function(item){						
+						console.log('아이템은?'+item.주소지);
+						output += "<tr class='column content' onclick='goPage4()'>";
+			    	  	    output += '<td>'+item['헌혈의 집']+'</td>';
+			      			output += '<td>'+'00:00 ~ 00:00'+'</td>';
+			            	output += '<td>'+item.주소지+'</td>';
+			            	output += '<td>'+item.전화번호+'</td>';            
+			            	output += '</tr>';							
+				});
+				$(".content").remove();		//데이터 지우기
+	      	    $("#info").append(output);  // 새로운 데이터 덮어쓰기 */			
+				
+			}
+		})
 		
+	}
+
 </script>
 
 <style>
