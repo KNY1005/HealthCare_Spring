@@ -114,18 +114,15 @@
 		var sido = $("#sido option:selected").text();
 		var sigugun = $("#sigugun option:selected").text();
 		var result_list=[];
-		$("#sido option:selected")
+		
 		$.ajax({
 			url:"https://api.odcloud.kr/api/15050729/v1/uddi:03c4700e-0d6d-4dc1-914b-d0b8720dfaa9?page=1&perPage=143&serviceKey=fc7neVxfegjd7ptkZnQkV3YyKVGajgKxKhSkn060LiBCg%2FZwkO1cig1cNX34Eox3dEtjy6vBoFUsekWcZ4%2BmeQ%3D%3D",
 			method:"GET",
 			data :{},
-			success:function(data){
-				alert("abc2343");
-				//console.log(data);
-				//console.log(data.data[6]);
+			success:function(data){				
 				var list = data.data;
-				var output = "";
-				if($("#sigugun").text()=='선택'){
+				var output = "";				
+				if($("#sigugun option:selected").text()=='선택'){
 					$.each(list,function(index,value){
 						var addr = list[index].주소지;
 						if(addr.includes(sido)){
@@ -136,11 +133,9 @@
 				}else($.each(list,function(index,value){
 					var addr = list[index].주소지;
 					if(addr.includes(sido+" "+sigugun)){
-						result_list.push(value);
-					console.log('>?'+addr);
+						result_list.push(value);					
 					}			
-				}));	
-	
+				}));		
 			},
 			complete : function(data){
 				var output = "";
