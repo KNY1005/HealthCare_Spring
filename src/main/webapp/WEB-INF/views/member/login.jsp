@@ -89,12 +89,16 @@
           <fieldset id="signup-fieldset" class="hidden">
            <!-- style="ime-mode:disabled는 한영키를 무시하고 영어로만 입력됨  -->
            
+           <div class="mgrade">
+           
            <input type="radio" name="mgrade" value="A"
            style="width:30px;" 
            >전문의
            <input type="radio" name="mgrade" value="G"
            style="width:30px;" 
            >일반           
+           
+           </div>
             
           	
            

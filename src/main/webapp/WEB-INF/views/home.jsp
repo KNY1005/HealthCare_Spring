@@ -51,7 +51,7 @@ $(document).ready(function(){
           <div class="nav_main_menu">
             <ul class="nav_main_menu_1">
               <li>
-                <a href="#">
+                <a href="<%=request.getContextPath() %>/">
                 <img src="${path}/resources/image/logo2.png" alt="로고이미지"/>
                 </a>
               </li>
