@@ -24,6 +24,19 @@ a,
   color: #000;
 }
 
+/*로그인 로그아웃 버튼*/
+.login button{
+	position: absolute;
+  	right: 30px;
+  	top: 20px;
+	background: #ffc4c4;
+	color:fff;
+	font-weight:bold;
+	border-radius: 20px;
+    width: 100px;
+    height: 30px;
+    border:none;
+	}
 /*----------------nav_main_menu > start----------------*/
 
 .nav_background {

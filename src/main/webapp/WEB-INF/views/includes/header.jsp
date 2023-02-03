@@ -80,31 +80,37 @@
 				</div>
 			</nav>
 
-			<div id="profli">
-				<div class="main_profli">
-					<img src="${path }/resources/image/profli.png" alt="프로필" />
-					<button type="submit" class="btn">
-						<i class="xi-plus" alt="검색"></i>
-					</button>
-					<p>${member.mname}님 환영합니다!</p>
-				</div>
-				<div id="profli_menu">
-					<ul>
-						<li><img src="${path }/resources/image/profli.png" alt="프로필" /></li>
-						<li><p>${member.mname}님</p></li>
-						<li><hr width="250px" /></li>
-						 <li><a href="/mypage1.do">마이페이지</a></li>
-			              <li><a href="/mypage4.do">내가 쓴 글</a></li>
-			              <li><a href="/mypage5.do">개인정보 설정</a></li>
-						<li><hr width="250px" /></li>
-						<li>
-							<button>
-								<a href="#">로그아웃</a>
-							</button>
-						</li>
-					</ul>
-				</div>
-			</div>
+			 <div id="profli">
+        <c:if test="${member!= null }">
+          <div class="main_profli">
+           <img src="${path}/resources/image/profli.png" alt="프로필" />
+            <button type="submit" class="btn">
+              <i class="xi-plus" alt="검색"></i>
+            </button>
+            <p>${member.mname}님 환영합니다!</p>
+          </div>
+          <div id="profli_menu">
+		      	<a href="<%=request.getContextPath() %>/admin/god.do">회원 관리</a>
+            <ul>
+              <li><img src="${path}/resources/image/profli.png" alt="프로필" /></li>
+              <li><p>${member.mname}님</p></li>
+              <li><hr width="250px" /></li>
+              <li><a href="<%=request.getContextPath() %>/mypage2.do">마이페이지</a></li>
+              <li><a href="<%=request.getContextPath() %>/mypage4.do">내가 쓴 글</a></li>
+              <li><a href="<%=request.getContextPath() %>/mypage5.do">개인정보 설정</a></li>
+              <li><hr width="250px" /></li>
+              <li>
+                <button id="logoutBtn"><a href="<%=request.getContextPath() %>/member/logout.do">로그아웃</a></button>
+              </li>
+            </ul>
+          </div>
+          </c:if>
+          <c:if test="${member == null}">
+      	<div class="login" >
+      		<button><a href="<%=request.getContextPath() %>/member/login.do">시작하기</a></button>
+      	</div>
+      	</c:if>
+        </div>
 		</div>
 	</header>
 </body>

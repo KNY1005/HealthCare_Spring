@@ -91,7 +91,8 @@
            
            <input type="radio" name="mgrade" value="A"
            style="width:30px;" 
-           >전문의<input type="radio" name="mgrade" value="G checked"
+           >전문의
+           <input type="radio" name="mgrade" value="G"
            style="width:30px;" 
            >일반           
             
