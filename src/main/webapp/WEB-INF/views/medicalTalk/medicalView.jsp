@@ -15,6 +15,10 @@
 <meta name="msapplication-TileImage"
 	content="${path }/resources/image/favicon/ms-icon-144x144.png" />
 <meta name="theme-color" content="#ffffff" />
+	<script src="https://code.jquery.com/jquery-latest.min.js"
+		type="application/javascript"></script>
+	<script type="application/javascript"
+		src="https://zelkun.tistory.com/attachment/cfile8.uf@99BB7A3D5D45C065343307.js"></script>
 
 <style>
 		/*-----------------sub_nav_menu > start---------------*/
@@ -406,7 +410,7 @@
 					</div>
 				</div>
 				<div id="button">
-					<button>답변</button>
+					<c:if test="${member.mgrade == 'D'}"><button onclick="openClose()" id="answerBtn" type="button">답변하기</button></c:if>
 					<button type="button" onClick="location.href='medicalModify.do?bidx=${vo.bidx}'">수정</button>
 					<button type="button"
 					onClick="location.href='medicalDelete.do?bidx=${vo.bidx}'">삭제</button>
@@ -421,19 +425,22 @@
 			</div><!--//#like-->
 			<!-- 답변 시작 -->
 			<div class="doctor_writing_content" >
-				<div class="container">
-			    	<label for="pcontent">답변</label>
-			        	<form name="replyInsertForm">
-			            	<div class="input-group">
-			               	<input type="hidden" name="bidx" value="${vo.bidx}"/>
-			               	<input type="text" class="form-control" id="pcontent" name="pcontent" placeholder="내용을 입력하세요.">
-			               		<span class="input-group-btn">
-			                   		<button class="btn btn-default" type="button" name="replyInsertBtn">등록</button>
-			               		</span>
-			              	</div>
-			        	</form>
-			    </div>
-			    
+			<c:if test="${member.mgrade == 'D'}">
+				<div id="writing_container">
+					<div class="container">
+				    	<label for="pcontent">답변하기</label>
+				        	<form name="replyInsertForm">
+				            	<div class="input-group">
+				               	<input type="hidden" name="bidx" value="${vo.bidx}"/>
+				               	<input type="text" class="form-control" id="pcontent" name="pcontent" placeholder="내용을 입력하세요.">
+				               		<span class="input-group-btn">
+				                   		<button class="btn btn-default" type="button" name="replyInsertBtn">등록</button>
+				               		</span>
+				              	</div>
+				        	</form>
+			    	</div>
+			 	</div>
+			    </c:if>
 			   	<div class="container">
 			   		<div class="replyList"></div>
 			    </div>
@@ -444,6 +451,17 @@
 
 	</main>
 	<%@include file="../includes/footer.jsp"%>
+<script>
+	function openClose() {
+		if($('#writing_container').css('display') == 'none'){
+			$('#writing_container').show();
+			$('#answerBtn').text('답변취소');
+		}else{
+			$('#writing_container').hide();
+			$('#answerBtn').text('답변하기');
+		}	
+	}	
+</script>
 	
 </body>
 </html>

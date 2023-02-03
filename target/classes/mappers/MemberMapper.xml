@@ -3,4 +3,81 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="edu.study.mapper.memberMapper">	<!-- dao에서 마이바티스를 이용해 쿼리를 찾는 역할 -->
+
+    <!-- 로그인 -->
+	<select id="login" parameterType="MemberVo" resultType="MemberVo">
+		SELECT
+			midx  
+			, mid
+			, mpwd
+			, mphone
+       		, maddrdetail
+       		, mmaddzipnum
+       		, memail
+       		, mname
+       		, mgrade
+       		, mlvl
+		  FROM table_member
+		 WHERE mid = #{mid}
+		   AND mpwd = #{mpwd}
+	</select>
+	
+	<select id="selectById" parameterType="String" resultType="int">
+		SELECT COUNT(mid)
+		  FROM table_member
+		 WHERE mid = #{mid}
+	</select>
+	
+	<insert id="register" parameterType="MemberVo">
+		 insert into table_member(  midx 
+		 							,mid
+	   					       		, mpwd
+	   					       		, mname
+	   					       		, mphone
+	   					       		, maddrdetail
+	   					       		, mmaddzipnum
+	   					       		, memail
+	   					       		, mgrade
+	   					       		 	)
+	                  values(   midx_seq.nextval
+	                  			, #{mid} 
+	                 		   , #{mpwd}
+	                 		   , #{mname}
+	                 		   , #{mphone}
+	                 		   , #{maddrdetail}
+	                 		   , #{mmaddzipnum}
+	                 		   , #{memail}
+	                 		   , #{mgrade}
+	                 		   )
+	                 		   
+	</insert>
+	<select id="memberlist" parameterType="MemberVo" resultType="MemberVo">
+		select
+			 midx
+			,mid
+       		, mname
+       		, mnumber
+       		, mphone
+       		, maddrdetail
+       		, mmaddzipnum
+       		, memail
+       		, mgrade
+       	from table_member
+       	order by mname
+	</select>
+	
+	<!-- 아이디찾기 -->
+	<select id="searchId" resultType="String">
+		select ifnull(mid, 0) from table_member
+        where mname = #{mname} 
+        and mphone = #{mphone} 
+        and mdelyn = 'N';
+	</select>
+
+	<!-- 등급변경 -->
+	<update id="changeStotus">
+		update table_member
+		set mgrade = #{mgrade}
+		where mid = #{mid}
+	</update>
 </mapper>

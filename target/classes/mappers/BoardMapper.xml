@@ -3,64 +3,62 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
-<mapper namespace="edu.study.mapper.boardMapper"> 
-	<select id="list" resultType="BoardVo">
-		select bidx
-			  ,boriginbidx
-			  ,bdepth
-			  ,blvl
-			  ,blist
-			  ,bcategory
-			  ,btitle
-			  ,bwriter
-			  ,bcontent
-			  ,bwdate
-			  ,brewdate
-			  ,bstate
-			  ,bmdate
-			  ,bdelete
-			  ,bsecret
-			  ,bhit
-			  ,midx
-			from table_board
-			WHERE blist = 'N'
-	</select>
+
+<mapper namespace="edu.study.mapper.boardMapper">
+	<select id="listSearch" parameterType="scri"
+		resultType="BoardVo">
+			SELECT * FROM (
+			SELECT rownum as rnum, A.* FROM (
+			SELECT * FROM
+			table_board
+			WHERE bdelete='N' AND blist=#{blist}
+			<include refid="search"></include>
+			ORDER BY bidx desc) A
+			)WHERE rnum BETWEEN #{rowStart} AND #{rowEnd}
+		</select>
 	
-	<select id="selectByBidx" parameterType="int" resultType="BoardVo" >	<!-- 데이터 타입 정의/브이오에 담겠다 -->
-		select bidx
-			  ,boriginbidx
-			  ,bdepth
-			  ,blvl
-			  ,blist
-			  ,bcategory
-			  ,btitle
-			  ,bwriter
-			  ,bcontent
-			  ,bwdate
-			  ,brewdate
-			  ,bstate
-			  ,bmdate
-			  ,bdelete
-			  ,bsecret
-			  ,bhit
-			  ,midx
-			from table_board
-			where bidx = #{bidx}	<!-- 변수명을 이용 -->
-	</select>
+		<select id="listCount" resultType="int">
+			SELECT COUNT(bidx)
+			FROM table_board
+			WHERE bidx>0 and bdelete='N'
+			<include refid="search"></include>
+		</select>
 	
+		<sql id="search">
+			<if test="searchType == 'btitle'">AND btitle LIKE '%'||#{keyWord}||'%'</if>
+			<if test="searchType == 'bcontent'"> AND bcontent LIKE '%'||#{keyWord}||'%'</if>
+		</sql>
+
+	<select id="selectByBidx" parameterType="int"
+		resultType="BoardVo">	<!-- 데이터 타입 정의/브이오에 담겠다 -->
+		select bidx
+		,boriginbidx
+		,bdepth
+		,blvl
+		,blist
+		,bcategory
+		,btitle
+		,bwriter
+		,bcontent
+		,bwdate
+		,brewdate
+		,bstate
+		,bmdate
+		,bdelete
+		,bsecret
+		,bhit
+		,midx
+		from table_board
+		where bidx = #{bidx}	<!-- 변수명을 이용 -->
+	</select>
+
 	<update id="updateByBidx" parameterType="boardVo">
 		update table_board
-			set btitle = #{btitle}
-			   ,bcontent = #{bcontent}
-			where bidx = #{bidx}
+		set btitle = #{btitle}
+		,bcontent = #{bcontent}
+		where bidx = #{bidx}
 	</update>
-	
-	<delete id="deleteByBidx" parameterType="int">
-		delete 
-			from table_board
-			where bidx = #{bidx}
-	</delete>
-	
+
 	<insert id="insert" parameterType="boardVo">
 		<![CDATA[
 		insert into table_board (
@@ -72,12 +70,12 @@
 			,blist
 			,bwriter
 		)values(
-			notice.nextval
+			bidx_seq.nextval
 			,#{btitle}
 			,#{bcontent}
 			,sysdate			
 			,0
-			,'N'
+			,#{blist}
 			,'관리자'
 		)
 		
@@ -87,4 +85,76 @@
 			from table_board
 		</selectKey> 
 	</insert>
+	
+	<delete id="deleteByBidx" parameterType="int">
+		update table_board
+			set bdelete = 'Y'
+			where bidx = #{bidx}
+	</delete>
+	
+	<update id="boardHitUpdate" parameterType="int">
+		update table_board 
+		set bhit = bhit + 1 
+		where bidx = #{bidx}
+	</update>
+	
+	<insert id="fileInsert" parameterType="HashMap">
+		INSERT INTO TABLE_FILE(
+	 		fidx, 
+			bidx,
+			originname,
+			storedname
+		)VALUES(
+	  		fidx_seq.nextval,
+			#{bidx},
+			#{originname},
+			#{storedname}
+		)
+	</insert>
+	
+	<select id="selectFileByBidx" parameterType="int" resultType="fileVO">
+		SELECT * FROM table_file where bidx = #{bidx}
+	</select> 
+	
+	<select id="replyCount" resultType="int">
+        SELECT
+            COUNT(*)
+        FROM TABLE_REPLY
+    </select>
+	
+	<insert id="replyInsert" parameterType="ReplyVO">
+		INSERT INTO TABLE_REPLY(
+			BIDX
+			, PIDX
+			, PCONTENT
+			, PWRITER
+			, PGRP
+			, PGRPS
+		)
+		VALUES(    
+			#{bidx}
+			, PIDX_SEQ.NEXTVAL
+			, #{pcontent}
+			, #{pwriter}	
+			, #{pgrp}
+			, #{pgrps}
+			)
+	</insert>
+	
+	<update id="replyUpdate" parameterType="ReplyVO">
+		 UPDATE TABLE_REPLY
+            SET
+            PCONTENT = #{pcontent}
+        WHERE PIDX = #{pidx}
+    </update>
+		
+	<delete id="replyDelete" parameterType="int">
+		 DELETE FROM TABLE_REPLY WHERE PIDX = #{pidx}
+    </delete>
+	
+	<select id="replyList"  parameterType="int" resultType="ReplyVO">
+		SELECT *
+		FROM TABLE_REPLY
+		where BIDX = #{bidx}
+	</select>
 </mapper>
