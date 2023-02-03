@@ -162,10 +162,10 @@
         td:first-child,th:first-child {border-radius: 10px 0 0 10px;}   /*td테두리 첫번쨰와 마지막만 둥글게 하기위해서*/
         td:last-child,th:last-child {border-radius: 0 10px 10px 0;}       
         th,td{width:350px; text-align:center; vertical-align:middle; height:73px;}
-        #content{
+        .content{
         	background:#ffe7e7;
         }            
-       #content:hover {
+       .content:hover {
 	background:#fff;
 	box-shadow: 0 0 0 3px #ff8f8f inset;
 	border-radius: 10px;
@@ -347,61 +347,53 @@
         	  location.href='abc3.do';
           }
           function getList() {
-        	  var select = $("#sigugun option:selected").text();
-      	 	  console.log(select);
-        	  const config = {
-        	    method: "post"
-        	  };
-        	  fetch("https://api.odcloud.kr/api/apnmOrg/v2/list?page=1&perPage=100&serviceKey=WMYt954ER1qV9fi8xf2kgPxHFVXPiJl8GTJHSVT8LQr%2F4j6%2F6Lp2qSmjiBMa9KcCUWC6BbtkeLevU9HrSZP3KA%3D%3D", config)
-        	    .then(response => response.json())
-        	    .then(data => {
-       			  	alert("데이터 받았음");
-        			var list = data.data;
-	       	    	var output = "";
-	       	    	console.log(list[6]);
-        	    	for( idx in list)
-        	    	{
-        	    		var select = $("#sigugun option:selected").text();
-        	    		/*var item = list[idx];
-	        	    	//console.log(item);
-        	    		var addr = item.orgZipaddr;
-        	    		console.log("test"+select);
-        	    		if(addr.matches("'.*"+select+".*'")){
-        	    			console.log("일치");
-        	    		}else{
-        	    			console.log("문자열 불일치");
-        	    		}
-        	    	*/
-        	    		
-        	      /* const name = document.createElement("td");
-        	      const addr = document.createElement("td");
-        	      const phone = document.createElement("td");
-        	      name.textContent = item.orgnm;
-        	      addr.textContent = item.orgZipaddr;
-        	      phone.textContent = item.orgTlno;
-        	      const userInfo = document.getElementById("content");
-        	      userInfo.appendChild(name);
-        	      userInfo.appendChild(addr);
-        	      userInfo.appendChild(phone); */
-        	    		var item = list[idx];
-  	    				var addr = list[idx].orgZipaddr;
-  	    				if(addr.includes(" "+select)){
-							output += "<tr id='content' onClick='goPage()'>";
-			           	    output += '<td>'+list[idx].orgnm+'</td>'
-			           		output += '<td>'+'00:00 ~ 00:00'+'</td>'
-			                output += '<td>'+list[idx].orgZipaddr+'</td>';
-			                output += '<td>'+list[idx].orgTlno+'</td>';            
-			                output += '</tr>'
-  	    				}
-	              	}
-        	   
-        	    	//alert("api!");
-          	    	$("#info").append(output); // 새로운 데이터 덮어쓰기	
-          	    	
-          	    })
-               
-          	    
-          	}
+        	var sido = $("#sido option:selected").text();
+      		var sigugun = $("#sigugun option:selected").text();
+      		var result_list=[];
+      		$.ajax({
+    			url:"https://api.odcloud.kr/api/apnmOrg/v2/list?page=1&perPage=19000&serviceKey=WMYt954ER1qV9fi8xf2kgPxHFVXPiJl8GTJHSVT8LQr%2F4j6%2F6Lp2qSmjiBMa9KcCUWC6BbtkeLevU9HrSZP3KA%3D%3D",
+    			method:"post",
+    			data :{},
+    			success:function(data){
+    				console.log(Object.keys(data).length);
+    				
+    				var list = data.data;
+    				var output = "";
+    				console.log(data);
+    				if($("#sigugun option:selected").text()=='선택'){
+    					$.each(list,function(index,value){
+    						var addr = list[index].orgZipaddr;
+    						if(addr.includes(sido)){
+    							result_list.push(value);
+    						console.log('>?'+addr);
+    						}		
+    				});
+    				}else($.each(list,function(index,value){
+    					var addr = list[index].orgZipaddr;
+    					if(addr.includes(sido+" "+sigugun)){
+    						result_list.push(value);					
+    					}			
+    				}));		
+    			},
+    			complete : function(data){
+    				var output = "";
+    				result_list.forEach(function(item){						
+    						//console.log('아이템은?'+item.orgZipaddr);
+    						output += "<tr class='content' onclick='goPage()'>";
+    			    	  	    output += '<td>'+item['orgnm']+'</td>';
+    			      			output += '<td>'+'00:00 ~ 00:00'+'</td>';
+    			            	output += '<td>'+item.orgZipaddr+'</td>';
+    			            	output += '<td>'+item.orgTlno+'</td>';            
+    			            	output += '</tr>';							
+    				});
+    				$(".content").remove();		//데이터 지우기
+    	      	    $("#info").append(output);  // 새로운 데이터 덮어쓰기 */			
+    				
+    			}
+    		})
+    		
+    	}
+
 		  </script>
           <table id="output">
             <tr>
@@ -411,7 +403,7 @@
             </tr>
           </table>
         </div>
-      
+      </div>
     </main>
     <%@include file="../includes/footer.jsp"  %>
   </body>
