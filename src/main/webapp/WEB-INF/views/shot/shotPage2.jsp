@@ -346,12 +346,21 @@
           function goPage(){
         	  location.href='abc3.do';
           }
+          function search(){
+              var sido = $("#sido option:selected").text();
+              var sigugun = $("#sigugun option:selected").text();
+              if($("#sigugun option:selected").text()=='선택'){
+            	  return sido;
+              }else{
+              		return sido+" "+sigugun;
+              }; 
+            }
           function getList() {
         	var sido = $("#sido option:selected").text();
       		var sigugun = $("#sigugun option:selected").text();
       		var result_list=[];
       		$.ajax({
-    			url:"https://api.odcloud.kr/api/apnmOrg/v2/list?page=1&perPage=19000&serviceKey=WMYt954ER1qV9fi8xf2kgPxHFVXPiJl8GTJHSVT8LQr%2F4j6%2F6Lp2qSmjiBMa9KcCUWC6BbtkeLevU9HrSZP3KA%3D%3D",
+    			url:"https://api.odcloud.kr/api/apnmOrg/v2/list?page=1&perPage=6500&cond%5BorgZipaddr%3A%3ALIKE%5D="+search()+"&serviceKey=WMYt954ER1qV9fi8xf2kgPxHFVXPiJl8GTJHSVT8LQr%2F4j6%2F6Lp2qSmjiBMa9KcCUWC6BbtkeLevU9HrSZP3KA%3D%3D",
     			method:"post",
     			data :{},
     			success:function(data){
@@ -359,25 +368,7 @@
     				
     				var list = data.data;
     				var output = "";
-    				console.log(data);
-    				if($("#sigugun option:selected").text()=='선택'){
-    					$.each(list,function(index,value){
-    						var addr = list[index].orgZipaddr;
-    						if(addr.includes(sido)){
-    							result_list.push(value);
-    						console.log('>?'+addr);
-    						}		
-    				});
-    				}else($.each(list,function(index,value){
-    					var addr = list[index].orgZipaddr;
-    					if(addr.includes(sido+" "+sigugun)){
-    						result_list.push(value);					
-    					}			
-    				}));		
-    			},
-    			complete : function(data){
-    				var output = "";
-    				result_list.forEach(function(item){						
+    				list.forEach(function(item){						
     						//console.log('아이템은?'+item.orgZipaddr);
     						output += "<tr class='content' onclick='goPage()'>";
     			    	  	    output += '<td>'+item['orgnm']+'</td>';
@@ -386,6 +377,7 @@
     			            	output += '<td>'+item.orgTlno+'</td>';            
     			            	output += '</tr>';							
     				});
+    				
     				$(".content").remove();		//데이터 지우기
     	      	    $("#info").append(output);  // 새로운 데이터 덮어쓰기 */			
     				
@@ -393,7 +385,6 @@
     		})
     		
     	}
-
 		  </script>
           <table id="output">
             <tr>

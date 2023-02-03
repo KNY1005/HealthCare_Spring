@@ -21,7 +21,7 @@
             pay_method : 'card',
             Cnum : 'merchant_' + new Date().getTime(),
             name : '예방접종 결제',
-            amount : 1,
+            amount : 100,
             buyer_email : 'dbsco0322@naver.com',
             buyer_name : '박윤채',
             buyer_tel : '22',
