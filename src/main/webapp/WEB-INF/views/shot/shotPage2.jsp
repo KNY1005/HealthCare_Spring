@@ -175,12 +175,10 @@
     </style>
     <script
       src="https://code.jquery.com/jquery-latest.min.js"
-      type="application/javascript"
-    ></script>
+      type="application/javascript"></script>
     <script
       type="application/javascript"
-      src="${path}/resources/js/hangjungdong2.js"
-    ></script>
+      src="${path}/resources/js/hangjungdong2.js"></script>
     <script type="application/javascript">
       jQuery(document).ready(function () {
         jQuery("#table1").css("color", "red");
@@ -258,6 +256,55 @@
         jQuery("#iframe").attr("src", url);
       }
     </script>
+    <script>
+	    function goPage(){
+			
+			location.href = "abc3.do?orgnm=<? echo $item.orgnm ?>&&orgZipaddr=주소다!&&orgTlno=연락해!";
+		
+	      }
+          function search(){
+              var sido = $("#sido option:selected").text();
+              var sigugun = $("#sigugun option:selected").text();
+              if($("#sigugun option:selected").text()=='선택'){
+            	  return sido;
+              }else{
+              		return sido+" "+sigugun;
+              }; 
+            }
+          function getList() {
+        	var sido = $("#sido option:selected").text();
+      		var sigugun = $("#sigugun option:selected").text();
+      		var result_list=[];
+      		$.ajax({
+    			url:"https://api.odcloud.kr/api/apnmOrg/v2/list?page=1&perPage=6500&cond%5BorgZipaddr%3A%3ALIKE%5D="+search()+"&serviceKey=WMYt954ER1qV9fi8xf2kgPxHFVXPiJl8GTJHSVT8LQr%2F4j6%2F6Lp2qSmjiBMa9KcCUWC6BbtkeLevU9HrSZP3KA%3D%3D",
+    			method:"post",
+    			data :{},
+    			success:function(data){
+    				console.log(Object.keys(data).length);
+    				
+    				var list = data.data;
+    				var output = "";
+    				list.forEach(function(item){						
+    						//console.log('아이템은?'+item.orgZipaddr);
+    						output += "<tr class='content' onclick='goPage()'>";
+    			    	  	output += '<td id="next1">'+item['orgnm']+'</td>';
+    			      		output += '<td>'+'00:00 ~ 00:00'+'</td>';
+    			            output += '<td id="next2">'+item.orgZipaddr+'</td>';
+    			            output += '<td id="next3">'+item.orgTlno+'</td>';            
+    			            output += '</tr>';							
+    				})
+    				
+    				$(".content").remove();		//데이터 지우기
+    	      	    $("#info").append(output);  // 새로운 데이터 덮어쓰기 */			
+    				
+    			}
+    			
+    		})
+    		
+    	}
+	
+		        
+	</script>
   </head>
   <body>
     <%@include file="../includes/header.jsp"  %>
@@ -326,65 +373,8 @@
                 <th>주소</th>
                 <th>연락처</th>
             </tr>
-           <!--  <tr id="content"
-            onClick="location.href='abc3.do'">
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr id="content"
-            onClick="location.href='abc3.do'">
-                <td id="getPost"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr> -->
           </table>
-          <script>
-          function goPage(){
-        	  location.href='abc3.do';
-          }
-          function search(){
-              var sido = $("#sido option:selected").text();
-              var sigugun = $("#sigugun option:selected").text();
-              if($("#sigugun option:selected").text()=='선택'){
-            	  return sido;
-              }else{
-              		return sido+" "+sigugun;
-              }; 
-            }
-          function getList() {
-        	var sido = $("#sido option:selected").text();
-      		var sigugun = $("#sigugun option:selected").text();
-      		var result_list=[];
-      		$.ajax({
-    			url:"https://api.odcloud.kr/api/apnmOrg/v2/list?page=1&perPage=6500&cond%5BorgZipaddr%3A%3ALIKE%5D="+search()+"&serviceKey=WMYt954ER1qV9fi8xf2kgPxHFVXPiJl8GTJHSVT8LQr%2F4j6%2F6Lp2qSmjiBMa9KcCUWC6BbtkeLevU9HrSZP3KA%3D%3D",
-    			method:"post",
-    			data :{},
-    			success:function(data){
-    				console.log(Object.keys(data).length);
-    				
-    				var list = data.data;
-    				var output = "";
-    				list.forEach(function(item){						
-    						//console.log('아이템은?'+item.orgZipaddr);
-    						output += "<tr class='content' onclick='goPage()'>";
-    			    	  	output += '<td>'+item['orgnm']+'</td>';
-    			      		output += '<td>'+'00:00 ~ 00:00'+'</td>';
-    			            output += '<td>'+item.orgZipaddr+'</td>';
-    			            output += '<td>'+item.orgTlno+'</td>';            
-    			            output += '</tr>';							
-    				});
-    				
-    				$(".content").remove();		//데이터 지우기
-    	      	    $("#info").append(output);  // 새로운 데이터 덮어쓰기 */			
-    				
-    			}
-    		})
-    		
-    	}
-		  </script>
+          
           <table id="output">
             <tr>
               <td></td>
