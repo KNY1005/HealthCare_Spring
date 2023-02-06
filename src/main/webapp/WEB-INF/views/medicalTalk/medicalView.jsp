@@ -83,7 +83,7 @@
 		margin: 0 auto 0;
 	}
 	
-	.title {
+	#writing_view .title {
 		margin: 20px auto 10px;
 		width: 970px;
 		height: 40px;
@@ -91,7 +91,7 @@
 		line-height: 40px;
 	}
 	
-	.content {
+	#writing_view .content {
 		margin: 0 auto 20px;
 		width: 970px;
 		height: 360px;
@@ -260,19 +260,15 @@
 		margin: 0 0 20px 120px;
 	}
 	
-/* 	#doctor_writing_content {
-		height:280px;
+ 	.doctor_writing_content {
+		
 		width: 1100px;
 		margin: 0 auto 0;
-		border: 3px solid #FF8F8F;
-		border-radius: 25px;
+		
 	}
 	
-	.reply_input {
-		margin: 0 auto 0;
-	}
-	
-	#doctor_writing_content input {
+
+	input#ptitle {
 		border-radius: 10px;
 		margin: 10px 0 10px 40px;
 		width: 1000px;
@@ -281,14 +277,14 @@
 		font-size: 25px;
 	}
 	
-	#main #doctor_writing_content textarea {
+	input#pcontent {
 		width: 1000px;
 		margin: 0 0 10px 40px;
 		height: 150px;
 		border-radius: 10px;
 	}
 	
-	.button {
+	.input-group-btn {
 		display: inline-block;
 		width: 230px;
 		height: 40px;
@@ -296,7 +292,8 @@
 		margin-bottom:10px;
 	}
 	
-	.button button {
+	
+	.input-group-btn button {
 		font-weight: bold;
 		width: 100px;
 		padding: 10px;
@@ -306,77 +303,22 @@
 		border-radius: 30px;
 		margin-left:10px;
 		
-	} */
-	
-	/*전문의 답변 뷰박스*/
-	#main #doctor_writing_content {
-		height:280px;
-		width: 1100px;
-		margin-left: 110px;
-		margin-top: 30px;
-	}
-	
-	#main  #doctor_writing_content .replyList {
-		width: 1100px;
-		border: 3px solid #FF8F8F;
-		border-radius: 25px;
-	}
-	
-	#main #doctor_writing_view .title {
-		border-radius: 10px;
-		width: 1000px;
-		height: 35px;
-		text-align: left;
-		font-size: 25px;
-	}
-
-	#main  #doctor_writing_content li {
-		width: 1000px;
-		height: 150px;
-	}
-	
-	.hob{
-		display:flex;
-		width:1100px;
-	}
-		
-	
-	.hob #date{
-		display:flex;
-		flex-direction:row;
-		margin-left:50px;
-		
-		}
-	
-	#date li{
-		font-size:16px;
-		margin-right:40px;
-		width:64px;}
-		
-	#main #doctor_writing_view .button{
-		height:35px;
-		display:flex;
-		margin-left:460px;
-		margin-bottom:10px;}
-
-	#main #doctor_writing_view .button button{
-		font-weight: bold;
-		width: 100px;
-		padding: 10px;
-		font-size: 15px;
-		background-color: #FFEFEF;
-		border: #FFEFEF;
-		border-radius: 30px;
-		margin-left:10px;
-		
-	}
-	
-	.button button:hover {
+	} 
+	.input-group-btn button:hover{
 		border-radius: 30px;
 		transition: .2s;
 		box-shadow: inset 1px 1px 3px rgb(197, 197, 197);
 		cursor: pointer;
+	
 	}
+	
+	/*전문의 답변 뷰박스*/
+	#main .replyList {
+		height:280px;
+		width: 1100px;
+		margin-top: 30px;
+	}
+	
 	</style>
 </head>
 
@@ -428,13 +370,15 @@
 			<c:if test="${member.mgrade == 'D'}">
 				<div id="writing_container">
 					<div class="container">
-				    	<label for="pcontent">답변하기</label>
+				    	<label for="pcontent"></label>
 				        	<form name="replyInsertForm">
 				            	<div class="input-group">
 				               	<input type="hidden" name="bidx" value="${vo.bidx}"/>
+				               	<input type="text" class="form-control" id="ptitle" name="ptitle" placeholder="제목을 입력하세요.">
 				               	<input type="text" class="form-control" id="pcontent" name="pcontent" placeholder="내용을 입력하세요.">
 				               		<span class="input-group-btn">
 				                   		<button class="btn btn-default" type="button" name="replyInsertBtn">등록</button>
+				                   		<button type="button">취소</button>
 				               		</span>
 				              	</div>
 				        	</form>

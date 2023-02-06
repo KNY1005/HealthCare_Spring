@@ -130,6 +130,9 @@
 			, PWRITER
 			, PGRP
 			, PGRPS
+			, PTITLE
+			, PDATE
+			
 		)
 		VALUES(    
 			#{bidx}
@@ -138,6 +141,8 @@
 			, #{pwriter}	
 			, #{pgrp}
 			, #{pgrps}
+			, #{ptitle}
+			, sysdate
 			)
 	</insert>
 	

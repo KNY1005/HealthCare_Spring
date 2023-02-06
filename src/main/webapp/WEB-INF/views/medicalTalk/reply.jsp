@@ -8,8 +8,10 @@
 <script>
 	var bidx = '${vo.bidx}'; //게시글 번호
 	 
-	$('[name=replyInsertBtn]').click(function(){ //댓글 등록 버튼 클릭시 
+	$('[name=replyInsertBtn]').click(function(){ //댓글 등록 버튼 클릭시
+		alert("reply.jsp / btn click : call");
 	    var insertData = $('[name=replyInsertForm]').serialize(); //commentInsertForm의 내용을 가져옴
+	    console.log(insertData);
 	    replyInsert(insertData); //Insert 함수호출(아래)
 	});
 	 
@@ -24,11 +26,19 @@
 	        success : function(data){
 	            var a =''; 
 	            $.each(data, function(key, value){ 
-	                a += '<div class="replyArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
-	                a += '<div class="replyInfo'+value.pidx+'">'+'댓글번호 : '+value.pidx+' / 작성자 : '+value.pwriter;
-	                a += '<a onclick="replyUpdate('+value.pidx+',\''+value.pcontent+'\');"> 수정 </a>';
-	                a += '<a onclick="replyDelete('+value.pidx+');"> 삭제 </a> </div>';
-	                a += '<div class="replyContent'+value.pidx+'"> <p> 내용 : '+value.pcontent +'</p>';
+	                a += '<div class="replyArea" style="border: 3px solid #FF8F8F; border-radius: 25px;	width: 1100px; height:280px; margin-bottom: 15px;">';
+	                a += '<div class="replyTitle'+value.ptitle+'" style="margin:10px 0 10px 65px; width: 970px; height: 35px; text-align: left; font-size: 25px;">'+value.ptitle+'';
+	                a += '</div>';
+	                a += '<div class="replyContent'+value.pidx+'" style="margin: 0 0 10px 65px; width: 970px; height: 150px; ">  '+value.pcontent +'';
+	                a += '</div>';
+	                a += '<div class="hob" style="display:flex; width:1000px; margin-left:65px; margin-top:25px;" >';
+	                a += '<div class="replyDate'+value.pwriter+'" style="font-size:16px; margin-top:10px;">  '+value.pwriter +'';
+	                a += '</div>';
+	                a += '<div class="replyDate'+value.pdate+'" style="	margin-left:50px; font-size:16px; margin-top:10px;">  '+value.pdate +'';
+	                a += '</div>';
+	                a += '<div class="button" style="display:flex; margin-left:540px; margin-bottom:10px;">';
+	                a += '<a onclick="replyUpdate('+value.pidx+',\''+value.pcontent+'\');" style="margin-left:10px; width: 80px; height: 15px; padding: 10px; font-size:15px; font-weight: bold; text-align:center; background-color: #FFEFEF; border: #FFEFEF; border-radius: 30px; "> 수정 </a>';
+	                a += '<a onclick="replyDelete('+value.pidx+');"  style="margin-left:10px; width: 80px; height: 15px; padding: 10px; font-size:15px; font-weight: bold; text-align:center; background-color: #FFEFEF; border: #FFEFEF; border-radius: 30px; "> 삭제 </a> </div>';
 	                a += '</div></div>';
 	            });
 	            
@@ -39,6 +49,7 @@
 	 
 	//댓글 등록
 	function replyInsert(insertData){
+		alert("reply.jsp / replyInsert ajax ")
 	    $.ajax({
 	        url : 'medicalView/reply/insert',
 	        type : 'post',
@@ -47,6 +58,7 @@
 	            if(data == 1) {
 	            	replyList(); //댓글 작성 후 댓글 목록 reload
 	                $('[name=pcontent]').val('');
+	                $('[name=ptitle]').val('');
 	            }
 	        }
 	    });
@@ -100,4 +112,12 @@
 	 
  
 </script>
+<style>
+.button a:hover {
+		border-radius: 30px;
+		transition: .2s;
+		box-shadow: inset 1px 1px 3px rgb(197, 197, 197);
+		cursor: pointer;
+	}
+</style>
 
