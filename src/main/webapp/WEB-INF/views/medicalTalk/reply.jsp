@@ -7,6 +7,7 @@
  
 <script>
 	var bidx = '${vo.bidx}'; //게시글 번호
+	var mname = '${member.mname}';
 	 
 	$('[name=replyInsertBtn]').click(function(){ //댓글 등록 버튼 클릭시
 		alert("reply.jsp / btn click : call");
@@ -23,6 +24,7 @@
 	        url : 'medicalView/reply/list',
 	        type : 'get',
 	        data : {'bidx':bidx},
+	       		
 	        success : function(data){
 	            var a =''; 
 	            $.each(data, function(key, value){ 
@@ -32,7 +34,7 @@
 	                a += '<div class="replyContent'+value.pidx+'" style="margin: 0 0 10px 65px; width: 970px; height: 150px; ">  '+value.pcontent +'';
 	                a += '</div>';
 	                a += '<div class="hob" style="display:flex; width:1000px; margin-left:65px; margin-top:25px;" >';
-	                a += '<div class="replyDate'+value.pwriter+'" style="font-size:16px; margin-top:10px;">  '+value.pwriter +'';
+	                a += '<div class="replyWriter'+value.pwriter+'" style="font-size:16px; margin-top:10px;">  '+value.pwriter +'';
 	                a += '</div>';
 	                a += '<div class="replyDate'+value.pdate+'" style="	margin-left:50px; font-size:16px; margin-top:10px;">  '+value.pdate +'';
 	                a += '</div>';

@@ -261,10 +261,17 @@
 	}
 	
  	.doctor_writing_content {
-		
 		width: 1100px;
 		margin: 0 auto 0;
 		
+	}
+	
+	.input-group {
+		height:280px;
+		width: 1100px;
+		margin: 0 auto 0;
+		border: 3px solid #FF8F8F;
+		border-radius: 25px;
 	}
 	
 
@@ -305,10 +312,7 @@
 		
 	} 
 	.input-group-btn button:hover{
-		border-radius: 30px;
-		transition: .2s;
-		box-shadow: inset 1px 1px 3px rgb(197, 197, 197);
-		cursor: pointer;
+		
 	
 	}
 	
@@ -374,6 +378,7 @@
 				        	<form name="replyInsertForm">
 				            	<div class="input-group">
 				               	<input type="hidden" name="bidx" value="${vo.bidx}"/>
+				               	<input type="hidden" name="pwriter" value="${member.mname}"/>
 				               	<input type="text" class="form-control" id="ptitle" name="ptitle" placeholder="제목을 입력하세요.">
 				               	<input type="text" class="form-control" id="pcontent" name="pcontent" placeholder="내용을 입력하세요.">
 				               		<span class="input-group-btn">

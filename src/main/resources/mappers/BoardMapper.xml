@@ -132,9 +132,7 @@
 			, PGRPS
 			, PTITLE
 			, PDATE
-			
-		)
-		VALUES(    
+		)VALUES(    
 			#{bidx}
 			, PIDX_SEQ.NEXTVAL
 			, #{pcontent}
