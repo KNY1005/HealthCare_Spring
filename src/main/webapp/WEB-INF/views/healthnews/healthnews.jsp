@@ -6,16 +6,44 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공지사항 목록</title>
+<title>건강소식</title>
 	<!--파비콘-->
 	<link rel="icon" type="image/png" sizes="16x16"
 	href="${path }/resources/image/favicon/favicon-16x16.png" />
-<link rel="manifest"
-	href="${path }/resources/image/favicon/manifest.json" />
-<meta name="msapplication-TileColor" content="#ffffff" />
-<meta name="msapplication-TileImage"
-	content="${path }/resources/image/favicon/ms-icon-144x144.png" />
-<meta name="theme-color" content="#ffffff" />
+	<link rel="manifest" href="${path }/resources/image/favicon/manifest.json" />
+	<meta name="msapplication-TileColor" content="#ffffff" />
+	<meta name="msapplication-TileImage"
+		content="${path }/resources/image/favicon/ms-icon-144x144.png" />
+	<meta name="theme-color" content="#ffffff" />
+	<link href="${path}/resources/css/footer.css" rel="stylesheet" />
+	<script>
+		//건강소식 가져오기
+		$.ajax({
+			type:'POST',
+			dataType:'json',
+			url:"ApiSearchNew.java",
+			data:{'GUBUN':'news','SEARVALUE':SEARVALUE},
+			cache:false,
+			async:false.
+		})
+		.done(function(result){
+			var news_html="";
+			for(var i=0; i<(result.item.length>5?5:result.item.length);i++)
+				{
+				var row_html="";
+				row_html+="<div></div>"
+				row_html+=
+					
+				news_html+=row_html;
+				}
+			if(news_html)
+				{
+				$("#news_result").html(news_html);
+				}
+		})
+	
+	
+	</script>	
 <style>
 main {
 	width: 1320px;
