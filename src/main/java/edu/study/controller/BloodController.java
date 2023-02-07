@@ -2,10 +2,13 @@ package edu.study.controller;
 
 
 
-import org.springframework.stereotype.Controller;
+import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RequestMapping(value="/blood")	
@@ -28,8 +31,12 @@ public class BloodController {
 		return "blood/bloodPage3";	
 	}
 	@RequestMapping(value = "page4.do", method = RequestMethod.GET)	
-	public String bloodPage4() {	
-		
+	public String testMethod(HttpServletRequest request, Model model){
+		String[] zip = request.getParameterValues("zip");
+		String[] addr = request.getParameterValues("addr");
+		String[] phone = request.getParameterValues("phone");
+		System.out.println("집명은?"+zip[0]+"주소는?"+addr[0]+"연락처는?"+phone[0]);
+		model.addAttribute("info",zip);
 		return "blood/bloodPage4";	
 	}
 	@RequestMapping(value = "page5.do", method = RequestMethod.GET)	

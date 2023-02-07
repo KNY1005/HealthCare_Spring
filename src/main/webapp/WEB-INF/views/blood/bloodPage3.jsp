@@ -108,8 +108,11 @@
 </script>
 <script>	
 	function goPage4() {			
-		location.href = "page4.do";				
+		//location.href = "page4.do";
+		$("#frm").submit();
+	    return false;	  
 	}
+	
 	function getInfo(){			
 		var sido = $("#sido option:selected").text();
 		var sigugun = $("#sigugun option:selected").text();
@@ -117,17 +120,17 @@
 		
 		$.ajax({
 			url:"https://api.odcloud.kr/api/15050729/v1/uddi:03c4700e-0d6d-4dc1-914b-d0b8720dfaa9?page=1&perPage=143&serviceKey=fc7neVxfegjd7ptkZnQkV3YyKVGajgKxKhSkn060LiBCg%2FZwkO1cig1cNX34Eox3dEtjy6vBoFUsekWcZ4%2BmeQ%3D%3D",
-			method:"GET",
+			method:"post",
 			data :{},
 			success:function(data){				
 				var list = data.data;
-				var output = "";				
+				var output = "";		
+				alert
 				if($("#sigugun option:selected").text()=='선택'){
 					$.each(list,function(index,value){
 						var addr = list[index].주소지;
 						if(addr.includes(sido)){
-							result_list.push(value);
-						console.log('>?'+addr);
+							result_list.push(value);						
 						}		
 				});
 				}else($.each(list,function(index,value){
@@ -142,13 +145,13 @@
 				result_list.forEach(function(item){						
 						console.log('아이템은?'+item.주소지);
 						output += "<tr class='column content' onclick='goPage4()'>";
-			    	  	    output += '<td>'+item['헌혈의 집']+'</td>';
-			      			output += '<td>'+'00:00 ~ 00:00'+'</td>';
-			            	output += '<td>'+item.주소지+'</td>';
-			            	output += '<td>'+item.전화번호+'</td>';            
+			    	  	    output += "<td><input type='hidden' name='zip' value='"+item['헌혈의 집']+"'>"+item['헌혈의 집']+'</td>';
+			      			output += "<td>"+'09:00 ~ 18:00'+'</td>';
+			            	output += "<td><input type='hidden' name='addr' value='"+item.주소지+"'>"+item.주소지+'</td>';
+			            	output += "<td><input type='hidden' name='phone' value='"+item.전화번호+"'>"+item.전화번호+"</td>";            
 			            	output += '</tr>';							
 				});
-				$(".content").remove();		//데이터 지우기
+				$(".content").remove();		//데이터 지우기				
 	      	    $("#info").append(output);  // 새로운 데이터 덮어쓰기 */			
 				
 			}
@@ -342,16 +345,16 @@ option {
 			</div>
 		</form>
 		<hr class="hr">
-
-		<table class="blood_info" id="info">
-			<tr class="column">
-				<th>헌혈의집명</th>
-				<th>운영시간</th>
-				<th>주소</th>
-				<th>연락처</th>
-			</tr>			
-		</table>			
-		
+		<form action="page4.do" id="frm">
+			<table class="blood_info" id="info">
+				<tr class="column">
+					<th>헌혈의집명</th>
+					<th>운영시간</th>
+					<th>주소</th>
+					<th>연락처</th>
+				</tr>			
+			</table>			
+		</form>
 		<div id="page"></div>
 	</main>
 
