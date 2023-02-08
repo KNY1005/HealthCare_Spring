@@ -44,6 +44,7 @@ $(document).ready(function(){
 })
 </script>
 <body>
+
 <!-- 헤더(inclue랑 css 다름) -->
 	<header>
       <div class="nav_background">

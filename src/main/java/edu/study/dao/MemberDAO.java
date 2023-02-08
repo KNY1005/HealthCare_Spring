@@ -60,10 +60,12 @@ public class MemberDAO {
 		return sqlSession.selectOne("edu.study.mapper.memberMapper.changeStotus", vo);
 	}
 
-	public String searchId(String mname, String mphone) {
+	//아이디찾기
+	public MemberVo searchId(MemberVo searchVO) {
 		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne("edu.study.mapper.memberMapper.searchId", searchVO);
 	}
-
+	
+	
 	
 }

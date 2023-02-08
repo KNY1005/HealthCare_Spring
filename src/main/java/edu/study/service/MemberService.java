@@ -31,7 +31,7 @@ public interface MemberService {
 	public void updateMember(MemberVo vo);
 	
 	//아이디찾기
-	public String get_searchId(String mname, String mphone);
+	public MemberVo memberIdSearch(MemberVo searchVO);
 	
 
 

@@ -137,19 +137,35 @@ public class MemberController {
 		return "member/memberSearch";
 	}
 	
-/*
+
 	//아이디찾기
 	@RequestMapping(value = "/memberSearch", method = RequestMethod.POST)
 	@ResponseBody
-	public String userIdSearch(@RequestParam("inputName_1") String mname, 
-			@RequestParam("inputPhone_1") String mphone) {
+	public String userIdSearch(HttpServletRequest request, Model model,
+			@RequestParam("inputName_1") String mname, 
+			@RequestParam("inputPhone_1") int mphone,
+			MemberVo searchVO) {
 		
-		String result = memberService.get_searchId(mname, mphone);
+		System.out.println("안녕하세요 여기는 아이디 찾기 입니다");
+		try {
+		    
+		    searchVO.setMname(mname);
+		    searchVO.setMphone(mphone);
+		    MemberVo memberSearch = memberService.memberIdSearch(searchVO);
+		    
+		    model.addAttribute("searchVO", memberSearch);
+		 
+		} catch (Exception e) {
+		    System.out.println(e.toString());
+		    model.addAttribute("msg", "오류가 발생되었습니다.");
+		}
+		
 
-		return result;
+		
+		return "member/memberSearch";
 	}
 
-
+/*
 	//비밀번호찾기
 	@RequestMapping(value = "/user/searchPassword", method = RequestMethod.GET)
 	@ResponseBody

@@ -6,6 +6,14 @@
 <html>
 <head>
 <title>시작하기</title>
+
+	<!--파비콘sss-->
+	<link rel="icon" type="image/png" sizes="16x16" href="${path}/resources/image/favicon/android-icon-144x144.png"/>
+	<link rel="manifest" href="${path}/resources/image/favicon/manifest.json" />
+	<meta name="msapplication-TileColor" content="#ffffff" />
+	<meta name="msapplication-TileImage" content="${path}/resources/image/favicon/ms-icon-144x144.png" />
+	<meta name="theme-color" content="#ffffff" />
+	
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta
@@ -34,7 +42,7 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
   </head>
   <body>
- 
+   
     <div>
       <div class="panel shadow1">   
         <form class="login" id="login"method="post" name='login' action="/controller/member/login.do">
@@ -71,11 +79,6 @@
               style="ime-mode:disabled"
               oninput="handleOnInput(this)"
             />
-          <p>
-            <a id="lost-password-link" class="animated fadeIn animate5"
-              href="<%=request.getContextPath() %>/member/membersearch.do" >아이디 비밀번호 찾기
-            </a>
-          </p>
           </fieldset>
           <input
             type="submit"
@@ -83,7 +86,15 @@
             class="login_form button animated fadeInUp animate4"
             value="Login"
           />
+          <p>
+          <a id="lost-password-link" class="animated fadeIn animate5"
+              style="z-index:900;" onclick="movesearch();"
+              >아이디 비밀번호 찾기
+            </a>
+          </p>
+         
           </form>
+          
           <form class="join" id="join" method="post" name='join' action="/controller/member/join.do">
          
           <fieldset id="signup-fieldset" class="hidden">
@@ -91,11 +102,11 @@
            
            <div class="mgrade">
            
-           <input type="radio" name="mgrade" value="A"
-           style="width:30px;" 
+           <input type="radio" name="mgrade" value="D"
+           style="width:30px;"
            >전문의
            <input type="radio" name="mgrade" value="G"
-           style="width:30px;" 
+           style="width:30px;" checked="checked"
            >일반           
            
            </div>
@@ -230,7 +241,9 @@
       </div>
     </div>
       <script type="text/javascript">
-      
+      function movesearch(){
+    	     location.href = "<%=request.getContextPath() %>/member/membersearch.do";
+    	}
       
     // 주소 팝업
 	  function goPopup() {

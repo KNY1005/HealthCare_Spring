@@ -57,10 +57,16 @@
 	
 	<!-- 아이디찾기 -->
 	<select id="searchId" resultType="String">
-		select ifnull(mid, 0) from table_member
-        where mname = #{mname} 
-        and mphone = #{mphone} 
-        and mdelyn = 'N';
+		<![CDATA[
+    select
+        *
+    from
+        table_member
+    where
+        mname = #{mname}
+    and
+        mphone = #{mphone}
+]]>    
 	</select>
 
 	<!-- 등급변경 -->

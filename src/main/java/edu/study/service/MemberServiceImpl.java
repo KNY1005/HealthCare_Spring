@@ -73,9 +73,8 @@ public class MemberServiceImpl implements MemberService {
 
 	//아이디찾기
 	@Override
-	public String get_searchId(String mname, String mphone) {
-		// TODO Auto-generated method stub
-		return null;
+	public MemberVo memberIdSearch(MemberVo searchVO) {
+		return memberdao.searchId(searchVO);
 	}
 
 

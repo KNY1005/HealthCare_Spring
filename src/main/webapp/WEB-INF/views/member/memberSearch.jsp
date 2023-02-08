@@ -17,8 +17,38 @@
     <!-- 제이쿼리 라이브러리 연결 -->
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
   </head>
+  <style>
+    #my_modal {
+        display: none;
+        width: 300px;
+        padding: 20px 60px;
+        background-color: #fefefe;
+        border: 1px solid #888;
+        border-radius: 3px;
+    }
+
+    #my_modal .modal_close_btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+</style>
   <body>
-  <%@ include file="../member/memberIdSearchModal.jsp" %>
+  <body>
+  <div id="my_modal">
+   <div id="background_modal" class="background_modal">
+	<div class="modal_contents">
+		<h4>
+			<b>손님 아이디는?</b><span class="close">&times;</span>
+		</h4><br>
+			<h2 id="id_value"></h2>
+		<br>
+		<button type="button" id="pwSearch_btn" class="btn peach-gradient btn-rounded waves-effect">
+		<i class="fa fa-envelope"></i>비밀번호 찾기</button>
+	</div>
+    <a class="modal_close_btn">닫기</a>
+</div>
+</div>
  <div class="full">
 		<div class="container">
 			<div class="area_inputs wow fadeIn">
@@ -67,7 +97,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<button id="searchBtn2" type="button" class="btn btn-primary btn-block">확인</button>
+						<button id="searchBtn2" type="button" class="btn btn-primary btn-block popup_open_btn" >확인</button>
 					<a class="btn btn-danger btn-block"	href="${pageContext.request.contextPath}">취소</a>
 				</div>
 				</div>
@@ -75,9 +105,66 @@
 		</div>
 	</div>
 	<script type="text/javascript">
+	function modal(id) {
+	    var zIndex = 9999;
+	    var modal = document.getElementById(id);
+
+	    // 모달 div 뒤에 희끄무레한 레이어
+	    var bg = document.createElement('div');
+	    bg.setStyle({
+	        position: 'fixed',
+	        zIndex: zIndex,
+	        left: '0px',
+	        top: '0px',
+	        width: '100%',
+	        height: '100%',
+	        overflow: 'auto',
+	        // 레이어 색갈은 여기서 바꾸면 됨
+	        backgroundColor: 'rgba(0,0,0,0.4)'
+	    });
+	    document.body.append(bg);
+
+	    // 닫기 버튼 처리, 시꺼먼 레이어와 모달 div 지우기
+	    modal.querySelector('.modal_close_btn').addEventListener('click', function() {
+	        bg.remove();
+	        modal.style.display = 'none';
+	    });
+
+	    modal.setStyle({
+	        position: 'fixed',
+	        display: 'block',
+	        boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+
+	        // 시꺼먼 레이어 보다 한칸 위에 보이기
+	        zIndex: zIndex + 1,
+
+	        // div center 정렬
+	        top: '50%',
+	        left: '50%',
+	        transform: 'translate(-50%, -50%)',
+	        msTransform: 'translate(-50%, -50%)',
+	        webkitTransform: 'translate(-50%, -50%)'
+	    });
+	}
+
+	// Element 에 style 한번에 오브젝트로 설정하는 함수 추가
+	Element.prototype.setStyle = function(styles) {
+	    for (var k in styles) this.style[k] = styles[k];
+	    return this;
+	};
+
+	document.getElementById('searchBtn').addEventListener('click', function() {
+	    // 모달창 띄우기
+	    modal('my_modal');
+	});
+	
+	
+	
+	
+	
 	function search_check(num) {
 		if (num == '1') {
-			document.getElementById("searchP").style.display = "none";
+			document.getElementByClassName("searchP").style.display = "none";
 			document.getElementById("searchI").style.display = "";	
 		} else {
 			document.getElementById("searchI").style.display = "none";
@@ -85,24 +172,6 @@
 		}
 	}
    
-	//모당창 소스
-	$(document).ready(function() {
-		/////////모///달///기///능///////////
-		// 1. 모달창 히든 불러오기
-		$('#searchBtn').click(function() {
-			$('#background_modal').show();
-		});
-		// 2. 모달창 닫기 버튼
-		$('.close').on('click', function() {
-			$('#background_modal').hide();
-		});
-		// 3. 모달창 위도우 클릭 시 닫기
-		$(window).on('click', function() {
-			if (event.target == $('#background_modal').get(0)) {
-	            $('#background_modal').hide();
-	         }
-		});
-	});
 	
 	//아이디찾기소스
 	// 아이디 & 스토어 값 저장하기 위한 변수
@@ -111,7 +180,7 @@
 	var idSearch_click = function(){
 		$.ajax({
 			type:"POST",
-			url:"${pageContext.request.contextPath}/user/userSearch?inputName_1="
+			url:"${pageContext.request.contextPath}/member/memberSearch?inputName_1="
 					+$('#inputName_1').val()+"&inputPhone_1="+$('#inputPhone_1').val(),
 			success:function(data){
 				if(data == 0){
