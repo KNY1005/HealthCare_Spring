@@ -14,17 +14,14 @@ public class ShotDAO {
 	@Autowired
 	private SqlSession sqlSession;	//bean 의존 주입
 	
-	
-	
-	public int selectById(String id) {
-		return sqlSession.selectOne("edu.study.mapper.userMapper.selectById", id);
-	}
-	
-	public List<ShotVo> list(){
+	public List<ShotVo> list(ShotVo vo){
 		
 		return sqlSession.selectList("edu.study.mapper.shotMapper.list");
 		
 	}
 
+	public int selectByCd(int cd) {
+		return sqlSession.selectOne("edu.study.mapper.shotMapper.selectByCd", cd);
+	}
 	
 }

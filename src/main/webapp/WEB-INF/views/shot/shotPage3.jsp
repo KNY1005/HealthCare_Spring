@@ -198,13 +198,15 @@
 				</ul>
 			</div>
 			<div class="choice">
+			<c:forEach items="${datalist}" var="vo">
 				<ul class="box">
-					<li >독감</li>                
-					<li>22.10.10 ~ 22.12.10</li>
-					<li>잔여량</li>
-					<li>유/무료</li>
+					<li>${vo.cdNm}</li>                
+					<li>${vo.cdDate}</li>
+					<li>${vo.cdCount}</li>
+					<li>${vo.cdFC}</li>
 				</ul>
-				<div class="able" style="display: none;">
+			</c:forEach>
+				<!-- <div class="able" style="display: none;">
 					<div id="date">
 						<label for="">날짜</label>
 						<input type="date">
@@ -216,50 +218,7 @@
 					<div id="btn">
 						<button onClick="location.href='abc4.do'">예약</button>
 					</div>
-				</div>	
-			</div>
-			
-			<div class="choice">
-				<ul class="box">
-					<li >독감</li>                
-					<li>22.10.10 ~ 22.12.10</li>
-					<li>잔여량</li>
-					<li>유/무료</li>
-				</ul>
-				<div class="able" style="display: none;">
-					<div id="date">
-						<label for="">날짜</label>
-						<input type="date">
-					</div>
-					<div id="time">
-						<label for="">시간</label>
-						<input type="time">
-					</div>
-					<div id="btn">
-						<button onClick="location.href='abc4.do'">예약</button>
-					</div>
-				</div>	
-			</div>
-			<div class="choice">
-				<ul class="box">
-					<li >독감</li>                
-					<li>22.10.10 ~ 22.12.10</li>
-					<li>잔여량</li>
-					<li>유/무료</li>
-				</ul>
-				<div class="able" style="display: none;">
-					<div id="date">
-						<label for="">날짜</label>
-						<input type="date">
-					</div>
-					<div id="time">
-						<label for="">시간</label>
-						<input type="time" min="9:00" max="19:00" step="30" required>
-					</div>
-					<div id="btn">
-						<button onClick="location.href='abc4.do'">예약</button>
-					</div>
-				</div>	
+				</div>	 -->
 			</div>
         </div>
 	</main>

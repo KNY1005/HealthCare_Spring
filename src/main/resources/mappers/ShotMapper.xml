@@ -14,4 +14,10 @@
 			  ,cdCharge
 			from table_shot
 	</select>
+	
+	<select id="selectByCd" parameterType="String" resultType="int">
+		select count(*)
+			from table_shot
+			where cd = #{cd}
+	</select>
 </mapper>

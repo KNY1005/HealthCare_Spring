@@ -15,22 +15,18 @@ public class ShotServiceImpl implements ShotService {
 	private ShotDAO shotDAO;
 	
 	@Override
-	public List<ShotVo> list() {
+	public List<ShotVo> list(ShotVo vo) {
 		// TODO Auto-generated method stub
-		List<ShotVo> list = shotDAO.list();
+		List<ShotVo> list = shotDAO.list(vo);
 		
 		return list;
 	}
 
 	@Override
-	public ShotVo selectByUidx(int uidx) {
+	public int selectByCd(int cd) {
 		// TODO Auto-generated method stub
-		return null;
+		return shotDAO.selectByCd(cd);
 	}
-
-	
-
-	
 
 	
 }
