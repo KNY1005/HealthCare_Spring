@@ -1,5 +1,56 @@
 window.onload = function () {
-  //nav script - start
+
+
+  //프로필 서브 메뉴바
+  var a1, a2;
+  var onHoverText = false;
+  var onHoverBMenu = false;
+
+  function a2_over() {
+    onHoverText = true;
+    a1.style.display = "block";
+  }
+
+  function a2_out() {
+    onHoverText = false;
+
+    setTimeout(() => {
+      if (!onHoverText && !onHoverBMenu) {
+        a1.style.display = "none";
+      }
+    }, 1000);
+  }
+
+  function a1_over() {
+    onHoverBMenu = true;
+  }
+
+  function a1_out() {
+    onHoverBMenu = false;
+
+    setTimeout(() => {
+      if (!onHoverText && !onHoverBMenu) {
+        a1.style.display = "none";
+      }
+    }, 1000);
+  }
+
+  function init() {
+    a1 = document.getElementById("profli_menu");
+    a2 = document.getElementsByClassName("profli_btn")[0];
+    a1 = document.querySelector("#profli_menu");
+    a2 = document.querySelector(".profli_btn");
+
+    a1.addEventListener("mouseover", a1_over);
+    a1.addEventListener("mouseout", a1_out);
+
+    a2.addEventListener("mouseover", a2_over);
+    a2.addEventListener("mouseout", a2_out);
+  }
+
+  init();
+  
+    //nav script - start
   $(document).ready(function () {
     //브라우저가 열렸을 때 이 기능을 수행함
     $(".nav").hover(
@@ -14,53 +65,4 @@ window.onload = function () {
     );
   });
   //nav script - end
-
-  //프로필 서브 메뉴바
-  var a1, a2;
-  var onHoverText = false;
-  var onHoverBMenu = false;
-
-  function a2_over() {
-    onHoverText = true;
-    a1.style.visibility = "visible";
-  }
-
-  function a2_out() {
-    onHoverText = false;
-
-    setTimeout(() => {
-      if (!onHoverText && !onHoverBMenu) {
-        a1.style.visibility = "hidden";
-      }
-    }, 1000);
-  }
-
-  function a1_over() {
-    onHoverBMenu = true;
-  }
-
-  function a1_out() {
-    onHoverBMenu = false;
-
-    setTimeout(() => {
-      if (!onHoverText && !onHoverBMenu) {
-        a1.style.visibility = "hidden";
-      }
-    }, 1000);
-  }
-
-  function init() {
-    a1 = document.getElementById("profli_menu");
-    a2 = document.getElementsByClassName("btn")[0];
-    a1 = document.querySelector("#profli_menu");
-    a2 = document.querySelector(".btn");
-
-    a1.addEventListener("mouseover", a1_over);
-    a1.addEventListener("mouseout", a1_out);
-
-    a2.addEventListener("mouseover", a2_over);
-    a2.addEventListener("mouseout", a2_out);
-  }
-
-  init();
 };

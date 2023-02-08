@@ -84,7 +84,7 @@
         <c:if test="${member!= null }">
           <div class="main_profli">
            <img src="${path}/resources/image/profli.png" alt="프로필" />
-            <button type="submit" class="btn">
+            <button type="submit" class="profli_btn">
               <i class="xi-plus" alt="검색"></i>
             </button>
             <p>${member.mname}님 환영합니다!</p>
