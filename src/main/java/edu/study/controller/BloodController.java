@@ -35,8 +35,11 @@ public class BloodController {
 		String[] zip = request.getParameterValues("zip");
 		String[] addr = request.getParameterValues("addr");
 		String[] phone = request.getParameterValues("phone");
-		System.out.println("집명은?"+zip[0]+"주소는?"+addr[0]+"연락처는?"+phone[0]);
-		model.addAttribute("info",zip);
+		
+		System.out.println("집명은?"+zip[0]+" 주소는?"+addr[0]+" 연락처는?"+phone[0]);
+		model.addAttribute("zip",zip[0]);
+		model.addAttribute("addr",addr[0]);
+		model.addAttribute("phone",phone[0]);
 		return "blood/bloodPage4";	
 	}
 	@RequestMapping(value = "page5.do", method = RequestMethod.GET)	

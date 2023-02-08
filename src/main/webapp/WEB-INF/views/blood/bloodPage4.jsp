@@ -174,10 +174,10 @@ main .timetable #button {
 	<main>
 		<h2>헌혈 예약</h2>
 		<div class="medical">
-			<p>땡땡 헌혈의 집</p>
-			<p>진료시간 : 00:00 ~ 00:00</p>
-			<p>주소 : 전라북도 전주시 완산구</p>
-			<p>연락처 : 063-222-0000</p>
+			<p>${zip}</p>
+			<p>진료시간 : 09:00 ~ 18:00</p>
+			<p>주소 : ${addr }</p>
+			<p>연락처 : ${phone }</p>
 		</div>
 		<!--//.medical-->
 		<hr>

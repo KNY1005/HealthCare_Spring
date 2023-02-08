@@ -107,10 +107,38 @@
 
 </script>
 <script>	
-	function goPage4() {			
-		//location.href = "page4.do";
-		$("#frm").submit();
-	    return false;	  
+	function goPage4(obj) {			
+  		var abc = obj.querySelectorAll("td");
+  		var zip = abc[0].innerText;
+  		var addr = abc[2].innerText;
+  		var phone = abc[3].innerText;
+			
+		var form = document.createElement("form");
+        form.setAttribute("charset", "UTF-8");
+        form.setAttribute("method", "GET");  //Post 방식
+        form.setAttribute("action", "page4.do"); //요청 보낼 주소
+
+        var hiddenField = document.createElement("input");
+        hiddenField.setAttribute("type", "hidden");
+        hiddenField.setAttribute("name", "zip");
+        hiddenField.setAttribute("value", zip);
+        form.appendChild(hiddenField);       	
+       
+        hiddenField = document.createElement("input");
+        hiddenField.setAttribute("type", "hidden");
+        hiddenField.setAttribute("name", "addr");
+        hiddenField.setAttribute("value", addr);
+        form.appendChild(hiddenField);
+        
+        hiddenField = document.createElement("input");
+        hiddenField.setAttribute("type", "hidden");
+        hiddenField.setAttribute("name", "phone");
+        hiddenField.setAttribute("value", phone);
+        form.appendChild(hiddenField);
+        
+        document.body.appendChild(form);
+
+        form.submit(); 
 	}
 	
 	function getInfo(){			
@@ -142,13 +170,14 @@
 			},
 			complete : function(data){
 				var output = "";
-				result_list.forEach(function(item){						
-						console.log('아이템은?'+item.주소지);
-						output += "<tr class='column content' onclick='goPage4()'>";
-			    	  	    output += "<td><input type='hidden' name='zip' value='"+item['헌혈의 집']+"'>"+item['헌혈의 집']+'</td>';
+				result_list.forEach(function(item,index){						
+						console.log('아이템은?'+index);
+						output += "<tr class='column content' onclick='goPage4(this)'>";
+			    	  	    output += "<td>" + item['헌혈의 집'] + '</td>';
+			      			//output += "<td><input type='hidden' name='index' value='"+index+"'></td>";
 			      			output += "<td>"+'09:00 ~ 18:00'+'</td>';
-			            	output += "<td><input type='hidden' name='addr' value='"+item.주소지+"'>"+item.주소지+'</td>';
-			            	output += "<td><input type='hidden' name='phone' value='"+item.전화번호+"'>"+item.전화번호+"</td>";            
+			            	output += "<td>"+item.주소지+'</td>';
+			            	output += "<td>"+item.전화번호+"</td>";            
 			            	output += '</tr>';							
 				});
 				$(".content").remove();		//데이터 지우기				
@@ -315,7 +344,6 @@ option {
 </head>
 <body>
 	<%@include file="../includes/header.jsp"%>
-
 	<div class="order_box">
 		<ul class="order">
 			<li>헌혈 유의사항</li>
@@ -345,7 +373,6 @@ option {
 			</div>
 		</form>
 		<hr class="hr">
-		<form action="page4.do" id="frm">
 			<table class="blood_info" id="info">
 				<tr class="column">
 					<th>헌혈의집명</th>
@@ -353,8 +380,7 @@ option {
 					<th>주소</th>
 					<th>연락처</th>
 				</tr>			
-			</table>			
-		</form>
+			</table>
 		<div id="page"></div>
 	</main>
 
