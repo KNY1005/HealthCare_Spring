@@ -82,7 +82,14 @@
 			</exclusions>
 			<!-- <scope>runtime</scope> -->
 		</dependency>
-
+		<!-- 비밀번호 암호화 -->
+		<!-- spring-security-web -->
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-web</artifactId>
+		    <version>${org.springframework-version}</version>
+		</dependency>
 		<!-- @Inject -->
 		<dependency>
 			<groupId>javax.inject</groupId>

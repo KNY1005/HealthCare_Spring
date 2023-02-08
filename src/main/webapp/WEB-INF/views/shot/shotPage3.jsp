@@ -2,6 +2,12 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
+<%    
+    request.setCharacterEncoding("UTF-8");
+    String orgnm = request.getParameter("orgnm");
+    String orgZipaddr = request.getParameter("orgZipaddr");
+    String orgTlno = request.getParameter("orgTlno");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +22,8 @@
 	<meta name="msapplication-TileImage"
 		content="${path }/resources/image/favicon/ms-icon-144x144.png" />
 	<meta name="theme-color" content="#ffffff" />
-<script src="https://code.jquery.com/jquery-latest.min.js" type="application/javascript"></script>
+	<script src="https://code.jquery.com/jquery-latest.min.js" type="application/javascript"></script>
+	 
 	<script>
 		$(document).ready(function(){
         $(".choice").click(function(){
@@ -32,7 +39,6 @@
 		font-weight: bold;
 	}
     main {
-        
         width: 1320px;
         height: 1000px;
         margin: 100px auto;
@@ -166,10 +172,10 @@
 			</div>
 			<div class="hospital">
 				<ul>
-					<li>땡땡 병원</li>
+					<li>병원명 :<%= orgnm %></li>
 					<li>진료시간 : 00:00 ~ 00:00</li>
-					<li>주소 : 전라북도 전주시 완산구 땡땡로 77</li>
-					<li>연락처 : 063-222-0000</li>
+					<li>주소 :<%= orgZipaddr %></li>
+					<li>연락처 :<%= orgTlno %></li>
 				</ul>
 			</div>  
         </div>
@@ -240,7 +246,7 @@
 					</div>
 					<div id="time">
 						<label for="">시간</label>
-						<input type="time">
+						<input type="time" min="9:00" max="19:00" step="30" required>
 					</div>
 					<div id="btn">
 						<button onClick="location.href='abc4.do'">예약</button>
