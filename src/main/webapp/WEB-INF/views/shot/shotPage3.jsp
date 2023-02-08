@@ -2,11 +2,19 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
+<%@ page import="java.util.*"%>
+<%@ page import="edu.study.vo.ShotVo"%>
 <%    
     request.setCharacterEncoding("UTF-8");
     String orgnm = request.getParameter("orgnm");
     String orgZipaddr = request.getParameter("orgZipaddr");
     String orgTlno = request.getParameter("orgTlno");
+%>
+<%
+
+	List<ShotVo> list = (List<ShotVo>)request.getAttribute("datalist");	//형변환,컨트롤러의 키값을 가져옴
+
+	
 %>
 <!DOCTYPE html>
 <html>

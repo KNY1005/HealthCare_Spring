@@ -21,7 +21,7 @@ public class ShotController {
 	@Autowired
 	private ShotService shotService;
 	
-	@RequestMapping(value="/list.do")
+	@RequestMapping(value="/list.do", method = RequestMethod.GET)
 	public String shotlist(Model model) {	//매개변수 필요없음
 		
 		List<ShotVo> list = shotService.list();

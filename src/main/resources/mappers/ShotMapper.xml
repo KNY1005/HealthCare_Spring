@@ -5,7 +5,7 @@
  
 
 <mapper namespace="edu.study.mapper.shotMapper">
-	<select id="Shotlist" resultType="UserVo">
+	<select id="Shotlist" resultType="shotVo">
 		select cd
 			  ,cdNm
 			  ,cdDate
