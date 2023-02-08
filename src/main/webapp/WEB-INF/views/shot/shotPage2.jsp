@@ -358,7 +358,6 @@
           <div id="address_search">지역                            
                   <select id="sido"><option disabled selected>시/도</option></select>
                   <select id="sigugun"><option disabled selected>시/구/군</option></select>
-                  <select id="dong"><option disabled selected>읍/면/동</option></select> 
                   <button id="btn2" onClick="getList()" value="ajax"><i class="xi-search xi-2x"></i></button>                 
           </div>
         </div>
