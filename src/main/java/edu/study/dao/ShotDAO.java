@@ -16,12 +16,10 @@ public class ShotDAO {
 	
 	public List<ShotVo> list(ShotVo vo){
 		
-		return sqlSession.selectList("edu.study.mapper.shotMapper.list");
+		return sqlSession.selectList("edu.study.mapper.shotMapper.shotList");
 		
 	}
 
-	public int selectByCd(int cd) {
-		return sqlSession.selectOne("edu.study.mapper.shotMapper.selectByCd", cd);
-	}
+	
 	
 }

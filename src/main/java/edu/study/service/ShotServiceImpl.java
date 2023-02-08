@@ -22,11 +22,6 @@ public class ShotServiceImpl implements ShotService {
 		return list;
 	}
 
-	@Override
-	public int selectByCd(int cd) {
-		// TODO Auto-generated method stub
-		return shotDAO.selectByCd(cd);
-	}
-
+	
 	
 }

@@ -259,7 +259,7 @@
     <script>
 	    function goPage(){
 			
-			location.href = "abc3.do?orgnm=<? echo $item.orgnm ?>&&orgZipaddr=주소다!&&orgTlno=연락해!";
+			location.href = "shot/list.do";
 		
 	      }
           function search(){

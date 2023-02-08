@@ -25,7 +25,7 @@ public class ShotController {
 	public String shotlist(Model model,ShotVo vo) {	//매개변수 필요없음
 		
 		List<ShotVo> list = shotService.list(vo);
-		System.out.println("list:"+list);
+		
 		model.addAttribute("datalist",list);
 		
 		return "shot/shotPage3";	

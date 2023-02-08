@@ -5,7 +5,7 @@ public class ShotVo {
 	private int cd;
 	private String cdNm;
 	private String cdDate;
-	private int cdCount;
+	private long cdCount;
 	private String cdFC;
 	private String cdCharge;
 	
@@ -28,7 +28,7 @@ public class ShotVo {
 	public void setCdDate(String cdDate) {
 		this.cdDate = cdDate;
 	}
-	public int getCdCount() {
+	public long getCdCount() {
 		return cdCount;
 	}
 	public void setCdCount(int cdCount) {

@@ -37,7 +37,7 @@
         $(".choice").click(function(){
             $(this).children(".able").stop().slideDown(600);
         });
-        $(".choice").off(function(){
+        $(".choice").dblclick(function(){
             $(this).children(".able").stop().slideUp(600);
         });
     });
@@ -110,6 +110,9 @@
 	
 	.box{
 		background-color: #ffe7e7;
+	}
+	.box li{
+		width: 250px;
 	}
 	.able{ 
 		width: 1297px; 
@@ -197,16 +200,16 @@
 					<li>유/무료</li>
 				</ul>
 			</div>
-			<div class="choice">
 			<c:forEach items="${datalist}" var="vo">
+			<div class="choice">
 				<ul class="box">
 					<li>${vo.cdNm}</li>                
 					<li>${vo.cdDate}</li>
 					<li>${vo.cdCount}</li>
 					<li>${vo.cdFC}</li>
 				</ul>
-			</c:forEach>
-				<!-- <div class="able" style="display: none;">
+			
+				<div class="able" style="display: none;">
 					<div id="date">
 						<label for="">날짜</label>
 						<input type="date">
@@ -218,8 +221,9 @@
 					<div id="btn">
 						<button onClick="location.href='abc4.do'">예약</button>
 					</div>
-				</div>	 -->
+				</div>
 			</div>
+			</c:forEach>
         </div>
 	</main>
 	<%@include file="../includes/footer.jsp"  %>

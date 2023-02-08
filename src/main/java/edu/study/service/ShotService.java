@@ -7,6 +7,5 @@ import edu.study.vo.ShotVo;
 public interface ShotService {
 
 	List<ShotVo> list(ShotVo vo);	
-	int selectByCd(int cd);
 	
 }

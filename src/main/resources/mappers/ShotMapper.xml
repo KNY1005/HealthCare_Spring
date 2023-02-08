@@ -5,7 +5,7 @@
  
 
 <mapper namespace="edu.study.mapper.shotMapper">
-	<select id="Shotlist" resultType="shotVo">
+	<select id="shotList" resultType="shotVo">
 		select cd
 			  ,cdNm
 			  ,cdDate
@@ -15,9 +15,5 @@
 			from table_shot
 	</select>
 	
-	<select id="selectByCd" parameterType="String" resultType="int">
-		select count(*)
-			from table_shot
-			where cd = #{cd}
-	</select>
+	
 </mapper>
