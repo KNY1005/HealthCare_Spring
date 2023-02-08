@@ -259,8 +259,8 @@
     <script>
 	    function goPage(){
 			
-			location.href = "shot/list.do";
-		
+			location.href = "shot/abc3.do";
+			
 	      }
           function search(){
               var sido = $("#sido option:selected").text();
@@ -286,9 +286,9 @@
     				var output = "";
     				list.forEach(function(item){						
     						//console.log('아이템은?'+item.orgZipaddr);
-    						output += "<tr class='content' onclick='goPage()'>";
+    						output += "<tr class='content' onclick='goPage(this)'>";
     			    	  	output += '<td id="next1">'+item['orgnm']+'</td>';
-    			      		output += '<td>'+'00:00 ~ 00:00'+'</td>';
+    			      		output += '<td>'+'09:00 ~ 18:00'+'</td>';
     			            output += '<td id="next2">'+item.orgZipaddr+'</td>';
     			            output += '<td id="next3">'+item.orgTlno+'</td>';            
     			            output += '</tr>';							
