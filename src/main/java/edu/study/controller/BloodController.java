@@ -43,7 +43,10 @@ public class BloodController {
 		return "blood/bloodPage4";	
 	}
 	@RequestMapping(value = "page5.do", method = RequestMethod.GET)	
-	public String bloodPage5() {	
+	public String bloodPage5(HttpServletRequest request, Model model) {	
+		String[] zip = request.getParameterValues("zip");
+		System.out.println("Áý¸íÀº?"+zip[0]);
+		model.addAttribute("zip",zip[0]);
 		
 		return "blood/bloodPage5";	
 	}

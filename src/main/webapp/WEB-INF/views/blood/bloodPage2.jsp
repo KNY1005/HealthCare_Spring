@@ -51,6 +51,7 @@
 	height: 600px;
 }
 
+#main hr{ border: 1px solid #FF7373;}
 #warning span {
 	font-size: 25px;
 	font-weight: bold;
@@ -94,7 +95,7 @@
 	<main id="main">
 		<h2>헌혈 전자문진</h2>
 		<hr>
-			<iframe src="https://www.bloodinfo.net/emi2/go_emi4_login_page.do?lang=ko" style="height:1500px; width:1300px;"></iframe>
+			<iframe src="https://www.bloodinfo.net/emi2/go_emi4_login_page.do?lang=ko" style="height:1000px; width:1300px;"></iframe>
 
 		<a href="page3.do">헌혈 예약하러가기</a>
 	</main>

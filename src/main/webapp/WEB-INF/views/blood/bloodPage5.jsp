@@ -120,7 +120,7 @@ body, h1, h2, h3, h4, h5, h6, li, p, #nav li a, #topbar, input, button,
 		<div id="infor">
 			<ul>
 				<li>헌혈의집명</li>
-				<li>땡땡헌혈의집</li>
+				<li>${zip}</li>
 			</ul>
 			<ul>
 				<li>날짜</li>

@@ -173,12 +173,11 @@
 				result_list.forEach(function(item,index){						
 						console.log('아이템은?'+index);
 						output += "<tr class='column content' onclick='goPage4(this)'>";
-			    	  	    output += "<td>" + item['헌혈의 집'] + '</td>';
-			      			//output += "<td><input type='hidden' name='index' value='"+index+"'></td>";
-			      			output += "<td>"+'09:00 ~ 18:00'+'</td>';
-			            	output += "<td>"+item.주소지+'</td>';
-			            	output += "<td>"+item.전화번호+"</td>";            
-			            	output += '</tr>';							
+			    	  	output += "<td>" + item['헌혈의 집'] + '</td>';
+			      		output += "<td>"+'09:00 ~ 18:00'+'</td>';
+			            output += "<td>"+item.주소지+'</td>';
+			            output += "<td>"+item.전화번호+"</td>";            
+			            output += '</tr>';							
 				});
 				$(".content").remove();		//데이터 지우기				
 	      	    $("#info").append(output);  // 새로운 데이터 덮어쓰기 */			

@@ -173,38 +173,40 @@ main .timetable #button {
 
 	<main>
 		<h2>헌혈 예약</h2>
-		<div class="medical">
-			<p>${zip}</p>
-			<p>진료시간 : 09:00 ~ 18:00</p>
-			<p>주소 : ${addr }</p>
-			<p>연락처 : ${phone }</p>
-		</div>
-		<!--//.medical-->
-		<hr>
-		<div class="timetable">
-			<div class="able">
-				<div id="type">
-					<p>
-						<label> 헌혈종류</label><br> <input type="radio" id="blood_type1"
-							name="type"><label for="type1">전혈</label> <input
-							type="radio" id="blood_type2" name="type"><label
-							for="type2">혈장</label> <input type="radio" id="blood_type3"
-							name="type"><label for="type3">혈소판</label>
-				</div>
-
-				<div id="date">
-					<label for="date">날짜</label><br> <input name="date"
-						type="date">
-				</div>
-				<div id="time">
-					<label for="time">시간</label><br> <input name="time"
-						type="time">
-				</div>
-
+		<form action="page5.do" method="get">
+			<div class="medical">
+				<p><input type="hidden" name="zip" value="${zip}">${zip}</p>
+				<p>진료시간 : 09:00 ~ 18:00</p>
+				<p>주소 : ${addr }</p>
+				<p>연락처 : ${phone }</p>
 			</div>
-			<!--//.able-->
-			<button id="button" type="button" onclick="location.href='page5.do'">예약</button>
-		</div>
+			<!--//.medical-->
+			<hr>
+			<div class="timetable">
+				<div class="able">
+					<div id="type">
+						<p>
+							<label> 헌혈종류</label><br> <input type="radio" id="blood_type1"
+								name="type"><label for="type1">전혈</label> <input
+								type="radio" id="blood_type2" name="type"><label
+								for="type2">혈장</label> <input type="radio" id="blood_type3"
+								name="type"><label for="type3">혈소판</label>
+					</div>
+	
+					<div id="date">
+						<label for="date">날짜</label><br> <input name="date"
+							type="date">
+					</div>
+					<div id="time">
+						<label for="time">시간</label><br> <input name="time"
+							type="time">
+					</div>
+	
+				</div>
+				
+				<button id="button" >예약</button>
+			</div> 
+		</form>
 		<!--//.timetable-->
 	</main>
 	<%@include file="../includes/footer.jsp"%>
