@@ -32,6 +32,7 @@ public interface MemberService {
 	
 	//아이디찾기
 	public String get_searchId(String mname, String mphone);
+	
 
 
 }

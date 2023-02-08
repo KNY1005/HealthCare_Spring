@@ -2,6 +2,7 @@ package edu.study.service;
 
 import java.util.List;
 
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,10 +14,23 @@ public class MemberServiceImpl implements MemberService {
 
 	@Autowired
 	private MemberDAO memberdao;
-
+	@Autowired
+	private SqlSessionTemplate memberSqlSession;
+	
 	@Override
 	public MemberVo login(MemberVo vo)throws Exception {
 		System.out.println(vo.getMid());
+		
+		System.out.println("UserLoginService // 로그인 객체 확인 userVO : " + vo);
+		String mid = vo.getMid();
+		String mpwd = vo.getMpwd();
+
+		MemberVo membervo = memberdao.login(vo);
+		System.out.println("UserLoginService // 로그인 객체 확인 vo : " + membervo);
+
+		// 로그인 결과값
+		int result = 0;
+
 		return memberdao.login(vo);
 	}
 
@@ -63,5 +77,6 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 	}

@@ -42,7 +42,7 @@ public class MemberDAO {
 		return sqlSession.selectOne("edu.study.mapper.memberMapper.login", vo);
 	}
 	
-	/*아이디 중복검사(미구현)*/
+	/*아이디 중복검사*/
 	public int selectById(String mid) {
 		
 		return sqlSession.selectOne("edu.study.mapper.memberMapper.selectById", mid);

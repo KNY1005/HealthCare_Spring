@@ -25,6 +25,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 import edu.study.service.MemberService;
+import edu.study.service.memberSha256;
 import edu.study.vo.MemberVo;
 import oracle.net.aso.l;
 import org.slf4j.Logger;
@@ -54,15 +55,25 @@ public class MemberController {
 		
 		HttpSession session = request.getSession();
 		MemberVo login = memberService.login(vo);
-		 
+		
+		// 비밀번호 암호화
+		String mpwd = vo.getMpwd();
+		vo.setMpwd(memberSha256.encrypt(mpwd));
+		// 암호화 확인
+		System.out.println("user_pw : " + vo.getMpwd());
+		
+		
+		System.out.println("로그인실패");
 		if(login == null) {
 			session.setAttribute("member", null);
 			System.out.println("로그인실패");
-			
-			
 			return "member/login";
 		}else {
 			session.setAttribute("member", login);
+			
+		
+			System.out.println(vo.getMid());
+			System.out.println(vo.getMpwd());
 			System.out.println(login);
 			System.out.println("로그인완료");
 			return "redirect:/";
@@ -89,8 +100,18 @@ public class MemberController {
 	public String join(MemberVo vo, HttpServletRequest request){
 		System.out.println("회원가입중");
 		
+		// 암호 확인
+		System.out.println("첫번째:" + vo.getMpwd());
+		// 비밀번호 암호화 (sha256
+		String encryPassword = memberSha256.encrypt(vo.getMpwd());
+		vo.setMpwd(encryPassword);
+		System.out.println("두번째:" + vo.getMpwd());
+		// 회원가입 메서드
 		memberService.register(vo);
-		
+		/*
+		// 인증 메일 보내기 메서드
+		mailsender.mailSendWithUserKey(vo.getMemail(), vo.getMemail(), request);
+		*/
 		return "member/login";
 	}
 	
@@ -115,6 +136,7 @@ public class MemberController {
 		
 		return "member/memberSearch";
 	}
+	
 /*
 	//아이디찾기
 	@RequestMapping(value = "/memberSearch", method = RequestMethod.POST)
