@@ -284,8 +284,9 @@ main {
 				</c:if>
 			</ul>
 		</div>
+		<c:if test="${member.mgrade == 'A'}">
 		<button class="button" onClick="location.href='write.do'">글쓰기</button>
-		
+		</c:if>
 
 	</main>
 	<%@include file="../includes/footer.jsp"%>
