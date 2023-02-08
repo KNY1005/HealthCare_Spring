@@ -38,6 +38,16 @@ public class ReplyDAO {
 		return sqlSession.delete("edu.study.mapper.boardMapper.replyDelete", pidx);
 	}
 
+	public int like_cnt_up(int pidx) {
+		
+		return sqlSession.update("edu.study.mapper.boardMapper.like_cnt_up", pidx);
+	}
+	
+	public int like_cnt_down(int pidx) {
+		
+		return sqlSession.update("edu.study.mapper.boardMapper.like_cnt_down", pidx);
+		
+	}
 	
 	
 }

@@ -372,12 +372,14 @@
 			<!-- 답변 시작 -->
 			<div class="doctor_writing_content" >
 			<c:if test="${member.mgrade == 'D'}">
-				<div id="writing_container">
+				<div id="writing_container" style="display:none;">
 					<div class="container">
 				    	<label for="pcontent"></label>
 				        	<form name="replyInsertForm">
 				            	<div class="input-group">
 				               	<input type="hidden" name="bidx" value="${vo.bidx}"/>
+				               	<input type="hidden" id='pidx' name="pidx" value=''>
+				               	<input type="hidden" id='midx' name="midx" value=''>
 				               	<input type="hidden" name="pwriter" value="${member.mname}"/>
 				               	<input type="text" class="form-control" id="ptitle" name="ptitle" placeholder="제목을 입력하세요.">
 				               	<input type="text" class="form-control" id="pcontent" name="pcontent" placeholder="내용을 입력하세요.">

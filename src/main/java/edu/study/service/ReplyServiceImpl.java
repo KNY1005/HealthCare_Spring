@@ -38,6 +38,18 @@ public class ReplyServiceImpl implements ReplyService{
 		return replyDAO.replyDelete(pidx);
 	}
 
+	@Override
+	public int like_cnt_up(int pidx) {
+		
+		return  replyDAO.like_cnt_up(pidx);
+	}
+
+	@Override
+	public int like_cnt_down(int pidx) {
+		
+		return replyDAO.like_cnt_down(pidx);
+	}
+
 	
 	
 

@@ -160,4 +160,57 @@
 		FROM TABLE_REPLY
 		where BIDX = #{bidx}
 	</select>
+	
+	<update id="like_check" parameterType="HashMap">
+	    UPDATE TABLE_LIKE
+	    SET like_check = like_check + 1 
+	    WHERE MIDX=#{midx} AND PIDX=#{pidx}
+  	</update>
+  	
+ 	<update id="like_check_cancel" parameterType="HashMap">
+	    UPDATE TABLE_LIKE
+	    SET like_check = 0
+	    WHERE MIDX=#{midx} AND PIDX=#{pidx}
+  	</update>
+	  
+	<select id="countbyLike" resultType="int" parameterType="HashMap">
+	   SELECT COUNT(likeno) as cnt
+	   FROM TABLE_LIKE
+	   WHERE PIDX=#{pidx} AND MIDX=#{midx}
+	</select>
+	
+	<insert id="create" parameterType="HashMap">
+	   INSERT INTO TABLE_LIKE(likeno, pidx, midx, like_check) 
+	   VALUES ((SELECT NVL(MAX(likeno), 0) + 1 as likeno FROM TABLE_LIKE),
+	                #{pidx}, #{midx}, 0)
+	</insert>
+	
+	<delete id="deletebyMidxLike" parameterType="int">
+	    DELETE FROM TABLE_LIKE
+	    WHERE MIDX=#{midx}
+	</delete>
+	
+	<delete id="deletebyPidxLike" parameterType="int">
+	    DELETE FROM TABLE_LIKE
+	    WHERE PIDX=#{pidx}
+	</delete>
+	
+	<select id="readLike" resultType="likeVO" parameterType="HashMap">
+	    SELECT LIKENO, PIDX, MIDX, like_check 
+	    FROM TABLE_LIKE
+	    WHERE PIDX=#{pidx} AND MIDX=#{midx}
+	</select>
+	
+	<update id="like_cnt_up"  parameterType="int">
+		UPDATE TABLE_REPLY
+		SET PLIKE = plike + 1 
+		WHERE PIDX=#{pidx} AND MIDX=#{midx}
+	</update>
+	
+	<update id="like_cnt_down" parameterType="int">
+		UPDATE TABLE_REPLY
+	    SET PLIKE = 0
+	    WHERE PIDX=#{pidx} AND MIDX=#{midx}
+	</update>
+  
 </mapper>

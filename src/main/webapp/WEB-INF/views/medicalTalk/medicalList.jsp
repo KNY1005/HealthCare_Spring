@@ -558,7 +558,7 @@
 				</c:if>
 			</ul>
 		</div>
-		<button class="button" onclick="location.href='medicalWrite.do'">글쓰기</button>
+		 <c:if test="${member!= null }"><button class="button" onclick="location.href='medicalWrite.do'">글쓰기</button></c:if>
 	</main>	
 	
 	<%@include file="../includes/footer.jsp"%>

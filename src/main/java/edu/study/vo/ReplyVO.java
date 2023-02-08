@@ -6,10 +6,18 @@ public class ReplyVO {
 	private int pgrp;
 	private int pgrps;
 	private int midx;
+	private int plike;
+	public int getPlike() {
+		return plike;
+	}
+	public void setPlike(int plike) {
+		this.plike = plike;
+	}
 	private String pcontent;
 	private String pwriter;
 	private String ptitle;
 	private String pdate;
+	
 	
 	public int	  getPidx()		{ return pidx;		}
 	public int	  getBidx()		{ return bidx;		}

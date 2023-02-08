@@ -11,7 +11,7 @@
 		<typeAlias type="edu.study.vo.FileVO" alias="fileVO" />
 		<typeAlias type="edu.study.vo.ReplyVO" alias="ReplyVO" />
 		<typeAlias type="edu.study.vo.ShotVo" alias="ShotVo"/>
-		
+		<typeAlias type="edu.study.vo.LikeVO" alias="likeVO"/>
     </typeAliases>
     	
 </configuration>

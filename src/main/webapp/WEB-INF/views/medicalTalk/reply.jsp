@@ -29,7 +29,14 @@
 	            var a =''; 
 	            $.each(data, function(key, value){ 
 	                a += '<div class="replyArea" style="border: 3px solid #FF8F8F; border-radius: 25px;	width: 1100px; height:280px; margin-bottom: 15px;">';
-	                a += '<div class="replyTitle'+value.ptitle+'" style="margin:10px 0 10px 65px; width: 970px; height: 35px; text-align: left; font-size: 25px;">'+value.ptitle+'';
+	                a += '<div class="replyTitle'+value.ptitle+'" style="margin:15px 0 10px 65px; width: 970px; height: 35px; text-align: left; font-size: 25px;">'+value.ptitle+'';
+	                a += '<div class="replyLike">';
+	                a += '<c:choose><c:when test="${midx ne null}">';
+	                a += '<a href='javascript: like_func();'><img src='${path }/resources/image/dislike.png' id='like_img'></a>';
+	                a += '</c:when>';
+	                a += '<c:otherwise>';
+	                a += '<a href='javascript: login();'><img src='${path }/resources/image/dislike.png'></a>';
+	                a += '</c:otherwise></c:choose>';
 	                a += '</div>';
 	                a += '<div class="replyContent'+value.pidx+'" style="margin: 0 0 10px 65px; width: 970px; height: 150px; ">  '+value.pcontent +'';
 	                a += '</div>';
@@ -38,7 +45,7 @@
 	                a += '</div>';
 	                a += '<div class="replyDate'+value.pdate+'" style="	margin-left:50px; font-size:16px; margin-top:10px;">  '+value.pdate +'';
 	                a += '</div>';
-	                a += '<div class="button" style="display:flex; margin-left:540px; margin-bottom:10px;">';
+	                a += '<div class="button" style="display:flex; margin-left:530px; margin-bottom:20px;">';
 	                a += '<a onclick="replyUpdate('+value.pidx+',\''+value.pcontent+'\');" style="margin-left:10px; width: 80px; height: 15px; padding: 10px; font-size:15px; font-weight: bold; text-align:center; background-color: #FFEFEF; border: #FFEFEF; border-radius: 30px; "> 수정 </a>';
 	                a += '<a onclick="replyDelete('+value.pidx+');"  style="margin-left:10px; width: 80px; height: 15px; padding: 10px; font-size:15px; font-weight: bold; text-align:center; background-color: #FFEFEF; border: #FFEFEF; border-radius: 30px; "> 삭제 </a> </div>';
 	                a += '</div></div>';
@@ -103,7 +110,41 @@
 	        }
 	    });
 	}
+	
+/* 	function like_func(){
+		  var replyInsertForm = $('#replyInsertForm');
+		  var pidx = $('#pidx', replyInsertForm).val();
+		  var midx = $('#midx', replyInsertForm).val();
+		  
+		  $.ajax({
+		    url: 'medicalView/reply/like',
+		    type: "GET",
+		    cache: false,
+		    dataType: "json",
+		    data: 'pidx=' +pidx+ '&midx=' +midx,
+		    success: function(data) {
+		      var msg = '';
+		      var like_img = '';
+		      msg += data.msg;
+		      alert(msg);
+		      
+		      if(data.like_check == 0){
+		        like_img = "${path }/resources/image/dislike.png";
+		      } else {
+		        like_img = "${path }/resources/image/like.png";
+		      }      
+		      $('#like_img', replyInsertForm).attr('src', like_img);
+		      $('#like_cnt').html(data.like_cnt);
+		      $('#like_check').html(data.like_check);
+		    },
+		    error: function(request, status, error){
+		      alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		    }
+		  });
+		} */
+
 	 
+	
 	 
 	 
 	 
