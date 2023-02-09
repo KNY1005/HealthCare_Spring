@@ -1,6 +1,21 @@
 window.onload = function () {
 
-
+ //nav script - start
+  $(document).ready(function () {
+    //브라우저가 열렸을 때 이 기능을 수행함
+    $(".nav").hover(
+      () => {
+        //.nav 클래스 명을 가진 엘리먼트(=요소)가 마우스로 호버되면 아래 함수 수행하라
+        $("#sliding_menu").stop().slideDown(600); //아이디가 sliding_menu라는 엘리먼트를 sliDown(시간)함수로 표시 / 1000이 1초 /stop함수는 누적되는 큐(queue) 제거
+      },
+      function () {
+        //마우스가 nav를 떠나면 아래 명령을 수행
+        $("#sliding_menu").stop().slideUp(600); //마우스가 nav를 떠나면 slideUp함수로 드롭다운 메뉴를 다시 숨김
+      }
+    );
+  });
+  //nav script - end
+  
   //프로필 서브 메뉴바
   var a1, a2;
   var onHoverText = false;
@@ -50,19 +65,5 @@ window.onload = function () {
 
   init();
   
-    //nav script - start
-  $(document).ready(function () {
-    //브라우저가 열렸을 때 이 기능을 수행함
-    $(".nav").hover(
-      () => {
-        //.nav 클래스 명을 가진 엘리먼트(=요소)가 마우스로 호버되면 아래 함수 수행하라
-        $("#sliding_menu").stop().slideDown(600); //아이디가 sliding_menu라는 엘리먼트를 sliDown(시간)함수로 표시 / 1000이 1초 /stop함수는 누적되는 큐(queue) 제거
-      },
-      function () {
-        //마우스가 nav를 떠나면 아래 명령을 수행
-        $("#sliding_menu").stop().slideUp(600); //마우스가 nav를 떠나면 slideUp함수로 드롭다운 메뉴를 다시 숨김
-      }
-    );
-  });
-  //nav script - end
+   
 };

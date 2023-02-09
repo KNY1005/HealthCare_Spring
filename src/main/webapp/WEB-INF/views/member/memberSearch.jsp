@@ -35,6 +35,7 @@
 </style>
   <body>
   <body>
+  
   <div id="my_modal">
    <div id="background_modal" class="background_modal">
 	<div class="modal_contents">
@@ -49,6 +50,7 @@
     <a class="modal_close_btn">닫기</a>
 </div>
 </div>
+
  <div class="full">
 		<div class="container">
 			<div class="area_inputs wow fadeIn">
@@ -105,6 +107,7 @@
 		</div>
 	</div>
 	<script type="text/javascript">
+	//모달창
 	function modal(id) {
 	    var zIndex = 9999;
 	    var modal = document.getElementById(id);
@@ -157,7 +160,7 @@
 	    // 모달창 띄우기
 	    modal('my_modal');
 	});
-	
+	//모달창
 	
 	
 	
