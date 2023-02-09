@@ -55,13 +55,13 @@
                     }
                 });
                 //성공시 이동할 페이지
-                location.href='<%=request.getContextPath()%>/abc9.do?msg='+msg;
+                location.href='<%=request.getContextPath()%>/shot/abc9.do?msg='+msg;
             } else {
                 msg = '결제에 실패하였습니다.';
                 msg += '에러내용 : ' + rsp.error_msg;
                 alert(msg);
                 //실패시 이동할 페이지
-                location.href="<%=request.getContextPath()%>/abc6.do";
+                location.href="<%=request.getContextPath()%>/shot/abc6.do";
                 
             }
         });
@@ -200,14 +200,7 @@
                   <li></li>
                 </ul>
             </div>
-            
-            <div id="button">
-                <button style="background-color: #05CF00;"
-                 onClick="location.href='abc8.do'">네이버페이</button>
-                <button style="background-color: #FFE800;"
-                 id="charge_kakao">카카오페이</button>
-                <button onClick="location.href='abc8.do'">카드결제</button>
-            </div>
+
             
         </div>
     </main>
