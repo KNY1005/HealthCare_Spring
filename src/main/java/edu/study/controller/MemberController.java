@@ -139,6 +139,31 @@ public class MemberController {
 	
 
 	//아이디찾기
+	@RequestMapping(value = "/search_result_id.do",method=RequestMethod.POST)
+	public String search_result_id(HttpServletRequest request, Model model,
+	    @RequestParam(required = true, value = "mname") String mname, 
+	    @RequestParam(required = true, value = "mphone") int mphone,
+	    MemberVo searchVo) {
+		System.out.println("아이디 비밀번호 찾기중 하하");
+
+	 
+	try {
+	    
+	    searchVo.setMname(mname);
+	    searchVo.setMphone(mphone);
+	    MemberVo memberSearch = memberService.memberIdSearch(searchVo);
+	    
+	    model.addAttribute("searchVo", memberSearch);
+	 
+	} catch (Exception e) {
+	    System.out.println(e.toString());
+	    model.addAttribute("msg", "오류가 발생되었습니다.");
+	}
+	 
+	return "/member/search_result_id";
+	}
+
+	/*
 	@RequestMapping(value = "/memberSearch", method = RequestMethod.POST)
 	@ResponseBody
 	public String userIdSearch(HttpServletRequest request, Model model,
@@ -160,11 +185,10 @@ public class MemberController {
 		    model.addAttribute("msg", "오류가 발생되었습니다.");
 		}
 		
-
-		
-		return "member/memberSearch";
+		return "member/memberSearch";		
 	}
 
+	*/
 /*
 	//비밀번호찾기
 	@RequestMapping(value = "/user/searchPassword", method = RequestMethod.GET)
