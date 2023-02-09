@@ -14,6 +14,11 @@
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
 	<dependencies>
+		<dependency>
+          <groupId>mysql</groupId>
+          <artifactId>mysql-connector-java</artifactId>
+          <version>8.0.24</version>
+      	</dependency>
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -82,7 +87,9 @@
 			</exclusions>
 			<!-- <scope>runtime</scope> -->
 		</dependency>
-
+		
+		
+		
 		<!-- @Inject -->
 		<dependency>
 			<groupId>javax.inject</groupId>

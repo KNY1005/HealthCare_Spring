@@ -18,8 +18,8 @@
 	</select>
 	
 	<insert id="register" parameterType="MemberVo">
-		 insert into table_member(  midx 
-		 							,mid
+		 insert into table_member(   
+		 							mid
 	   					       		, mpwd
 	   					       		, mname
 	   					       		, mphone
@@ -28,8 +28,8 @@
 	   					       		, memail
 	   					       		, mgrade
 	   					       		 	)
-	                  values(   midx_seq.nextval
-	                  			, #{mid} 
+	                  values(   
+	                  			 #{mid} 
 	                 		   , #{mpwd}
 	                 		   , #{mname}
 	                 		   , #{mphone}
@@ -58,8 +58,7 @@
 	<!-- 아이디찾기 -->
 	<select id="searchId" resultType="String">
 		<![CDATA[
-    select
-        *
+    select *
     from
         table_member
     where
