@@ -257,9 +257,38 @@
       }
     </script>
     <script>
-	    function goPage(){
-			
-			location.href = "shot/abc3.do";
+	    function goPage(obj){
+	    	var abc = obj.querySelectorAll("td");
+	  		var zip = abc[0].innerText;
+	  		var addr = abc[2].innerText;
+	  		var phone = abc[3].innerText;
+				
+			var form = document.createElement("form");
+	        form.setAttribute("charset", "UTF-8");
+	        form.setAttribute("method", "GET");  //Post 방식
+	        form.setAttribute("action", "abc3.do"); //요청 보낼 주소
+
+	        var hiddenField = document.createElement("input");
+	        hiddenField.setAttribute("type", "hidden");
+	        hiddenField.setAttribute("name", "zip");
+	        hiddenField.setAttribute("value", zip);
+	        form.appendChild(hiddenField);       	
+	       
+	        hiddenField = document.createElement("input");
+	        hiddenField.setAttribute("type", "hidden");
+	        hiddenField.setAttribute("name", "addr");
+	        hiddenField.setAttribute("value", addr);
+	        form.appendChild(hiddenField);
+	        
+	        hiddenField = document.createElement("input");
+	        hiddenField.setAttribute("type", "hidden");
+	        hiddenField.setAttribute("name", "phone");
+	        hiddenField.setAttribute("value", phone);
+	        form.appendChild(hiddenField);
+	        
+	        document.body.appendChild(form);
+
+	        form.submit(); 
 			
 	      }
           function search(){
@@ -284,13 +313,13 @@
     				
     				var list = data.data;
     				var output = "";
-    				list.forEach(function(item){						
+    				list.forEach(function(item,index){						
     						//console.log('아이템은?'+item.orgZipaddr);
     						output += "<tr class='content' onclick='goPage(this)'>";
-    			    	  	output += '<td id="next1">'+item['orgnm']+'</td>';
+    			    	  	output += '<td>'+item['orgnm']+'</td>';
     			      		output += '<td>'+'09:00 ~ 18:00'+'</td>';
-    			            output += '<td id="next2">'+item.orgZipaddr+'</td>';
-    			            output += '<td id="next3">'+item.orgTlno+'</td>';            
+    			            output += '<td>'+item.orgZipaddr+'</td>';
+    			            output += '<td>'+item.orgTlno+'</td>';            
     			            output += '</tr>';							
     				})
     				

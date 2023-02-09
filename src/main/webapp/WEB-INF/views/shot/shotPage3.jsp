@@ -4,17 +4,8 @@
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <%@ page import="java.util.*"%>
 <%@ page import="edu.study.vo.ShotVo"%>
-<%    
-    request.setCharacterEncoding("UTF-8");
-    String orgnm = request.getParameter("orgnm");
-    String orgZipaddr = request.getParameter("orgZipaddr");
-    String orgTlno = request.getParameter("orgTlno");
-%>
 <%
-
 	List<ShotVo> list = (List<ShotVo>)request.getAttribute("datalist");	//형변환,컨트롤러의 키값을 가져옴
-
-	
 %>
 <!DOCTYPE html>
 <html>
@@ -181,14 +172,16 @@
             <div class="menu">
                 <p>예방접종 예약</p>
 			</div>
+			<form action="abc4.do" method="get">
 			<div class="hospital">
 				<ul>
-					<li>병원명 :<%= orgnm %></li>
-					<li>진료시간 : 00:00 ~ 00:00</li>
-					<li>주소 :<%= orgZipaddr %></li>
-					<li>연락처 :<%= orgTlno %></li>
+					<li>병원명 : <input type="hidden" name="zip" value="${zip}">${zip}</li>
+					<li>진료시간 : 09:00 ~ 18:00</li>
+					<li>주소 : ${addr }</li>
+					<li>연락처 : ${phone }</li>
 				</ul>
 			</div>  
+			</form>
         </div>
 		<hr id="line">
 		<div class="list">

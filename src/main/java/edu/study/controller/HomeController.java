@@ -35,52 +35,6 @@ public class HomeController {
 		return "home";
 	}
 	
-	/*예방접종*/
-	@RequestMapping(value = "abc1.do", method = RequestMethod.GET)
-	public String home1() {
-		
-		return "shot/shotCheckMain";
-	}
-	@RequestMapping(value = "abc2.do", method = RequestMethod.GET)
-	public String home2() {
-		
-		return "shot/shotPage2";
-	}
-	@RequestMapping(value = "abc3.do", method = RequestMethod.GET)
-	public String home3() {
-		
-		return "shot/shotPage3";
-	}
-	@RequestMapping(value = "abc4.do", method = RequestMethod.GET)
-	public String home4() {
-		
-		return "shot/shotPage4";
-	}
-	@RequestMapping(value = "abc5.do", method = RequestMethod.GET)
-	public String homea() {
-		
-		return "shot/reserveFree";
-	}
-	@RequestMapping(value = "abc6.do", method = RequestMethod.GET)
-	public String homeb() {
-		
-		return "shot/reserveCharged";
-	}
-	@RequestMapping(value = "abc7.do", method = RequestMethod.GET)
-	public String home7() {
-		
-		return "shot/shotMoney1";
-	}
-	@RequestMapping(value = "abc8.do", method = RequestMethod.GET)
-	public String home8() {
-		
-		return "shot/shotMoney2";
-	}
-	@RequestMapping(value = "abc9.do", method = RequestMethod.GET)
-	public String home9() {
-		
-		return "shot/shotMoney3";
-	}
 
 	/*건강검진예약*/
 	@RequestMapping(value = "medicalmain.do", method = RequestMethod.GET)

@@ -58,7 +58,7 @@ $(document).ready(function(){
               </li>
             </ul>
             <ul>
-              <li><a href="<%=request.getContextPath() %>/abc1.do">예방접종</a></li>
+              <li><a href="<%=request.getContextPath() %>/shot/abc1.do">예방접종</a></li>
             </ul>
             <ul>
               <li><a href="<%=request.getContextPath() %>/medicalmain.do">건강검진</a></li>
@@ -75,7 +75,7 @@ $(document).ready(function(){
           </div>
           <div id="sliding_menu">
             <ul>
-              <li><a href="<%=request.getContextPath() %>/abc1.do">예방접종 예약</a></li>
+              <li><a href="<%=request.getContextPath() %>/shot/abc1.do">예방접종 예약</a></li>
             </ul>
             <ul>
               <li><a href="<%=request.getContextPath() %>/medicalmain.do">건강검진 예약</a></li>
@@ -162,7 +162,7 @@ $(document).ready(function(){
   <div class="main_hover_menu">
         <ul class="main_hover_menu_1">
           <li class="snip1489 ion-ios-star-outline">
-            <a href="<%=request.getContextPath() %>/abc1.do">
+            <a href="<%=request.getContextPath() %>/shot/abc1.do">
               <p>예방접종 예약</p>
               <img src="${path}/resources/image/shot.png" alt="주사기이미지" />
             </a>
