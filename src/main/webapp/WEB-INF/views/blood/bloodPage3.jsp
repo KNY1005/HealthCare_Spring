@@ -76,7 +76,7 @@
             });
 
             //시군구 변경시 행정동 옵션추가
-            jQuery('#sigugun').change(function(){
+            /* jQuery('#sigugun').change(function(){
                 //option 제거
                 jQuery('#dong').empty();
                 jQuery.each(hangjungdong.dong, function(idx, code){
@@ -88,14 +88,14 @@
                 //option중 선택을 기본으로 선택
                 jQuery('#dong option:eq("")').attr('selected', 'selected');
 
-            });
+            }); 
 
             jQuery('#dong').change(function(){
                 var sido = jQuery('#sido option:selected').val();
                 var sigugun = jQuery('#sigugun option:selected').val();
                 var dong = jQuery('#dong option:selected').val();
                 var dongCode = sido + sigugun + dong + '00';
-            });
+            });*/
         });
 
         function fn_option(code, name){
@@ -363,8 +363,7 @@ option {
 			<div id="addr">
 				<div id="address_search">
 					지역 <select class="addr" name="sido" id="sido"><option disabled selected>시/도</option></select>
-					<select class="addr" name="sigugun" id="sigugun"><option disabled selected>시/구/군</option></select>
-					<select class="addr" name="dong" id="dong"><option disabled selected>동</option></select>
+					<select class="addr" name="sigugun" id="sigugun"><option disabled selected>시/구/군</option></select>					
 					<button class="button" type="button" onclick="getInfo();">
 						<i class="xi-search xi-2x"></i>
 					</button>

@@ -1,30 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page import="java.util.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="path" value="${pageContext.request.contextPath}" />
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>건강소식</title>
-	<!--파비콘-->
-	<link rel="icon" type="image/png" sizes="16x16"
+<!--파비콘-->
+<link rel="icon" type="image/png" sizes="16x16"
 	href="${path }/resources/image/favicon/favicon-16x16.png" />
-	<link rel="manifest" href="${path }/resources/image/favicon/manifest.json" />
-	<meta name="msapplication-TileColor" content="#ffffff" />
-	<meta name="msapplication-TileImage"
-		content="${path }/resources/image/favicon/ms-icon-144x144.png" />
-	<meta name="theme-color" content="#ffffff" />
-	<link href="${path}/resources/css/footer.css" rel="stylesheet" />
-	<script>
-		//건강소식 가져오기
+<link rel="manifest"
+	href="${path }/resources/image/favicon/manifest.json" />
+<meta name="msapplication-TileColor" content="#ffffff" />
+<meta name="msapplication-TileImage"
+	content="${path }/resources/image\favicon\android-icon-144x144.png" />
+<meta name="theme-color" content="#ffffff" />
+<script>	
+		/* //건강소식 가져오기
 		$.ajax({
 			type:'POST',
 			dataType:'json',
 			url:"ApiSearchNew.java",
 			data:{'GUBUN':'news','SEARVALUE':SEARVALUE},
 			cache:false,
-			async:false.
+			async:false
 		})
 		.done(function(result){
 			var news_html="";
@@ -40,34 +41,36 @@
 				{
 				$("#news_result").html(news_html);
 				}
-		})
+		}) */
 	
 	
-	</script>	
+	</script>
 <style>
 main {
 	width: 1320px;
 	margin: 100px auto;
 }
-.order_box{
-        width: 790px;
-        height: 110px;
-        display: flex;
- 		align-items: flex-end;
-        justify-content: center;
-      }    
-.order{
-        width: 500px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        }
+
+.order_box {
+	width: 790px;
+	height: 110px;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+}
+
+.order {
+	width: 500px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+}
+
 .h3 {
 	font-weight: bold;
 	font-size: 40px;
-	margin-right:63% ;
+	margin-right: 63%;
 }
-
 
 #head {
 	display: flex;
@@ -134,6 +137,7 @@ main {
 #glass i {
 	
 }
+
 #glass {
 	border: 1px solid #000;
 	padding: 3px 10px 5px 10px;
@@ -147,64 +151,61 @@ main {
 #glass i {
 	
 }
+
 #glass:hover {
 	cursor: pointer;
 }
 
-
-
 .content_box {
-        display: flex;
-        flex-direction: row;
-        background: #fff;
-        border: 4px solid #ff7373;
-        width: 97%;
-        height: 150px;
-        border-radius: 15px;
-      }
+	display: flex;
+	flex-direction: row;
+	background: #fff;
+	border: 4px solid #ff7373;
+	width: 97%;
+	height: 150px;
+	border-radius: 15px;
+}
 
-      .content_img {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 10px;
-        margin-left: 20px;
-        background: #ffdbdb;
-        width: 200px;
-        height: 130px;
-      }
+.content_img {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 10px;
+	margin-left: 20px;
+	background: #ffdbdb;
+	width: 200px;
+	height: 130px;
+}
 
-      .content_img img {
-        width: 200px;
-        height: 110px;
-      }
+.content_img img {
+	width: 200px;
+	height: 110px;
+}
 
-      .content_text p:nth-child(1) {
-        font-size: 40px;
-        font-weight: bold;
-      }
+.content_text p:nth-child(1) {
+	font-size: 40px;
+	font-weight: bold;
+}
 
-      .content_text p:nth-child(2) {
-        font-size: 20px;
-        font-weight: bold;
-        margin-top: 10px;
-      }
+.content_text p:nth-child(2) {
+	font-size: 20px;
+	font-weight: bold;
+	margin-top: 10px;
+}
 
-      .content_text {
-        margin-top: 10px;
-        margin-left: 20px;
-      }
+.content_text {
+	margin-top: 10px;
+	margin-left: 20px;
+}
 
-      .content_list li {
-        margin-top: 20px;
-      }
+.content_list li {
+	margin-top: 20px;
+}
 </style>
 </head>
 <body>
 	<%@include file="../includes/header.jsp"%>
-	<div class="order_box">
-
-	</div>
+	<div class="order_box"></div>
 
 
 	<main>
@@ -227,19 +228,47 @@ main {
 		</div>
 		<hr class="hr">
 		<ul class="content_list">
-        <li>
-          <div class="content_box">
-            <div class="content_img">
-              <img src="${path}/resources/image/logo2.png" />
-            </div>
-            <div class="content_text">
-              <p>제목</p>
-              <p>여기는 내용 입니다</p>
-            </div>
-          </div>
-        </li>
-       
-      </ul>
+			<li>
+				<div class="content_box">
+					<div class="content_img">
+						<img src="${path}/resources/image/logo2.png" />
+					</div>
+					<div class="content_text">
+						<p>제목</p>
+						<p>여기는 내용 입니다</p>
+
+					</div>
+				</div>
+			</li>
+
+		</ul>
+		<script>
+	      $(document).ready(function(){
+				$.ajax({
+					type : "GET",
+					dataType : "JSON",
+					url : "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&channelId=UC6KwCU8Y8Uw4h_Q0ptLZkqw&type=video&key=AIzaSyBEMOzRRSZQw6xFyQVBW8XIB6RDTndW0_Y",
+					contentType : "application/json",
+					success : function(jsonData) {
+						alert("test");						
+						for (var i = 0; i < jsonData.items.length; i++) {
+							var items = jsonData.items[i];							
+							console.log("비디오아이디:"+items.id.videoid);
+							console.log("제목:"+items.snippet.title);
+							console.log("썸네일:"+items.snippet.thumbnails.medium.url);
+							
+		            }
+				},
+					complete : function(data) {
+	
+	            } /*,
+	          		error : function(xhr, status, error) {
+	              	console.log("유튜브 요청 에러: "+error);
+	          } */
+	    	 });
+	      }
+	      )
+      </script>
 	</main>
 	<%@include file="../includes/footer.jsp"%>
 </body>
