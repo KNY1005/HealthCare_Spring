@@ -134,7 +134,7 @@
 			, PDATE
 		)VALUES(    
 			#{bidx}
-			, PIDX_SEQ.NEXTVAL
+			, #{pidx}
 			, #{pcontent}
 			, #{pwriter}	
 			, #{pgrp}
@@ -163,13 +163,13 @@
 	
 	<update id="like_check" parameterType="HashMap">
 	    UPDATE TABLE_LIKE
-	    SET like_check = like_check + 1 
+	    SET LIKE_CHECK = like_check + 1 
 	    WHERE MIDX=#{midx} AND PIDX=#{pidx}
   	</update>
   	
  	<update id="like_check_cancel" parameterType="HashMap">
 	    UPDATE TABLE_LIKE
-	    SET like_check = 0
+	    SET LIKE_CHECK = 0
 	    WHERE MIDX=#{midx} AND PIDX=#{pidx}
   	</update>
 	  
@@ -196,7 +196,7 @@
 	</delete>
 	
 	<select id="readLike" resultType="likeVO" parameterType="HashMap">
-	    SELECT LIKENO, PIDX, MIDX, like_check 
+	    SELECT *
 	    FROM TABLE_LIKE
 	    WHERE PIDX=#{pidx} AND MIDX=#{midx}
 	</select>

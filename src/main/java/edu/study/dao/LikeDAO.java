@@ -32,7 +32,7 @@ public class LikeDAO {
 		return sqlSession.insert("edu.study.mapper.boardMapper.create",hashMap);
 	}
 	
-	public List<LikeVO> readLike(HashMap hashMap) {
+	public LikeVO readLike(HashMap hashMap) {
 		return sqlSession.selectOne("edu.study.mapper.boardMapper.readLike",hashMap);
 	}
 	

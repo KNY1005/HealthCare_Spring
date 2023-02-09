@@ -377,9 +377,8 @@
 				    	<label for="pcontent"></label>
 				        	<form name="replyInsertForm">
 				            	<div class="input-group">
-				               	<input type="hidden" name="bidx" value="${vo.bidx}"/>
-				               	<input type="hidden" id='pidx' name="pidx" value=''>
-				               	<input type="hidden" id='midx' name="midx" value=''>
+				               	<input type="hidden" name="bidx" id='bidx' value="${vo.bidx}"/>
+				               	<input type="hidden" id='midx' name="midx" value="${member.midx}"/>
 				               	<input type="hidden" name="pwriter" value="${member.mname}"/>
 				               	<input type="text" class="form-control" id="ptitle" name="ptitle" placeholder="제목을 입력하세요.">
 				               	<input type="text" class="form-control" id="pcontent" name="pcontent" placeholder="내용을 입력하세요.">
@@ -402,7 +401,8 @@
 
 	</main>
 	<%@include file="../includes/footer.jsp"%>
-<script>
+	
+ <script>
 	function openClose() {
 		if($('#writing_container').css('display') == 'none'){
 			$('#writing_container').show();
@@ -412,7 +412,7 @@
 			$('#answerBtn').text('답변하기');
 		}	
 	}	
-</script>
+</script> 
 	
 </body>
 </html>

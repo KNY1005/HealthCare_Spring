@@ -1,7 +1,6 @@
 package edu.study.service;
 
 import java.util.HashMap;
-import java.util.List;
 
 import edu.study.vo.LikeVO;
 
@@ -15,7 +14,7 @@ public interface LikeService {
 	
 	public int create(HashMap hashMap);
 	
-	public List<LikeVO> readLike(HashMap hashMap);
+	public LikeVO readLike(HashMap hashMap);
 	
 	public int deletebyMidxLike(int midx);
 	

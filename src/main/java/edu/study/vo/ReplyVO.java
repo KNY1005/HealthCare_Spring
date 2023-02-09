@@ -7,17 +7,17 @@ public class ReplyVO {
 	private int pgrps;
 	private int midx;
 	private int plike;
+	private String pcontent;
+	private String pwriter;
+	private String ptitle;
+	private String pdate;
+	
 	public int getPlike() {
 		return plike;
 	}
 	public void setPlike(int plike) {
 		this.plike = plike;
 	}
-	private String pcontent;
-	private String pwriter;
-	private String ptitle;
-	private String pdate;
-	
 	
 	public int	  getPidx()		{ return pidx;		}
 	public int	  getBidx()		{ return bidx;		}
@@ -38,5 +38,11 @@ public class ReplyVO {
 	public void setPtitle(String ptitle) { this.ptitle = ptitle; }
 	public void setPwriter(String pwriter) { this.pwriter = pwriter; }
 	public void setPdate(String pdate) { this.pdate = pdate; }
+	@Override
+	public String toString() {
+		return "ReplyVO [pidx=" + pidx + ", bidx=" + bidx + ", pgrp=" + pgrp + ", pgrps=" + pgrps + ", midx=" + midx
+				+ ", plike=" + plike + ", pcontent=" + pcontent + ", pwriter=" + pwriter + ", ptitle=" + ptitle
+				+ ", pdate=" + pdate + "]";
+	}
 
 }

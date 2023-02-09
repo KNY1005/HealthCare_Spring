@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import edu.study.dao.LikeDAO;
 import edu.study.vo.LikeVO;
-import edu.study.vo.ReplyVO;
 
 @Service
 public class LikeServiceImpl implements LikeService{
@@ -19,7 +18,8 @@ public class LikeServiceImpl implements LikeService{
 	@Override
 	public int like_check(HashMap hashMap) {
 		
-		return likeDAO.like_check_cancel(hashMap);
+		return likeDAO.like_check(hashMap);
+		
 	}
 
 	@Override
@@ -41,7 +41,7 @@ public class LikeServiceImpl implements LikeService{
 	}
 
 	@Override
-	public List<LikeVO> readLike(HashMap hashMap) {
+	public LikeVO readLike(HashMap hashMap) {
 		
 		return likeDAO.readLike(hashMap);
 	}

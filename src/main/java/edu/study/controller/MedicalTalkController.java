@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FileUtils;
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +23,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
-
+import edu.study.service.LikeService;
 import edu.study.service.MedicalTalkService;
 import edu.study.service.ReplyService;
 import edu.study.vo.BoardVo;
 import edu.study.vo.FileVO;
+import edu.study.vo.LikeVO;
 import edu.study.vo.PageVO;
 import edu.study.vo.ReplyVO;
 import edu.study.vo.SearchCriteria;
@@ -38,6 +40,8 @@ public class MedicalTalkController{
 	
 	@Autowired
 	private MedicalTalkService medicaltalkService;
+	private LikeService likeService;
+	private ReplyService replyService;
 	
 	@RequestMapping(value = "/medicalList.do", method = RequestMethod.GET)
 	public String medicalList(SearchCriteria scri, Model model) {
