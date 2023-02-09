@@ -22,7 +22,9 @@
 		content="${path }/resources/image/favicon/ms-icon-144x144.png" />
 	<meta name="theme-color" content="#ffffff" />
 	<script src="https://code.jquery.com/jquery-latest.min.js" type="application/javascript"></script>
-	 
+	<!-- timepicker -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+	
 	<script>
 		$(document).ready(function(){
         $(".choice").click(function(){
@@ -32,6 +34,21 @@
             $(this).children(".able").stop().slideUp(600);
         });
     });
+	</script>
+	<script>
+		$(function() {
+		    $(".time1").timepicker({
+		        timeFormat: 'h:mm p',
+		        interval: 30,
+		        minTime: '09',
+		        maxTime: '6:00pm',
+		        defaultTime: '09',
+		        startTime: '09:00',
+		        dynamic: false,
+		        dropdown: true,
+		        scrollbar: true        
+		    });
+		});
 	</script>
     <style>
     *{
@@ -209,7 +226,7 @@
 					</div>
 					<div id="time">
 						<label for="">시간</label>
-						<input type="time">
+						<input type="text" class="time1" name="time1" class="form-control">
 					</div>
 					<div id="btn">
 						<button onClick="location.href='abc4.do'">예약</button>
@@ -220,6 +237,7 @@
         </div>
 	</main>
 	<%@include file="../includes/footer.jsp"  %>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 </body>
 
 </html>
