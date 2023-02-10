@@ -222,6 +222,7 @@ hr {
 		<hr>
 		<form action="questionWrite.do" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="blist" value="Q">
+			<input type="hidden" name="midx" value="${member.midx}">
 			<div id="writing_view">
 				<input type="text" class="title" name="btitle"/>
 				<textarea class="content" name="bcontent"></textarea>

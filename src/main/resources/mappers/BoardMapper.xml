@@ -47,7 +47,7 @@
 		,bdelete
 		,bsecret
 		,bhit
-		,midx
+		,MIDX
 		from
 		table_board
 		where bidx = #{bidx}	<!-- 변수명을 이용 -->
@@ -64,13 +64,13 @@
 	<insert id="insert" parameterType="boardVo">
 		<![CDATA[
 		insert into table_board (			
-			btitle
+			BTITLE
 			,bcontent
 			,bwdate
 			,bhit
 			,blist
 			,bwriter
-			,midx
+			,MIDX
 		)values(			
 			#{btitle}
 			,#{bcontent}
