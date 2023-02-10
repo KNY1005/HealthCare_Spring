@@ -20,6 +20,8 @@ public class ShotDAO {
 		
 	}
 
-	
+	public ShotVo selectinfo(ShotVo vo) {
+		return sqlSession.selectOne("edu.study.mapper.shotMapper.selectinfo");
+	}
 	
 }

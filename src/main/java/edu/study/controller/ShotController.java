@@ -56,6 +56,8 @@ public class ShotController {
 		System.out.println("������?"+zip[0]);
 		model.addAttribute("zip",zip[0]);
 		
+		
+		
 		return "shot/shotPage4";	
 	}
 	

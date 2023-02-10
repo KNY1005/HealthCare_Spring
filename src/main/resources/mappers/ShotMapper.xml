@@ -14,5 +14,12 @@
 			from table_shot
 	</select>
 	
-	
+	<select id="selectinfo" resultType="shotVo">
+		select cdNm
+			  ,cdDate
+			  ,cdCount
+			  ,cdFC
+			  ,cdCharge
+			from table_shot
+	</select>
 </mapper>

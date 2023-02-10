@@ -22,6 +22,12 @@ public class ShotServiceImpl implements ShotService {
 		return list;
 	}
 
+	@Override
+	public ShotVo selectinfo(ShotVo vo) {
+		// TODO Auto-generated method stub
+		return shotDAO.selectinfo(vo);
+	}
+
 	
 	
 }

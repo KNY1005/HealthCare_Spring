@@ -24,7 +24,10 @@
 	<script src="https://code.jquery.com/jquery-latest.min.js" type="application/javascript"></script>
 	<!-- timepicker -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
-	
+	<!-- modal -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 	<script>
 		$(document).ready(function(){
         $(".choice").click(function(){
@@ -256,22 +259,22 @@
 					
 						<div class="able" style="display: none;">
 							<div id="date">
-								<label for="">날짜</label>
-								<input type="date">
+								<label>날짜</label>
+								<input id="input_date" class="form-control" type="date">
 							</div>
 							<div id="time">
-								<label for="">시간</label>
-								<input type="text" class="time1" name="time1" class="form-control">
+								<label>시간</label>
+								<input type="text" class="time1 form-control" name="time1" id="contents">
 							</div>
 							<div id="btn" onclick="EX01(${status.index});">
-								<button id="reserveBtn" type="button">예약 </button>
+								<button id="reserveBtn" type="button" data-toggle="modal" data-target="#myModal"data-id="전달할 값"><a href="#modal1" rel="modal:open">모달창띄우기</a></button>
 							</div>
 						</div>
 					</div>
 				</form>
 			</c:forEach>
         </div>
-        <div id="my_modal">
+        <%-- <div id="my_modal">
 		<div id="background_modal" class="background_modal">
 			<div class="modal_contents">
 				 <div id="confirm">
@@ -279,17 +282,29 @@
 	            </div>
 	            <div class="reserve2">
 	                <p>예약일 / 예약시간</p>
-	                <p>예약병원/접종명</p>
+	                <p>${zip}</p>
+	                <p>${vo.cdNm}</p>
 	                <p>예약하시겠습니까?</p>
 	            </div>
 				<br>
 				<button onClick="location.href='abc6.do'">확인</button>
 			</div>
 		    <a class="modal_close_btn"><i class="xi-close"></i></a>
-		</div>
+		</div> --%>
 	</div>
 	</main>
 	<%@include file="../includes/footer.jsp"  %>
+	
+
+<div id="modal1" class="modal">
+  <p>예약일 / 예약시간</p>
+	                <p>${zip}</p>
+	                <p>${vo.cdNm}</p>
+	                <p>예약하시겠습니까?</p>
+  <a href="abc6.do">확인</a>
+</div>
+
+
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 	<script type="text/javascript">
 	//모달창
@@ -299,53 +314,61 @@
 		var str_id = "#choice_form_" + idx;
 		var obj = $("#cdnm",str_id).html();
 		var form_data = $(str_id).serialize();
-		console.log(idx);
+//		console.log(idx);
 		console.log(obj);
 		console.log(form_data);
-	    modal('my_modal',obj,form_data);
+		var info = $("#modal1").text(form_data);
+		alert(info);
+		$("#modal1").text(form_data);
+	    /* modal('my_modal',obj,form_data); */
+	    
+	    
+		
+	    
+		/* function modal(id, obj, form_data) {
+		    var zIndex = 9999;
+		    var modal = document.getElementById(id);
+
+		    // 모달 div 뒤에 희끄무레한 레이어
+		    var bg = document.createElement('div');
+		    bg.setStyle({
+		        position: 'fixed',
+		        zIndex: zIndex,
+		        left: '0px',
+		        top: '0px',
+		        width: '100%',
+		        height: '100%',
+		        overflow: 'auto',
+		        // 레이어 색갈은 여기서 바꾸면 됨
+		        backgroundColor: 'rgba(0,0,0,0.4)'
+		    });
+		    document.body.append(bg);
+
+		    // 닫기 버튼 처리, 시꺼먼 레이어와 모달 div 지우기
+		    modal.querySelector('.modal_close_btn').addEventListener('click', function() {
+		        bg.remove();
+		        modal.style.display = 'none';
+		    });
+
+		    modal.setStyle({
+		        position: 'fixed',
+		        display: 'block',
+		        boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+
+		        // 시꺼먼 레이어 보다 한칸 위에 보이기
+		        zIndex: zIndex + 1,
+
+		        // div center 정렬
+		        top: '50%',
+		        left: '50%',
+		        transform: 'translate(-50%, -50%)',
+		        msTransform: 'translate(-50%, -50%)',
+		        webkitTransform: 'translate(-50%, -50%)'
+		    });
+		}  */
 	}
 	
-	function modal(id, obj, form_data) {
-	    var zIndex = 9999;
-	    var modal = document.getElementById(id);
 
-	    // 모달 div 뒤에 희끄무레한 레이어
-	    var bg = document.createElement('div');
-	    bg.setStyle({
-	        position: 'fixed',
-	        zIndex: zIndex,
-	        left: '0px',
-	        top: '0px',
-	        width: '100%',
-	        height: '100%',
-	        overflow: 'auto',
-	        // 레이어 색갈은 여기서 바꾸면 됨
-	        backgroundColor: 'rgba(0,0,0,0.4)'
-	    });
-	    document.body.append(bg);
-
-	    // 닫기 버튼 처리, 시꺼먼 레이어와 모달 div 지우기
-	    modal.querySelector('.modal_close_btn').addEventListener('click', function() {
-	        bg.remove();
-	        modal.style.display = 'none';
-	    });
-
-	    modal.setStyle({
-	        position: 'fixed',
-	        display: 'block',
-	        boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
-
-	        // 시꺼먼 레이어 보다 한칸 위에 보이기
-	        zIndex: zIndex + 1,
-
-	        // div center 정렬
-	        top: '50%',
-	        left: '50%',
-	        transform: 'translate(-50%, -50%)',
-	        msTransform: 'translate(-50%, -50%)',
-	        webkitTransform: 'translate(-50%, -50%)'
-	    });
-	}
 
 	// Element 에 style 한번에 오브젝트로 설정하는 함수 추가
 	Element.prototype.setStyle = function(styles) {
@@ -353,10 +376,13 @@
 	    return this;
 	};
 
-	document.getElementById('reserveBtn').addEventListener('click', function() {
+	/* document.getElementById('reserveBtn').addEventListener('click', function() {
+		
+		 var select = $(this).data('id');
+		 $("#contents.time1").val(data);
 	    // 모달창 띄우기
 	    modal('my_modal');
-	});
+	}); */
  
 	</script>
 </body>
