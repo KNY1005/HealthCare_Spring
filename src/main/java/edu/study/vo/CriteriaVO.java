@@ -1,3 +1,4 @@
+
 package edu.study.vo;
 
 public class CriteriaVO {
@@ -40,11 +41,11 @@ public class CriteriaVO {
 	}	
 	
 	public int getRowStart() {
-		rowStart = ((page -1 ) * perPageNum) + 1;
+		rowStart = ((page -1 ) * perPageNum)+1;
 		return rowStart;
 	}
 	public int getRowEnd() {
-		rowEnd = rowStart + perPageNum - 1;
+		rowEnd = perPageNum;
 		return rowEnd;
 	}
 	
