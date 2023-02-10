@@ -311,7 +311,8 @@
    var checkIdVal = "";
    function loadFn(){
       var join = document.join;
-     
+      var tel_rule = /^\d{2,3}\d{3,4}\d{4}$/;
+      
       if (checkIdFlag != true)
       {
     	  span_id_3.style.display = 'block';
@@ -345,7 +346,10 @@
    		alert1.style.display = 'block';
    		alert2.style.display = 'none';
    		
-
+   		if (!tel_rule.test($("#mphone").val())) {
+			alert("전화번호 형식에 맞게 입력해주세요.");
+			return false;
+		}
 	   	if( join.mname.val() == null || $("#mname").val() == "")
 	    {
 
@@ -357,7 +361,7 @@
 	       join.mphone.focus();
 	       return false;      
 	    }
-
+		
 		
 		if( join.maddrdetail.val() == null || $("#maddrdetail").val() == "")
 	    {

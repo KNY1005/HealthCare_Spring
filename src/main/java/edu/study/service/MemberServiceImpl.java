@@ -16,11 +16,11 @@ public class MemberServiceImpl implements MemberService {
 	private MemberDAO memberdao;
 	@Autowired
 	private SqlSessionTemplate memberSqlSession;
-	
+
 	@Override
-	public MemberVo login(MemberVo vo)throws Exception {
+	public MemberVo login(MemberVo vo) throws Exception {
 		System.out.println(vo.getMid());
-		
+
 		System.out.println("UserLoginService // 로그인 객체 확인 userVO : " + vo);
 		String mid = vo.getMid();
 		String mpwd = vo.getMpwd();
@@ -41,14 +41,14 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public int register(MemberVo vo){
-		
+	public int register(MemberVo vo) {
+
 		return memberdao.register(vo);
 	}
 
 	@Override
 	public List<MemberVo> memberlist() {
-		
+
 		return memberdao.memberlist();
 	}
 
@@ -67,15 +67,27 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public String changeStotus(MemberVo vo) throws Exception {
-		
+
 		return memberdao.changeStotus(vo);
 	}
 
-	//아이디찾기
+	// 아이디찾기
 	@Override
-	public MemberVo memberIdSearch(MemberVo searchVO) {
-		return memberdao.searchId(searchVO);
+	public MemberVo memberIdSearch(MemberVo searchVo) {
+		System.out.println("서비스에연");
+		return memberdao.searchId(searchVo);
 	}
 
-
+	@Override
+	public int memberPwdCheck(MemberVo searchVo) {
+		
+		return memberdao.memberPwdCheck(searchVo);
 	}
+
+	@Override
+	public String passwordUpdate(MemberVo searchVo) {
+		
+		return memberdao.passwordUpdate(searchVo);
+	}
+
+}

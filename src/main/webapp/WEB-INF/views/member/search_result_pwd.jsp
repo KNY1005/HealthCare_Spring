@@ -7,13 +7,12 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-<script>                                                                                                                    
-var path = "${pageContext.request.contextPath }";                                                                           
-                                                                                            
-$(document).ready(function() {                                                                                            
-                                                                                            
-});                                                                                                                       
-                                                                                            
+<script>
+	var path = "${pageContext.request.contextPath }";
+
+	$(document).ready(function() {
+
+	});
 </script>
 
 <head>
@@ -25,7 +24,7 @@ $(document).ready(function() {
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>아이디찾기결과</title>
+<title>비밀번호 찾기 결과</title>
 
 <!-- Custom fonts for this template-->
 <link href="/resources/vendor/fontawesome-free/css/all.min.css"
@@ -55,21 +54,16 @@ $(document).ready(function() {
 							<div class="col-lg-6">
 								<div class="p-5">
 									<div class="text-center">
-										<h1 class="h4 text-gray-900 mb-2">Please check your ID</h1>
+										<h1 class="h4 text-gray-900 mb-2">Please check your
+											Password</h1>
 										<br>
 										<br>
-										<c:choose>
-											<c:when test="${empty searchVo}">
-												<p class="mb-4">조회결과가 없습니다.</p>
-											</c:when>
-											<c:otherwise>
-												<p class="mb-4">${searchVo.mid}</p>
-											</c:otherwise>
-										</c:choose>
+										<p class="mb-4">${newPwd}</p>
 									</div>
 									<hr>
 									<div class="text-center">
-										<a class="small" href="/account/search_id">Forgot Your ID?</a>
+										<a class="small" href="/account/search_pwd">Forgot Your
+											Password?</a>
 									</div>
 									<div class="text-center">
 										<a class="small" href="/account/register">Create an
@@ -90,6 +84,7 @@ $(document).ready(function() {
 		</div>
 
 	</div>
+
 
 </body>
 

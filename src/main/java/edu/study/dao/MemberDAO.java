@@ -17,55 +17,62 @@ public class MemberDAO {
 	@Inject
 	@Autowired
 	private SqlSession sqlSession;
-	
-	/*관리자 기능*/
+
+	/* 관리자 기능 */
 	// 회원 전체 정보 출력(탈퇴회원포함)
-	public List<MemberVo> memberlist(){
+	public List<MemberVo> memberlist() {
 		return sqlSession.selectList("edu.study.mapper.memberMapper.memberlist");
 	}
-	
-	//가입 회원 정보 풀력
-	public List<MemberVo> selectEnabled(){
+
+	// 가입 회원 정보 풀력
+	public List<MemberVo> selectEnabled() {
 		return null;
 	}
-		
-	// 
-	public int updateRole(int midx, String mgrade){
+
+	//
+	public int updateRole(int midx, String mgrade) {
 		return 0;
 	}
-	
-	
-	/*사용자기능*/
-	/*로그인*/
-	public MemberVo login(MemberVo vo){
-		
+
+	/* 사용자기능 */
+	/* 로그인 */
+	public MemberVo login(MemberVo vo) {
+
 		return sqlSession.selectOne("edu.study.mapper.memberMapper.login", vo);
 	}
-	
-	/*아이디 중복검사*/
+
+	/* 아이디 중복검사 */
 	public int selectById(String mid) {
-		
+
 		return sqlSession.selectOne("edu.study.mapper.memberMapper.selectById", mid);
 	}
-	
-	/*회원가입*/
+
+	/* 회원가입 */
 	public int register(MemberVo vo) {
 
 		return sqlSession.insert("edu.study.mapper.memberMapper.register", vo);
 	}
-	
-	/*회원등급변경*/
+
+	/* 회원등급변경 */
 	public String changeStotus(MemberVo vo) {
-		
+
 		return sqlSession.selectOne("edu.study.mapper.memberMapper.changeStotus", vo);
 	}
 
-	//아이디찾기
-	public MemberVo searchId(MemberVo searchVO) {
-		// TODO Auto-generated method stub
-		return sqlSession.selectOne("edu.study.mapper.memberMapper.searchId", searchVO);
+	// 아이디찾기
+	public MemberVo searchId(MemberVo searchVo) {
+		
+		return sqlSession.selectOne("edu.study.mapper.memberMapper.searchId", searchVo);
 	}
-	
-	
-	
+
+	public int memberPwdCheck(MemberVo searchVo) {
+
+		return sqlSession.selectOne("edu.study.mapper.memberMapper.memberPwdCheck", searchVo);
+	}
+
+	public String passwordUpdate(MemberVo searchVo) {
+
+		return sqlSession.selectOne("edu.study.mapper.memberMapper.passwordUpdate", searchVo);
+	}
+
 }

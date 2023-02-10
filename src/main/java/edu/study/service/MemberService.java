@@ -31,7 +31,14 @@ public interface MemberService {
 	public void updateMember(MemberVo vo);
 	
 	//아이디찾기
-	public MemberVo memberIdSearch(MemberVo searchVO);
+	public MemberVo memberIdSearch(MemberVo searchVo);
+	
+	//비밀번호 찾기
+	public int memberPwdCheck(MemberVo searchVo);
+	
+	//비밀번호 변경
+	public String passwordUpdate(MemberVo searchVo);
+	
 	
 
 

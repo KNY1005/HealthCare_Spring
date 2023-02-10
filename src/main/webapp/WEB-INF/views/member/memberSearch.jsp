@@ -109,10 +109,10 @@ return false;
 			      </a>
 			  <hr>
 			     <div class="text-center">
-			      <a class="small" href="/member/join">계정 만들기!</a>
+			      <a class="small" href="<%=request.getContextPath() %>/member/login.do">로그인하러가기</a>
 			  </div>
 			  <div class="text-center">
-			      <a class="small" href="/account/login">이미 계정이 있습니까? 로그인!</a>
+			      <a class="small" href="<%=request.getContextPath() %>/member/search_result_pwd.do">비밀번호 찾으러가기!</a>
 			  </div>
 			</div>
 			</div>

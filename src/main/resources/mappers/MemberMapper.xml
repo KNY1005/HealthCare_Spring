@@ -4,84 +4,120 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="edu.study.mapper.memberMapper">	<!-- dao에서 마이바티스를 이용해 쿼리를 찾는 역할 -->
 
-    <!-- 로그인 -->
-	<select id="login" parameterType="MemberVo" resultType="MemberVo">
-		SELECT 
-				mid
-	       		, mname
-	       		, mphone
-	       		, maddrdetail
-	       		, mmaddzipnum
-	       		, memail
-	       		, mgrade
-		  FROM table_member
-		 WHERE mid = #{mid}
+	<!-- 로그인 -->
+	<select id="login" parameterType="MemberVo"
+		resultType="MemberVo">
+		SELECT
+		mid
+		, mname
+		, mphone
+		, maddrdetail
+		, mmaddzipnum
+		, memail
+		, mgrade
+		FROM table_member
+		WHERE mid = #{mid}
 	</select>
-	
+
 	<select id="selectById" parameterType="String" resultType="int">
 		SELECT COUNT(mid)
-		  FROM table_member
-		 WHERE mid = #{mid}
+		FROM table_member
+		WHERE mid = #{mid}
 	</select>
-	
+
 	<insert id="register" parameterType="MemberVo">
-		 insert into table_member(   
-		 							mid
-	   					       		, mpwd
-	   					       		, mname
-	   					       		, mphone
-	   					       		, maddrdetail
-	   					       		, mmaddzipnum
-	   					       		, memail
-	   					       		, mgrade
-	   					       		 	)
-	                  values(   
-	                  			 #{mid} 
-	                 		   , #{mpwd}
-	                 		   , #{mname}
-	                 		   , #{mphone}
-	                 		   , #{maddrdetail}
-	                 		   , #{mmaddzipnum}
-	                 		   , #{memail}
-	                 		   , #{mgrade}
-	                 		   )
-	                 		   
+		insert into table_member(
+		mid
+		, mpwd
+		, mname
+		, mphone
+		, maddrdetail
+		, mmaddzipnum
+		, memail
+		, mgrade
+		)
+		values(
+		#{mid}
+		, #{mpwd}
+		, #{mname}
+		, #{mphone}
+		, #{maddrdetail}
+		, #{mmaddzipnum}
+		, #{memail}
+		, #{mgrade}
+		)
+
 	</insert>
-	<select id="memberlist" parameterType="MemberVo" resultType="MemberVo">
+	<select id="memberlist" parameterType="MemberVo"
+		resultType="MemberVo">
 		select
-			 midx
-			,mid
-       		, mname
-       		, mnumber
-       		, mphone
-       		, maddrdetail
-       		, mmaddzipnum
-       		, memail
-       		, mgrade
-       	from table_member
-       	order by mname
+		mid
+		, mname
+		, mnumber
+		, mphone
+		, maddrdetail
+		, mmaddzipnum
+		, memail
+		, mgrade
+		from table_member
+		order by mname
 	</select>
-	
+
 	<!-- 아이디찾기 -->
-	<select id="searchId" resultType="String">
+	<select id="searchId" parameterType="MemberVo"
+		resultType="MemberVo">
 		<![CDATA[
-    select *
+    select 
+	    mname
+	    , mphone
+	    , mid
     from
         table_member
     where
         mname = #{mname}
     and
         mphone = #{mphone}
-]]>    
+]]>
 	</select>
+
+	<select id="memberPwdCheck" parameterType="MemberVo" resultType="java.lang.Integer">
+	<![CDATA[
+	    select
+	    	count(*)
+	    from
+	        table_member
+	    where
+	        mname = #{mname}
+	    and
+	        mphone = #{mphone}
+	    and
+	        mid = #{mid}
+	]]>    
+	</select>
+	 
+	    
+	<update id="passwordUpdate" parameterType="MemberVo" >
+	    UPDATE 
+	        table_member
+	    SET 
+	        mpwd = #{mpwd}
+	    where
+	        mname = #{mname}
+	    and
+	        mphone = #{mphone}
+	    and
+	        mid = #{mid}
+	</update>
+
 
 	<!-- 등급변경 -->
 	<update id="changeStotus">
 		update table_member
 		set mgrade = #{mgrade}
-		where mid = #{mid}
+		where mid =
+		#{mid}
 	</update>
-	
-	
-	
+
+
+
 </mapper>
