@@ -9,6 +9,7 @@
 		resultType="MemberVo">
 		SELECT
 		mid
+		, midx
 		, mname
 		, mphone
 		, maddrdetail
@@ -24,6 +25,21 @@
 		FROM table_member
 		WHERE mid = #{mid}
 	</select>
+	
+	<select id="selectByMidx" parameterType="int"
+		resultType="MemberVo">
+		SELECT
+		mid
+		, midx
+		, mname
+		, mphone
+		, maddrdetail
+		, mmaddzipnum
+		, memail
+		, mgrade
+		FROM table_member
+		WHERE midx = #{midx}
+	</select>
 
 	<insert id="register" parameterType="MemberVo">
 		insert into table_member(
@@ -35,6 +51,7 @@
 		, mmaddzipnum
 		, memail
 		, mgrade
+		, menter
 		)
 		values(
 		#{mid}
@@ -45,6 +62,7 @@
 		, #{mmaddzipnum}
 		, #{memail}
 		, #{mgrade}
+		, now()
 		)
 
 	</insert>
@@ -52,6 +70,7 @@
 		resultType="MemberVo">
 		select
 		mid
+		, midx
 		, mname
 		, mnumber
 		, mphone
@@ -117,7 +136,12 @@
 		where mid =
 		#{mid}
 	</update>
-
-
-
+	
+	<!-- 회원탈퇴
+	<delete id="deleteByMidx" parameterType="int">
+		update table_member
+		set bdelyn = 'Y'
+		where midx = #{midx}
+	</delete>
+	-->
 </mapper>

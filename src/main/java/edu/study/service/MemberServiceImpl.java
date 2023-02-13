@@ -90,4 +90,10 @@ public class MemberServiceImpl implements MemberService {
 		return memberdao.passwordUpdate(searchVo);
 	}
 
+	@Override
+	public MemberVo selectByMidx(int midx) {
+		// TODO Auto-generated method stub
+		return memberdao.selectByMidx(midx);
+	}
+
 }

@@ -24,9 +24,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import edu.study.service.BoardService;
+import edu.study.service.MemberService;
 import edu.study.service.QuestionService;
 import edu.study.vo.BoardVo;
 import edu.study.vo.FileVO;
+import edu.study.vo.MemberVo;
 import edu.study.vo.PageVO;
 import edu.study.vo.SearchCriteria;
 
@@ -38,6 +40,8 @@ public class QuestionController {
 	private QuestionService questionService;
 	@Autowired
 	private BoardService boardService;
+	@Autowired
+	private MemberService memberService;
 	@RequestMapping(value = "/questionList.do", method = RequestMethod.GET)
 	public String questionList(SearchCriteria scri, Model model) {
 		List<BoardVo> list = questionService.list(scri);
@@ -83,8 +87,9 @@ public class QuestionController {
 	}
 
 	@RequestMapping(value = "/questionWrite.do", method = RequestMethod.GET)
-	public String questionWrite() {
-
+	public String questionWrite(Model model) {
+		//MemberVo vo = memberService.selectByMidx(midx);
+		//model.addAttribute("vo", vo);
 		return "question/questionWrite";
 	}
 

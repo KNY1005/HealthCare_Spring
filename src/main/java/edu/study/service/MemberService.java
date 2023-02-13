@@ -39,7 +39,7 @@ public interface MemberService {
 	//비밀번호 변경
 	public String passwordUpdate(MemberVo searchVo);
 	
-	
+	public MemberVo selectByMidx(int midx);
 
 
 }

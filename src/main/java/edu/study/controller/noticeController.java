@@ -10,6 +10,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +22,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
 import edu.study.service.BoardService;
+import edu.study.service.MemberService;
 import edu.study.service.QuestionService;
 import edu.study.vo.BoardVo;
 import edu.study.vo.FileVO;
+import edu.study.vo.MemberVo;
 import edu.study.vo.PageVO;
 import edu.study.vo.SearchCriteria;
 
@@ -37,14 +40,38 @@ public class noticeController {
 	@Autowired
 	private BoardService boardService;	//전체 데이터 요청
 	@Autowired
+	private MemberService memberService;
+	
+	@Autowired
 	private QuestionService questionService;
 	@RequestMapping(value = "/list.do", method = RequestMethod.GET)	
-	public String board1(Model model,SearchCriteria scri) {
+	public String board1(Model model,SearchCriteria scri, HttpServletRequest request, MemberVo vo) throws Exception {
 		
+	     HttpSession session = request.getSession();
+	     System.out.println("세션값확인"+session);
+	     /*
+	     String member = (String) session.getAttribute("member");// 키 값을 명확히 알때
+			if(member==null) { //session에 해당 'key값'으로 저장된 데이터가 없을 때
+				System.out.println("<h3>userName의 Session값이 없습니다.</h3>");
+			}else {
+				System.out.println("<h3>userName의 세션값 : " + member + "</h3>");
+			}
+			System.out.println("<hr>");
+	     */
+	     	System.out.println(vo.getMid());
+			System.out.println(vo.getMpwd());
+
+	     
+	     
+	     
+	     
+	     
+	     
+	     
 		//DB list 조회
 		List<BoardVo> list = boardService.list(scri);
 		model.addAttribute("datalist",list);	//키값
-		System.out.println("list:"+list);	
+		System.out.println("list:"+list);
 		PageVO pageVo = new PageVO();
 		pageVo.setScri(scri);
 		pageVo.setTotalCount(boardService.listCount(scri));

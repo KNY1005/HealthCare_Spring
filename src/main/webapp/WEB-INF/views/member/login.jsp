@@ -102,7 +102,7 @@
            
            <div class="mgrade">
            
-           <input type="radio" name="mgrade" value="D"
+           <input type="radio" name="mgrade" value="D" id="doctor_radio"
            style="width:30px;"
            >전문의
            <input type="radio" name="mgrade" value="G"
@@ -218,7 +218,19 @@
               
             /> <span id="alert4" style="display: none; color: #d92742; font-size:12px; margin:-8px;" >이메일 형식으로 적어주세요.</span>
             
-            
+            <div id="doctor" style="display:none;">
+	            <input
+	              class="login animated fadeInUp animate3"
+	              name="doctornumber"
+	              id="doctornumber"
+	               type="textbox"
+	              placeholder="의사면허번호"
+	              required
+	              value=""
+	              maxlength="30"
+	              oninput="handleOnInput2(this)"
+	            />
+            </div>
             
           </fieldset>
           <input
@@ -241,6 +253,22 @@
       </div>
     </div>
       <script type="text/javascript">
+      
+      /*전문의 라디오 버튼 클릭시 의사면허번호 입력창 나오기*/
+      $(function (){
+    	  $('input[type="radio"][id="doctor_radio"]').on('click', function(){
+    	    var chkValue = $('input[type=radio][id="doctor_radio"]:checked').val();
+    	    if(chkValue){
+    	               $('#doctor').css('display','block');
+    	    }else{
+    	               $('#doctor').css('display','none');
+    	    }
+    	   
+    	  });
+    	   
+    	  });
+      
+      /*아이디 비밀번호 찾기 경로 */
       function movesearch(){
     	     location.href = "<%=request.getContextPath() %>/member/membersearch.do";
     	}

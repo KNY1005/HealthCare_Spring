@@ -57,10 +57,7 @@ public class MemberController {
 		// 비밀번호 암호화
 		String mpwd = vo.getMpwd();
 		vo.setMpwd(memberSha256.encrypt(mpwd));
-		// 암호화 확인
-		System.out.println("user_pw : " + vo.getMpwd());
-
-		System.out.println("로그인실패");
+				
 		if (login == null) {
 			session.setAttribute("member", null);
 			System.out.println("로그인실패");
@@ -68,10 +65,10 @@ public class MemberController {
 		} else {
 			session.setAttribute("member", login);
 
-			System.out.println(vo.getMid());
+			System.out.println("mid는"+vo.getMid());
 			System.out.println(vo.getMpwd());
 			System.out.println(login);
-			System.out.println("로그인완료");
+			System.out.println("midx는"+vo.getMidx());
 			return "redirect:/";
 		}
 
@@ -128,8 +125,6 @@ public class MemberController {
 		return "member/memberSearch";
 	}
 	
-	
-
 	// 아이디찾기
 	@RequestMapping(value = "/search_result_id.do", method = RequestMethod.POST)
 	public String search_result_id(HttpServletRequest request, Model model,

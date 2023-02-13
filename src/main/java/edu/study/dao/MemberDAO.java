@@ -75,4 +75,8 @@ public class MemberDAO {
 		return sqlSession.selectOne("edu.study.mapper.memberMapper.passwordUpdate", searchVo);
 	}
 
+	public MemberVo selectByMidx(int midx) {
+
+		return sqlSession.selectOne("edu.study.mapper.memberMapper.selectByMidx", midx);
+	}
 }
