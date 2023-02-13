@@ -182,20 +182,16 @@ main {
 	height: 110px;
 }
 
-.content_text p:nth-child(1) {
-	font-size: 40px;
+.content_text p{
+	font-size: 25px;
 	font-weight: bold;
-}
-
-.content_text p:nth-child(2) {
-	font-size: 20px;
-	font-weight: bold;
-	margin-top: 10px;
-}
-
+	
+	}
 .content_text {
 	margin-top: 10px;
-	margin-left: 20px;
+	margin-left: 20px;	
+	display:flex;
+	align-items: center;
 }
 
 .content_list li {
@@ -228,46 +224,80 @@ main {
 		</div>
 		<hr class="hr">
 		<ul class="content_list">
-			<li>
-				<div class="content_box">
-					<div class="content_img">
-						<img src="${path}/resources/image/logo2.png" />
-					</div>
-					<div class="content_text">
-						<p>제목</p>
-						<p>여기는 내용 입니다</p>
-
-					</div>
-				</div>
-			</li>
-
+			<!-- youtube contents -->
 		</ul>
 		<script>
+		  
 	      $(document).ready(function(){
-				$.ajax({
-					type : "GET",
-					dataType : "JSON",
-					url : "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&channelId=UC6KwCU8Y8Uw4h_Q0ptLZkqw&type=video&key=AIzaSyBEMOzRRSZQw6xFyQVBW8XIB6RDTndW0_Y",
-					contentType : "application/json",
-					success : function(jsonData) {
-						alert("test");						
-						for (var i = 0; i < jsonData.items.length; i++) {
-							var items = jsonData.items[i];							
-							console.log("비디오아이디:"+items.id.videoid);
-							console.log("제목:"+items.snippet.title);
-							console.log("썸네일:"+items.snippet.thumbnails.medium.url);
-							
-		            }
+	    	var result_list=[];
+	    	var output = "";		
+			$.ajax({
+				type : "GET",
+				dataType : "JSON",
+				url : "https://www.googleapis.com/youtube/v3/search?"+
+						"part=snippet&"+
+						"maxResults=25&"+
+						"channelId=UC6KwCU8Y8Uw4h_Q0ptLZkqw&"+
+						"type=video&"+
+						"key=AIzaSyBEMOzRRSZQw6xFyQVBW8XIB6RDTndW0_Y",
+				contentType : "application/json",
+				success : function(data) {
+					alert("test");						
+					for (var i = 0; i < data.items.length; i++) {
+						var items = data.items[i];							
+						/* console.log("비디오아이디:"+items.id.videoid);
+						console.log("제목:"+items.snippet.title);
+						console.log("썸네일:"+items.snippet.thumbnails['default'].url); */
+						result_list.push(items);							
+		       			}
 				},
-					complete : function(data) {
-	
-	            } /*,
-	          		error : function(xhr, status, error) {
+				complete : function(data) {					
+					result_list.forEach(function(item){
+						var imgURL =item.snippet.thumbnails['default'].url;
+						var tubeTitle = item.snippet.title;
+						var tubeURL = "https://www.youtube.com/embed/"+item.id.videoId+"?autoplay=1&mute=1";
+						//console.log('url은??'+tubeURL);
+						output += "<li onclick='goPage(this)'><div class='content_box'>";
+			    	  	output += "<div class='content_img'><img src='"+imgURL+"'/></div>";			      		
+			            output += "<div class='content_text'><p>"+tubeTitle+"</p>";
+			            output += "<p style='display:none;'>"+tubeURL+"</p></div>"
+			            output += "</div></li>";	
+					});								
+		      	    $(".content_list").append(output);  // 새로운 데이터 덮어쓰기 */		
+	            },
+	          	error : function(xhr, status, error) {
 	              	console.log("유튜브 요청 에러: "+error);
-	          } */
+	            } 
 	    	 });
 	      }
 	      )
+	      
+	      function goPage(obj){
+			  var li = obj.querySelectorAll("p");
+			  var tubeTitle = li[0].innerText;
+			  var tubeURL = li[1].innerText;
+			  console.log("유튜브제목ㅇ은?"+tubeTitle);
+			  console.log("유튜브경로은?"+tubeURL);
+			  var form = document.createElement("form");
+		      form.setAttribute("charset", "UTF-8");
+		      form.setAttribute("method", "POST");  //Post 방식
+		      form.setAttribute("action", "healthnews1.do"); //요청 보낼 주소
+
+		      var hiddenField = document.createElement("input");
+		      hiddenField.setAttribute("type", "hidden");
+		      hiddenField.setAttribute("name", "tubeTitle");
+		      hiddenField.setAttribute("value", tubeTitle);
+		      form.appendChild(hiddenField);
+		      
+		      var hiddenField = document.createElement("input");
+		      hiddenField.setAttribute("type", "hidden");
+		      hiddenField.setAttribute("name", "tubeURL");
+		      hiddenField.setAttribute("value", tubeURL);
+		      form.appendChild(hiddenField);
+		      
+		      document.body.appendChild(form);
+		      form.submit(); 
+		  }
       </script>
 	</main>
 	<%@include file="../includes/footer.jsp"%>

@@ -85,6 +85,15 @@ public class HomeController {
 		
 		return "healthnews/healthnews";
 	}
+	@RequestMapping(value = "healthnews1.do", method = RequestMethod.POST)
+	public String healthnews1_(HttpServletRequest request, Model model) {
+		String[] tubeTitle = request.getParameterValues("tubeTitle");
+		String[] tubeURL = request.getParameterValues("tubeURL");
+		System.out.println("집명은?"+tubeTitle[0]+" 주소는?"+tubeURL[0]);
+		model.addAttribute("tubeTitle",tubeTitle[0]);
+		model.addAttribute("tubeURL",tubeURL[0]);
+		return "healthnews/healthNewsView";
+	}
 	
 	@RequestMapping(value = "healthnews2.do", method = RequestMethod.GET)
 	public String healthnews2() {

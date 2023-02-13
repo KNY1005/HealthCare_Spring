@@ -16,6 +16,24 @@
 <meta name="msapplication-TileImage"
 	content="${path }/resources/image/favicon/ms-icon-144x144.png" />
 <meta name="theme-color" content="#ffffff" />
+<!-- timepicker -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+
+<script>
+		$(function() {
+		    $(".time1").timepicker({
+		        timeFormat: 'h:mm p',
+		        interval: 30,
+		        minTime: '09',
+		        maxTime: '6:00pm',
+		        defaultTime: '09',
+		        startTime: '09:00',
+		        dynamic: false,
+		        dropdown: true,
+		        scrollbar: true        
+		    });
+		});
+	</script>
 <style>
 
 /*main CSS*/
@@ -198,8 +216,7 @@ main .timetable #button {
 							type="date">
 					</div>
 					<div id="time">
-						<label for="time">시간</label><br> <input name="time"
-							type="time">
+						<label for="time">시간</label><br> <input type="text" class="time1" name="time1" class="form-control">
 					</div>
 	
 				</div>
@@ -210,5 +227,6 @@ main .timetable #button {
 		<!--//.timetable-->
 	</main>
 	<%@include file="../includes/footer.jsp"%>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 </body>
 </html>

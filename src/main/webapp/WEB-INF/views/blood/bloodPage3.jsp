@@ -115,7 +115,7 @@
 			
 		var form = document.createElement("form");
         form.setAttribute("charset", "UTF-8");
-        form.setAttribute("method", "GET");  //Post 방식
+        form.setAttribute("method", "POST");  //Post 방식
         form.setAttribute("action", "page4.do"); //요청 보낼 주소
 
         var hiddenField = document.createElement("input");
