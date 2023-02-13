@@ -78,7 +78,7 @@ $(document).ready(function(){
               <li><a href="<%=request.getContextPath() %>/shot/abc1.do">예방접종 예약</a></li>
             </ul>
             <ul>
-              <li><a href="<%=request.getContextPath() %>/medicalmain.do">건강검진 예약</a></li>
+              <li><a href="<%=request.getContextPath() %>/medical_check/medicalmain.do">건강검진 예약</a></li>
             </ul>
             <ul>
               <li><a href="<%=request.getContextPath() %>/blood/main.do">헌혈 예약</a></li>
