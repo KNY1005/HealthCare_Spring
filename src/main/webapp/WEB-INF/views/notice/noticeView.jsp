@@ -64,7 +64,7 @@
 	font-weight: bold;
 }
 
-hr {
+.hr {
 	height: 2px;
 	background-color: #FF7373;
 	border: none;
@@ -126,13 +126,13 @@ hr {
 	display: inline;
 }
 
-#button {
+#button1 {
 	width: 1100px;
 	height: 50px;
 	margin: 40px auto 0;
 }
 
-#button button {
+#button1 button {
 	width: 100px;
 	height: 50px;
 	padding: 10px;
@@ -146,7 +146,7 @@ hr {
 	float: right;
 }
 
-#button button:hover {
+#button1 button:hover {
 	border-radius: 10px;
 	transition: .2s;
 	box-shadow: inset 1px 1px 3px rgb(197, 197, 197);
@@ -219,7 +219,7 @@ hr {
 		<div id="menu">
 			<h2>공지사항</h2>
 		</div>
-		<hr>
+		<hr class="hr">
 		<form action="">
 			<div id="writing_view">
 				<div class="title">${vo.btitle}</div>
@@ -236,7 +236,7 @@ hr {
 					<a href="fileDown.do?bidx=${vo.bidx }"><input class="upload-name" value="${fvo.originname }" disabled="disabled"></a>
 				</div>
 			</div>
-			<div id="button">
+			<div id="button1">
 				<button type="button" onClick="location.href='list.do'">목록</button>
 				<c:if test="${member.mgrade == 'A'}">
 				<button type="button" onClick="location.href='delete.do?bidx=${vo.bidx}'">삭제</button>		
