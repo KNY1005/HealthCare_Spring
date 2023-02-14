@@ -30,7 +30,7 @@ public class BloodController {
 		
 		return "blood/bloodPage3";	
 	}
-	@RequestMapping(value = "page4.do", method = RequestMethod.GET)	
+	@RequestMapping(value = "page4.do", method = RequestMethod.POST)	
 	public String testMethod(HttpServletRequest request, Model model){
 		String[] zip = request.getParameterValues("zip");
 		String[] addr = request.getParameterValues("addr");
