@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping(value="/medical_check")	
 @Controller
 public class MedicalCheckController {
+	
 
 	
 	@RequestMapping(value = "medicalmain.do", method = RequestMethod.GET)
@@ -27,7 +28,9 @@ public class MedicalCheckController {
 		return "medical_check/medical_check1";
 	}
 	
+	
 	@RequestMapping(value = "medical2", method = RequestMethod.GET)
+	
 	public String medical2(HttpServletRequest request, Model model){
 		String[] zip = request.getParameterValues("zip");
 		String[] addr = request.getParameterValues("addr");

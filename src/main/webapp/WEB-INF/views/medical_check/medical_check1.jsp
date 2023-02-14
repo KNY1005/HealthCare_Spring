@@ -9,7 +9,6 @@
 <head>
 <meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=, initial-scale=1.0">
 	<title>건강검진 병원조회</title>
 	<!--파비콘-->
 	<link rel="icon" type="image/png" sizes="16x16"
@@ -109,66 +108,88 @@
 
 </script>
 
-<script>	
-	function xmlToJson(xml) {
-	  // Create the return object
-	  var obj = {};
 
-	  if (xml.nodeType == 1) {
-	    // element
-	    // do attributes
-	    if (xml.attributes.length > 0) {
-	      obj["@attributes"] = {};
-	      for (var j = 0; j < xml.attributes.length; j++) {
-	        var attribute = xml.attributes.item(j);
-	        obj["@attributes"][attribute.nodeName] = attribute.nodeValue;
-	      }
-	    }
-	  } else if (xml.nodeType == 3) {
-	    // text
-	    obj = xml.nodeValue;
-	  }
+<script>
+	function getInfo(){
+	alert("test32");
+	$.ajax({
+		type : "GET",
+		dataType : "XML",
+		data : {},
+		url : "http://openapi1.nhis.or.kr/openapi/service/rest/HmcSearchService/getRegnHmcList?"+
+			"serviceKey=SXsBCxP5w%2BvYN0eL9xWlIZU5Ov2q0%2Bwuv76Q4LpEPsfTEjaZ1uJ9IoRCKmUv0zb%2Bxb7etRcQUBOA18BAgdrPYQ%3D%3D",
+		success : function(data){
+			let hmcNm = data.querySelectorAll("hmcNm");
+			let resultMsg = data.querySelectorAll("resultMsg");
+			let resultCode =  data.querySelectorAll("resultCode");
+			let pageNo = data.querySelectorAll("pageNo");
+			let grenChrgTypeCd = data.querySelectorAll("grenChrgTypeCd");
+			let ichkChrgTypeCd = data.querySelectorAll("ichkChrgTypeCd");
+			let ltems = data.querySelectorAll("ltems");
+			let mchkChrgTypeCd = data.querySelectorAll("mchkChrgTypeCd");
+			let siDoCd = data.querySelectorAll("siDoCd");
+			let siGunGuCd = data.querySelectorAll("siGunGuCd");
+			let locAddr = data.querySelectorAll("locAddr");
+			let hmcTelNo = data.querySelectorAll("hmcTelNo");
+			
+			/*resultMsg.forEach(value => {	
+			});
+			resultCode.forEach(value => {	
+			});
+			pageNo.forEach(value => {	
+			});
+			grenChrgTypeCd.forEach(value => {	
+			});
+			ichkChrgTypeCd.forEach(value => {	
+			});
+			ltems.forEach(value => {	
+			});
+			mchkChrgTypeCd.forEach(value => {	
+			});
+			siDoCd.forEach(value => {	
+			});
+			siGunGuCd.forEach(value => {	
+			});*/
+			data.querySelectorAll("siDoCd") = $("#sido option:selected").text();
+			data.querySelectorAll("siGunGuCd") = $("#sigugun option:selected").text();
+			var result_list=[];
+			var list = data.data;
+			var output = "";	
+			if($("#sigugun option:selected").text()=='선택'){
+				$.each(list,function(locAddr,value){
+					if(locAddr.includes(sido)){
+						result_list.push(value);						
+					}		
+			});
+			}else($.each(list,function(locAddr,value){
+				if(locAddr.includes(sido+" "+sigugun)){
+					result_list.push(value);					
+				}			
+			}));		
+		},
+		complete : function(data){
+			var output = "";
+			result_list.forEach(function(items,index){						
+					console.log('아이템은?'+index);
+					output += "<tr class='column content' onclick='goPage4(this)'>";
+		    	  	output += "<td>" + items['건강검진 병원조회'] + '</td>';
+		      		output += "<td>"+'09:00 ~ 18:00'+'</td>';
+		            output += "<td>"+items.locAddr+'</td>';
+		            output += "<td>"+items.hmcTelNo+"</td>";            
+		            output += '</tr>';							
+			});
+			$(".content").remove();		//데이터 지우기				
+      	    $("#info").append(output);  // 새로운 데이터 덮어쓰기 		
+			
+		}
+	})
+			
+			
+	
+}
 
-	  // do children
-	  // If all text nodes inside, get concatenated text from them.
-	  var textNodes = [].slice.call(xml.childNodes).filter(function(node) {
-	    return node.nodeType === 3;
-	  });
-	  if (xml.hasChildNodes() && xml.childNodes.length === textNodes.length) {
-	    obj = [].slice.call(xml.childNodes).reduce(function(text, node) {
-	      return text + node.nodeValue;
-	    }, "");
-	  } else if (xml.hasChildNodes()) {
-	    for (var i = 0; i < xml.childNodes.length; i++) {
-	      var item = xml.childNodes.item(i);
-	      var nodeName = item.nodeName;
-	      if (typeof obj[nodeName] == "undefined") {
-	        obj[nodeName] = xmlToJson(item);
-	      } else {
-	        if (typeof obj[nodeName].push == "undefined") {
-	          var old = obj[nodeName];
-	          obj[nodeName] = [];
-	          obj[nodeName].push(old);
-	        }
-	        obj[nodeName].push(xmlToJson(item));
-	      }
-	    }
-	  }
-	  return obj;
-	}
-	
-	const getXMLfromAPI = async () => {
-		const url = "http://openapi1.nhis.or.kr/openapi/service/rest/HmcSearchService";
-		const reqURL = `${url}${SXsBCxP5w%2BvYN0eL9xWlIZU5Ov2q0%2Bwuv76Q4LpEPsfTEjaZ1uJ9IoRCKmUv0zb%2Bxb7etRcQUBOA18BAgdrPYQ%3D%3D}`;
-	    const response = await fetch(reqURL);
-	    const xmlString = await response.text();
-	    let XmlNode = new DOMParser().parseFromString(xmlString, "text/xml");
-	    console.log(xmlToJson(XmlNode));
-	  };
-	
-	
 
-	function goPage4(obj) {			
+ 	function goPage4(obj) {			
   		var abc = obj.querySelectorAll("td");
   		var zip = abc[0].innerText;
   		var addr = abc[2].innerText;
@@ -202,13 +223,13 @@
         form.submit(); 
 	}
 	
-	function getInfo(){			
+	/*function getInfo(){			
 		var sido = $("#sido option:selected").text();
 		var sigugun = $("#sigugun option:selected").text();
 		var result_list=[];
 		
 		$.ajax({
-			url:" http://openapi1.nhis.or.kr/openapi/service/rest/HmcSearchService/getRegnHmcList?page=1&pageno=5&ServiceKey=SXsBCxP5w%2BvYN0eL9xWlIZU5Ov2q0%2Bwuv76Q4LpEPsfTEjaZ1uJ9IoRCKmUv0zb%2Bxb7etRcQUBOA18BAgdrPYQ%3D%3D",
+			url:"",
 			method:"post",
 			data :{},
 			success:function(data){				
@@ -241,12 +262,12 @@
 			            output += '</tr>';							
 				});
 				$(".content").remove();		//데이터 지우기				
-	      	    $("#info").append(output);  // 새로운 데이터 덮어쓰기 */			
+	      	    $("#info").append(output);  // 새로운 데이터 덮어쓰기 		
 				
 			}
 		})
 		
-	}
+	}*/
 
 </script>
 	<style>
