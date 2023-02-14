@@ -236,8 +236,9 @@ main {
 				dataType : "JSON",
 				url : "https://www.googleapis.com/youtube/v3/search?"+
 						"part=snippet&"+
-						"maxResults=25&"+
-						"channelId=UC6KwCU8Y8Uw4h_Q0ptLZkqw&"+
+						"maxResults=100&"+
+						"channelId=UCa7-3Zvxg-5Rfxgu3RQY_gw&"+
+						"q=코로나or감기or독감&"+
 						"type=video&"+
 						"key=AIzaSyBEMOzRRSZQw6xFyQVBW8XIB6RDTndW0_Y",
 				contentType : "application/json",
@@ -276,8 +277,6 @@ main {
 			  var li = obj.querySelectorAll("p");
 			  var tubeTitle = li[0].innerText;
 			  var tubeURL = li[1].innerText;
-			  console.log("유튜브제목ㅇ은?"+tubeTitle);
-			  console.log("유튜브경로은?"+tubeURL);
 			  var form = document.createElement("form");
 		      form.setAttribute("charset", "UTF-8");
 		      form.setAttribute("method", "POST");  //Post 방식
