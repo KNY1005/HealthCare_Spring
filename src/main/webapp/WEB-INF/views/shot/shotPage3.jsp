@@ -292,7 +292,7 @@
 		var cdnm = document.getElementById("cdnm"+idx).innerText;
 		var date = document.getElementsByName("date")[idx].value;
 		var time = document.getElementsByName("time")[idx].value;
-		
+		alert("예약하시겠습니까?");
 		console.log("date?"+date+"time"+time+"cdnm?"+cdnm);
 		
 		var form = document.createElement("form");

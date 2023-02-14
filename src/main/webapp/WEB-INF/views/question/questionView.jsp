@@ -336,7 +336,7 @@ hr {
 				<div class="title">${vo.btitle}</div>
 				<div class="content">${vo.bcontent}</div>
 				<ul>
-					<li>${vo.bwriter}</li>
+					<li>${vo.bwriter}//${vo.midx }</li>
 					<li>${vo.bwdate}</li>
 				</ul>
 			</div>
