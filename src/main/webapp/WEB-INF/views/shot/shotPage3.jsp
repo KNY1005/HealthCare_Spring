@@ -213,11 +213,11 @@
     <div class="order_box">
         <ul class="order">
             <li>예방접종 유의사항</li>
-            <li><i class="xi-angle-right"></i></i></li>
+            <li><i class="xi-angle-right"></i></li>
             <li>예방접종 병원조회</li>
-            <li><i class="xi-angle-right"></i></i></li>
+            <li><i class="xi-angle-right"></i></li>
             <li style="color: #CE8080;">예방접종 예약하기</li>
-            <li><i class="xi-angle-right"></i></i></li>
+            <li><i class="xi-angle-right"></i></li>
             <li>예방접종 예약완료</li>
         </ul>
     </div>
@@ -247,11 +247,10 @@
 					<li>유/무료</li>
 				</ul>
 			</div>
-			<c:forEach items="${datalist}" var="vo"  varStatus="status">
-				<form id="choice_form" action="{% url 'blabla' %}" method="post">
+			<c:forEach items="${datalist}" var="vo"  varStatus="status">				
 					<div class="choice">
 						<ul class="box">
-							<li id="cdnm">${vo.cdNm}</li>                
+							<li id="cdnm${status.index}">${vo.cdNm}</li>                
 							<li>${vo.cdDate}</li>
 							<li>${vo.cdCount}</li>
 							<li>${vo.cdFC}</li>
@@ -268,154 +267,57 @@
 								<input type="text" class="time1 form-control" name="time" id="input_time">
 							</div>
 							<div id="btn">
-								<button type="button" data-toggle="modal" data-target="#myModal"data-id="전달할 값"><a href="#modal1" rel="modal:open" class="reserveBtn">예약</a></button>
+								<button type="button" onclick="test(${status.index})">예약</button>
 							</div>
 						</div>
 					</div>
 					<div id="modal1" class="modal">
-						<p id="book_date">]
+						<p id="book_date">
 						<input type="hidden" name="date[]" id="date_list" value=""/>
 						<input type="submit" onclick="getlist()">
 						</p>
-						<p>${zip}</p>
-						<p>${vo.cdNm}</p>
+						<p id="zip">${zip}</p>
+						<p id="cdNm">${vo.cdNm}</p>
 						<p>예약하시겠습니까?</p>
 						<p><a href="abc6.do">확인</a></p>
-					</div>
-				</form>
+					</div>				
 			</c:forEach>
         </div>
-        <%-- <div id="my_modal">
-		<div id="background_modal" class="background_modal">
-			<div class="modal_contents">
-				 <div id="confirm">
-	                <p>예방접종 예약 확인</p>
-	            </div>
-	            <div class="reserve2">
-	                <p>예약일 / 예약시간</p>
-	                <p>${zip}</p>
-	                <p>${vo.cdNm}</p>
-	                <p>예약하시겠습니까?</p>
-	            </div>
-				<br>
-				<button onClick="location.href='abc6.do'">확인</button>
-			</div>
-		    <a class="modal_close_btn"><i class="xi-close"></i></a>
-		</div> --%>
-	</div>
+      
+	
 	</main>
-	<%@include file="../includes/footer.jsp"  %>
-	
-
-
-
-
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
-	<script type="text/javascript">
-	//모달창
-	
-	$(document).on("click", ".reserveBtn", function (idx) {
-	     var myBook = $(this).data('choice_form');
-	     $(".modal #book").val( myBook );
-
-	     
-	     var date = document.getElementById("input_date").value;
-	     var time = document.getElementById("input_time").value;
-	     document.getElementById("book_date").innerHTML = date+" / "+time;
-	     // As pointed out in comments, 
-	     // it is superfluous to have to manually call the modal.
-	     // $('#addBookDialog').modal('show');
-	});
-	
-	function getlist(){
-		var list = new Array();
-	     $("input[name=date]").each(function(index, item){
-	    	list.push($(item).val);	 
-	     });
-	     $("#date_list").val(list);
-	}
-	
-	def blabla(request):
-		if request.method == 'POST':
-			test = request.POST['date[]']
-			print(type(date))
-	
-	/* function EX01(idx){
-//		alert("EX01 call");
-		var str_id = "#choice_form_" + idx;
-		var obj = $("#cdnm",str_id).html();
-		var form_data = $(str_id).serialize();
-//		console.log(idx);
-		console.log(obj);
-		console.log(form_data);
-		var info = $("#modal1").text(form_data);
-		alert(info);
-		$("#modal1").text(form_data);
-	    /* modal('my_modal',obj,form_data); */
-	    
-	    
+	<script type="text/javascript">	
+	function test(idx){		
+		var cdnm = document.getElementById("cdnm"+idx).innerText;
+		var date = document.getElementsByName("date")[idx].value;
+		var time = document.getElementsByName("time")[idx].value;
 		
-	    
-		/* function modal(id, obj, form_data) {
-		    var zIndex = 9999;
-		    var modal = document.getElementById(id);
-
-		    // 모달 div 뒤에 희끄무레한 레이어
-		    var bg = document.createElement('div');
-		    bg.setStyle({
-		        position: 'fixed',
-		        zIndex: zIndex,
-		        left: '0px',
-		        top: '0px',
-		        width: '100%',
-		        height: '100%',
-		        overflow: 'auto',
-		        // 레이어 색갈은 여기서 바꾸면 됨
-		        backgroundColor: 'rgba(0,0,0,0.4)'
-		    });
-		    document.body.append(bg);
-
-		    // 닫기 버튼 처리, 시꺼먼 레이어와 모달 div 지우기
-		    modal.querySelector('.modal_close_btn').addEventListener('click', function() {
-		        bg.remove();
-		        modal.style.display = 'none';
-		    });
-
-		    modal.setStyle({
-		        position: 'fixed',
-		        display: 'block',
-		        boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
-
-		        // 시꺼먼 레이어 보다 한칸 위에 보이기
-		        zIndex: zIndex + 1,
-
-		        // div center 정렬
-		        top: '50%',
-		        left: '50%',
-		        transform: 'translate(-50%, -50%)',
-		        msTransform: 'translate(-50%, -50%)',
-		        webkitTransform: 'translate(-50%, -50%)'
-		    });
-		}  */
-
-	
-
-
-	// Element 에 style 한번에 오브젝트로 설정하는 함수 추가
-	/* Element.prototype.setStyle = function(styles) {
-	    for (var k in styles) this.style[k] = styles[k];
-	    return this;
-	};
- */
-	/* document.getElementById('reserveBtn').addEventListener('click', function() {
+		console.log("date?"+date+"time"+time+"cdnm?"+cdnm);
 		
-		 var select = $(this).data('id');
-		 $("#contents.time1").val(data);
-	    // 모달창 띄우기
-	    modal('my_modal');
-	}); */
- 
+		var form = document.createElement("form");
+        /* form.setAttribute("charset", "UTF-8");
+        form.setAttribute("method", "POST");  //Post 방식
+        form.setAttribute("action", "page4.do"); //요청 보낼 주소 */
+
+        var hiddenField = document.createElement("input");        
+        hiddenField.setAttribute("type", "hidden");
+        hiddenField.setAttribute("name", "rdate");
+        hiddenField.setAttribute("value", date);
+        form.appendChild(hiddenField);
+        
+        hiddenField = document.createElement("input");
+        hiddenField.setAttribute("type", "hidden");
+        hiddenField.setAttribute("name", "rtime");
+        hiddenField.setAttribute("value", time);
+        form.appendChild(hiddenField);
+        
+        document.body.appendChild(form);
+
+        //form.submit(); 
+	}	
 	</script>
+	<%@include file="../includes/footer.jsp"  %>
 </body>
 
 </html>
