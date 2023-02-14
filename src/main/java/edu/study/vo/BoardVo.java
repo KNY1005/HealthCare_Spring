@@ -17,7 +17,6 @@ public class BoardVo {
 	private String bdelete;
 	private String bsecret;
 	private Integer bhit;
-	private String mname;
 	private int midx;
 	
 	
@@ -133,12 +132,6 @@ public class BoardVo {
 				+ ", blist=" + blist + ", bcategory=" + bcategory + ", btitle=" + btitle + ", bcontent=" + bcontent
 				+ ", bwdate=" + bwdate + ", brewdate=" + brewdate + ", bstate=" + bstate + ", bmdate=" + bmdate
 				+ ", bdelete=" + bdelete + ", bsecret=" + bsecret + ", midx=" + midx + "]";
-	}
-	public String getMname() {
-		return mname;
-	}
-	public void setMname(String mname) {
-		this.mname = mname;
 	}
 	
 	
