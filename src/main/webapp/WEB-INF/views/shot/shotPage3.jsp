@@ -248,7 +248,7 @@
 				</ul>
 			</div>
 			<c:forEach items="${datalist}" var="vo"  varStatus="status">
-				<form id="choice_form_${status.index}">
+				<form id="choice_form" action="{% url 'blabla' %}" method="post">
 					<div class="choice">
 						<ul class="box">
 							<li id="cdnm">${vo.cdNm}</li>                
@@ -260,16 +260,27 @@
 						<div class="able" style="display: none;">
 							<div id="date">
 								<label>날짜</label>
-								<input id="input_date" class="form-control" type="date">
+								<input id="input_date" class="form-control" type="date" name="date">
+								
 							</div>
 							<div id="time">
 								<label>시간</label>
-								<input type="text" class="time1 form-control" name="time1" id="contents">
+								<input type="text" class="time1 form-control" name="time" id="input_time">
 							</div>
-							<div id="btn" onclick="EX01(${status.index});">
-								<button id="reserveBtn" type="button" data-toggle="modal" data-target="#myModal"data-id="전달할 값"><a href="#modal1" rel="modal:open">모달창띄우기</a></button>
+							<div id="btn">
+								<button type="button" data-toggle="modal" data-target="#myModal"data-id="전달할 값"><a href="#modal1" rel="modal:open" class="reserveBtn">예약</a></button>
 							</div>
 						</div>
+					</div>
+					<div id="modal1" class="modal">
+						<p id="book_date">]
+						<input type="hidden" name="date[]" id="date_list" value=""/>
+						<input type="submit" onclick="getlist()">
+						</p>
+						<p>${zip}</p>
+						<p>${vo.cdNm}</p>
+						<p>예약하시겠습니까?</p>
+						<p><a href="abc6.do">확인</a></p>
 					</div>
 				</form>
 			</c:forEach>
@@ -296,20 +307,40 @@
 	<%@include file="../includes/footer.jsp"  %>
 	
 
-<div id="modal1" class="modal">
-  <p>예약일 / 예약시간</p>
-	                <p>${zip}</p>
-	                <p>${vo.cdNm}</p>
-	                <p>예약하시겠습니까?</p>
-  <a href="abc6.do">확인</a>
-</div>
+
 
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 	<script type="text/javascript">
 	//모달창
 	
-	function EX01(idx){
+	$(document).on("click", ".reserveBtn", function (idx) {
+	     var myBook = $(this).data('choice_form');
+	     $(".modal #book").val( myBook );
+
+	     
+	     var date = document.getElementById("input_date").value;
+	     var time = document.getElementById("input_time").value;
+	     document.getElementById("book_date").innerHTML = date+" / "+time;
+	     // As pointed out in comments, 
+	     // it is superfluous to have to manually call the modal.
+	     // $('#addBookDialog').modal('show');
+	});
+	
+	function getlist(){
+		var list = new Array();
+	     $("input[name=date]").each(function(index, item){
+	    	list.push($(item).val);	 
+	     });
+	     $("#date_list").val(list);
+	}
+	
+	def blabla(request):
+		if request.method == 'POST':
+			test = request.POST['date[]']
+			print(type(date))
+	
+	/* function EX01(idx){
 //		alert("EX01 call");
 		var str_id = "#choice_form_" + idx;
 		var obj = $("#cdnm",str_id).html();
@@ -366,16 +397,16 @@
 		        webkitTransform: 'translate(-50%, -50%)'
 		    });
 		}  */
-	}
+
 	
 
 
 	// Element 에 style 한번에 오브젝트로 설정하는 함수 추가
-	Element.prototype.setStyle = function(styles) {
+	/* Element.prototype.setStyle = function(styles) {
 	    for (var k in styles) this.style[k] = styles[k];
 	    return this;
 	};
-
+ */
 	/* document.getElementById('reserveBtn').addEventListener('click', function() {
 		
 		 var select = $(this).data('id');
