@@ -42,10 +42,12 @@ public class BloodController {
 		model.addAttribute("phone",phone[0]);
 		return "blood/bloodPage4";	
 	}
-	@RequestMapping(value = "page5.do", method = RequestMethod.GET)	
+	@RequestMapping(value = "page5.do", method = RequestMethod.POST)	
 	public String bloodPage5(HttpServletRequest request, Model model) {	
 		String[] zip = request.getParameterValues("zip");
-		System.out.println("Áý¸íÀº?"+zip[0]);
+		String[] type = request.getParameterValues("type");
+		System.out.println("type?"+type[0]);
+		System.out.println("zip?"+zip[0]);
 		model.addAttribute("zip",zip[0]);
 		
 		return "blood/bloodPage5";	

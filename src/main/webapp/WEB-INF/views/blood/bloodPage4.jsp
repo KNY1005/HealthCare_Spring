@@ -17,7 +17,8 @@
 	content="${path }/resources/image/favicon/ms-icon-144x144.png" />
 <meta name="theme-color" content="#ffffff" />
 <!-- timepicker -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+<script src="https://code.jquery.com/jquery-latest.min.js" type="application/javascript"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css"></link>
 
 <script>
 		$(function() {
@@ -32,8 +33,9 @@
 		        dropdown: true,
 		        scrollbar: true        
 		    });
-		});
-	</script>
+		})
+</script>
+
 <style>
 
 /*main CSS*/
@@ -72,7 +74,14 @@ main .medical {
 	display: flex;
 	align-items: center;
 }
-
+#time input, #date input {
+		width: 150px;
+		height: 50px;
+		font-size: 18px;
+		font-weight: bold;
+		border-radius: 15px;
+		text-align: center;
+	}
 main .medical p {
 	text-align: center;
 	display: inline-block;
@@ -191,7 +200,7 @@ main .timetable #button {
 
 	<main>
 		<h2>헌혈 예약</h2>
-		<form action="page5.do" method="get">
+		<form action="page5.do" method="POST">
 			<div class="medical">
 				<p><input type="hidden" name="zip" value="${zip}">${zip}</p>
 				<p>진료시간 : 09:00 ~ 18:00</p>
@@ -204,19 +213,17 @@ main .timetable #button {
 				<div class="able">
 					<div id="type">
 						<p>
-							<label> 헌혈종류</label><br> <input type="radio" id="blood_type1"
-								name="type"><label for="type1">전혈</label> <input
-								type="radio" id="blood_type2" name="type"><label
-								for="type2">혈장</label> <input type="radio" id="blood_type3"
-								name="type"><label for="type3">혈소판</label>
+							<label> 헌혈종류</label><br> 
+							<input type="radio" id="blood_type1" name="type" value="전혈"><label for="blood_type1">전혈</label> 
+							<input type="radio" id="blood_type2" name="type" value="혈장"><label	for="blood_type2">혈장</label> 
+							<input type="radio" id="blood_type3" name="type" value="혈소판"><label for="blood_type3">혈소판</label>
 					</div>
 	
 					<div id="date">
-						<label for="date">날짜</label><br> <input name="date"
-							type="date">
+						<label for="date">날짜</label><br> <input name="rdate" type="date">
 					</div>
 					<div id="time">
-						<label for="time">시간</label><br> <input type="text" class="time1" name="time1" class="form-control">
+						<label for="time">시간</label><br> <input type="text" class="time1" name="rtime" >
 					</div>
 	
 				</div>
