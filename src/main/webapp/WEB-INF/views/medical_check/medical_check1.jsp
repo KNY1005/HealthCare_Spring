@@ -166,6 +166,7 @@
 		/*-----------------sub_nav_menu > start---------------*/
 
 		.order_box{
+				margin-left:50px;
 		        width: 790px;
 		        height: 110px;
 		        display: flex;
@@ -173,7 +174,7 @@
 		        justify-content: center;
 		      }    
 		.order{
-		        width: 500px;
+		        width: 600px;
 		        display: flex;
 		        flex-direction: row;
 		        justify-content: space-evenly;
@@ -184,10 +185,7 @@
 		/*-----------------sub_nav_menu > end---------------*/
 
 		*{font-weight:bold;}
-		
-		#height {
-			height: 80px;
-		}
+
 		
 		main {
 			width: 1320px;
@@ -339,7 +337,6 @@
 </head>
 <body>
 	<%@include file="../includes/header.jsp"%>
-	<div id="height"></div>
 		<div class="order_box">
 		<ul class="order">
 			<li>건강검진 유의사항</li>
