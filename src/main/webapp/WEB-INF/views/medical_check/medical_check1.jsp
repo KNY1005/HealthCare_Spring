@@ -36,23 +36,7 @@
                 jQuery('#sido').append(fn_option(code.sido, code.codeNm));
                
             });
-            $("#sido option:eq(1)").text("서울");
-            $("#sido option:eq(2)").text("부산");
-            $("#sido option:eq(3)").text("대구");
-            $("#sido option:eq(4)").text("인천");
-            $("#sido option:eq(5)").text("광주");
-            $("#sido option:eq(6)").text("대전");
-            $("#sido option:eq(7)").text("울산");
-            $("#sido option:eq(8)").text("세종");
-            $("#sido option:eq(9)").text("경기");
-            $("#sido option:eq(10)").text("강원");
-            $("#sido option:eq(11)").text("충북");
-            $("#sido option:eq(12)").text("충남");
-            $("#sido option:eq(13)").text("전북");
-            $("#sido option:eq(14)").text("전남");
-            $("#sido option:eq(15)").text("경북");
-            $("#sido option:eq(16)").text("경남");
-            $("#sido option:eq(17)").text("제주");                         
+                                
 
             //sido 변경시 시군구 option 추가
             jQuery('#sido').change(function(){
@@ -76,27 +60,7 @@
                 }
             });
 
-            //시군구 변경시 행정동 옵션추가
-            /* jQuery('#sigugun').change(function(){
-                //option 제거
-                jQuery('#dong').empty();
-                jQuery.each(hangjungdong.dong, function(idx, code){
-                    if(jQuery('#sido > option:selected').val() == code.sido && jQuery('#sigugun > option:selected').val() == code.sigugun)
-                        jQuery('#dong').append(fn_option(code.dong, code.codeNm));
-                });
-                //option의 맨앞에 추가
-                jQuery('#dong').prepend(fn_option('','선택'));
-                //option중 선택을 기본으로 선택
-                jQuery('#dong option:eq("")').attr('selected', 'selected');
-
-            }); 
-
-            jQuery('#dong').change(function(){
-                var sido = jQuery('#sido option:selected').val();
-                var sigugun = jQuery('#sigugun option:selected').val();
-                var dong = jQuery('#dong option:selected').val();
-                var dongCode = sido + sigugun + dong + '00';
-            });*/
+            
         });
 
         function fn_option(code, name){
@@ -110,165 +74,93 @@
 
 
 <script>
+	function siDoCd(){
+		var sido = $("#sido option:selected").val();
+		return sido;
+	}
+	function siGunGuCd(){
+		var sigugun = $("#sigugun option:selected").val();
+		return sigugun;
+	}
 	function getInfo(){
-	alert("test32");
+	alert("text222");
+	var str_HTML = "";
+	var result_list=[];		
+	var output = "";	
 	$.ajax({
 		type : "GET",
 		dataType : "XML",
 		data : {},
 		url : "http://openapi1.nhis.or.kr/openapi/service/rest/HmcSearchService/getRegnHmcList?"+
+			"numOfRows=5000&"+			
+			"siDoCd="+siDoCd()+"&"+
+			"siGunGuCd="+siGunGuCd()+"&"+ 	
 			"serviceKey=SXsBCxP5w%2BvYN0eL9xWlIZU5Ov2q0%2Bwuv76Q4LpEPsfTEjaZ1uJ9IoRCKmUv0zb%2Bxb7etRcQUBOA18BAgdrPYQ%3D%3D",
-		success : function(data){
-			let hmcNm = data.querySelectorAll("hmcNm");
-			let resultMsg = data.querySelectorAll("resultMsg");
-			let resultCode =  data.querySelectorAll("resultCode");
-			let pageNo = data.querySelectorAll("pageNo");
-			let grenChrgTypeCd = data.querySelectorAll("grenChrgTypeCd");
-			let ichkChrgTypeCd = data.querySelectorAll("ichkChrgTypeCd");
-			let ltems = data.querySelectorAll("ltems");
-			let mchkChrgTypeCd = data.querySelectorAll("mchkChrgTypeCd");
-			let siDoCd = data.querySelectorAll("siDoCd");
-			let siGunGuCd = data.querySelectorAll("siGunGuCd");
-			let locAddr = data.querySelectorAll("locAddr");
-			let hmcTelNo = data.querySelectorAll("hmcTelNo");
-			
-			/*resultMsg.forEach(value => {	
-			});
-			resultCode.forEach(value => {	
-			});
-			pageNo.forEach(value => {	
-			});
-			grenChrgTypeCd.forEach(value => {	
-			});
-			ichkChrgTypeCd.forEach(value => {	
-			});
-			ltems.forEach(value => {	
-			});
-			mchkChrgTypeCd.forEach(value => {	
-			});
-			siDoCd.forEach(value => {	
-			});
-			siGunGuCd.forEach(value => {	
-			});*/
-			data.querySelectorAll("siDoCd") = $("#sido option:selected").text();
-			data.querySelectorAll("siGunGuCd") = $("#sigugun option:selected").text();
-			var result_list=[];
-			var list = data.data;
-			var output = "";	
-			if($("#sigugun option:selected").text()=='선택'){
-				$.each(list,function(locAddr,value){
-					if(locAddr.includes(sido)){
-						result_list.push(value);						
-					}		
-			});
-			}else($.each(list,function(locAddr,value){
-				if(locAddr.includes(sido+" "+sigugun)){
-					result_list.push(value);					
-				}			
-			}));		
-		},
-		complete : function(data){
-			var output = "";
-			result_list.forEach(function(items,index){						
-					console.log('아이템은?'+index);
-					output += "<tr class='column content' onclick='goPage4(this)'>";
-		    	  	output += "<td>" + items['건강검진 병원조회'] + '</td>';
-		      		output += "<td>"+'09:00 ~ 18:00'+'</td>';
-		            output += "<td>"+items.locAddr+'</td>';
-		            output += "<td>"+items.hmcTelNo+"</td>";            
-		            output += '</tr>';							
-			});
+		success : function(data){			
+			let item = data.querySelectorAll("item");
+			item.forEach(function(value,index){
+				var hmcNm = value.querySelector('hmcNm');
+				var locAddr = value.querySelector('locAddr');
+				var hmcTelNo = value.querySelector('hmcTelNo');
+				var hmcNm_val = "";
+				var locAddr_val = "";
+				var hmcTelNo_val = "";
+				
+				if(hmcNm != null) { hmcNm_val = hmcNm.innerHTML; }
+				if(locAddr != null) { locAddr_val = locAddr.innerHTML; }
+				if(hmcTelNo != null) { hmcTelNo_val = hmcTelNo.innerHTML; }
+				
+					output += "<tr class='column content' onclick='medical2(this)'>";
+		    	  	output += "<td>" + hmcNm_val + '</td>';
+		      		output += "<td>09:00 ~ 18:00</td>";
+		            output += "<td>" + locAddr_val + '</td>';
+		            output += "<td>" + hmcTelNo_val + "</td>";            
+		            output += '</tr>';				
+				result_list.push(value);			
+			});	
 			$(".content").remove();		//데이터 지우기				
-      	    $("#info").append(output);  // 새로운 데이터 덮어쓰기 		
-			
-		}
+      	    $("#info").append(output);  // 새로운 데이터 덮어쓰기  
+		}		
 	})
 			
 			
 	
 }
 
-
- 	function goPage4(obj) {			
-  		var abc = obj.querySelectorAll("td");
-  		var zip = abc[0].innerText;
-  		var addr = abc[2].innerText;
-  		var phone = abc[3].innerText;
-			
+	function medical2(obj) {			
+		var abc = obj.querySelectorAll("td");
+		var name = abc[0].innerText;
+		var addr = abc[2].innerText;
+		var tel = abc[3].innerText;
+		alert("name"+name);
 		var form = document.createElement("form");
-        form.setAttribute("charset", "UTF-8");
-        form.setAttribute("method", "POST");  //Post 방식
-        form.setAttribute("action", "page4.do"); //요청 보낼 주소
-
-        var hiddenField = document.createElement("input");
-        hiddenField.setAttribute("type", "hidden");
-        hiddenField.setAttribute("name", "zip");
-        hiddenField.setAttribute("value", zip);
-        form.appendChild(hiddenField);       	
-       
-        hiddenField = document.createElement("input");
-        hiddenField.setAttribute("type", "hidden");
-        hiddenField.setAttribute("name", "addr");
-        hiddenField.setAttribute("value", addr);
-        form.appendChild(hiddenField);
-        
-        hiddenField = document.createElement("input");
-        hiddenField.setAttribute("type", "hidden");
-        hiddenField.setAttribute("name", "phone");
-        hiddenField.setAttribute("value", phone);
-        form.appendChild(hiddenField);
-        
-        document.body.appendChild(form);
-
-        form.submit(); 
+	    form.setAttribute("charset", "UTF-8");
+	    form.setAttribute("method", "POST");  //Post 방식
+	    form.setAttribute("action", "medical2.do"); //요청 보낼 주소
+	
+	    var hiddenField = document.createElement("input");
+	    hiddenField.setAttribute("type", "hidden");
+	    hiddenField.setAttribute("name", "hName");
+	    hiddenField.setAttribute("value", name);
+	    form.appendChild(hiddenField);       	
+	   
+	    hiddenField = document.createElement("input");
+	    hiddenField.setAttribute("type", "hidden");
+	    hiddenField.setAttribute("name", "addr");
+	    hiddenField.setAttribute("value", addr);
+	    form.appendChild(hiddenField);
+	    
+	    hiddenField = document.createElement("input");
+	    hiddenField.setAttribute("type", "hidden");
+	    hiddenField.setAttribute("name", "tel");
+	    hiddenField.setAttribute("value", tel);
+	    form.appendChild(hiddenField);
+	    
+	    document.body.appendChild(form);
+	
+	    form.submit(); 
 	}
 	
-	/*function getInfo(){			
-		var sido = $("#sido option:selected").text();
-		var sigugun = $("#sigugun option:selected").text();
-		var result_list=[];
-		
-		$.ajax({
-			url:"",
-			method:"post",
-			data :{},
-			success:function(data){				
-				var list = data.data;
-				var output = "";		
-				alert
-				if($("#sigugun option:selected").text()=='선택'){
-					$.each(list,function(index,value){
-						var addr = list[index].주소지;
-						if(addr.includes(sido)){
-							result_list.push(value);						
-						}		
-				});
-				}else($.each(list,function(index,value){
-					var addr = list[index].주소지;
-					if(addr.includes(sido+" "+sigugun)){
-						result_list.push(value);					
-					}			
-				}));		
-			},
-			complete : function(data){
-				var output = "";
-				result_list.forEach(function(item,index){						
-						console.log('아이템은?'+index);
-						output += "<tr class='column content' onclick='goPage4(this)'>";
-			    	  	output += "<td>" + item['건강검진 병원조회'] + '</td>';
-			      		output += "<td>"+'09:00 ~ 18:00'+'</td>';
-			            output += "<td>"+item.주소지+'</td>';
-			            output += "<td>"+item.전화번호+"</td>";            
-			            output += '</tr>';							
-				});
-				$(".content").remove();		//데이터 지우기				
-	      	    $("#info").append(output);  // 새로운 데이터 덮어쓰기 		
-				
-			}
-		})
-		
-	}*/
-
 </script>
 	<style>
 		/*-----------------sub_nav_menu > start---------------*/

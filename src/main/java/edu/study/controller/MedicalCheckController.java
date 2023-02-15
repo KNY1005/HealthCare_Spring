@@ -29,17 +29,16 @@ public class MedicalCheckController {
 	}
 	
 	
-	@RequestMapping(value = "medical2", method = RequestMethod.GET)
+	@RequestMapping(value = "medical2.do", method = RequestMethod.POST)
 	
 	public String medical2(HttpServletRequest request, Model model){
-		String[] zip = request.getParameterValues("zip");
+		String[] hName = request.getParameterValues("hName");
 		String[] addr = request.getParameterValues("addr");
-		String[] phone = request.getParameterValues("phone");
+		String[] tel = request.getParameterValues("tel");
 		
-		System.out.println("집명은?"+zip[0]+" 주소는?"+addr[0]+" 연락처는?"+phone[0]);
-		model.addAttribute("zip",zip[0]);
+		model.addAttribute("hName",hName[0]);
 		model.addAttribute("addr",addr[0]);
-		model.addAttribute("phone",phone[0]);
+		model.addAttribute("tel",tel[0]);
 		
 		return "medical_check/medical_check2";
 	}

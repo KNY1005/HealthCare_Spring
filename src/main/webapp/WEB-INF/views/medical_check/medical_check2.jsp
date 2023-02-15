@@ -238,10 +238,10 @@
 	<main>
 		<h2>건강검진 예약</h2>
 		<div class="medical">
-			<p>땡땡 병원</p>
+			<p>${hName }</p>
 			<p>진료시간 : 00:00 ~ 00:00</p>
-			<p>주소 : 전라북도 전주시 완산구 땡땡로 77</p>
-			<p>연락처 : 063-222-0000</p>
+			<p>주소 : ${addr }</p>
+			<p>연락처 : ${tel }</p>
 		</div><!--//.medical-->
 		<hr>
 		<div class="timetable">
