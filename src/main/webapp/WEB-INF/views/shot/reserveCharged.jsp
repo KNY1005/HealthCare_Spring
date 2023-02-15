@@ -2,6 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
+<%@ page import="java.util.*"%>
+<%@ page import="edu.study.vo.ShotVo"%>
+<%
+	List<ShotVo> list = (List<ShotVo>)request.getAttribute("datalist");	//형변환,컨트롤러의 키값을 가져옴
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -115,22 +120,22 @@
             <div id="money">
                 예약이 완료되었습니다.
             </div>
-            <div id="infor">
+            <div id="infor" items="${datalist}" var="vo"  varStatus="status">
                 <ul>
                     <li>병원명</li>
-                    <li>땡떙병원</li>
+                    <li>${rhospital}</li>
                 </ul>
                 <ul>
                     <li>날짜</li>
-                    <li></li>
+                    <li>${rdate}/${rtime}</li>
                 </ul>
                 <ul>
                     <li>접종명</li>
-                    <li></li>
+                    <li>${rname}</li>
                 </ul>
                 <ul>
                   <li>금액</li>
-                  <li></li>
+                  <li>${rbuy}</li>
                 </ul>
             </div>
             <div id="guide">

@@ -22,4 +22,43 @@
 			  ,cdCharge
 			from table_shot
 	</select>
+	
+	<insert id="reserveInsert" parameterType="reserveVo">
+		<![CDATA[
+		INSERT INTO TABLE_reserve(
+		rcase,
+		rhospital,
+		rname,
+		rdate,
+		rtime,
+		rbuy,
+		midx
+		)VALUES(
+		#{rcase},
+		#{rhospital},
+		#{rname},
+		#{rdate},
+		#{rtime},
+		#{rbuy},
+		#{midx}
+		)
+		]]>
+		
+		<selectKey resultType="int" keyProperty="ridx" order="AFTER">
+			select max(ridx)
+			from table_reserve
+		</selectKey>
+	</insert>
+	
+	<select id="reservelist" resultType="ReserveVo">
+		select	ridx,
+				rcase,
+				rhospital,
+				rname,
+				rdate,
+				rtime,
+				rbuy,
+				MIDX
+			from table_reserve
+	</select>
 </mapper>

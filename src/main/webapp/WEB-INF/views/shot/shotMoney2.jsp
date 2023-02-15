@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<!-- 카카오페이 -->
+	<!-- 아임포트 -->
 	<!-- jQuery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
     <!-- iamport.payment.js -->

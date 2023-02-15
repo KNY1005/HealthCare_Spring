@@ -226,16 +226,16 @@
             <div class="menu">
                 <p>예방접종 예약</p>
 			</div>
-			<form action="abc4.do" method="get">
+			
 			<div class="hospital">
 				<ul>
-					<li>병원명 : <input type="hidden" name="zip" value="${zip}">${zip}</li>
+					<li>병원명 : ${zip}</li>
 					<li>진료시간 : 09:00 ~ 18:00</li>
 					<li>주소 : ${addr }</li>
 					<li>연락처 : ${phone }</li>
 				</ul>
 			</div>  
-			</form>
+			
         </div>
 		<hr id="line">
 		<div class="list">
@@ -244,7 +244,7 @@
 					<li>백신명</li>
 					<li>신청가능기간</li>
 					<li>잔여량</li>
-					<li>유/무료</li>
+					<li>가격</li>
 				</ul>
 			</div>
 			<c:forEach items="${datalist}" var="vo"  varStatus="status">				
@@ -253,7 +253,7 @@
 							<li id="cdnm${status.index}">${vo.cdNm}</li>                
 							<li>${vo.cdDate}</li>
 							<li>${vo.cdCount}</li>
-							<li>${vo.cdFC}</li>
+							<li id="cdCharge${status.index}">${vo.cdCharge}</li>
 						</ul>
 					
 						<div class="able" style="display: none;">
@@ -292,14 +292,27 @@
 		var cdnm = document.getElementById("cdnm"+idx).innerText;
 		var date = document.getElementsByName("date")[idx].value;
 		var time = document.getElementsByName("time")[idx].value;
+		var cdCharge = document.getElementById("cdCharge"+idx).innerText;
 		alert("예약하시겠습니까?");
-		console.log("date?"+date+"time"+time+"cdnm?"+cdnm);
+		console.log("date?"+date+"time"+time+"cdnm?"+cdnm+"병원명"+"${zip}"+"가격:"+cdCharge);
 		
 		var form = document.createElement("form");
-        /* form.setAttribute("charset", "UTF-8");
+        form.setAttribute("charset", "UTF-8");
         form.setAttribute("method", "POST");  //Post 방식
-        form.setAttribute("action", "page4.do"); //요청 보낼 주소 */
+        form.setAttribute("action", "abc6.do"); //요청 보낼 주소 */
 
+        var hiddenField = document.createElement("input");        
+        hiddenField.setAttribute("type", "hidden");
+        hiddenField.setAttribute("name", "rname");
+        hiddenField.setAttribute("value", cdnm);
+        form.appendChild(hiddenField);
+        
+        var hiddenField = document.createElement("input");        
+        hiddenField.setAttribute("type", "hidden");
+        hiddenField.setAttribute("name", "rbuy");
+        hiddenField.setAttribute("value", cdCharge);
+        form.appendChild(hiddenField);
+        
         var hiddenField = document.createElement("input");        
         hiddenField.setAttribute("type", "hidden");
         hiddenField.setAttribute("name", "rdate");
@@ -311,10 +324,16 @@
         hiddenField.setAttribute("name", "rtime");
         hiddenField.setAttribute("value", time);
         form.appendChild(hiddenField);
+    
+        hiddenField = document.createElement("input");
+        hiddenField.setAttribute("type", "hidden");
+        hiddenField.setAttribute("name", "rhospital");
+        hiddenField.setAttribute("value", "${zip}");
+        form.appendChild(hiddenField);
         
         document.body.appendChild(form);
 
-        //form.submit(); 
+        form.submit(); 
 	}	
 	</script>
 	<%@include file="../includes/footer.jsp"  %>
