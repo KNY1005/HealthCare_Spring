@@ -51,7 +51,7 @@
 						<li><a href="<%=request.getContextPath() %>/blood/main.do">헌혈</a></li>
 					</ul>
 					<ul>
-						<li><a href="<%=request.getContextPath()%>/notice/healthnews1.do">모두건강</a></li>
+						<li><a href="<%=request.getContextPath()%>/healthnews1.do">모두건강</a></li>
 					</ul>
 					<ul>
 						<li><a href="<%=request.getContextPath() %>/notice/list.do?blist=N">건강광장</a></li>

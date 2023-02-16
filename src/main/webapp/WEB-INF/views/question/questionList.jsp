@@ -266,7 +266,7 @@ main {
 			<c:forEach items="${list}" var="vo">
 				<tr class="content"
 					onClick="location.href='questionView.do?bidx=${vo.bidx }'">
-					<td><p class="title">${vo.btitle}${vo.bidx }</p> <br />
+					<td><p class="title">${vo.btitle}</p> <br />
 						<p>${vo.bcontent}</p></td>
 					<td>${vo.bwriter}</td>
 					<td>${vo.bwdate}</td>
@@ -293,8 +293,11 @@ main {
 				</c:if>
 			</ul>
 		</div>
-		<button class="button" onClick="location.href='questionWrite.do'">글쓰기</button>
-
+		<% %>
+			
+		<c:if test="${member!= null }">	
+			<button class="button" onClick="location.href='questionWrite.do'">글쓰기</button>
+		</c:if>
 
 	</main>
 	<%@include file="../includes/footer.jsp"%>

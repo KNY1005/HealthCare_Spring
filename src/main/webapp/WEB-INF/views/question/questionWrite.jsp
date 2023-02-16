@@ -241,7 +241,7 @@ hr {
 				</div>
 			</div>
 			<div id="button">
-				<button type="button" onclick="location.href='questionList.do'">취소</button>
+				<button type="button" onclick="location.href='questionList.do?blist=Q'">취소</button>
 				<button>완료</button>
 			</div>
 		</form>
