@@ -124,23 +124,28 @@
 	</select>
 
 	<insert id="replyInsert" parameterType="ReplyVO">
-		INSERT INTO TABLE_REPLY(
+		<![CDATA[INSERT INTO TABLE_REPLY(
 		BIDX
+		, MIDX
 		, PCONTENT
 		, PWRITER
 		, PGRP
 		, PGRPS
 		, PTITLE
 		, PDATE
+		, PLIKECOUNT
 		)VALUES(
 		#{bidx}
+		, #{midx}
 		, #{pcontent}
 		, #{pwriter}
 		, #{pgrp}
 		, #{pgrps}
 		, #{ptitle}
-		, sysdate
+		, now()
+		, 0
 		)
+		]]>
 	</insert>
 
 	<update id="replyUpdate" parameterType="ReplyVO">
@@ -181,7 +186,7 @@
 
 	<insert id="create" parameterType="HashMap">
 		INSERT INTO TABLE_LIKE(likeno, pidx, midx, like_check)
-		VALUES ((SELECT NVL(MAX(likeno), 0) + 1 as likeno FROM TABLE_LIKE),
+		VALUES ((SELECT IFNULL(MAX(likeno), 0) + 1 as likeno FROM TABLE_LIKE),
 		#{pidx}, #{midx}, 0)
 	</insert>
 
@@ -205,13 +210,13 @@
 	<update id="like_cnt_up" parameterType="int">
 		UPDATE TABLE_REPLY
 		SET
-		PLIKE = plike + 1
+		PLIKECOUNT = plikecount + 1
 		WHERE PIDX=#{pidx} AND MIDX=#{midx}
 	</update>
 
 	<update id="like_cnt_down" parameterType="int">
 		UPDATE TABLE_REPLY
-		SET PLIKE = 0
+		SET PLIKECOUNT = 0
 		WHERE PIDX=#{pidx} AND MIDX=#{midx}
 	</update>
 

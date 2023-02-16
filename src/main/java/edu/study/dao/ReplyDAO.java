@@ -15,7 +15,7 @@ public class ReplyDAO {
 	private SqlSession sqlSession;
 	
 	public int replyCount(ReplyVO ro){
-		return sqlSession.selectOne("edu.study.mapper.boardMapper.replyCount");
+		return sqlSession.selectOne("edu.study.mapper.boardMapper.replyCount", ro);
 	}
 	
 	public List<ReplyVO> replyList(int bidx){

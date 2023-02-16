@@ -23,35 +23,29 @@
 <style>
 		/*-----------------sub_nav_menu > start---------------*/
 
-		.sub_nav_menu ul {
-			margin-left: 135px;
-			margin-top: 20px;
+		.order_box {
+			width: 790px;
+			height: 110px;
+			display: flex;
+			align-items: flex-end;
+			justify-content: center;
 		}
-
-		.sub_nav_menu li {
-			text-align: center;
-			float: left;
-			width: 100px;
-			padding: 0 30px;
-			/*글자길이 길어서 넘어가면 이거 늘리세요 */
-			font-weight: bold;
-			font-size: 20px;
-		}
-
-		.sub_nav_menu li:nth-child(2) {
-			border-left: 1px solid #000;
-			border-right: 1px solid #000;
-		}
-
-		.sub_nav_menu li:nth-child(3) a{
-			color: red;
+		
+		.order {
+			width: 500px;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-evenly;
 		}
 
 		/*-----------------sub_nav_menu > end---------------*/
-	#height {
-		height: 80px;
+
+		
+	main {
+		width: 1320px;
+		height:3500px;
+		margin: 100px auto;
 	}
-	
 	
 	* {
 		font-weight: bold;
@@ -63,7 +57,7 @@
 		margin: 100px auto;
 	}
 	
-	#main #view h2 {
+	main #view h2 {
 		font-size: 40px;
 		font-weight: bold;
 	}
@@ -317,10 +311,10 @@
 	}
 	
 	/*전문의 답변 뷰박스*/
-	#main .replyList {
-		height:280px;
+	.replyList {
 		width: 1100px;
 		margin-top: 30px;
+		height:100%;
 	}
 	
 	</style>
@@ -328,16 +322,16 @@
 
 <body>
 	 <%@include file="../includes/header.jsp"%>
-
-	<div id="height"></div>
-	<div class="sub_nav_menu">
-		<ul>
-			<li><a href="notice1.do">공지사항</a></li>
-			<li><a href="question/questionList.do">문의사항</a></li>
-			<li><a href="medicallist.do">건강상담소</a></li>
+	<div class="order_box">
+		<ul class="order">
+			<li>공지사항</li>
+			<li>|</li>
+			<li>문의사항</li>
+			<li>|</li>
+			<li style="color: #CE8080;">건강상담소</li>
 		</ul>
-	</div><!--//.sub_nav_menu-->
-	<main id="main">
+	</div>
+	<main>
 		<section id="view">
 			<h2>건강상담소 상세</h2>
 			<hr>
@@ -392,13 +386,14 @@
 			 	</div>
 			    </c:if>
 			   	<div class="container">
-			   		<div class="replyList"></div>
+			   		<div class="replyList">
+			   		<%@ include file="reply.jsp" %></div>
 			    </div>
 			</div>
 			 
-		<%@ include file="reply.jsp" %>
+		
 		</section>
-
+		
 	</main>
 	<%@include file="../includes/footer.jsp"%>
 	

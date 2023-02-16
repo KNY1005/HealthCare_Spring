@@ -24,41 +24,27 @@
 	<style>
 		/*-----------------sub_nav_menu > start---------------*/
 
-		.sub_nav_menu ul {
-			margin-left: 135px;
-			margin-top: 20px;
+		.order_box {
+			width: 790px;
+			height: 110px;
+			display: flex;
+			align-items: flex-end;
+			justify-content: center;
 		}
-
-		.sub_nav_menu li {
-			text-align: center;
-			float: left;
-			width: 100px;
-			padding: 0 30px;
-			/*글자길이 길어서 넘어가면 이거 늘리세요 */
-			font-weight: bold;
-			font-size: 20px;
-		}
-
-		.sub_nav_menu li:nth-child(2) {
-			border-left: 1px solid #000;
-			border-right: 1px solid #000;
-		}
-
-		.sub_nav_menu li:nth-child(3) {
-			color: #9e0404;
+		
+		.order {
+			width: 500px;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-evenly;
 		}
 
 		/*-----------------sub_nav_menu > end---------------*/
-		#height {
-			height: 80px;
-		}
+
 		
 		main {
-			
 			width: 1320px;
-			height:1300px;
 			margin: 100px auto;
-			
 		}
 
 		main h2 {
@@ -411,12 +397,13 @@
 </head>
 <body>
 	<%@include file="../includes/header.jsp"%>
-	<div id="height"></div>
-	<div class="sub_nav_menu">
-		<ul>
-			<li><a href="notice1.do">공지사항</a></li>
-			<li><a href="question/questionList.do">문의사항</a></li>
-			<li><a href="medicalList.do">건강상담소</a></li>
+	<div class="order_box">
+		<ul class="order">
+			<li>공지사항</li>
+			<li>|</li>
+			<li>문의사항</li>
+			<li>|</li>
+			<li style="color: #CE8080;">건강상담소</li>
 		</ul>
 	</div>
 	<main>
@@ -544,16 +531,16 @@
 			<ul id="page">
 				<c:if test="${page.prev}">
 					<li><a
-						href="medicalList.do?page=${page.startPage - 1}&&searchType=${page.scri.searchType}&&keyWord=${page.encoding(page.scri.keyWord)}"><i
+						href="medicalList.do?blist=H&page=${page.startPage - 1}&&searchType=${page.scri.searchType}&&keyWord=${page.encoding(page.scri.keyWord)}"><i
 							class="xi-angle-left"></i></a></li>
 				</c:if>
 				<c:forEach begin="${page.startPage}" end="${page.endPage}" var="vo">
 					<li><a
-						href="medicalList.do?page=${vo}&&searchType=${page.scri.searchType}&&keyWord=${page.encoding(page.scri.keyWord)}">${vo}</a></li>
+						href="medicalList.do?blist=H&page=${vo}&&searchType=${page.scri.searchType}&&keyWord=${page.encoding(page.scri.keyWord)}">${vo}</a></li>
 				</c:forEach>
 				<c:if test="${page.next && page.endPage > 0}">
 					<li><a
-						href="medicalList.do?page=${page.endPage + 1}&&searchType=${page.scri.searchType}&&keyWord=${page.encoding(page.scri.keyWord)}"><i
+						href="medicalList.do?blist=H&page=${page.endPage + 1}&&searchType=${page.scri.searchType}&&keyWord=${page.encoding(page.scri.keyWord)}"><i
 							class="xi-angle-right"></i></a></li>
 				</c:if>
 			</ul>

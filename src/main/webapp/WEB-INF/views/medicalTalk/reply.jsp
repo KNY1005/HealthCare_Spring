@@ -18,8 +18,8 @@
 	$('[name=replyInsertBtn]').click(function(){ //댓글 등록 버튼 클릭시
 		alert("reply.jsp / btn click : call");
 	    var insertData = $('[name=replyInsertForm]').serialize(); //commentInsertForm의 내용을 가져옴
-	    console.log(insertData);
-	    replyInsert(insertData); //Insert 함수호출(아래)
+	    console.log("eeee"+insertData);
+	    replyInsert(insertData);
 	});
 	 
 	 
@@ -37,21 +37,23 @@
 /* 	            	console.log("replyList() / ajax succes / foreach : key :"+ key );
 	            	console.log('bidx : ' + bidx);
 	            	console.log('value.pidx : ' + value.pidx);
-	            	console.log('value.pwriter : ' + value.pwriter);
- */	            	a += '<form name="reply_' + key +'">';
+
+ */	
+	                a += '<div class="replyArea" style="border: 3px solid #FF8F8F; border-radius: 25px;	width: 1100px; height:280px; margin-bottom: 15px;">';
+	                a += '<div class="replyTitle'+value.ptitle+'" style="margin:15px 0 10px 65px; width: 970px; height: 35px; text-align: left; font-size: 25px;">'+value.ptitle+'';
+	                a += '<div class="replyLike">';
+	            	a += '<form name="reply_' + key +'">';
 	            	a += '<input type="hidden" name="bidx" value="'+ bidx + '">';
 	            	a += '<input type="hidden" name="pidx" value="'+ value.pidx + '">';
 	            	a += '<input type="hidden" name="pwriter" value="'+ value.pwriter + '">';
 	            	a += '<input type="hidden" name="midx" value="'+ value.midx + '">';
-	                a += '<div class="replyArea" style="border: 3px solid #FF8F8F; border-radius: 25px;	width: 1100px; height:280px; margin-bottom: 15px;">';
-	                a += '<div class="replyTitle'+value.ptitle+'" style="margin:15px 0 10px 65px; width: 970px; height: 35px; text-align: left; font-size: 25px;">'+value.ptitle+'';
-	                a += '<div class="replyLike">';
 	           	 	if (midx == 0){
 	                a += '<a href="javascript: login_need()"><img src="${path }/resources/image/dislike.png" id="like_img"></a>';
 	            	}else if(midx !== 0){
 	                a += '<a href="javascript: like_func(' + key + ');"><img src="${path }/resources/image/dislike.png"></a>';
 	            	}
 	                a += '</div>';
+	                a += '</form>';
 	                a += '</div>';
 	                a += '<div class="replyContent'+value.pidx+'" style="margin: 0 0 10px 65px; width: 970px; height: 150px; ">  '+value.pcontent +'';
 	                a += '</div>';
@@ -60,11 +62,12 @@
 	                a += '</div>';
 	                a += '<div class="replyDate'+value.pdate+'" style="	margin-left:50px; font-size:16px; margin-top:10px;">  '+value.pdate +'';
 	                a += '</div>';
+
 	                a += '<div class="button" style="display:flex; margin-left:530px; margin-bottom:20px;">';
 	                a += '<a onclick="replyUpdate('+value.pidx+',\''+value.pcontent+'\');" style="margin-left:10px; width: 80px; height: 15px; padding: 10px; font-size:15px; font-weight: bold; text-align:center; background-color: #FFEFEF; border: #FFEFEF; border-radius: 30px; "> 수정 </a>';
 	                a += '<a onclick="replyDelete('+value.pidx+');"  style="margin-left:10px; width: 80px; height: 15px; padding: 10px; font-size:15px; font-weight: bold; text-align:center; background-color: #FFEFEF; border: #FFEFEF; border-radius: 30px; "> 삭제 </a> </div>';
 	                a += '</div></div>';
-	            	a += '</form>';
+	            	
 	            });
 	            
 	            $(".replyList").html(a);
@@ -84,6 +87,8 @@
 	            	replyList(); //댓글 작성 후 댓글 목록 reload
 	                $('[name=pcontent]').val('');
 	                $('[name=ptitle]').val('');
+	                $('[name=pwriter]').val('');
+	                $('[name=pdate]').val('');
 	            }
 	        }
 	    });
@@ -128,13 +133,13 @@
 	}
 	
  	function like_func(idx){
- 		var insertData = $('[name=reply_'+ idx + ']').serialize();
-	    console.log(insertData);
+ 		var likeData = $('[name=reply_'+ idx + ']').serialize();
+	    console.log(likeData);
 
 		$.ajax({
 //			url: 'medicalView/reply/like.do'?pidx='+pidx+'&bidx='+bidx+'&pwriter='+pwriter,
 			url: 'medicalView/reply/like.do',
-			data: insertData,
+			data: likeData,
 			type: "get",
 			cache: false, 
 			dataType: "json",

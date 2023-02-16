@@ -6,17 +6,17 @@ public class ReplyVO {
 	private int pgrp;
 	private int pgrps;
 	private int midx;
-	private int plike;
+	private int plikecount;
 	private String pcontent;
 	private String pwriter;
 	private String ptitle;
 	private String pdate;
 	
-	public int getPlike() {
-		return plike;
+	public int getPlikecount() {
+		return plikecount;
 	}
-	public void setPlike(int plike) {
-		this.plike = plike;
+	public void setPlikecount(int plikecount) {
+		this.plikecount = plikecount;
 	}
 	
 	public int	  getPidx()		{ return pidx;		}
@@ -41,7 +41,7 @@ public class ReplyVO {
 	@Override
 	public String toString() {
 		return "ReplyVO [pidx=" + pidx + ", bidx=" + bidx + ", pgrp=" + pgrp + ", pgrps=" + pgrps + ", midx=" + midx
-				+ ", plike=" + plike + ", pcontent=" + pcontent + ", pwriter=" + pwriter + ", ptitle=" + ptitle
+				+ ", plikecount=" + plikecount + ", pcontent=" + pcontent + ", pwriter=" + pwriter + ", ptitle=" + ptitle
 				+ ", pdate=" + pdate + "]";
 	}
 

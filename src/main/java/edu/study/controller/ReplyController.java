@@ -33,29 +33,26 @@ public class ReplyController {
 
 	@RequestMapping("/list")
 	@ResponseBody
-	public List<ReplyVO> replyList(Model model, int bidx) throws Exception {
+	public List<ReplyVO> replyList(Model model, int bidx, MemberVo mo) throws Exception {
 		System.out.println("reply cont \n bidx : " + bidx);
-
-		HashMap<String, Object> hashMap = new HashMap<String, Object>();
-		if(likeService.countbyLike(hashMap)==0) {
-			likeService.create(hashMap);
-		    }
-		LikeVO likeVO = new LikeVO();
-		likeVO.setLike_check(likeService.like_check(hashMap));
-		ReplyVO ro = new ReplyVO();
-		int pidx = ro.getPidx();
-		ro.setPlike(replyService.like_cnt_up(pidx));
 		
+		
+		model.addAttribute(mo);
+		
+
+
 		return replyService.replyList(bidx);
 	}
 
 	@RequestMapping("/insert") // 댓글 작성
 	@ResponseBody
-	public int replyInsert(ReplyVO ro, MemberVo mo, Model model) throws Exception {
+	public int replyInsert(ReplyVO ro, MemberVo mo, Model model, BoardVo vo) throws Exception {
 
 		System.out.println("ReplyCon : " + ro.getBidx() + "\n" + ro.getPcontent() + "\n" + ro.getPtitle());
 
 		model.addAttribute(mo);
+		model.addAttribute(vo);
+		
 		return replyService.replyInsert(ro);
 	}
 
@@ -77,7 +74,14 @@ public class ReplyController {
 	@ResponseBody
 	@RequestMapping(value="like.do", method=RequestMethod.GET, produces="text/plain;charset=UTF-8") 
 	public String readLike(BoardVo vo, HttpSession session, MemberVo mo, LikeVO lo) {
+		
 		ReplyVO ro = new ReplyVO();
+		HashMap <String, Object>hashMap = new HashMap<String, Object>();
+		if(likeService.countbyLike(hashMap)==0) {
+			likeService.create(hashMap);
+		    }
+		lo.setLike_check(likeService.like_check(hashMap));
+		
 		
 		System.out.println(vo.toString());
 		System.out.println(lo.toString());
@@ -91,7 +95,7 @@ public class ReplyController {
 		
 		System.out.println("midx는 담김?"+mo);
 		ArrayList<String> msgs = new ArrayList<String>();
-		HashMap <String, Object>hashMap = new HashMap<String, Object>();
+		
 		
 		  
 		hashMap.put("pidx", ro.getPidx()); 
@@ -111,7 +115,7 @@ public class ReplyController {
 		  
 
 		
-		int plike = ro.getPlike();                                                     
+		int plikecount = ro.getPlikecount();                                                     
 		int like_check = 0;
 		like_check = lo.getLike_check();
 		  
@@ -122,18 +126,19 @@ public class ReplyController {
 			msgs.add("좋아요!");
 			likeService.like_check(hashMap);
 			like_check++; 
-			plike++; replyService.like_cnt_up(ro.getPidx()); 
+			plikecount++; replyService.like_cnt_up(ro.getPidx()); 
 		}else {
 			msgs.add("좋아요 취소");
 			likeService.like_check_cancel(hashMap);
 			like_check--;
-			plike--; 
+			plikecount--; 
 			replyService.like_cnt_down(ro.getPidx());
 		}
 		
+		ro.setPlikecount(replyService.like_cnt_up(plikecount));
 		obj.put("ro.getPidx()", lo.getPidx()); 
 		obj.put("like_check", lo.getLike_check());
-		obj.put("plike", ro.getPlike());
+		obj.put("plikecount", ro.getPlikecount());
 		obj.put("msg", msgs);
 		 	 
 		return obj.toJSONString();
