@@ -43,11 +43,11 @@ public class MedicalCheckController {
 		return "medical_check/medical_check2";
 	}
 	
-	@RequestMapping(value = "medicalresult.do", method = RequestMethod.GET)
+	@RequestMapping(value = "medicalresult.do", method = RequestMethod.POST)
 	public String medicalresult(HttpServletRequest request, Model model) {	
-		String[] zip = request.getParameterValues("zip");
-		System.out.println("Áý¸íÀº?"+zip[0]);
-		model.addAttribute("zip",zip[0]);
+		String[] hName = request.getParameterValues("hName");
+
+		model.addAttribute("hName",hName[0]);
 		
 		return "medical_check/medical_check_result";
 	}

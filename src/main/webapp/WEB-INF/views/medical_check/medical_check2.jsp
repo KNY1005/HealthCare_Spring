@@ -20,7 +20,11 @@
 	<meta name="msapplication-TileImage"
 		content="${path }/resources/image/favicon/ms-icon-144x144.png" />
 	<meta name="theme-color" content="#ffffff" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+	
 	<script>
+	
 	function resbtn(){
 		 if (confirm("예약하시겠습니까?") == true){ 
 			   console.log("완료되었습니다.");
@@ -29,6 +33,7 @@
 			 }
 	}
 	</script>
+	
 
 	<style>
 		/*-----------------sub_nav_menu > start---------------*/
@@ -42,24 +47,22 @@
 			margin: 100px auto;
 		}
 		
-		.order_box {
-			width: 850px;
-			height: 110px;
-			display: flex;
-			align-items: flex-end;
-			justify-content: center;
-		}
-		
-		.order {
-			width: 500px;
-			display: flex;
-			flex-direction: row;
-			justify-content: space-evenly;
-		}
-		
-		.order li:nth-child(5) {
-			color: #ce8080;
-		}
+		.order_box{
+				margin-left:50px;
+		        width: 790px;
+		        height: 110px;
+		        display: flex;
+		 		align-items: flex-end;
+		        justify-content: center;
+		      }    
+		.order{
+		        width: 600px;
+		        display: flex;
+		        flex-direction: row;
+		        justify-content: space-evenly;
+		        }
+		.order li:nth-child(3){color:#ce8080;}
+
 		
 		/*-----------------sub_nav_menu > end---------------*/
 		main h2 {
@@ -103,11 +106,11 @@
 
 		/*제일 크고 제일 아래있는 큰 연한 핑크색 박스*/
 		main .timetable {
+			margin-top:30px;
 			border-radius: 40px;
 			border: 3px solid#FDBFBF;
 			height: 305px;
 			width: 1290px;
-			margin-top: 30px;
 			display: flex;
 			flex-direction:column;
 			margin-left: 15px;
@@ -128,7 +131,6 @@
 		
 		main .timetable #content{
 			justify-content:center;
-			margin-top:40px;
 			font-size:25px;
 			display:flex;
 			}
@@ -158,14 +160,22 @@
 		}
 
 
+		#date, #content p{
+		margin-top:65px;}
 
-
-		main .timetable  #time label{
+		main .timetable #content #time label{
 			width: 250px;
 			height: 50px;
 			font-size:25px;
 			text-align: center;
+
 			
+			
+		}
+		
+		#time input{
+			height: 50px;
+			margin-top:40px;
 			
 		}
 		
@@ -182,7 +192,7 @@
 
 		
 		/*예약 버튼*/
-		main .timetable button {
+		main button {
 			width: 130px;
 			height: 50px;
 			border-radius: 10px;
@@ -191,11 +201,11 @@
 			font-size: 25px;
 			margin-top: 40px;
 			border: none;
-			margin-left:1130px;
+			margin-left:1170px;
 			cursor: pointer;
 		}
 		
-		main .timetable button:hover {
+		main button:hover {
 			box-shadow: inset 3px 3px 5px #c57171;
 			cursor: pointer;
 			transition: all 0.3s;
@@ -219,9 +229,11 @@
 	</div>
 	<main>
 		<h2>건강검진 예약</h2>
+		<form action="medicalresult.do" method="POST">
 		<div class="medical">
+			<p><input type="hidden" name="hName" value="${hName}">${hName}</p>
 			<p>${hName }</p>
-			<p>진료시간 : 00:00 ~ 00:00</p>
+			<p>진료시간 : 09:00 ~ 18:00</p>
 			<p>주소 : ${addr }</p>
 			<p>연락처 : ${tel }</p>
 		</div><!--//.medical-->
@@ -235,21 +247,37 @@
 				<div id="content">
 					<p>일반건강검진</p>
 					<div id="date">
-						<label for=""></label>
-						<input type="date">
+						<label for="date"></label>
+						<input name="rdate" type="date">
 					</div>
 					<div id="time">
-						<label for=""></label>
-						<input type="time">
+						<label for="time"></label><br> <input type="text" class="time1" name="rtime" >
 					</div>
 				</div>
-			<button onclick="resbtn();">예약</button>
 		</div><!--//.timetable-->
+		<button onclick="resbtn();">예약</button>
+	</form>
 	</main>
 		<%@include file="../includes/footer.jsp"%>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 
 
 
+<script>
+		$(function() {
+		    $(".time1").timepicker({
+		        timeFormat: 'h:mm p',
+		        interval: 30,
+		        minTime: '09',
+		        maxTime: '6:00pm',
+		        defaultTime: '09',
+		        startTime: '09:00',
+		        dynamic: false,
+		        dropdown: true,
+		        scrollbar: true        
+		    });
+		})
+</script>
 
 
 
