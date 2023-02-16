@@ -85,7 +85,7 @@ public class MemberController {
 
 		return "home";
 	}
-
+	
 	@RequestMapping(value = "/join.do", method = RequestMethod.POST)
 	public String join(MemberVo vo, HttpServletRequest request) {
 		System.out.println("회원가입중");
@@ -118,6 +118,19 @@ public class MemberController {
 		}
 	}
 
+	
+	@ResponseBody
+	@RequestMapping(value = "/checkDoctor.do", method = RequestMethod.POST)
+	public String checkDoctor(String ddoctor) {
+
+		int result = memberService.selectByDoctor(ddoctor);
+
+		if (result > 0) {
+			return "1";
+		} else {
+			return "0";
+		}
+	}
 	@RequestMapping(value = "/membersearch.do", method = RequestMethod.GET)
 	public String membersearch(MemberVo vo, HttpServletRequest request) {
 		System.out.println("아이디 찾기중");

@@ -10,7 +10,6 @@
     <meta charset="utf-8" />
   </head>
   <body>
-<h2 style="text-align: center;">회원목록</h2>
 <table border="1">
 	<tr>
 		<td>아이디</td>

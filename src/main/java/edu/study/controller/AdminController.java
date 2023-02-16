@@ -33,18 +33,7 @@ public class AdminController {
 	private MemberService memberService;
 	
 	@RequestMapping(value="/god.do", method=RequestMethod.GET)
-	public String god(HttpServletRequest request, MemberVo vo) throws Exception {
-		
-		HttpSession session = request.getSession();
-		
-		//관리자 세션 제어
-		String mgrade = (String) session.getAttribute("mgrade");
-		String mid = (String) session.getAttribute("mid");
-		System.out.println(mgrade);
-		if(mgrade == null || !(mgrade.equals("A"))){
-			System.out.println("관리자가아닙니다");
-			return "";
-		}
+	public String god(HttpServletRequest request){
 		
 		return "admin/god";
 	}

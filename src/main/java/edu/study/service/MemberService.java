@@ -9,6 +9,7 @@ public interface MemberService {
 	
 	/*로그인*/
 	public MemberVo login(MemberVo vo)throws Exception;
+	
 	/*아이디 중복확인*/
 	public int selectById(String mid);
 	
@@ -40,6 +41,8 @@ public interface MemberService {
 	public String passwordUpdate(MemberVo searchVo);
 	
 	public MemberVo selectByMidx(int midx);
+
+	public int selectByDoctor(String ddoctor);
 
 
 }

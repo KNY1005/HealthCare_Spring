@@ -167,8 +167,10 @@
               placeholder="이름"
               required
               value=""
+              onblur="blurName(this)"
               oninput="handleOnInput1(this)"
             />
+            
             <input
               class="login animated fadeInUp animate3"
               name="mphone"
@@ -221,15 +223,22 @@
             <div id="doctor" style="display:none;">
 	            <input
 	              class="login animated fadeInUp animate3"
-	              name="doctornumber"
-	              id="doctornumber"
+	              name="ddoctor"
+	              id="ddoctor"
 	               type="textbox"
 	              placeholder="의사면허번호"
 	              required
 	              value=""
 	              maxlength="30"
 	              oninput="handleOnInput2(this)"
-	            />
+	              onblur="blurDoctor(this)"
+	            /><button class="login animated fadeInUp animate2 join-button"  
+            style="background:#ff7575; border:none; color:#fff; position: absolute; top:606px; left:295px; border-radius: 15px; padding:2px; width:70px;" 
+            type="button" onclick="checkDoctor();">확인</button>
+            <span  style="display: none; color: #d92742; font-size:12px; margin:-8px;" class="id_ok" id="span_doctor_0">공백은 조회할 수 없습니다.</span>
+            <span  style="display: none; color: #d92742; font-size:12px; margin:-8px;" class="id_ok" id="span_doctor_1">존재하지 않는 면허번호입니다.</span>
+			<span  style="display: none; color: green; font-size:12px; margin:-8px;" class="id_already" id="span_doctor_2">존재하는 면허번호입니다.</span>
+			<span  style="display: none; color: #d92742; font-size:12px; margin:-8px; class="id_already" id="span_doctor_3">확인을 해주세요</span>
             </div>
             
           </fieldset>
@@ -337,6 +346,8 @@
 	  
 	var checkIdFlag = false;
    var checkIdVal = "";
+   var checkDoctorFlag = ture;
+   var checkDoctorVal = "";
    function loadFn(){
       var join = document.join;
       var tel_rule = /^\d{2,3}\d{3,4}\d{4}$/;
@@ -357,6 +368,25 @@
       }
       span_id_3.style.display = 'none';
       
+      
+      if (checkDoctorFlag != true)
+      {
+    	  span_doctor_3.style.display = 'block';
+    	  
+         join.ddoctor.focus();
+         return false;
+      }
+      
+      if( join.ddoctor.value != checkDoctorVal)
+      {
+    	  span_doctor_3.style.display = 'block';
+         join.ddoctor.focus();
+         return false;      
+      }
+      span_id_3.style.display = 'none';
+      
+      
+      
       if ($("#password1").val() == null || $("#password1").val() == "") {
 	    return false;
 	    }
@@ -370,9 +400,11 @@
    			alert1.style.display = 'none';
    	  return false;
    	  }
-   	  
    		alert1.style.display = 'block';
    		alert2.style.display = 'none';
+   		
+   		
+   		
    		
    		if (!tel_rule.test($("#mphone").val())) {
 			alert("전화번호 형식에 맞게 입력해주세요.");
@@ -430,7 +462,74 @@
 
 	  
 	  
-	  //아이디중복 확인
+	  //의사면허정보중복 확인
+	  var checkDoctorFlag = false;
+	  var checkDoctorVal = "";
+	  var span_doctor_0 = document.getElementById('span_doctor_0');
+	  var span_doctor_1 = document.getElementById('span_doctor_1');
+	  var span_doctor_2 = document.getElementById('span_doctor_2');
+	  
+	  function checkDoctor()
+	  {
+	     var Doctorval = $("#ddoctor").val();
+	     if (Doctorval == "")
+	     {
+	    	span_doctor_0.style.display = 'block';
+       	  	span_doctor_1.style.display = 'none';
+       	 	span_doctor_2.style.display = 'none';
+       		 span_doctor_3.style.display = 'none';
+	        return false;
+	     } else if (Doctorval != "")
+	     {
+	        $.ajax({
+	           url : "checkDoctor.do",
+	           type : "post",
+	           data : "ddoctor=" + Doctorval,
+	           success : function(data)
+	           {
+	              if (data == 1)
+	              {
+	            	  span_doctor_0.style.display = 'none';
+	            	  span_doctor_1.style.display = 'none';
+	            	  span_doctor_2.style.display = 'block';
+	            	  span_doctor_3.style.display = 'none';
+	                 checkDoctorFlag = true;
+	                 checkDoctorVal = "";
+	              } else
+	              {
+	            	  span_doctor_0.style.display = 'none';
+	            	  span_doctor_1.style.display = 'block';
+	            	  span_doctor_2.style.display = 'none';
+	            	  span_doctor_3.style.display = 'none';
+	                 checkDoctorFlag = false;
+	                 checkDoctorVal = Doctorval;
+	                 console.log(checkDoctorVal);
+	                 console.log(checkDoctorFlag);
+	              }
+	           }
+	        });
+	     }
+	  }
+
+	  function blurDoctor(obj) {
+	     var val = obj.value;
+	     if (checkDoctorFlag && val != checkDoctorVal)
+	     {
+	        checkDoctorFlag = false;
+	     }else if ($("#ddoctor").val() == "")
+	     { // name이 name인 값을 불러와 공백이라면
+	        checkDoctoreFlag = false;
+	        console.log(checkDoctorFlag);
+	        console.log(val);
+	     } else
+	     {
+	        console.log(val);
+	        console.log(checkDoctorFlag);
+	     }
+	     
+	  }
+	  
+	//아이디중복 확인
 	  var checkIdFlag = false;
 	  var checkIdVal = "";
 	  var span_id_0 = document.getElementById('span_id_0');
@@ -500,7 +599,6 @@
 	     }
 	     
 	  }
-	  
     </script>
   </body>
 </html>

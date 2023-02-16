@@ -18,7 +18,7 @@ public class MemberDAO {
 	@Autowired
 	private SqlSession sqlSession;
 
-	/* 관리자 기능 */
+	// 관리자 기능
 	// 회원 전체 정보 출력(탈퇴회원포함)
 	public List<MemberVo> memberlist() {
 		return sqlSession.selectList("edu.study.mapper.memberMapper.memberlist");
@@ -29,31 +29,37 @@ public class MemberDAO {
 		return null;
 	}
 
-	//
+	// 회원등급 수정
 	public int updateRole(int midx, String mgrade) {
 		return 0;
 	}
 
-	/* 사용자기능 */
-	/* 로그인 */
+	// 사용자기능
+	// 로그인
 	public MemberVo login(MemberVo vo) {
 
 		return sqlSession.selectOne("edu.study.mapper.memberMapper.login", vo);
 	}
 
-	/* 아이디 중복검사 */
+	// 아이디 중복검사
 	public int selectById(String mid) {
 
 		return sqlSession.selectOne("edu.study.mapper.memberMapper.selectById", mid);
 	}
+	
+	// 이름 중복검사
+	public int selectByDoctor(String ddoctor) {
 
-	/* 회원가입 */
+			return sqlSession.selectOne("edu.study.mapper.memberMapper.selectByDoctor", ddoctor);
+		}
+	
+	// 회원가입 
 	public int register(MemberVo vo) {
 
 		return sqlSession.insert("edu.study.mapper.memberMapper.register", vo);
 	}
 
-	/* 회원등급변경 */
+	// 회원등급변경
 	public String changeStotus(MemberVo vo) {
 
 		return sqlSession.selectOne("edu.study.mapper.memberMapper.changeStotus", vo);
@@ -64,17 +70,20 @@ public class MemberDAO {
 		
 		return sqlSession.selectOne("edu.study.mapper.memberMapper.searchId", searchVo);
 	}
-
+	
+	// 비밀번호 찾기
 	public int memberPwdCheck(MemberVo searchVo) {
 
 		return sqlSession.selectOne("edu.study.mapper.memberMapper.memberPwdCheck", searchVo);
 	}
-
+	
+	// 임의 비밀번호 업데이트
 	public String passwordUpdate(MemberVo searchVo) {
 
 		return sqlSession.selectOne("edu.study.mapper.memberMapper.passwordUpdate", searchVo);
 	}
-
+	
+	// midx로 회원 정보 찾기
 	public MemberVo selectByMidx(int midx) {
 
 		return sqlSession.selectOne("edu.study.mapper.memberMapper.selectByMidx", midx);
