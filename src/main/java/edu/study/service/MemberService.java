@@ -7,42 +7,27 @@ import edu.study.vo.MemberVo;
 
 public interface MemberService {
 	
-	/*로그인*/
 	public MemberVo login(MemberVo vo)throws Exception;
 	
-	/*아이디 중복확인*/
 	public int selectById(String mid);
 	
-	/*회원가입*/
 	public int register(MemberVo vo);
 	
-	/*회원목록*/
 	public List<MemberVo> memberlist();
 	
-	/*등급변경*/
 	public String changeStotus(MemberVo vo)throws Exception;
 	
-	/*회원 입력*/
-	public void inserMember(MemberVo vo);
-	
-	/*회원삭제*/
-	public void deleteMember(String mid);
-	
-	/*회원정보 수정*/
-	public void updateMember(MemberVo vo);
-	
-	//아이디찾기
 	public MemberVo memberIdSearch(MemberVo searchVo);
 	
-	//비밀번호 찾기
 	public int memberPwdCheck(MemberVo searchVo);
 	
-	//비밀번호 변경
 	public String passwordUpdate(MemberVo searchVo);
 	
 	public MemberVo selectByMidx(int midx);
 
 	public int selectByDoctor(String ddoctor);
+	
+	public MemberVo updateMember(MemberVo vo);
 
 
 }
