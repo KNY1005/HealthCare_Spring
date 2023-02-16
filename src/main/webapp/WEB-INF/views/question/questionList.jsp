@@ -279,7 +279,7 @@ main {
 			<ul id="page">
 				<c:if test="${page.prev}">
 					<li><a
-						href="questionList.do?blist=Q&page=${page.startPage - 1}&&searchType=${page.scri.searchType}&&keyWord=${page.encoding(page.scri.keyWord)}"><i
+						href="questionList.do?blist=Q1&page=${page.startPage - 1}&&searchType=${page.scri.searchType}&&keyWord=${page.encoding(page.scri.keyWord)}"><i
 							class="xi-angle-left"></i></a></li>
 				</c:if>
 				<c:forEach begin="${page.startPage}" end="${page.endPage}" var="vo">
