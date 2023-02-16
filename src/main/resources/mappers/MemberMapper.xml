@@ -37,6 +37,7 @@
 		, mgrade
 		FROM table_member
 		WHERE midx = #{midx}
+		
 	</select>
 	
 	<select id="selectByDoctor" parameterType="String" resultType="int">
@@ -138,6 +139,7 @@
 		where mid =
 		#{mid}
 	</update>
+	
 	<!--
 	<update id="updateMember" parameterType="MemberVo">
 		update table_member

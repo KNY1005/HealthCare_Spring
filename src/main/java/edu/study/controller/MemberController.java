@@ -59,8 +59,6 @@ public class MemberController {
 		vo.setMpwd(memberSha256.encrypt(mpwd));
 				
 		
-		int count = memberService.loginCheck(vo, session);
-		
 		if (login == null) {
 			session.setAttribute("member", null);
 			System.out.println("로그인실패");
