@@ -17,10 +17,10 @@
 			LIMIT #{rowStart},#{rowEnd}
 	</select>
 
-	<select id="listCount" resultType="int">
+	<select id="listCount" parameterType="scri" resultType="int">
 		SELECT COUNT(bidx)
 		FROM table_board
-		WHERE bidx>0 and bdelete='N'
+		WHERE bidx>0 and bdelete='N' and blist=#{blist}
 		<include refid="search"></include>
 	</select>
 

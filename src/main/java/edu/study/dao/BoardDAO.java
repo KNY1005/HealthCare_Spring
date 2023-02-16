@@ -20,8 +20,8 @@ public class BoardDAO {
 	@Autowired
 	private SqlSession sqlSession;
 
-	public BoardVo selectByBidx(int bidx) {	//보드브이오로 반환
-		return sqlSession.selectOne("edu.study.mapper.boardMapper.selectByBidx", bidx); //마이바티스가 제공,한건 조회
+	public BoardVo selectByBidx(int bidx) {	//蹂대��釉��댁�ㅻ� 諛���
+		return sqlSession.selectOne("edu.study.mapper.boardMapper.selectByBidx", bidx); //留��대��곗�ㅺ� ��怨�,��嫄� 議고��
 	}
 
 	public List<BoardVo> list(SearchCriteria scri) {
@@ -30,18 +30,18 @@ public class BoardDAO {
 	}
 	
 	public int listCount(SearchCriteria scri) {
-		return sqlSession.selectOne("edu.study.mapper.boardMapper.listCount");
+		return sqlSession.selectOne("edu.study.mapper.boardMapper.listCount",scri);
 	}
 	
-	public int updateByBidx(BoardVo vo) {	//int 몇건이 처리되었는가(카운트 값)
-		return sqlSession.update("edu.study.mapper.boardMapper.updateByBidx", vo); //업데이트는 결과출력 없음
+	public int updateByBidx(BoardVo vo) {	//int 紐�嫄댁�� 泥�由щ������媛�(移댁�댄�� 媛�)
+		return sqlSession.update("edu.study.mapper.boardMapper.updateByBidx", vo); //���곗�댄�몃�� 寃곌낵異��� ����
 	}
 	
 	public int insert(BoardVo vo) {	
 		return sqlSession.insert("edu.study.mapper.boardMapper.insert", vo);
 	}
 
-	public int maxBidx() {	//리절트 타입이 int 반환도 int
+	public int maxBidx() {	//由ъ���� ������ int 諛����� int
 		
 		return sqlSession.selectOne("edu.study.mapper.boardMapper.maxBidx");
 	}

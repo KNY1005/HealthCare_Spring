@@ -7,7 +7,7 @@ public class SearchCriteria extends CriteriaVO {
 	public String getBlist() {
 		return blist;
 	}
-	public void setBlist(String blist) {
+	public void setBlist(String blist) {		
 		this.blist = blist;
 	}
 	public String getSearchType() {

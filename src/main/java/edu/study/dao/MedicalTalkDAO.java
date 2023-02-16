@@ -27,7 +27,7 @@ public class MedicalTalkDAO {
 		return sqlSession.selectList("edu.study.mapper.boardMapper.listSearch",scri);
 	}	
 	public int listCount(SearchCriteria scri) {
-		return sqlSession.selectOne("edu.study.mapper.boardMapper.listCount");
+		return sqlSession.selectOne("edu.study.mapper.boardMapper.listCount",scri);
 	}
 	
 	public int deleteByBidx(int bidx) {

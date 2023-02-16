@@ -229,9 +229,7 @@ hr {
 				<input type="text" class="title" name="btitle"/>
 				<textarea class="content" name="bcontent"></textarea>
 				<ul>
-					<li>${login.mname }</li>
-					<li>${vo.bwdate }</li>
-					
+					<li>${member.mname }</li>										
 				</ul>
 			</div>
 			<div class="file">

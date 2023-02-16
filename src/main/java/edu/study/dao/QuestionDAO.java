@@ -22,11 +22,10 @@ public class QuestionDAO {
 	}
 
 	public List<BoardVo> listSearch(SearchCriteria scri) {
-		scri.setBlist("Q");
 		return sqlSession.selectList("edu.study.mapper.boardMapper.listSearch",scri);
 	}	
 	public int listCount(SearchCriteria scri) {
-		return sqlSession.selectOne("edu.study.mapper.boardMapper.listCount");
+		return sqlSession.selectOne("edu.study.mapper.boardMapper.listCount",scri);
 	}
 	
 	
@@ -38,7 +37,7 @@ public class QuestionDAO {
 		return sqlSession.insert("edu.study.mapper.boardMapper.insert", vo);
 	}
 
-	public int maxBidx() {	//�뵳�딆쟿占쎈뱜 占쏙옙占쎌뿯占쎌뵠 int 獄쏆꼹�넎占쎈즲 int
+	public int maxBidx() {	
 		
 		return sqlSession.selectOne("edu.study.mapper.boardMapper.maxBidx");
 	}
