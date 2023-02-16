@@ -11,4 +11,5 @@ public interface ShotService {
 	ShotVo selectinfo(ShotVo vo);
 	int insert(ReserveVo vo);
 	List<ReserveVo> list(ReserveVo vo);
+	int updatebuy(ReserveVo vo);
 }

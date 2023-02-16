@@ -42,6 +42,12 @@ public class ShotServiceImpl implements ShotService {
 		
 		return list;
 	}
+
+	@Override
+	public int updatebuy(ReserveVo vo) {
+		// TODO Auto-generated method stub
+		return shotDAO.updatebuy(vo);
+	}
 	
 
 	

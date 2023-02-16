@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import edu.study.vo.BoardVo;
 import edu.study.vo.ReserveVo;
 import edu.study.vo.ShotVo;
 
@@ -33,4 +34,7 @@ public class ShotDAO {
 		return sqlSession.selectList("edu.study.mapper.shotMapper.reservelist",vo);
 	}
 	
+	public int updatebuy(ReserveVo vo) {	
+		return sqlSession.update("edu.study.mapper.boardMapper.updatebuy", vo);
+	}
 }

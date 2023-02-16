@@ -71,24 +71,49 @@ public class ShotController {
 		return "shot/reserveFree";
 	}
 
-	@RequestMapping(value = "abc6.do", method = RequestMethod.POST)
-	public String homeb(HttpServletRequest request, Model model, ReserveVo vo) {
+	@RequestMapping(value = "abc6.do", method = RequestMethod.GET)
+	public String homeb23() {
+		return "shot/reserveCharged";
+	}
 
+	@RequestMapping(value = "abc6.do", method = RequestMethod.POST)
+	public String homeb(HttpServletRequest request, Model model, ReserveVo vo, HttpSession session) {
+
+		MemberVo midx = (MemberVo) session.getAttribute("midx");
 		String[] rname = request.getParameterValues("rname");
 		String[] rbuy = request.getParameterValues("rbuy");
+		String[] rstate = request.getParameterValues("rstate");
 		String[] rdate = request.getParameterValues("rdate");
 		String[] rtime = request.getParameterValues("rtime");
 		String[] rhospital = request.getParameterValues("rhospital");
-
+				System.out.println("ex"+rstate[0]);
+		model.addAttribute("midx", midx);
 		model.addAttribute("rname", rname[0]);
 		model.addAttribute("rbuy", rbuy[0]);
+		model.addAttribute("rstate", rstate[0]);
 		model.addAttribute("rdate", rdate[0]);
 		model.addAttribute("rtime", rtime[0]);
 		model.addAttribute("rhospital", rhospital[0]);
 
-		int result = shotService.insert(vo);
+		/*
+		 * MemberVo login = (MemberVo)session.getAttribute("login");
+		 * vo.setMidx(login.getMidx());
+		 */
 		
-		return "shot/reserveCharged";
+		
+	    shotService.insert(vo);
+	    
+	   
+		if(rbuy[0] != "") {
+			 
+			shotService.updatebuy(vo);
+			
+	    	return "shot/reserveCharged";
+	    	
+	    }else {
+	    	return "shot/reserveFree";
+	    }
+		
 	}
 
 	@RequestMapping(value = "abc7.do", method = RequestMethod.GET)
@@ -97,7 +122,7 @@ public class ShotController {
 		return "shot/shotMoney1";
 	}
 
-	@RequestMapping(value = "abc8.do", method = RequestMethod.GET)
+	@RequestMapping(value = "abc8.do", method = RequestMethod.POST)
 	public String home8() {
 
 		return "shot/shotMoney2";

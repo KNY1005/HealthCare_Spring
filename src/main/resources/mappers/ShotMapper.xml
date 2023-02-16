@@ -32,7 +32,8 @@
 		rdate,
 		rtime,
 		rbuy,
-		midx
+		midx,
+		rstate
 		)VALUES(
 		#{rcase},
 		#{rhospital},
@@ -40,7 +41,8 @@
 		#{rdate},
 		#{rtime},
 		#{rbuy},
-		#{midx}
+		#{midx},
+		#{rstate}
 		)
 		]]>
 		
@@ -61,4 +63,11 @@
 				MIDX
 			from table_reserve
 	</select>
+	
+	<update id="updatebuy" parameterType="boardVo">
+		update table_reserve
+		set
+		rstate = 'c'
+		where rbuy = #{rbuy}
+	</update>
 </mapper>

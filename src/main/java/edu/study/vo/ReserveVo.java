@@ -9,7 +9,14 @@ public class ReserveVo {
 	private String rtime;
 	private String rbuy;
 	private int midx;
+	private String rstate;
 	
+	public String getRstate() {
+		return rstate;
+	}
+	public void setRstate(String rstate) {
+		this.rstate = rstate;
+	}
 	public int getRidx() {
 		return ridx;
 	}

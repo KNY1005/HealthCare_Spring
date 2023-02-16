@@ -4,9 +4,13 @@
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <%@ page import="java.util.*"%>
 <%@ page import="edu.study.vo.ShotVo"%>
+<%@ page import="edu.study.vo.MemberVo"%>
 <%
 	List<ShotVo> list = (List<ShotVo>)request.getAttribute("datalist");	//형변환,컨트롤러의 키값을 가져옴
+	
+
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -293,14 +297,20 @@
 		var date = document.getElementsByName("date")[idx].value;
 		var time = document.getElementsByName("time")[idx].value;
 		var cdCharge = document.getElementById("cdCharge"+idx).innerText;
-		alert("예약하시겠습니까?");
-		console.log("date?"+date+"time"+time+"cdnm?"+cdnm+"병원명"+"${zip}"+"가격:"+cdCharge);
+		alert("예약하시겠습니까? ${member.midx}");
+		console.log("date?"+cdCharge+"time"+time+"cdnm?"+cdnm+"병원명"+"${zip}"+"가격:"+cdCharge);
 		
 		var form = document.createElement("form");
         form.setAttribute("charset", "UTF-8");
         form.setAttribute("method", "POST");  //Post 방식
         form.setAttribute("action", "abc6.do"); //요청 보낼 주소 */
 
+        var hiddenField = document.createElement("input");        
+        hiddenField.setAttribute("type", "hidden");
+        hiddenField.setAttribute("name", "midx");
+        hiddenField.setAttribute("value", "${member.midx}");
+        form.appendChild(hiddenField);
+        
         var hiddenField = document.createElement("input");        
         hiddenField.setAttribute("type", "hidden");
         hiddenField.setAttribute("name", "rname");
@@ -310,7 +320,21 @@
         var hiddenField = document.createElement("input");        
         hiddenField.setAttribute("type", "hidden");
         hiddenField.setAttribute("name", "rbuy");
-        hiddenField.setAttribute("value", cdCharge);
+        if(cdCharge == null){
+        	hiddenField.setAttribute("value", "");
+        }else{
+        	hiddenField.setAttribute("value", cdCharge);
+        }
+        form.appendChild(hiddenField);
+        
+        var hiddenField = document.createElement("input");        
+        hiddenField.setAttribute("type", "hidden");
+        hiddenField.setAttribute("name", "rstate");
+        if(cdCharge == ""){
+        	hiddenField.setAttribute("value", "Y");
+        }else{
+        	hiddenField.setAttribute("value", "N");
+        }
         form.appendChild(hiddenField);
         
         var hiddenField = document.createElement("input");        
