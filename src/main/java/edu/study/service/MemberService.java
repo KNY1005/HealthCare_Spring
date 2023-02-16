@@ -2,6 +2,8 @@ package edu.study.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import edu.study.vo.MemberVo;
 
 
@@ -28,6 +30,9 @@ public interface MemberService {
 	public int selectByDoctor(String ddoctor);
 	
 	public MemberVo updateMember(MemberVo vo);
+
+	public int loginCheck(MemberVo vo, HttpSession session);
+
 
 
 }

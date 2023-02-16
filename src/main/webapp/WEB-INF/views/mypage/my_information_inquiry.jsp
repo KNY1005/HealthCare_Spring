@@ -54,12 +54,13 @@
       <section class="main_content">
         <div class="main_content_title">
             <h2>개인정보설정</h2>
-            <div class="">
-		<form action="/member/modify.kh" method="post">
+           <hr>
+        </div>
+        		<form action="/member/modify.do" method="post">
 			<table>
 				<tr>
 					<td>* 아이디</td>
-					<td><input type="text" id="mid" name="mid" value="${member.mid }" readonly>
+					<td>${member.mid }
 					</td>
 				</tr>
 				<tr>
@@ -80,12 +81,12 @@
 					<td><input type="text" name="mphone" id="mphone" value="${member.mphone }"></td>
 				</tr>
 				<tr>
-					<td>* 우편번호</td>
-					<td><input type="text" name="post" value="${post }" ></td>
+					<td>* 주소</td>
+					<td><input type="text" name="post" value="${post}" ></td>
 					<!-- 배열로 값을 받았다면 ${addreess[0]}으로 표기하여 출력할수 있다-->
 				</tr>
 				<tr>
-					<td>* 주소</td>
+					<td>* 상세주소</td>
 					<td><input type="text" name="address" value="${address }"></td>
 				</tr>
 				<tr>
@@ -99,9 +100,7 @@
 			</table>
 			
 		</form>
-	</div>
-        </div>
-
+	</section>
       </main>
     <%@include file="../includes/footer.jsp"%>
 </body>

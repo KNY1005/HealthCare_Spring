@@ -53,11 +53,14 @@ public class MemberController {
 
 		HttpSession session = request.getSession();
 		MemberVo login = memberService.login(vo);
-
+		
 		// 비밀번호 암호화
 		String mpwd = vo.getMpwd();
 		vo.setMpwd(memberSha256.encrypt(mpwd));
 				
+		
+		int count = memberService.loginCheck(vo, session);
+		
 		if (login == null) {
 			session.setAttribute("member", null);
 			System.out.println("로그인실패");
@@ -73,7 +76,9 @@ public class MemberController {
 		}
 
 	}
+	
 
+	
 	@RequestMapping(value = "/logout.do", method = RequestMethod.GET)
 	public String logout(HttpServletRequest request) {
 
@@ -232,5 +237,5 @@ public class MemberController {
 		return encryPassword;
 	}
 
-	
-}
+
+	}
