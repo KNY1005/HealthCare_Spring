@@ -19,16 +19,25 @@ public class MemberVo {
 	private String memail;
 	private String maddrdetail;
 	private String mmaddzipnum;
-	private int mnumber;
+	private int didx;
+	
+	
 	
 	@Override
 	public String toString() {
 		return "MemberVo [midx=" + midx + ", mid=" + mid + ", mname=" + mname + ", mpwd=" + mpwd + ", mphone=" + mphone
 				+ ", mlvl=" + mlvl + ", mgrade=" + mgrade + ", mdelyn=" + mdelyn + ", menter=" + menter + ", mmdate="
 				+ mmdate + ", mbreakdate=" + mbreakdate + ", mcnt=" + mcnt + ", mip=" + mip + ", memail=" + memail
-				+ ", maddrdetail=" + maddrdetail + ", mmaddzipnum=" + mmaddzipnum + ", mnumber=" + mnumber + "]";
+				+ ", maddrdetail=" + maddrdetail + ", mmaddzipnum=" + mmaddzipnum + ", didx=" + didx + ", memberVoList="
+				+ memberVoList + "]";
 	}
 	
+	public int getDidx() {
+		return didx;
+	}
+	public void setDidx(int didx) {
+		this.didx = didx;
+	}
 	
 	private List<MemberVo> memberVoList;
 	
@@ -37,16 +46,6 @@ public class MemberVo {
 	}
 	public void setMemberVoList(List<MemberVo> memberVoList) {
 		this.memberVoList = memberVoList;
-	}
-	
-	
-	
-	public int getMnumber() {
-		return mnumber;
-	}
-
-	public void setMnumber(int mnumber) {
-		this.mnumber = mnumber;
 	}
 
 	public String getMaddrdetail() {
