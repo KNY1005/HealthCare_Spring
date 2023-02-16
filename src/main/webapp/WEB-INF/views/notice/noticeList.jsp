@@ -270,16 +270,16 @@ main {
 			<ul id="page">
 				<c:if test="${page.prev}">
 					<li><a
-						href="list.do?page=${page.startPage - 1}&&searchType=${page.scri.searchType}&&keyWord=${page.encoding(page.scri.keyWord)}"><i
+						href="list.do?blist=N&page=${page.startPage - 1}&&searchType=${page.scri.searchType}&&keyWord=${page.encoding(page.scri.keyWord)}"><i
 							class="xi-angle-left"></i></a></li>
 				</c:if>
 				<c:forEach begin="${page.startPage}" end="${page.endPage}" var="vo">
 					<li><a
-						href="list.do?page=${vo}&&searchType=${page.scri.searchType}&&keyWord=${page.encoding(page.scri.keyWord)}">${vo}</a></li>
+						href="list.do?blist=N&page=${vo}&&searchType=${page.scri.searchType}&&keyWord=${page.encoding(page.scri.keyWord)}">${vo}</a></li>
 				</c:forEach>
 				<c:if test="${page.next && page.endPage > 0}">
 					<li><a
-						href="list.do?page=${page.endPage + 1}&&searchType=${page.scri.searchType}&&keyWord=${page.encoding(page.scri.keyWord)}"><i
+						href="list.do?blist=N&page=${page.endPage + 1}&&searchType=${page.scri.searchType}&&keyWord=${page.encoding(page.scri.keyWord)}"><i
 							class="xi-angle-right"></i></a></li>
 				</c:if>
 			</ul>

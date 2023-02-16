@@ -114,15 +114,15 @@
             <div id="infor">
                 <ul>
                     <li>병원명</li>
-                    <li>땡떙병원</li>
+                    <li>${rhospital}</li>
                 </ul>
                 <ul>
                     <li>날짜</li>
-                    <li></li>
+                    <li>${rdate}/${rtime}</li>
                 </ul>
                 <ul>
                     <li>접종명</li>
-                    <li></li>
+                    <li>${rname}</li>
                 </ul>
             </div>
             <div id="guide">
@@ -130,7 +130,7 @@
                 <p>수신동의 설정 : 마이페이지 < 개인정보 수정</p>
             </div>
             <div class="btn">
-                <button onClick="location.href=''">예약조회 바로가기</button>
+                <button type="button" "location.href=''">예약조회 바로가기</button>
             </div>
             
         </div>
