@@ -36,7 +36,6 @@ public class BloodController {
 		String[] addr = request.getParameterValues("addr");
 		String[] phone = request.getParameterValues("phone");
 		
-		System.out.println("집명은?"+zip[0]+" 주소는?"+addr[0]+" 연락처는?"+phone[0]);
 		model.addAttribute("zip",zip[0]);
 		model.addAttribute("addr",addr[0]);
 		model.addAttribute("phone",phone[0]);
@@ -46,8 +45,7 @@ public class BloodController {
 	public String bloodPage5(HttpServletRequest request, Model model) {	
 		String[] zip = request.getParameterValues("zip");
 		String[] type = request.getParameterValues("type");
-		System.out.println("type?"+type[0]);
-		System.out.println("zip?"+zip[0]);
+		
 		model.addAttribute("zip",zip[0]);
 		
 		return "blood/bloodPage5";	

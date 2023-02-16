@@ -42,16 +42,16 @@
 						</li>
 					</ul>
 					<ul>
-						<li><a href="<%=request.getContextPath() %>/abc1.do">예방접종</a></li>
+						<li><a href="<%=request.getContextPath() %>/shot/abc1.do">예방접종</a></li>
 					</ul>
 					<ul>
-						<li><a href="<%=request.getContextPath() %>/medicalmain.do">건강검진</a></li>
+						<li><a href="<%=request.getContextPath() %>/medical_check/medicalmain.do">건강검진</a></li>
 					</ul>
 					<ul>
 						<li><a href="<%=request.getContextPath() %>/blood/main.do">헌혈</a></li>
 					</ul>
 					<ul>
-						<li><a href="<%=request.getContextPath()%>/healthnews1.do">모두건강</a></li>
+						<li><a href="<%=request.getContextPath()%>/notice/healthnews1.do">모두건강</a></li>
 					</ul>
 					<ul>
 						<li><a href="<%=request.getContextPath() %>/notice1.do">건강광장</a></li>
@@ -59,10 +59,10 @@
 				</div>
 				<div id="sliding_menu">
 					<ul>
-		              <li><a href="<%=request.getContextPath() %>/abc1.do">예방접종 예약</a></li>
+		              <li><a href="<%=request.getContextPath() %>/shot/abc1.do">예방접종 예약</a></li>
 		            </ul>
 		            <ul>
-		              <li><a href="<%=request.getContextPath() %>/medicalmain.do">건강검진 예약</a></li>
+		              <li><a href="<%=request.getContextPath() %>/medical_check/medicalmain.do">건강검진 예약</a></li>
 		            </ul>
 		            <ul>
 		              <li><a href="<%=request.getContextPath() %>/blood/main.do">헌혈 예약</a></li>
@@ -74,7 +74,7 @@
 					<ul>
 		              <li><a href="<%=request.getContextPath() %>/notice/list.do">공지사항</a></li>
 		              <li><a href="<%=request.getContextPath() %>/question/questionList.do">문의사항</a></li>
-		              <li><a href="<%=request.getContextPath() %>/medicallist.do">건강상담소</a></li>
+		              <li><a href="<%=request.getContextPath() %>/medicalTalk/medicalList.do">건강상담소</a></li>
 		            </ul>
 					</ul>
 				</div>

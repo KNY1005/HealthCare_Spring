@@ -88,8 +88,7 @@ public class QuestionController {
 
 	@RequestMapping(value = "/questionWrite.do", method = RequestMethod.GET)
 	public String questionWrite(Model model) {
-		//MemberVo vo = memberService.selectByMidx(midx);
-		//model.addAttribute("vo", vo);
+		
 		return "question/questionWrite";
 	}
 
@@ -100,7 +99,6 @@ public class QuestionController {
 		questionService.insert(vo);
 		String path = req.getSession().getServletContext().getRealPath("/resources/upload");
 		File dir = new File(path);
-		System.out.println("寃쎈�"+path);
 		if (!dir.exists()) { 
 			dir.mkdirs();
 		}
@@ -145,7 +143,6 @@ public class QuestionController {
 		String path = request.getSession().getServletContext().getRealPath("/resources/upload/");
 		String saveFileName = fvo.getStoredname();
 		String originalFileName = fvo.getOriginname();
-		System.out.println("�ㅼ�대��� 寃쎈���"+path);
 		File downloadFile = new File(path + saveFileName);
 
 		byte fileByte[] = FileUtils.readFileToByteArray(downloadFile);

@@ -182,14 +182,19 @@
 			</p>
 
 		</div>
-		<h3>본인인증</h3>
-		<div id="member_info">
-			<label for="name">이름</label><input name="name" maxlength='8'></input> 
-			<label for="">주민번호</label><input type="text" maxlength='6'></input>-<input type="password"
-				maxlength='7'></input>
-			<button>확인</button>	
-		</div>
-		<a href="page2.do">헌혈 전자문진</a>
+		<c:choose> 
+			<c:when test="${member == null}"> 
+				<a onclick="loginCheck()">헌혈 전자문진</a>				
+			</c:when> 
+			<c:otherwise>
+				<a href="page3.do">헌혈 전자문진</a>				 
+			</c:otherwise> 
+		</c:choose>  
+		<script>
+			function loginCheck(){
+				alert("회원만 예약가능합니다!!\n로그인 해주세요!!");
+			}
+		</script>
 	</main>
 	<%@include file="../includes/footer.jsp"%>
 </body>

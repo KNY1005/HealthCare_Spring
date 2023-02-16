@@ -17,34 +17,7 @@
 <meta name="msapplication-TileImage"
 	content="${path }/resources/image\favicon\android-icon-144x144.png" />
 <meta name="theme-color" content="#ffffff" />
-<script>	
-		/* //건강소식 가져오기
-		$.ajax({
-			type:'POST',
-			dataType:'json',
-			url:"ApiSearchNew.java",
-			data:{'GUBUN':'news','SEARVALUE':SEARVALUE},
-			cache:false,
-			async:false
-		})
-		.done(function(result){
-			var news_html="";
-			for(var i=0; i<(result.item.length>5?5:result.item.length);i++)
-				{
-				var row_html="";
-				row_html+="<div></div>"
-				row_html+=
-					
-				news_html+=row_html;
-				}
-			if(news_html)
-				{
-				$("#news_result").html(news_html);
-				}
-		}) */
-	
-	
-	</script>
+
 <style>
 main {
 	width: 1320px;
@@ -242,8 +215,7 @@ main {
 						"type=video&"+
 						"key=AIzaSyBEMOzRRSZQw6xFyQVBW8XIB6RDTndW0_Y",
 				contentType : "application/json",
-				success : function(data) {
-					alert("test");						
+				success : function(data) {								
 					for (var i = 0; i < data.items.length; i++) {
 						var items = data.items[i];							
 						/* console.log("비디오아이디:"+items.id.videoid);

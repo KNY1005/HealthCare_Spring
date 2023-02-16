@@ -34,30 +34,7 @@ public class HomeController {
 		
 		return "home";
 	}
-	
-
-	/*공지사항*/
-	@RequestMapping(value = "notice1.do", method = RequestMethod.GET)
-	public String howdmeb() {
 		
-		return "notice/noticeList";
-	}
-	@RequestMapping(value = "notice2.do", method = RequestMethod.GET)
-	public String homefeb() {
-		
-		return "notice/noticeModify";
-	}
-	@RequestMapping(value = "notice3.do", method = RequestMethod.GET)
-	public String hoasdmeb() {
-		
-		return "notice/noticeView";
-	}
-	@RequestMapping(value = "notice4.do", method = RequestMethod.GET)
-	public String homeb2() {
-		
-		return "notice/noticeWrite";
-	}		
-	
 	@RequestMapping(value = "healthnews1.do", method = RequestMethod.GET)
 	public String healthnews1() {
 		
