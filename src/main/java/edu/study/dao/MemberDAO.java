@@ -83,4 +83,9 @@ public class MemberDAO {
 
 		return sqlSession.selectOne("edu.study.mapper.memberMapper.updateMembe", vo);
 	}
+
+	public int loginCheck(MemberVo vo) {
+		
+		return sqlSession.selectOne("edu.study.mapper.memberMapper.loginCheck", vo);
+	}
 }

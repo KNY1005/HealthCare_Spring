@@ -2,6 +2,8 @@ package edu.study.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -88,6 +90,14 @@ public class MemberServiceImpl implements MemberService {
 	public MemberVo updateMember(MemberVo vo) {
 
 		return memberdao.updateMember(vo);
+	}
+
+	@Override
+	public int loginCheck(MemberVo vo, HttpSession session) {
+		System.out.println("UserService");
+		System.out.println("ID : " + vo.getMid());
+		System.out.println("PW : " + vo.getMpwd());
+		return memberdao.loginCheck(vo);
 	}
 
 }
