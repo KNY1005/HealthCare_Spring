@@ -83,7 +83,6 @@
 		return sigugun;
 	}
 	function getInfo(){
-	alert("text222");
 	var str_HTML = "";
 	var result_list=[];		
 	var output = "";	
@@ -132,7 +131,6 @@
 		var name = abc[0].innerText;
 		var addr = abc[2].innerText;
 		var tel = abc[3].innerText;
-		alert("name"+name);
 		var form = document.createElement("form");
 	    form.setAttribute("charset", "UTF-8");
 	    form.setAttribute("method", "POST");  //Post 방식

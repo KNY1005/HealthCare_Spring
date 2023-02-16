@@ -22,51 +22,30 @@
 
 	<style>
 		/*-----------------sub_nav_menu > start---------------*/
-		
+		.order_box{
+				margin-left:50px;
+		        width: 790px;
+		        height: 110px;
+		        display: flex;
+		 		align-items: flex-end;
+		        justify-content: center;
+		      }    
+		.order{
+		        width: 600px;
+		        display: flex;
+		        flex-direction: row;
+		        justify-content: space-evenly;
+		        }
+		.order li:nth-child(3){color:#ce8080;}
 
-		.sub_nav_menu ul {
-			margin-left: 165px;
-			margin-top: 20px;
-		}
-
-		.sub_nav_menu li {
-			text-align: center;
-			float: left;
-			/*글자길이 길어서 넘어가면 이거 늘리세요 */
-			font-weight: bold;
-			font-size: 20px;
-		}
-
-		.sub_nav_menu li:nth-child(1),
-		.sub_nav_menu li:nth-child(3),
-		.sub_nav_menu li:nth-child(5),
-		.sub_nav_menu li:nth-child(7) {
-			width: 180px;
-		}
-
-		.sub_nav_menu li:nth-child(2),
-		.sub_nav_menu li:nth-child(4),
-		.sub_nav_menu li:nth-child(6) {
-			width: 20px;
-		}
-
-		.sub_nav_menu li:nth-child(1) {
-			color: #9E0404;
-		}
 
 		/*-----------------sub_nav_menu > end---------------*/
 		
 		*{font-weight:bold;}
-
-		#height {
-			height: 80px;
-		}
 		
 		main {
-			margin-left: 300px;
-			margin-top: 100px;
+			margin: 100px auto;
 			width: 1320px;
-			position: relative;
 			height: 800px;
 			display:flex;
 			flex-direction:column;
@@ -123,18 +102,17 @@
 </head>
 <body>
 	<%@include file="../includes/header.jsp"%>
-	<div id="height"></div>
-				<div class="sub_nav_menu">
-				<ul>
-					<li>건강검진 유의사항</li>
-					<li><i class="xi-angle-right"></i></li>
-					<li>건강검진 병원조회</li>
-					<li><i class="xi-angle-right"></i></li>
-					<li>건강검진 예약하기</li>
-					<li><i class="xi-angle-right"></i></li>
-					<li>건강검진 예약완료</li>
-				</ul>
-			</div>
+		<div class="order_box">
+		<ul class="order">
+			<li>건강검진 유의사항</li>
+			<li><i class="xi-angle-right"></i></li>
+			<li>건강검진 병원조회</li>
+			<li><i class="xi-angle-right"></i></li>
+			<li>건강검진 예약하기</li>
+			<li><i class="xi-angle-right"></i></li>
+			<li>건강검진 예약완료</li>
+		</ul>
+	</div>
 	<main>
 		<h2>건강검진 유의사항</h2>
 		<div>

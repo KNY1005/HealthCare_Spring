@@ -23,51 +23,32 @@
 	<style>
 		/*-----------------sub_nav_menu > start---------------*/
 
-		.sub_nav_menu ul {
-			margin-left: 165px;
-			margin-top: 20px;
-		}
+		.order_box{
+				margin-left:50px;
+		        width: 790px;
+		        height: 110px;
+		        display: flex;
+		 		align-items: flex-end;
+		        justify-content: center;
+		      }    
+		.order{
+		        width: 600px;
+		        display: flex;
+		        flex-direction: row;
+		        justify-content: space-evenly;
+		        }
+		.order li:nth-child(3){color:#ce8080;}
 
-		.sub_nav_menu li {
-			text-align: center;
-			float: left;
-			/*글자길이 길어서 넘어가면 이거 늘리세요 */
-			font-weight: bold;
-			font-size: 20px;
-		}
-
-		.sub_nav_menu li:nth-child(1),
-		.sub_nav_menu li:nth-child(3),
-		.sub_nav_menu li:nth-child(5),
-		.sub_nav_menu li:nth-child(7) {
-			width: 180px;
-		}
-
-		.sub_nav_menu li:nth-child(2),
-		.sub_nav_menu li:nth-child(4),
-		.sub_nav_menu li:nth-child(6) {
-			width: 20px;
-		}
-
-		.sub_nav_menu li:nth-child(7) {
-			color: #9E0404;
-		}
 
 		/*-----------------sub_nav_menu > end---------------*/
 
 		*{font-weight:bold;}
 		
-		#height {
-			height: 80px;
-		}
 		
 		main {
-			margin-left: 300px;
-			margin-top: 100px;
 			width: 1320px;
-			position: relative;
-			height: 1000px;
-
+			min-height:529px;
+			margin: 100px auto;
 		}
 		
 		main ul {
@@ -142,13 +123,12 @@
 
 		main #faker {
 			display: flex;
-			justify-content: center;
+			justify-content: center;			
 		}
 
-		main #faker button {
+		main #faker a {
 			width: 210px;
 			height: 70px;
-			padding: 15px;
 			font-size: 25px;
 			margin-top: 40px;
 			background-color: #FFEFEF;
@@ -158,7 +138,11 @@
 			cursor: pointer;
 		}
 		
-		main #faker button:hover {
+		main #faker p{
+			margin-top:25px;
+			margin-left:23px;
+			}
+		main #faker a:hover {
 			background: #ffe7e7;
 			transition: .2s;
 			box-shadow: inset 1px 1px 3px rgb(197, 197, 197);
@@ -168,18 +152,17 @@
 </head>
 <body>
 	<%@include file="../includes/header.jsp"%>
-	<div id="height"></div>
-				<div class="sub_nav_menu">
-				<ul>
-					<li>건강검진 유의사항</li>
-					<li><i class="xi-angle-right"></i></li>
-					<li>건강검진 병원조회</li>
-					<li><i class="xi-angle-right"></i></li>
-					<li>건강검진 예약하기</li>
-					<li><i class="xi-angle-right"></i></li>
-					<li>건강검진 예약완료</li>
-				</ul>
-			</div>
+		<div class="order_box">
+		<ul class="order">
+			<li>건강검진 유의사항</li>
+			<li><i class="xi-angle-right"></i></li>
+			<li>건강검진 병원조회</li>
+			<li><i class="xi-angle-right"></i></li>
+			<li>건강검진 예약하기</li>
+			<li><i class="xi-angle-right"></i></li>
+			<li>건강검진 예약완료</li>
+		</ul>
+	</div>
 	<main>
 		<section id="commit">
 			<div id="finish">
@@ -192,7 +175,7 @@
 					<li>날짜</li>
 				</ul>
 				<ul>
-					<li>땡땡 병원</li>
+					<li>${hName}</li>
 					<li>일반건강검진</li>
 					<li>2022년 12월 30일 오후 4시</li>
 				</ul>
@@ -209,7 +192,7 @@
 				<p>문진표 다운로드 후 미리 작성해 가시면 빠른 검진을 할 수 있습니다.</p>
 			</div><!--//#question_guide-->
 			<div id="faker">
-				<button type="button" onclick="location.href='mypage1.do'">마이페이지 이동</button>
+				<a href="<%=request.getContextPath() %>/mypage2.do"><p>마이페이지 이동</p></a>
 			</div><!--//#faker-->
 		</section><!--//#commit-->
 	</main>
