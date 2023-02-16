@@ -54,7 +54,7 @@
 						<li><a href="<%=request.getContextPath()%>/notice/healthnews1.do">모두건강</a></li>
 					</ul>
 					<ul>
-						<li><a href="<%=request.getContextPath() %>/notice1.do">건강광장</a></li>
+						<li><a href="<%=request.getContextPath() %>/notice/list.do">건강광장</a></li>
 					</ul>
 				</div>
 				<div id="sliding_menu">
