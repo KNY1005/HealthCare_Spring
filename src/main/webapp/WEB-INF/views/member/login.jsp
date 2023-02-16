@@ -227,7 +227,6 @@
 	              id="ddoctor"
 	               type="textbox"
 	              placeholder="의사면허번호"
-	              required
 	              value=""
 	              maxlength="30"
 	              oninput="handleOnInput2(this)"

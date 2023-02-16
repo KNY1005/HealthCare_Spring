@@ -34,58 +34,53 @@ public class MemberDAO {
 		return 0;
 	}
 
-	// 사용자기능
-	// 로그인
 	public MemberVo login(MemberVo vo) {
 
 		return sqlSession.selectOne("edu.study.mapper.memberMapper.login", vo);
 	}
 
-	// 아이디 중복검사
 	public int selectById(String mid) {
 
 		return sqlSession.selectOne("edu.study.mapper.memberMapper.selectById", mid);
 	}
 	
-	// 이름 중복검사
 	public int selectByDoctor(String ddoctor) {
 
 			return sqlSession.selectOne("edu.study.mapper.memberMapper.selectByDoctor", ddoctor);
 		}
 	
-	// 회원가입 
 	public int register(MemberVo vo) {
 
 		return sqlSession.insert("edu.study.mapper.memberMapper.register", vo);
 	}
 
-	// 회원등급변경
 	public String changeStotus(MemberVo vo) {
 
 		return sqlSession.selectOne("edu.study.mapper.memberMapper.changeStotus", vo);
 	}
 
-	// 아이디찾기
 	public MemberVo searchId(MemberVo searchVo) {
 		
 		return sqlSession.selectOne("edu.study.mapper.memberMapper.searchId", searchVo);
 	}
 	
-	// 비밀번호 찾기
 	public int memberPwdCheck(MemberVo searchVo) {
 
 		return sqlSession.selectOne("edu.study.mapper.memberMapper.memberPwdCheck", searchVo);
 	}
 	
-	// 임의 비밀번호 업데이트
 	public String passwordUpdate(MemberVo searchVo) {
 
 		return sqlSession.selectOne("edu.study.mapper.memberMapper.passwordUpdate", searchVo);
 	}
 	
-	// midx로 회원 정보 찾기
 	public MemberVo selectByMidx(int midx) {
 
 		return sqlSession.selectOne("edu.study.mapper.memberMapper.selectByMidx", midx);
+	}
+	
+	public MemberVo updateMember(MemberVo vo) {
+
+		return sqlSession.selectOne("edu.study.mapper.memberMapper.updateMembe", vo);
 	}
 }
