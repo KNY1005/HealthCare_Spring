@@ -120,7 +120,20 @@
 			<br>
 		</p>
 		</div>
-		<a href="abc2.do">예방접종 예약 하러가기</a>
+		
+		<c:choose> 
+			<c:when test="${member == null}"> 
+				<a onclick="loginCheck()">예방접종 예약 하러가기</a>				
+			</c:when> 
+			<c:otherwise>
+				<a href="abc2.do">예방접종 예약 하러가기</a>	 
+			</c:otherwise> 
+		</c:choose>  
+		<script>
+			function loginCheck(){
+				alert("회원만 예약가능합니다!!\n로그인 해주세요!!");
+			}
+		</script>
 	</main>
 	<%@include file="../includes/footer.jsp"  %>
 </body>
