@@ -6,16 +6,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공지사항 목록</title>
+<title>자가진단</title>
 	<!--파비콘-->
 	<link rel="icon" type="image/png" sizes="16x16"
-	href="${path }/resources/image/favicon/favicon-16x16.png" />
-<link rel="manifest"
-	href="${path }/resources/image/favicon/manifest.json" />
-<meta name="msapplication-TileColor" content="#ffffff" />
-<meta name="msapplication-TileImage"
-	content="${path }/resources/image/favicon/ms-icon-144x144.png" />
-<meta name="theme-color" content="#ffffff" />
+		href="${path }/resources/image/favicon/favicon-16x16.png" />
+	<link rel="manifest"
+		href="${path }/resources/image/favicon/manifest.json" />
+	<meta name="msapplication-TileColor" content="#ffffff" />
+	<meta name="msapplication-TileImage"
+		content="${path }/resources/image/favicon/ms-icon-144x144.png" />
+	<meta name="theme-color" content="#ffffff" />
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
     <script>

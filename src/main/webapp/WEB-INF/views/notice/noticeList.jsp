@@ -235,6 +235,7 @@ main {
 			<h3 class="h3">공지사항</h3>
 			<div id="search">
 				<form action="list.do" method="get">
+					<input type="hidden" name="blist" value="N">
 					<select class="cate" name="searchType">
 						<option value="btitle"
 							<c:if test="${param.searchType eq 'btitle' }">selected</c:if>>제목</option>
