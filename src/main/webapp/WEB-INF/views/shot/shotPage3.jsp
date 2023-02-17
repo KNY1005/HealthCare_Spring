@@ -61,20 +61,7 @@
     *{
 		font-weight: bold;
 	}
-	#my_modal {
-        display: none;
-        width: 300px;
-        padding: 20px 60px;
-        background-color: #fefefe;
-        border: 1px solid #888;
-        border-radius: 3px;
-    }
-
-    #my_modal .modal_close_btn {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-    }
+	
      #confirm{
             height: 80px;
             line-height: 80px;
@@ -97,8 +84,8 @@
         }
     main {
         width: 1320px;
-        height: 1000px;
-        margin: 100px auto;
+		min-height:529px;
+		margin: 100px auto;
     }    
      .order_box{
         width: 942px;
@@ -123,7 +110,7 @@
 	}
 	.hospital ul{
 		width: 1281px;
-		height: 50px;
+		height: 100px;
 		display: flex;
 		flex-direction: row;
 		justify-content: space-evenly;
@@ -133,6 +120,10 @@
 		font-size: 20px;
 		line-height: 50px;
 		padding: 20px;
+	}
+	.hospital li{
+		width: 500px;
+		text-align: center;
 	}	
 	#line{
 		height: 2px; 
@@ -156,7 +147,9 @@
     .list li{
 		width: 160px;
 	}
-	
+	.inf li{
+		width: 250px;
+	}
 	.box{
 		background-color: #ffe7e7;
 	}
@@ -244,7 +237,7 @@
 		<hr id="line">
 		<div class="list">
 			<div class="inf">
-				<ul>
+				<ul class="inf2">
 					<li>백신명</li>
 					<li>신청가능기간</li>
 				
@@ -275,16 +268,6 @@
 							</div>
 						</div>
 					</div>
-					<div id="modal1" class="modal">
-						<p id="book_date">
-						<input type="hidden" name="date[]" id="date_list" value=""/>
-						<input type="submit" onclick="getlist()">
-						</p>
-						<p id="zip">${zip}</p>
-						<p id="cdNm">${vo.cdNm}</p>
-						<p>예약하시겠습니까?</p>
-						<p><a href="abc6.do">확인</a></p>
-					</div>				
 			</c:forEach>
         </div>
       
@@ -307,7 +290,7 @@
 			alert("시간을 선택해주세요.");
 			return;
 		}else{
-			alert("예약하시겠습니까? ${member.midx}");
+			alert("예약하시겠습니까?");
 		}
 	
 		console.log("date?"+cdCharge+"time"+time+"cdnm?"+cdnm+"병원명"+"${zip}"+"가격:"+cdCharge);

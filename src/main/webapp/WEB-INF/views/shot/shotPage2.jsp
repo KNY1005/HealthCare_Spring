@@ -22,10 +22,9 @@
       font-weight: bold;
       }
       main {
-        
         width: 1320px;
-        height: 1000px;
-        margin: 100px auto;
+		min-height:529px;
+		margin: 100px auto;
       }  
      .order_box{
         width: 942px;
