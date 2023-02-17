@@ -181,18 +181,7 @@ main {
 		<div id="head">
 			<h3 class="h3">건강소식</h3>
 			<div id="search">
-				<form action="noticeList.do" method="get">
-					<select class="cate" name="searchType">
-						<option value="btitle"
-							<c:if test="${param.searchType eq 'btitle' }">selected</c:if>>제목</option>
-						<option value="bcontent"
-							<c:if test="${param.searchType eq 'bcontent' }">selected</c:if>>내용</option>
-
-					</select> <input type="text" name="keyWord" placeholder="검색">
-					<button id="glass">
-						<i class="xi-search"></i>
-					</button>
-				</form>
+				
 			</div>
 		</div>
 		<hr class="hr">

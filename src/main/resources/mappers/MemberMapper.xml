@@ -16,7 +16,7 @@
 		, memail
 		, mgrade
 		FROM table_member
-		WHERE mid = #{mid}
+		WHERE mid = #{mid} AND mpwd = #{mpwd}
 	</select>
 
 	<select id="selectById" parameterType="String" resultType="int">

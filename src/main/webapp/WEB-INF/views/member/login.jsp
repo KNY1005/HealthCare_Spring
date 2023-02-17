@@ -345,7 +345,7 @@
 	  
 	var checkIdFlag = false;
    var checkIdVal = "";
-   var checkDoctorFlag = ture;
+   var checkDoctorFlag = true;
    var checkDoctorVal = "";
    function loadFn(){
       var join = document.join;

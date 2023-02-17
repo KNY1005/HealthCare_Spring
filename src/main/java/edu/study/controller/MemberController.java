@@ -43,7 +43,7 @@ public class MemberController {
 	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
 	public String login() {
 
-		System.out.println("로그인");
+		System.out.println("濡�洹몄��");
 
 		return "member/login";
 	}
@@ -52,24 +52,23 @@ public class MemberController {
 	public String login(MemberVo vo, HttpServletRequest request, RedirectAttributes rttr) throws Exception {
 
 		HttpSession session = request.getSession();
-		MemberVo login = memberService.login(vo);
-		
-		// 비밀번호 암호화
+		// 鍮�諛�踰��� ���명��
 		String mpwd = vo.getMpwd();
 		vo.setMpwd(memberSha256.encrypt(mpwd));
-				
+		MemberVo login = memberService.login(vo);
+		System.out.println("id는"+vo.getMid()+"비밀"+vo.getMpwd());		
 		
 		if (login == null) {
 			session.setAttribute("member", null);
-			System.out.println("로그인실패");
+			System.out.println("濡�洹몄�몄�ㅽ��");
 			return "member/login";
 		} else {
 			session.setAttribute("member", login);
 
-			System.out.println("mid는"+vo.getMid());
+			System.out.println("mid��"+vo.getMid());
 			System.out.println(vo.getMpwd());
 			System.out.println(login);
-			System.out.println("midx는"+vo.getMidx());
+			System.out.println("midx��"+vo.getMidx());
 			return "redirect:/";
 		}
 
@@ -80,7 +79,7 @@ public class MemberController {
 	@RequestMapping(value = "/logout.do", method = RequestMethod.GET)
 	public String logout(HttpServletRequest request) {
 
-		System.out.println("logout메서드 진입");
+		System.out.println("logout硫����� 吏���");
 
 		HttpSession session = request.getSession();
 
@@ -91,18 +90,18 @@ public class MemberController {
 	
 	@RequestMapping(value = "/join.do", method = RequestMethod.POST)
 	public String join(MemberVo vo, HttpServletRequest request) {
-		System.out.println("회원가입중");
+		System.out.println("����媛���以�");
 
-		// 암호 확인
-		System.out.println("첫번째:" + vo.getMpwd());
-		// 비밀번호 암호화 (sha256
+		// ���� ����
+		System.out.println("泥ル�吏�:" + vo.getMpwd());
+		// 鍮�諛�踰��� ���명�� (sha256
 		String encryPassword = memberSha256.encrypt(vo.getMpwd());
 		vo.setMpwd(encryPassword);
-		System.out.println("두번째:" + vo.getMpwd());
-		// 회원가입 메서드
+		System.out.println("��踰�吏�:" + vo.getMpwd());
+		// ����媛��� 硫�����
 		memberService.register(vo);
 		/*
-		 * // 인증 메일 보내기 메서드 mailsender.mailSendWithUserKey(vo.getMemail(),
+		 * // �몄� 硫��� 蹂대�닿린 硫����� mailsender.mailSendWithUserKey(vo.getMemail(),
 		 * vo.getMemail(), request);
 		 */
 		return "member/login";
@@ -136,23 +135,23 @@ public class MemberController {
 	}
 	@RequestMapping(value = "/membersearch.do", method = RequestMethod.GET)
 	public String membersearch(MemberVo vo, HttpServletRequest request) {
-		System.out.println("아이디 찾기중");
+		System.out.println("���대�� 李얘린以�");
 
 		return "member/memberSearch";
 	}
 	
-	// 아이디찾기
+	// ���대��李얘린
 	@RequestMapping(value = "/search_result_id.do", method = RequestMethod.POST)
 	public String search_result_id(HttpServletRequest request, Model model,
 			@RequestParam(required = true, value = "mname") String mname,
 			@RequestParam(required = true, value = "mphone") int mphone, MemberVo searchVo) {
-		System.out.println("아이디 비밀번호 찾기중 하하");
+		System.out.println("���대�� 鍮�諛�踰��� 李얘린以� ����");
 
 		System.out.println(mname);
 		System.out.println(mphone);
 
 		try {
-			System.out.println("하하");
+			System.out.println("����");
 			searchVo.setMname(mname);
 			searchVo.setMphone(mphone);
 			MemberVo memberSearch = memberService.memberIdSearch(searchVo);
@@ -163,8 +162,8 @@ public class MemberController {
 			System.out.println(memberSearch);
 		} catch (Exception e) {
 			System.out.println(e.toString());
-			System.out.println("호호");
-			model.addAttribute("msg", "오류가 발생되었습니다.");
+			System.out.println("�명��");
+			model.addAttribute("msg", "�ㅻ�媛� 諛��������듬����.");
 		}
 
 		return "/member/search_result_id";
@@ -172,7 +171,7 @@ public class MemberController {
 
 	@RequestMapping(value = "/search_result_pwd.do", method = RequestMethod.GET)
 	public String search_result_pwd(MemberVo vo, HttpServletRequest request) {
-		System.out.println("비밀번호 찾기중");
+		System.out.println("鍮�諛�踰��� 李얘린以�");
 
 		return "member/search_pwd";
 	}
@@ -185,7 +184,7 @@ public class MemberController {
 	    MemberVo searchVo) {
 	try {
 	    
-		System.out.println("여기는 비밀번호 찾기1");
+		System.out.println("�ш린�� 鍮�諛�踰��� 李얘린1");
 		System.out.println(mname+mphone+mid);
 		
 	    searchVo.setMname(mname);
@@ -199,7 +198,7 @@ public class MemberController {
 	    System.out.println(memberSearch);
 	    
 	    if(memberSearch == 0) {
-	        model.addAttribute("msg", "기입된 정보가 잘못되었습니다. 다시 입력해주세요.");
+	        model.addAttribute("msg", "湲곗���� ��蹂닿� ��紐삳�����듬����. �ㅼ�� ���ν�댁＜�몄��.");
 	        return "member/search_pwd";
 	    }
 	    
@@ -212,7 +211,7 @@ public class MemberController {
 	    searchVo.setMpwd(enpassword);
 	    System.out.println(enpassword);
 	    memberService.passwordUpdate(searchVo);
-	    System.out.println("여기는 비밀번호 찾기");
+	    System.out.println("�ш린�� 鍮�諛�踰��� 李얘린");
 	    model.addAttribute("newPwd", newPwd);
 	 
 	    
@@ -220,7 +219,7 @@ public class MemberController {
 	} catch (Exception e) {
 		
 	    System.out.println(e.toString());
-	    model.addAttribute("msg", "오류가 발생되었습니다.");
+	    model.addAttribute("msg", "�ㅻ�媛� 諛��������듬����.");
 	}
 	 
 	
