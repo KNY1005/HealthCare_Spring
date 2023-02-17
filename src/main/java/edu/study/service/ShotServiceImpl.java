@@ -48,6 +48,12 @@ public class ShotServiceImpl implements ShotService {
 		// TODO Auto-generated method stub
 		return shotDAO.updatebuy(vo);
 	}
+
+	@Override
+	public ReserveVo selectByRidx(int ridx) {
+		
+		return shotDAO.selectByRidx(ridx);
+	}
 	
 
 	

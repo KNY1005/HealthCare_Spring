@@ -63,7 +63,18 @@
 				MIDX
 			from table_reserve
 	</select>
-	
+	<select id="selectByRidx" parameterType="int" resultType="ReserveVo">
+		select	ridx,
+				rcase,
+				rhospital,
+				rname,
+				rdate,
+				rtime,
+				rbuy,
+				MIDX
+			from table_reserve
+			where ridx = #{ridx}		
+	</select>
 	<update id="updatebuy" parameterType="ReserveVo">
 		update table_reserve
 		set

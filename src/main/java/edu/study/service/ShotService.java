@@ -12,4 +12,5 @@ public interface ShotService {
 	int insert(ReserveVo vo);
 	List<ReserveVo> list(ReserveVo vo);
 	int updatebuy(ReserveVo vo);
+	ReserveVo selectByRidx(int ridx);
 }

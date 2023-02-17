@@ -120,15 +120,15 @@ body, h1, h2, h3, h4, h5, h6, li, p, #nav li a, #topbar, input, button,
 		<div id="infor">
 			<ul>
 				<li>헌혈의집명</li>
-				<li>${zip}</li>
+				<li>${rvo.rhospital}</li>
 			</ul>
 			<ul>
 				<li>날짜</li>
-				<li>2010년 01월 30일 오후3시</li>
+				<li>${rvo.rdate }/${rvo.rtime }</li>
 			</ul>
 			<ul>
 				<li>헌혈종류</li>
-				<li>혈장</li>
+				<li>${rvo.rname }</li>
 			</ul>
 
 		</div>

@@ -10,11 +10,11 @@ import edu.study.vo.BoardVo;
 import edu.study.vo.ReserveVo;
 import edu.study.vo.ShotVo;
 
-@Repository //서비스에서 의존 자동 주입위해 필수 작성
+@Repository //��鍮��ㅼ���� ��議� ���� 二쇱������ ���� ����
 public class ShotDAO {
 
 	@Autowired
-	private SqlSession sqlSession;	//bean 의존 주입
+	private SqlSession sqlSession;	//bean ��議� 二쇱��
 	
 	public List<ShotVo> list(ShotVo vo){
 		
@@ -37,4 +37,8 @@ public class ShotDAO {
 	public int updatebuy(ReserveVo vo) {	
 		return sqlSession.update("edu.study.mapper.shotMapper.updatebuy", vo);
 	}
+	
+	public ReserveVo selectByRidx(int ridx) {
+		return sqlSession.selectOne("edu.study.mapper.shotMapper.selectByRidx", ridx);
+	};
 }

@@ -202,7 +202,7 @@ main .timetable #button {
 		<h2>헌혈 예약</h2>
 		<form action="page5.do" method="POST">
 			<div class="medical">
-				<p><input type="hidden" name="zip" value="${zip}">${zip}</p>
+				<p><input type="hidden" name="rhospital" value="${zip}">${zip}</p>
 				<p>진료시간 : 09:00 ~ 18:00</p>
 				<p>주소 : ${addr }</p>
 				<p>연락처 : ${phone }</p>
@@ -214,9 +214,9 @@ main .timetable #button {
 					<div id="type">
 						<p>
 							<label> 헌혈종류</label><br> 
-							<input type="radio" id="blood_type1" name="type" value="전혈"><label for="blood_type1">전혈</label> 
-							<input type="radio" id="blood_type2" name="type" value="혈장"><label	for="blood_type2">혈장</label> 
-							<input type="radio" id="blood_type3" name="type" value="혈소판"><label for="blood_type3">혈소판</label>
+							<input type="radio" id="blood_type1" name="rname" value="전혈"><label for="blood_type1">전혈</label> 
+							<input type="radio" id="blood_type2" name="rname" value="혈장"><label	for="blood_type2">혈장</label> 
+							<input type="radio" id="blood_type3" name="rname" value="혈소판"><label for="blood_type3">혈소판</label>
 					</div>
 	
 					<div id="date">
@@ -227,7 +227,9 @@ main .timetable #button {
 					</div>
 	
 				</div>
-				
+				<input type="hidden" name="rcase" value="B">
+				<input type="hidden" name="rstate" value="Y">
+				<input type="hidden" name="midx" value="${member.midx }">
 				<button id="button" >예약</button>
 			</div> 
 		</form>
