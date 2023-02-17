@@ -47,31 +47,9 @@ public class noticeController {
 	@RequestMapping(value = "/list.do", method = RequestMethod.GET)	
 	public String board1(Model model,SearchCriteria scri, HttpServletRequest request, MemberVo vo) throws Exception {
 		
-	     HttpSession session = request.getSession();
-	     System.out.println("세션값확인"+session);
-	     /*
-	     String member = (String) session.getAttribute("member");// 키 값을 명확히 알때
-			if(member==null) { //session에 해당 'key값'으로 저장된 데이터가 없을 때
-				System.out.println("<h3>userName의 Session값이 없습니다.</h3>");
-			}else {
-				System.out.println("<h3>userName의 세션값 : " + member + "</h3>");
-			}
-			System.out.println("<hr>");
-	     */
-	     	System.out.println(vo.getMid());
-			System.out.println(vo.getMpwd());
-
-	     
-	     
-	     
-	     
-	     
-	     
-	     
 		//DB list 조회
 		List<BoardVo> list = boardService.list(scri);
 		model.addAttribute("datalist",list);	//키값
-		System.out.println("list:"+list);
 		PageVO pageVo = new PageVO();
 		pageVo.setScri(scri);
 		pageVo.setTotalCount(boardService.listCount(scri));
@@ -108,7 +86,6 @@ public class noticeController {
 		
 		String path = req.getSession().getServletContext().getRealPath("/resources/upload");
 		File dir = new File(path);
-		System.out.println("경로"+path);
 		if (!dir.exists()) { 
 			dir.mkdirs();
 		}
@@ -184,7 +161,6 @@ public class noticeController {
 		String path = request.getSession().getServletContext().getRealPath("/resources/upload/");
 		String saveFileName = fvo.getStoredname();
 		String originalFileName = fvo.getOriginname();
-		System.out.println("다운로드 경로는"+path);
 		File downloadFile = new File(path + saveFileName);
 
 		byte fileByte[] = FileUtils.readFileToByteArray(downloadFile);
