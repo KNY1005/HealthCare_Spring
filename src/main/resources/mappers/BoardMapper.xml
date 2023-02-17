@@ -25,8 +25,8 @@
 	</select>
 
 	<sql id="search">
-		<if test="searchType == 'btitle'">AND btitle LIKE '%#{keyWord}%'</if>
-		<if test="searchType == 'bcontent'"> AND bcontent LIKE '%#{keyWord}%'</if>
+		<if test="searchType == 'btitle'">AND btitle LIKE CONCAT ('%',#{keyWord},'%')</if>
+		<if test="searchType == 'bcontent'"> AND bcontent LIKE CONCAT ('%',#{keyWord},'%')</if>
 	</sql>
 
 	<select id="selectByBidx" parameterType="int"

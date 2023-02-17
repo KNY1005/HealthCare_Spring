@@ -241,6 +241,7 @@ main {
 			<h3 class="h3">문의사항</h3>
 			<div id="search">
 				<form action="questionList.do" method="get">
+					<input type="hidden" name="blist" value="Q">
 					<select class="cate" name="searchType">
 						<option value="btitle"
 							<c:if test="${param.searchType eq 'btitle' }">selected</c:if>>제목</option>
