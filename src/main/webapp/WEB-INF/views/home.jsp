@@ -61,7 +61,7 @@ $(document).ready(function(){
               <li><a href="<%=request.getContextPath() %>/shot/abc1.do">예방접종</a></li>
             </ul>
             <ul>
-              <li><a href="<%=request.getContextPath() %>/medicalmain.do">건강검진</a></li>
+              <li><a href="<%=request.getContextPath() %>/medical_check//medicalmain.do">건강검진</a></li>
             </ul>
             <ul>
               <li><a href="<%=request.getContextPath() %>/blood/main.do">헌혈</a></li>
@@ -168,7 +168,7 @@ $(document).ready(function(){
             </a>
           </li>
           <li class="snip1489 ion-ios-star-outline">
-            <a href="<%=request.getContextPath() %>/medicalmain.do">
+            <a href="<%=request.getContextPath() %>/medical_check//medicalmain.do">
               <p>건강검진 예약</p>
               <img src="${path}/resources/image/medical.png" alt="하트이미지" />
             </a>
