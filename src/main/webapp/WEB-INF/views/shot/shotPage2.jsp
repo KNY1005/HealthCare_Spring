@@ -45,36 +45,6 @@
         margin-bottom: 40px;
       }
 
-      #age {
-        width: 1320px;
-        margin-bottom: 40px;
-      }
-      #age ul {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-      }
-      #age li {
-        box-sizing: border-box;
-        width: 250px;
-        height: 250px;
-        border: 3px solid rgb(160, 155, 155);
-        border-radius: 10px;
-        text-align: center;
-      }
-      
-
-      #age img {
-        height: 180px;
-        width: 180px;
-        text-align: center;
-      }
-
-      #age li:hover {
-        border: 3px solid #ff9797;
-        color: #ff9797;
-      }
-
       .bold{
         font-size: 20px;
         margin-bottom: 12px;
@@ -351,37 +321,7 @@
     <main>
       <div id="hospital_search">
         <h2>예방접종 병원조회</h2>
-        <div id="age">
-          <ul>
-            <li>
-              <img
-                class="age_choice"
-                src="${path }/resources/image/baby.png"
-                alt="영유아"
-              />
-              <p class="bold">영유아</p>
-              <p>생후 6개월 ~ 만 13세 이하</p>
-            </li>
-            <li>
-              <img
-                class="age_choice"
-                src="${path }/resources/image/adult.png"
-                alt="청·장년"
-              />
-              <p class="bold">청·장년</p>
-              <p>만 14세 이상 ~ 만 64세 이하</p>
-            </li>
-            <li>
-              <img
-                class="age_choice"
-                src="${path }/resources/image/old.png"
-                alt="노년층"
-              />
-              <p class="bold">노년층</p>
-              <p>만 65세 이상</p>
-            </li>
-          </ul>
-        </div>
+        
         <hr id="line">
         <div id="addr">            
           <div id="address_search">지역                            
