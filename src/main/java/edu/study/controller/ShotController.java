@@ -36,7 +36,7 @@ public class ShotController {
 	}
 
 	@RequestMapping(value = "abc3.do", method = RequestMethod.GET)
-	public String shotlist(HttpServletRequest request, Model model, ShotVo vo) { // 매개변수 필요없음
+	public String shotlist(HttpServletRequest request, Model model, ShotVo vo) { // 留ㅺ�蹂��� ��������
 
 		List<ShotVo> list = shotService.list(vo);
 		model.addAttribute("datalist", list);
@@ -95,7 +95,7 @@ public class ShotController {
 	    	return "shot/reserveCharged";
 	    	
 	    }else {
-	    	return "mypage/shot_reserve_inquiry";
+	    	return "shot/reserveFree";
 	    }
 		
 	}

@@ -131,7 +131,7 @@ public class QuestionController {
 
 		questionService.deleteByBidx(bidx);
 
-		return "redirect:questionList.do";
+		return "redirect:questionList.do?blist=Q";
 
 	}
 

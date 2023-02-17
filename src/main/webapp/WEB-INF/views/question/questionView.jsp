@@ -66,7 +66,7 @@
 	font-weight: bold;
 }
 
-hr {
+#view hr {
 	height: 2px;
 	background-color: #FF7373;
 	border: none;
@@ -314,6 +314,70 @@ hr {
 	box-shadow: inset 1px 1px 3px rgb(197, 197, 197);
 	cursor: pointer;
 }
+
+
+ 	.doctor_writing_content {
+		width: 1100px;
+		margin: 0 auto 0;
+		
+	}
+	
+	.input-group {
+		height:280px;
+		width: 1100px;
+		margin: 0 auto 0;
+		border: 3px solid #FF8F8F;
+		border-radius: 25px;
+	}
+	
+
+	input#ptitle {
+		border-radius: 10px;
+		margin: 10px 0 10px 40px;
+		width: 1000px;
+		height: 35px;
+		text-align: left;
+		font-size: 25px;
+	}
+	
+	input#pcontent {
+		width: 1000px;
+		margin: 0 0 10px 40px;
+		height: 150px;
+		border-radius: 10px;
+	}
+	
+	.input-group-btn {
+		display: inline-block;
+		width: 230px;
+		height: 40px;
+		margin-left:820px;
+		margin-bottom:10px;
+	}
+	
+	
+	.input-group-btn button {
+		font-weight: bold;
+		width: 100px;
+		padding: 10px;
+		font-size: 15px;
+		background-color: #FFEFEF;
+		border: #FFEFEF;
+		border-radius: 30px;
+		margin-left:10px;
+		
+	} 
+	.input-group-btn button:hover{
+		
+	
+	}
+	
+	/*전문의 답변 뷰박스*/
+	.replyList {
+		width: 1100px;
+		margin-top: 30px;
+		height:100%;
+	}
 </style>
 </head>
 
@@ -336,7 +400,7 @@ hr {
 				<div class="title">${vo.btitle}</div>
 				<div class="content">${vo.bcontent}</div>
 				<ul>
-					<li>${vo.bwriter}//${vo.midx }</li>
+					<li>${vo.bwriter}</li>
 					<li>${vo.bwdate}</li>
 				</ul>
 			</div>
@@ -347,51 +411,69 @@ hr {
 				</div>
 			</div>
 			<div id="button">
+			
 				<button type="button" onClick="location.href='questionList.do'">목록</button>
-			<c:set var="boardMidx" value="${vo.midx}" />
+			
+			<c:set var="boardMidx" value="${vo.midx}" />			
 			<c:if test="${member.midx == boardMidx}">
 				<button type="button"
 					onClick="location.href='questionDelete.do?bidx=${vo.bidx}'">삭제</button>
 				<button type="button"
 					onClick="location.href='questionModify.do?bidx=${vo.bidx}'">수정</button>
 			</c:if>
+			<c:if test="${member.mgrade == 'A' || member.midx == boardMidx }">
+				<button onclick="openClose()" id="answerBtn" type="button">답변하기</button>
+			</c:if>					
 			</div>
 	
 
 			<h3>답변</h3>
-			<div id="doctor_writing_content">
-				<div class="reply_input">
-					<input type="text" name="title" Placeholder="제목을 입력해주세요." /><br>
-					<textarea name="content" Placeholder="내용을 입력해주세요."></textarea>
-					<div class="button">
-						<button>완료</button>
-						<button>취소</button>
-					</div>
-				</div>
+			<div class="doctor_writing_content" >
+			<c:if test="${member.mgrade == 'A' || member.midx == boardMidx }">
+				<div id="writing_container" style="display:none;">
+					<div class="container">
+				    	<label for="pcontent"></label>
+				        	<form name="replyInsertForm">
+				            	<div class="input-group">
+				               	<input type="hidden" name="bidx" id='bidx' value="${vo.bidx}"/>
+				               	<input type="hidden" id='midx' name="midx" value="${member.midx}"/>
+				               	<input type="hidden" name="pwriter" value="${member.mname}"/>
+				               	<input type="text" class="form-control" id="ptitle" name="ptitle" placeholder="제목을 입력하세요.">
+				               	<input type="text" class="form-control" id="pcontent" name="pcontent" placeholder="내용을 입력하세요.">
+				               		<span class="input-group-btn">
+				                   		<button class="btn btn-default" type="button" name="replyInsertBtn">등록</button>
+				                   		<button type="button">취소</button>
+				               		</span>
+				              	</div>
+				        	</form>
+			    	</div>
+			 	</div>
+			    </c:if>
+			   	<div class="container">
+			   		<div class="replyList">
+			   		<%@ include file="../medicalTalk/reply.jsp" %></div>
+			    </div>
 			</div>
+			
 
 
 
-
-			<div id="doctor_writing_view">
-				<div class="title">제목</div>
-
-				<div class="content">여기는 내용 입니다.</div>
-				<ul>
-					<li>작성자</li>
-					<li>작성일</li>
-					<li>작성날짜</li>
-				</ul>
-				<div class="button">
-					<button>삭제</button>
-					<button>수정</button>
-				</div>
-			</div>
 			
 		</section>
 		
 	</main>
 	<%@include file="../includes/footer.jsp"%>
+	<script>
+	function openClose() {
+		if($('#writing_container').css('display') == 'none'){
+			$('#writing_container').show();
+			$('#answerBtn').text('답변취소');
+		}else{
+			$('#writing_container').hide();
+			$('#answerBtn').text('답변하기');
+		}	
+	}	
+</script> 
 </body>
 
 </html>
