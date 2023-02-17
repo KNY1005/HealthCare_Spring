@@ -247,7 +247,7 @@
 				<ul>
 					<li>백신명</li>
 					<li>신청가능기간</li>
-					<li>잔여량</li>
+				
 					<li>가격</li>
 				</ul>
 			</div>
@@ -256,7 +256,7 @@
 						<ul class="box">
 							<li id="cdnm${status.index}">${vo.cdNm}</li>                
 							<li>${vo.cdDate}</li>
-							<li>${vo.cdCount}</li>
+							
 							<li id="cdCharge${status.index}">${vo.cdCharge}</li>
 						</ul>
 					
@@ -292,18 +292,31 @@
 	</main>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 	<script type="text/javascript">	
-	function test(idx){		
+	function test(idx){	
+		
 		var cdnm = document.getElementById("cdnm"+idx).innerText;
 		var date = document.getElementsByName("date")[idx].value;
 		var time = document.getElementsByName("time")[idx].value;
 		var cdCharge = document.getElementById("cdCharge"+idx).innerText;
-		alert("예약하시겠습니까? ${member.midx}");
+		//유효성 체크			
+		if (date=="") {
+			alert("날짜를 선택해주세요.");
+			return;
+		}
+		if (time=="") {
+			alert("시간을 선택해주세요.");
+			return;
+		}else{
+			alert("예약하시겠습니까? ${member.midx}");
+		}
+	
 		console.log("date?"+cdCharge+"time"+time+"cdnm?"+cdnm+"병원명"+"${zip}"+"가격:"+cdCharge);
 		
 		var form = document.createElement("form");
         form.setAttribute("charset", "UTF-8");
         form.setAttribute("method", "POST");  //Post 방식
         form.setAttribute("action", "abc6.do"); //요청 보낼 주소 */
+        
 
         var hiddenField = document.createElement("input");        
         hiddenField.setAttribute("type", "hidden");
@@ -355,9 +368,22 @@
         hiddenField.setAttribute("value", "${zip}");
         form.appendChild(hiddenField);
         
+        hiddenField = document.createElement("input");
+        hiddenField.setAttribute("type", "hidden");
+        hiddenField.setAttribute("name", "rcase");
+        hiddenField.setAttribute("value", "S");
+        form.appendChild(hiddenField);
+        
+        /* hiddenField = document.createElement("input");
+        hiddenField.setAttribute("type", "hidden");
+        hiddenField.setAttribute("name", "ridx");
+        hiddenField.setAttribute("value", "${ridx}");
+        form.appendChild(hiddenField); */
+        
         document.body.appendChild(form);
 
         form.submit(); 
+        
 	}	
 	</script>
 	<%@include file="../includes/footer.jsp"  %>

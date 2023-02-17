@@ -64,10 +64,10 @@
 			from table_reserve
 	</select>
 	
-	<update id="updatebuy" parameterType="boardVo">
+	<update id="updatebuy" parameterType="ReserveVo">
 		update table_reserve
 		set
-		rstate = 'c'
-		where rbuy = #{rbuy}
+		rstate = #{rstate}
+		where ridx = #{ridx}
 	</update>
 </mapper>

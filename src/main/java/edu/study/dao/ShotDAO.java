@@ -35,6 +35,6 @@ public class ShotDAO {
 	}
 	
 	public int updatebuy(ReserveVo vo) {	
-		return sqlSession.update("edu.study.mapper.boardMapper.updatebuy", vo);
+		return sqlSession.update("edu.study.mapper.shotMapper.updatebuy", vo);
 	}
 }

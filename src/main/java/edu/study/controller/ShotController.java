@@ -86,7 +86,12 @@ public class ShotController {
 		String[] rdate = request.getParameterValues("rdate");
 		String[] rtime = request.getParameterValues("rtime");
 		String[] rhospital = request.getParameterValues("rhospital");
-				System.out.println("ex"+rstate[0]);
+		String[] rcase = request.getParameterValues("rcase");
+		
+		
+		shotService.insert(vo);
+		int ridx=vo.getRidx();
+		System.out.println("ridx는"+ridx);
 		model.addAttribute("midx", midx);
 		model.addAttribute("rname", rname[0]);
 		model.addAttribute("rbuy", rbuy[0]);
@@ -94,6 +99,9 @@ public class ShotController {
 		model.addAttribute("rdate", rdate[0]);
 		model.addAttribute("rtime", rtime[0]);
 		model.addAttribute("rhospital", rhospital[0]);
+		model.addAttribute("rcase", rcase[0]);
+		model.addAttribute("ridx",ridx);
+		
 
 		/*
 		 * MemberVo login = (MemberVo)session.getAttribute("login");
@@ -101,12 +109,9 @@ public class ShotController {
 		 */
 		
 		
-	    shotService.insert(vo);
 	    
 	   
 		if(rbuy[0] != "") {
-			 
-			shotService.updatebuy(vo);
 			
 	    	return "shot/reserveCharged";
 	    	
@@ -116,22 +121,19 @@ public class ShotController {
 		
 	}
 
-	@RequestMapping(value = "abc7.do", method = RequestMethod.GET)
-	public String home7() {
-
-		return "shot/shotMoney1";
-	}
-
 	@RequestMapping(value = "abc8.do", method = RequestMethod.POST)
-	public String home8() {
+	public String home8(ReserveVo vo) {
+		
+		shotService.updatebuy(vo);
 
 		return "shot/shotMoney2";
 	}
 
-	@RequestMapping(value = "abc9.do", method = RequestMethod.GET)
-	public String home9() {
-
-		return "shot/shotMoney3";
+	@RequestMapping(value = "abc9.do", method = RequestMethod.POST)
+	public String home9(ReserveVo vo) {
+		shotService.updatebuy(vo);	
+		System.out.println("rstate="+vo.getRstate());
+		return "mypage/shot_reserve_inquiry";
 	}
 
 }

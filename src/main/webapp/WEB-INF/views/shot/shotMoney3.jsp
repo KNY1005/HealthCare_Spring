@@ -114,19 +114,19 @@
             <div id="infor">
                 <ul>
                     <li>병원명</li>
-                    <li>땡떙병원</li>
+                    <li>${rhospital}</li>
                 </ul>
                 <ul>
                     <li>날짜</li>
-                    <li></li>
+                    <li>${rdate}/${rtime}</li>
                 </ul>
                 <ul>
                     <li>접종명</li>
-                    <li></li>
+                    <li>${rname}</li>
                 </ul>
                 <ul>
                   <li>금액</li>
-                  <li></li>
+                  <li>${rbuy}</li>
               	</ul>
             </div>
             <div id="guide">
