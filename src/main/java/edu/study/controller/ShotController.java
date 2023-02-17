@@ -53,22 +53,10 @@ public class ShotController {
 		return "shot/shotPage3";
 	}
 
-	/*
-	 * @RequestMapping(value = "abc4.do", method = RequestMethod.POST) public String
-	 * insert( HttpSession session,ReserveVo vo) {
-	 * 
-	 * MemberVo login = (MemberVo)session.getAttribute("login");
-	 * vo.setMidx(login.getMidx());
-	 * 
-	 * int result = shotService.insert(vo);
-	 * 
-	 * return "redirect:abc6.do?Ridx="+vo.getRidx(); }
-	 */
-
 	@RequestMapping(value = "abc5.do", method = RequestMethod.GET)
 	public String homea() {
 
-		return "shot/reserveFree";
+		return "mypage/shot_reserve_inquiry";
 	}
 
 	@RequestMapping(value = "abc6.do", method = RequestMethod.GET)
@@ -102,31 +90,14 @@ public class ShotController {
 		model.addAttribute("rcase", rcase[0]);
 		model.addAttribute("ridx",ridx);
 		
-
-		/*
-		 * MemberVo login = (MemberVo)session.getAttribute("login");
-		 * vo.setMidx(login.getMidx());
-		 */
-		
-		
-	    
-	   
 		if(rbuy[0] != "") {
 			
 	    	return "shot/reserveCharged";
 	    	
 	    }else {
-	    	return "shot/reserveFree";
+	    	return "mypage/shot_reserve_inquiry";
 	    }
 		
-	}
-
-	@RequestMapping(value = "abc8.do", method = RequestMethod.POST)
-	public String home8(ReserveVo vo) {
-		
-		shotService.updatebuy(vo);
-
-		return "shot/shotMoney2";
 	}
 
 	@RequestMapping(value = "abc9.do", method = RequestMethod.POST)
