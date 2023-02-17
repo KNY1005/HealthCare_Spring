@@ -45,7 +45,7 @@ public class ShotController {
 		String[] addr = request.getParameterValues("addr");
 		String[] phone = request.getParameterValues("phone");
 
-		System.out.println("������?" + zip[0] + " �ּҴ�?" + addr[0] + " ����ó��?" + phone[0]);
+		
 		model.addAttribute("zip", zip[0]);
 		model.addAttribute("addr", addr[0]);
 		model.addAttribute("phone", phone[0]);
@@ -79,7 +79,7 @@ public class ShotController {
 		
 		shotService.insert(vo);
 		int ridx=vo.getRidx();
-		System.out.println("ridx는"+ridx);
+		
 		model.addAttribute("midx", midx);
 		model.addAttribute("rname", rname[0]);
 		model.addAttribute("rbuy", rbuy[0]);
@@ -103,7 +103,7 @@ public class ShotController {
 	@RequestMapping(value = "abc9.do", method = RequestMethod.POST)
 	public String home9(ReserveVo vo) {
 		shotService.updatebuy(vo);	
-		System.out.println("rstate="+vo.getRstate());
+		
 		return "mypage/shot_reserve_inquiry";
 	}
 
