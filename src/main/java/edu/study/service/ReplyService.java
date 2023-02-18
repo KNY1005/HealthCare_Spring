@@ -22,5 +22,7 @@ public interface ReplyService {
 	
 	int like_cnt_down(int pidx);
 	
+	ReplyVO selectByReply(int pidx);
+	
 	
 }

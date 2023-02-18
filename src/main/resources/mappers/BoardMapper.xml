@@ -123,6 +123,13 @@
 		FROM TABLE_REPLY
 	</select>
 
+
+	<select id="selectByReply" parameterType="int" resultType="LikeVO">
+		SELECT * 
+		FROM TABLE_REPLY
+		WHERE PIDX = #{pidx}
+	</select>
+	
 	<insert id="replyInsert" parameterType="ReplyVO">
 		<![CDATA[INSERT INTO TABLE_REPLY(
 		BIDX
@@ -165,59 +172,27 @@
 		where BIDX = #{bidx}
 	</select>
 
-	<update id="like_check" parameterType="HashMap">
-		UPDATE TABLE_LIKE
-		SET like_check = like_check + 1
-		WHERE MIDX=#{midx} AND PIDX=#{pidx}
-	</update>
 
-	<update id="like_check_cancel" parameterType="HashMap">
-		UPDATE TABLE_LIKE
-		SET like_check = 0
-		WHERE MIDX=#{midx} AND PIDX=#{pidx}
-	</update>
-
-	<select id="countbyLike" resultType="int"
-		parameterType="HashMap">
-		SELECT COUNT(likeno) as cnt
-		FROM TABLE_LIKE
-		WHERE PIDX=#{pidx} AND MIDX=#{midx}
+	<select id="countbyLike" resultType="ReplyVO">
+		select *,(select count(*)
+		from TABLE_LIKE where pidx = p.pidx)
+		as plikecount
+		from TABLE_REPLY
 	</select>
 
-	<insert id="create" parameterType="HashMap">
-		INSERT INTO TABLE_LIKE(likeno, pidx, midx, like_check)
-		VALUES ((SELECT IFNULL(MAX(likeno), 0) + 1 as likeno FROM TABLE_LIKE),
-		#{pidx}, #{midx}, 0)
+	<insert id="likeUp">
+		INSERT INTO TABLE_LIKE (like_check, likeno, pidx , midx
+		VALUES((SELECT * FROM (SELECT MAX(like_check)+1 from TABLE_LIKE) next), #{likeno}, #{pidx},#{midx})
 	</insert>
 
-	<delete id="deletebyMidxLike" parameterType="int">
-		DELETE FROM TABLE_LIKE
-		WHERE MIDX=#{midx}
-	</delete>
+	<update id="deletebyLike" parameterType="int">
+		UPDATE FROM TABLE_LIKE
+		SET like_check = 0
+		where MIDX=#{midx} AND PIDX=#{pidx}
+	</update>
 
-	<delete id="deletebyPidxLike" parameterType="int">
-		DELETE FROM TABLE_LIKE
-		WHERE PIDX=#{pidx}
-	</delete>
 
-	<select id="readLike" resultType="likeVO"
-		parameterType="HashMap">
-		SELECT LIKENO, PIDX, MIDX, like_check
-		FROM TABLE_LIKE
-		WHERE PIDX=#{pidx} AND MIDX=#{midx}
+	<select id="readLike" resultType="int" >
+		SELECT COUNT(*) FROM TABLE_LIKE WHERE PIDX = #{pidx} and MIDX = #{midx}
 	</select>
-
-	<update id="like_cnt_up" parameterType="int">
-		UPDATE TABLE_REPLY
-		SET
-		PLIKECOUNT = plikecount + 1
-		WHERE PIDX=#{pidx} AND MIDX=#{midx}
-	</update>
-
-	<update id="like_cnt_down" parameterType="int">
-		UPDATE TABLE_REPLY
-		SET PLIKECOUNT = 0
-		WHERE PIDX=#{pidx} AND MIDX=#{midx}
-	</update>
-
 </mapper>

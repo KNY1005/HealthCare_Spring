@@ -50,6 +50,12 @@ public class ReplyServiceImpl implements ReplyService{
 		return replyDAO.like_cnt_down(pidx);
 	}
 
+	@Override
+	public ReplyVO selectByReply(int pidx) {
+		
+		return replyDAO.selectByReply(pidx);
+	}
+
 	
 	
 

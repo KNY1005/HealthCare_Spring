@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import edu.study.dao.LikeDAO;
 import edu.study.vo.LikeVO;
+import edu.study.vo.ReplyVO;
 
 @Service
 public class LikeServiceImpl implements LikeService{
@@ -15,47 +16,29 @@ public class LikeServiceImpl implements LikeService{
 	@Autowired
 	private LikeDAO likeDAO;
 
-	@Override
-	public int like_check(HashMap hashMap) {
-		
-		return likeDAO.like_check(hashMap);
-		
-	}
 
 	@Override
-	public int like_check_cancel(HashMap hashMap) {
-		
-		return likeDAO.like_check_cancel(hashMap);
-	}
-
-	@Override
-	public int countbyLike(HashMap hashMap) {
+	public int countbyLike(ReplyVO ro) {
 	
-		return likeDAO.countbyLike(hashMap);
+		return likeDAO.countbyLike(ro);
 	}
 
 	@Override
-	public int create(HashMap hashMap) {
+	public int likeUp(LikeVO lo) {
 		
-		return likeDAO.create(hashMap);
+		return likeDAO.likeUp(lo);
 	}
 
 	@Override
-	public LikeVO readLike(HashMap hashMap) {
+	public int readLike(LikeVO lo) {
 		
-		return likeDAO.readLike(hashMap);
+		return likeDAO.readLike(lo);
 	}
 
 	@Override
-	public int deletebyMidxLike(int midx) {
+	public int deletebyLike(int likeno) {
 		
-		return likeDAO.deletebyMidxLike(midx);
-	}
-
-	@Override
-	public int deletebyPidxLike(int pidx) {
-		
-		return likeDAO.deletebyPidxLike(pidx);
+		return likeDAO.deletebyLike(likeno);
 	}
 
 	

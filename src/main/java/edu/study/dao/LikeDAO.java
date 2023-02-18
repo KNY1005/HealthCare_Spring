@@ -1,7 +1,5 @@
 package edu.study.dao;
 
-import java.util.HashMap;
-import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,32 +13,22 @@ public class LikeDAO {
 	
 	@Autowired
 	private SqlSession sqlSession;
+
 	
-	public int like_check(HashMap hashMap){
-		return sqlSession.update("edu.study.mapper.boardMapper.like_check",hashMap);
-	}
-	
-	public int like_check_cancel(HashMap hashMap) {
-		return sqlSession.update("edu.study.mapper.boardMapper.like_check_cancel",hashMap);
-	}
-	
-	public int countbyLike(HashMap hashMap) {
-		return sqlSession.selectOne("edu.study.mapper.boardMapper.countbyLike",hashMap);
+	public int countbyLike(ReplyVO ro) {
+		return sqlSession.selectOne("edu.study.mapper.boardMapper.countbyLike",ro);
 	}
 
-	public int create(HashMap hashMap) {
-		return sqlSession.insert("edu.study.mapper.boardMapper.create",hashMap);
+	public int likeUp(LikeVO lo) {
+		return sqlSession.insert("edu.study.mapper.boardMapper.countbyLike",lo);
 	}
 	
-	public LikeVO readLike(HashMap hashMap) {
-		return sqlSession.selectOne("edu.study.mapper.boardMapper.readLike",hashMap);
+	public int readLike(LikeVO lo) {
+		return sqlSession.selectOne("edu.study.mapper.boardMapper.readLike",lo);
 	}
 	
-	public int deletebyMidxLike(int midx) {
-		return sqlSession.delete("edu.study.mapper.boardMapper.deletebyMidxLike",midx);
+	public int deletebyLike(int likeno) {
+		return sqlSession.delete("edu.study.mapper.boardMapper.deletebyLike",likeno);
 	}
-	
-	public int deletebyPidxLike(int pidx) {
-		return sqlSession.delete("edu.study.mapper.boardMapper.deletebyPidxLike",pidx);
-	}
+
 }
