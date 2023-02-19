@@ -57,9 +57,9 @@
 						<li><a href="<%=request.getContextPath() %>/notice/list.do?blist=N">건강광장</a></li>
 					</ul>
 					<c:if test="${member.mgrade == 'A'}">
-		            <ul>
-		              <li><a href="<%=request.getContextPath() %>/admin/god.do">회원 관리</a></li>
-		            </ul>
+			            <ul>
+			              <li><a href="<%=request.getContextPath() %>/admin/god.do">회원 관리</a></li>
+			            </ul>
 		            </c:if>
 				</div>
 				<div id="sliding_menu">
