@@ -60,15 +60,9 @@ public class MemberController {
 		
 		if (login == null) {
 			session.setAttribute("member", null);
-			System.out.println("濡�洹몄�몄�ㅽ��");
 			return "member/login";
 		} else {
 			session.setAttribute("member", login);
-
-			System.out.println("mid��"+vo.getMid());
-			System.out.println(vo.getMpwd());
-			System.out.println(login);
-			System.out.println("midx��"+vo.getMidx());
 			return "redirect:/";
 		}
 
@@ -79,8 +73,6 @@ public class MemberController {
 	@RequestMapping(value = "/logout.do", method = RequestMethod.GET)
 	public String logout(HttpServletRequest request) {
 
-		System.out.println("logout硫����� 吏���");
-
 		HttpSession session = request.getSession();
 
 		session.invalidate();
@@ -90,20 +82,10 @@ public class MemberController {
 	
 	@RequestMapping(value = "/join.do", method = RequestMethod.POST)
 	public String join(MemberVo vo, HttpServletRequest request) {
-		System.out.println("����媛���以�");
 
-		// ���� ����
-		System.out.println("泥ル�吏�:" + vo.getMpwd());
-		// 鍮�諛�踰��� ���명�� (sha256
 		String encryPassword = memberSha256.encrypt(vo.getMpwd());
 		vo.setMpwd(encryPassword);
-		System.out.println("��踰�吏�:" + vo.getMpwd());
-		// ����媛��� 硫�����
 		memberService.register(vo);
-		/*
-		 * // �몄� 硫��� 蹂대�닿린 硫����� mailsender.mailSendWithUserKey(vo.getMemail(),
-		 * vo.getMemail(), request);
-		 */
 		return "member/login";
 	}
 
@@ -135,7 +117,6 @@ public class MemberController {
 	}
 	@RequestMapping(value = "/membersearch.do", method = RequestMethod.GET)
 	public String membersearch(MemberVo vo, HttpServletRequest request) {
-		System.out.println("���대�� 李얘린以�");
 
 		return "member/memberSearch";
 	}
@@ -145,25 +126,18 @@ public class MemberController {
 	public String search_result_id(HttpServletRequest request, Model model,
 			@RequestParam(required = true, value = "mname") String mname,
 			@RequestParam(required = true, value = "mphone") int mphone, MemberVo searchVo) {
-		System.out.println("���대�� 鍮�諛�踰��� 李얘린以� ����");
 
 		System.out.println(mname);
 		System.out.println(mphone);
 
 		try {
-			System.out.println("����");
 			searchVo.setMname(mname);
 			searchVo.setMphone(mphone);
 			MemberVo memberSearch = memberService.memberIdSearch(searchVo);
-			System.out.println(mname);
-			System.out.println(mphone);
 
 			model.addAttribute("searchVo", memberSearch);
-			System.out.println(memberSearch);
 		} catch (Exception e) {
-			System.out.println(e.toString());
-			System.out.println("�명��");
-			model.addAttribute("msg", "�ㅻ�媛� 諛��������듬����.");
+			model.addAttribute("msg", "존재하지않는 계정입니다.");
 		}
 
 		return "/member/search_result_id";
@@ -171,7 +145,6 @@ public class MemberController {
 
 	@RequestMapping(value = "/search_result_pwd.do", method = RequestMethod.GET)
 	public String search_result_pwd(MemberVo vo, HttpServletRequest request) {
-		System.out.println("鍮�諛�踰��� 李얘린以�");
 
 		return "member/search_pwd";
 	}
@@ -183,9 +156,6 @@ public class MemberController {
 	    @RequestParam(required = true, value = "mid") String mid, 
 	    MemberVo searchVo) {
 	try {
-	    
-		System.out.println("�ш린�� 鍮�諛�踰��� 李얘린1");
-		System.out.println(mname+mphone+mid);
 		
 	    searchVo.setMname(mname);
 	    searchVo.setMphone(mphone);
@@ -198,20 +168,16 @@ public class MemberController {
 	    System.out.println(memberSearch);
 	    
 	    if(memberSearch == 0) {
-	        model.addAttribute("msg", "湲곗���� ��蹂닿� ��紐삳�����듬����. �ㅼ�� ���ν�댁＜�몄��.");
+	        model.addAttribute("msg", "계정.");
 	        return "member/search_pwd";
 	    }
 	    
 	    
 	    String newPwd = RandomStringUtils.randomAlphanumeric(10);
-	    System.out.println(newPwd);
 	    String enpassword = encryptPassword(newPwd);
-	    
-	    System.out.println(enpassword);
+
 	    searchVo.setMpwd(enpassword);
-	    System.out.println(enpassword);
 	    memberService.passwordUpdate(searchVo);
-	    System.out.println("�ш린�� 鍮�諛�踰��� 李얘린");
 	    model.addAttribute("newPwd", newPwd);
 	 
 	    
@@ -219,7 +185,7 @@ public class MemberController {
 	} catch (Exception e) {
 		
 	    System.out.println(e.toString());
-	    model.addAttribute("msg", "�ㅻ�媛� 諛��������듬����.");
+	    model.addAttribute("msg", "여긴뭐지.");
 	}
 	 
 	

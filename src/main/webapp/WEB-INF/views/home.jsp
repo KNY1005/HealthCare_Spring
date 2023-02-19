@@ -72,6 +72,11 @@ $(document).ready(function(){
             <ul>
               <li><a href="<%=request.getContextPath() %>/notice/list.do?blist=N">건강광장</a></li>
             </ul>
+            <c:if test="${member.mgrade == 'A'}">
+            <ul>
+              <li><a href="<%=request.getContextPath() %>/admin/god.do">회원 관리</a></li>
+            </ul>
+            </c:if>
           </div>
           <div id="sliding_menu">
             <ul>
@@ -105,7 +110,7 @@ $(document).ready(function(){
             <p>${member.mname}님 환영합니다!</p>
           </div>
           <div id="profli_menu">
-		      	<a href="<%=request.getContextPath() %>/admin/god.do">회원 관리</a>
+		      	
             <ul>
               <li><img src="${path}/resources/image/profli.png" alt="프로필" /></li>
               <li><p>${member.mname}님</p></li>
