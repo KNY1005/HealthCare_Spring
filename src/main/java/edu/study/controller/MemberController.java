@@ -43,8 +43,6 @@ public class MemberController {
 	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
 	public String login() {
 
-		System.out.println("濡�洹몄��");
-
 		return "member/login";
 	}
 
@@ -52,11 +50,10 @@ public class MemberController {
 	public String login(MemberVo vo, HttpServletRequest request, RedirectAttributes rttr) throws Exception {
 
 		HttpSession session = request.getSession();
-		// 鍮�諛�踰��� ���명��
 		String mpwd = vo.getMpwd();
 		vo.setMpwd(memberSha256.encrypt(mpwd));
 		MemberVo login = memberService.login(vo);
-		System.out.println("id는"+vo.getMid()+"비밀"+vo.getMpwd());		
+		System.out.println("id는"+vo.getMid()+"   비밀"+vo.getMpwd());		
 		
 		if (login == null) {
 			session.setAttribute("member", null);
@@ -199,6 +196,8 @@ public class MemberController {
 		System.out.println("user_pw : " + encryPassword);
 		return encryPassword;
 	}
+	
 
-
-	}
+	
+}
+	

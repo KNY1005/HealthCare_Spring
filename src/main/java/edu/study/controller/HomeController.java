@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.study.service.MemberService;
+import edu.study.service.memberSha256;
 import edu.study.vo.BoardVo;
 import edu.study.vo.MemberVo;
 import oracle.net.ns.SessionAtts;
@@ -85,5 +86,21 @@ public class HomeController {
 		
 		return "mypage/my_information_inquiry";
 	}
+	
 
+	@RequestMapping(value="/mypage5.do", method = RequestMethod.POST)
+	public String registerUpdate(HttpServletRequest request, RedirectAttributes redirectAttributes,
+			MemberVo vo, HttpSession session, Model model){
+		
+		try {
+	        memberService.updateMember(vo);
+	        System.out.println("여기");
+	        
+	    } catch (Exception e) {
+	        System.out.println(e.toString());
+	        System.out.println("망했네");
+	    }
+		
+		return "redirect:/mypage5.do";
+	}
 }
