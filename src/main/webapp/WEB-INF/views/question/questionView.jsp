@@ -412,7 +412,7 @@
 			</div>
 			<div id="button">
 			
-				<button type="button" onClick="location.href='questionList.do'">목록</button>
+				<button type="button" onClick="location.href='questionList.do?blist=Q'">목록</button>
 			
 			<c:set var="boardMidx" value="${vo.midx}" />			
 			<c:if test="${member.midx == boardMidx}">

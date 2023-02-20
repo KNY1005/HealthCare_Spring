@@ -144,8 +144,7 @@
 	function getInfo(){			
 		var sido = $("#sido option:selected").text();
 		var sigugun = $("#sigugun option:selected").text();
-		var result_list=[];
-		
+		var result_list=[];		
 		$.ajax({
 			url:"https://api.odcloud.kr/api/15050729/v1/uddi:03c4700e-0d6d-4dc1-914b-d0b8720dfaa9?page=1&perPage=143&serviceKey=fc7neVxfegjd7ptkZnQkV3YyKVGajgKxKhSkn060LiBCg%2FZwkO1cig1cNX34Eox3dEtjy6vBoFUsekWcZ4%2BmeQ%3D%3D",
 			method:"post",
@@ -180,8 +179,7 @@
 			            output += '</tr>';							
 				});
 				$(".content").remove();		//데이터 지우기				
-	      	    $("#info").append(output);  // 새로운 데이터 덮어쓰기 */			
-				
+	      	    $("#info").append(output);  // 새로운 데이터 덮어쓰기 */					
 			}
 		})
 		

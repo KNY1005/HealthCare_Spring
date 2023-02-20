@@ -206,10 +206,7 @@ main {
 				contentType : "application/json",
 				success : function(data) {								
 					for (var i = 0; i < data.items.length; i++) {
-						var items = data.items[i];							
-						/* console.log("비디오아이디:"+items.id.videoid);
-						console.log("제목:"+items.snippet.title);
-						console.log("썸네일:"+items.snippet.thumbnails['default'].url); */
+						var items = data.items[i];						
 						result_list.push(items);							
 		       			}
 				},
@@ -217,15 +214,14 @@ main {
 					result_list.forEach(function(item){
 						var imgURL =item.snippet.thumbnails['default'].url;
 						var tubeTitle = item.snippet.title;
-						var tubeURL = "https://www.youtube.com/embed/"+item.id.videoId+"?autoplay=1&mute=1";
-						//console.log('url은??'+tubeURL);
+						var tubeURL = "https://www.youtube.com/embed/"+item.id.videoId+"?autoplay=1&mute=1";						
 						output += "<li onclick='goPage(this)'><div class='content_box'>";
 			    	  	output += "<div class='content_img'><img src='"+imgURL+"'/></div>";			      		
 			            output += "<div class='content_text'><p>"+tubeTitle+"</p>";
 			            output += "<p style='display:none;'>"+tubeURL+"</p></div>"
 			            output += "</div></li>";	
 					});								
-		      	    $(".content_list").append(output);  // 새로운 데이터 덮어쓰기 */		
+		      	    $(".content_list").append(output); 	
 	            },
 	          	error : function(xhr, status, error) {
 	              	console.log("유튜브 요청 에러: "+error);
@@ -235,9 +231,9 @@ main {
 	      )
 	      
 	      function goPage(obj){
-			  var li = obj.querySelectorAll("p");
-			  var tubeTitle = li[0].innerText;
-			  var tubeURL = li[1].innerText;
+			  var p = obj.querySelectorAll("p");
+			  var tubeTitle = p[0].innerText;
+			  var tubeURL = p[1].innerText;
 			  var form = document.createElement("form");
 		      form.setAttribute("charset", "UTF-8");
 		      form.setAttribute("method", "POST");  //Post 방식
