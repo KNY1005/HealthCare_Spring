@@ -20,7 +20,6 @@
 //	console.log("좋아요 여부 : " + likeval);
 	
 	$('[name=replyInsertBtn]').click(function(){ //댓글 등록 버튼 클릭시
-		alert("reply.jsp / btn click : call");
 	    var insertData = $('[name=replyInsertForm]').serialize(); //commentInsertForm의 내용을 가져옴
 	    console.log("eeee"+insertData);
 	    replyInsert(insertData);
@@ -89,7 +88,6 @@
 	
 	//댓글 등록
 	function replyInsert(insertData){
-		alert("reply.jsp / replyInsert ajax ")
 	    $.ajax({
 	        url : 'medicalView/reply/insert',
 	        type : 'post',
@@ -111,7 +109,8 @@
 	    var a ='';
 	    
 	    a += '<div class="input-group">';
-	    a += '<input type="text" class="form-control" name="pcontent_'+pidx+'" value="'+pcontent+'"/>';
+	    a += '<input type="text"  id="ptitle" name="ptitle_'+pidx+'" placeholder="제목을 입력하세요." style="border-radius: 10px;	margin: 10px 0 10px 40px;width: 1000px;	height: 35px;text-align: left;font-size: 25px;">'
+	    a += '<input type="text" name="pcontent_'+pidx+'" value="'+pcontent+'" style="	width: 1000px;margin: 0 0 10px 40px;height: 150px; border-radius: 10px;"/>';
 	    a += '<span class="input-group-btn"><button class="btn btn-default" type="button" onclick="replyUpdateProc('+pidx+');">수정</button> </span>';
 	    a += '</div>';
 	    
@@ -159,7 +158,7 @@
 		
 		// 기존에 좋아요를 눌렀는지 판단하고
 		if(like_check > 0){
-			alert("취소 call");
+			alert("좋아요 취소");
 			// 좋아요를 취소하는 ajax
  			$.ajax({
 				type :'post',
@@ -172,7 +171,7 @@
 				}
 			});
 		}else{
-			alert("좋아요 call");
+			alert("좋아요");
 			// 좋아요를 추가하는 ajax
  			$.ajax({
 				type :'post',
@@ -181,7 +180,7 @@
 				success : function(data) {
 					replyList();
 //					obj.children[0].setAttribute('src',"${path }/resources/image/like.png")
-					alert('성공염');
+					alert('좋아요 성공');
 				}
 			});
 		}
@@ -279,4 +278,53 @@
 		width:25px; height:25px;
 	
 	}
+	
+		
+	.input-group {
+		height:280px;
+		width: 1100px;
+		margin: 0 auto 0;
+		border: 3px solid #FF8F8F;
+		border-radius: 25px;
+	}
+	
+
+	input#ptitle {
+		border-radius: 10px;
+		margin: 10px 0 10px 40px;
+		width: 1000px;
+		height: 35px;
+		text-align: left;
+		font-size: 25px;
+	}
+	
+	input#pcontent {
+		width: 1000px;
+		margin: 0 0 10px 40px;
+		height: 150px;
+		border-radius: 10px;
+	}
+	
+	.input-group-btn {
+		display: inline-block;
+		width: 230px;
+		height: 40px;
+		margin-left:820px;
+		margin-bottom:10px;
+	}
+	
+	
+	.input-group-btn button {
+		font-weight: bold;
+		width: 100px;
+		padding: 10px;
+		font-size: 15px;
+		background-color: #FFEFEF;
+		border: #FFEFEF;
+		border-radius: 30px;
+		margin-left:10px;
+		
+	} 
+	.input-group-btn button:hover{
+		
 </style>

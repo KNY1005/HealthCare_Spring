@@ -62,7 +62,7 @@
 		font-weight: bold;
 	}
 	
-	#view hr {
+	hr {
 		height: 2px;
 		background-color: #FF7373;
 		border: none;
@@ -212,41 +212,7 @@
  	
 	}
 		
-	 .like .icon{
-	    display: flex;
-	    align-items: center;
-	    justify-content: center;
-	    width: calc(100vw * (45 / 1920));
-	    height: calc(100vw * (45 / 1920));
-	
-	    border-radius: 50%;
-	    border: solid 2px #eaeaea;
-	    background-color: #fff;
-	}
 
-	.icon.heart img{
-	    width: calc(100vw * (24 / 1920));
-	    height: calc(100vw * (24 / 1920));
-	}
-
-	.icon.heart.fas{
-	  color:red
-	}
-	.heart{
-	    transform-origin: center;
-	}
-	.heart.active img{
-	    animation: animateHeart .3s linear forwards;
-	}
-
-	@keyframes animateHeart{
-	    0%{transform:scale(.2);}
-	    40%{transform:scale(1.2);}
-	    100%{transform:scale(1);}
-	  }
-			}
-		
-		
 
 		
 	#view h3 {
@@ -333,7 +299,7 @@
 	</div>
 	<main>
 		<section id="view">
-			<h2>건강상담소 상세</h2>
+			<h2>건강상담소</h2>
 			<hr>
 			<form action="">
 				<div id="writing_view">

@@ -39,36 +39,25 @@
 	<style>
 		/*-----------------sub_nav_menu > start---------------*/
 
-		.sub_nav_menu ul {
-			margin-left: 135px;
-			margin-top: 20px;
+		.order_box {
+			width: 790px;
+			height: 110px;
+			display: flex;
+			align-items: flex-end;
+			justify-content: center;
+		}
+		
+		.order {
+			width: 500px;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-evenly;
 		}
 
-		.sub_nav_menu li {
-			text-align: center;
-			float: left;
-			width: 100px;
-			padding: 0 30px;
-			/*글자길이 길어서 넘어가면 이거 늘리세요 */
-			font-weight: bold;
-			font-size: 20px;
-		}
-
-		.sub_nav_menu li:nth-child(2) {
-			border-left: 1px solid #000;
-			border-right: 1px solid #000;
-		}
-
-		.sub_nav_menu li:nth-child(3) {
-			color: #9E0404;
-		}
 
 		/*-----------------sub_nav_menu > end---------------*/
 		
-		#height {
-			height: 80px;
-		}
-				* {
+		* {
 			font-weight: bold;
 		}
 
@@ -255,14 +244,15 @@
 <body>
 
 	<%@include file="../includes/header.jsp"%>
-	<div id="height"></div>
-	<div class="sub_nav_menu">
-		<ul>
-			<li><a href="notice1.do">공지사항</a></li>
-			<li><a href="question/questionList.do">문의사항</a></li>
-			<li><a href="medicalList.do">건강상담소</a></li>
+	<div class="order_box">
+		<ul class="order">
+			<li>공지사항</li>
+			<li>|</li>
+			<li>문의사항</li>
+			<li>|</li>
+			<li style="color: #CE8080;">건강상담소</li>
 		</ul>
-	</div><!--//.sub_nav_menu-->
+	</div>
 	<main>
 		<div id="menu">
 			<h2>건강상담소 상담글 작성</h2>
