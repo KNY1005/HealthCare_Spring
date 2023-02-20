@@ -3,10 +3,14 @@ package edu.study.controller;
 import javax.servlet.http.HttpServletRequest;
 
 import org.json.simple.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import edu.study.service.ShotService;
+import edu.study.vo.ReserveVo;
 
 
 	
@@ -14,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping(value="/medical_check")	
 @Controller
 public class MedicalCheckController {
+	@Autowired
+	private ShotService shotService;
 	
 
 	
@@ -44,10 +50,12 @@ public class MedicalCheckController {
 	}
 	
 	@RequestMapping(value = "medicalresult.do", method = RequestMethod.POST)
-	public String medicalresult(HttpServletRequest request, Model model) {	
-		String[] hName = request.getParameterValues("hName");
+	public String medicalresult(Model model,ReserveVo rvo) {	
 
-		model.addAttribute("hName",hName[0]);
+
+		shotService.insert(rvo);
+		int ridx = rvo.getRidx();
+		model.addAttribute("rvo",shotService.selectByRidx(ridx));
 		
 		return "medical_check/medical_check_result";
 	}

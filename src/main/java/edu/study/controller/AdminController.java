@@ -60,7 +60,7 @@ public class AdminController {
 		//DB에서 등급변경을 시킨다.
 		memberService.changeStotus(vo);
 		
-		return "redirect:memberlist_center?id="+vo.getMid()+"&page="+criteriaVO.getPage()+"&perPageNum"+criteriaVO.getPerPageNum();
+		return "admin/memberlist_center";
 	}
 	
 	

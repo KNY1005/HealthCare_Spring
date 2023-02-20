@@ -230,7 +230,7 @@ hr {
 			<h2>문의사항 글 수정</h2>
 		</div>
 		<hr>
-		<form action="questionModify.do" method="post">
+		<form action="questionModify.do?blist=Q" method="post">
 			<input type="hidden" name="bidx" value="${vo.bidx}">
 			<div id="writing_view">
 				<input type="text" class="title" name="btitle"value="${vo.btitle }" />

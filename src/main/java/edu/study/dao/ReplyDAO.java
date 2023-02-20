@@ -49,6 +49,10 @@ public class ReplyDAO {
 		
 	}
 	
+	public ReplyVO selectByReply(int pidx) {
+		return sqlSession.selectOne("edu.study.mapper.boardMapper.selectByReply", pidx);
+	}
+	
 	
 }
 	

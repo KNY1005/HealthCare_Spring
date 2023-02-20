@@ -80,6 +80,7 @@
 		}
 
 		main #infor ul li {
+			font-size: 20px;
 			width: 290px;
 			text-align: center;
 		}
@@ -174,9 +175,9 @@
 					<li>날짜</li>
 				</ul>
 				<ul>
-					<li>${hName}</li>
+					<li>$${rvo.rhospital}</li>
 					<li>일반건강검진</li>
-					<li>2022년 12월 30일 오후 4시</li>
+					<li>${rvo.rdate }/${rvo.rtime }</li>
 				</ul>
 			</div><!--//#infor-->
 			<div id="guide">

@@ -165,69 +165,48 @@
           <td><c:out value="${mb.mname}"></c:out></td>
           <td><c:out value="${mb.memail}"></c:out></td>
           <td>
-            <c:out value="${mb.mgrade}"></c:out
-            ><input
+          <form method="post" action="/controller/admin/changeStotus.do">
+            <select
+                class="form-select form-select-sm"
+                aria-label=".form-select-sm example"
+                style="width: 150px"
+              >
+                <option selected> <c:out value="${mb.mgrade}"></c:out></option>
+                <option value="G">G(일반회원)</option>
+                <option value="D">D(전문의회원)</option>
+                <option value="A">A(관리자)</option></select
+              ><input
               type="button"
               value="변경"
               class="btn btn-primary"
-              onclick="location.href='home'"
             />
+            </form>
           </td>
           <td>
-            <c:out value="${mb.mgrade}">
+          <form method="post" action="/controller/admin/changeStotus.do">
               <select
                 class="form-select form-select-sm"
                 aria-label=".form-select-sm example"
-                style="width: 100px"
+                style="width: 150px"
               >
-                <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option></select
-              ><input
+                <option selected> <c:out value="${mb.mdelyn}"></c:out></option>
+                <option value="N">정상(Y)</option>
+                <option value="Y">탈퇴(N)</option></select>
+                <input
                 type="button"
                 value="변경"
                 class="btn btn-primary"
-                onclick="location.href='home'"
               />
-            </c:out>
+              </form>
           </td>
         </tr>
       </c:forEach>
     </table>
-    <div id="page_div">
-      <ul id="page">
-        <c:if test="${page.prev}">
-          <li>
-            <a
-              href="list.do?page=${page.startPage - 1}&&searchType=${page.scri.searchType}&&keyWord=${page.encoding(page.scri.keyWord)}"
-              ><i class="xi-angle-left"></i
-            ></a>
-          </li>
-        </c:if>
-        <c:forEach begin="${page.startPage}" end="${page.endPage}" var="vo">
-          <li>
-            <a
-              href="list.do?page=${vo}&&searchType=${page.scri.searchType}&&keyWord=${page.encoding(page.scri.keyWord)}"
-              >${vo}</a
-            >
-          </li>
-        </c:forEach>
-        <c:if test="${page.next && page.endPage > 0}">
-          <li>
-            <a
-              href="list.do?page=${page.endPage + 1}&&searchType=${page.scri.searchType}&&keyWord=${page.encoding(page.scri.keyWord)}"
-              ><i class="xi-angle-right"></i
-            ></a>
-          </li>
-        </c:if>
-      </ul>
-    </div>
     <input
       type="button"
       value="메인으로"
       class="btn btn-primary"
-      onclick="location.href='home'"
+      href="<%=request.getContextPath() %>/"
     />
 </body>
 </html>

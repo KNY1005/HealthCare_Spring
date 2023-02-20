@@ -304,7 +304,7 @@
 		border-radius: 30px;
 		margin-left:10px;
 		
-	} 
+	}
 	.input-group-btn button:hover{
 		
 	
@@ -390,7 +390,7 @@
 			   		<%@ include file="reply.jsp" %></div>
 			    </div>
 			</div>
-			 
+			
 		
 		</section>
 		
@@ -407,7 +407,7 @@
 			$('#answerBtn').text('답변하기');
 		}	
 	}	
-</script> 
+</script>
 	
 </body>
 </html>

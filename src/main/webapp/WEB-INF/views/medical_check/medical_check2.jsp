@@ -68,35 +68,25 @@
 			font-size: 40px;
 		}
 		/*첫번째 백그라운드 핑크색박스*/
-		main .medical {
+			main .medical {
 			background-color: #FFE7E7;
 			width: 1320px;
 			height: 66px;
 			border-radius: 10px;
 			margin-top: 30px;
+			display: flex;
+			align-items: center;
 		}
 
 		main .medical p {
-			float: left;
-			font-size: 22px;
-			margin-top: 22px;
+			text-align: center;
+			display: inline-block;
+			width: 24%;
+			font-size: 20px;
+			font-weight: bold;
 		}
 
-		main .medical p:nth-child(1) {
-			margin-left: 44.805px;
-		}
-
-		main .medical p:nth-child(2) {
-			margin-left: 80px;
-		}
-
-		main .medical p:nth-child(3) {
-			margin-left: 80px;
-		}
-
-		main .medical p:nth-child(4) {
-			margin-left: 80px;
-		}
+	
 		/*중간 핑크색 선*/
 		main hr {
 			margin-top: 30px;
@@ -230,8 +220,7 @@
 		<h2>건강검진 예약</h2>
 		<form action="medicalresult.do" method="POST">
 		<div class="medical">
-			<p><input type="hidden" name="hName" value="${hName}">${hName}</p>
-			<p>${hName }</p>
+			<p><input type="hidden" name="rhospital" value="${hName}">${hName}</p>
 			<p>진료시간 : 09:00 ~ 18:00</p>
 			<p>주소 : ${addr }</p>
 			<p>연락처 : ${tel }</p>
@@ -254,6 +243,9 @@
 					</div>
 				</div>
 		</div><!--//.timetable-->
+		<input type="hidden" name="rcase" value="H">
+		<input type="hidden" name="rstate" value="Y">
+		<input type="hidden" name="midx" value="${member.midx }">
 		<button onclick="resbtn();">예약</button>
 	</form>
 	</main>

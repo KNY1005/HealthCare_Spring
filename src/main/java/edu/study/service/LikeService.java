@@ -1,24 +1,21 @@
 package edu.study.service;
 
-import java.util.HashMap;
+
 
 import edu.study.vo.LikeVO;
+import edu.study.vo.ReplyVO;
 
 public interface LikeService {
 	
-	public int like_check(HashMap hashMap);
 	
-	public int like_check_cancel(HashMap hashMap);
+	public int countbyLike(ReplyVO ro);
 	
-	public int countbyLike(HashMap hashMap);
+	public int likeUp(LikeVO lo);
 	
-	public int create(HashMap hashMap);
+	public int readLike(LikeVO lo);
 	
-	public LikeVO readLike(HashMap hashMap);
+	public int deletebyLike(int likeno);
 	
-	public int deletebyMidxLike(int midx);
-	
-	public int deletebyPidxLike(int pidx);
 	
 	
 	

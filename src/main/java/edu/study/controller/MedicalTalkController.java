@@ -21,91 +21,126 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import edu.study.service.BoardService;
 import edu.study.service.LikeService;
 import edu.study.service.MedicalTalkService;
+import edu.study.service.MemberService;
 import edu.study.service.ReplyService;
 import edu.study.vo.BoardVo;
 import edu.study.vo.FileVO;
 import edu.study.vo.LikeVO;
+import edu.study.vo.MemberVo;
 import edu.study.vo.PageVO;
 import edu.study.vo.ReplyVO;
 import edu.study.vo.SearchCriteria;
 
-@RequestMapping(value="/medicalTalk")
+@RequestMapping(value = "/medicalTalk")
 @Controller
-public class MedicalTalkController{
-	
-	
+public class MedicalTalkController {
+
 	@Autowired
 	private MedicalTalkService medicaltalkService;
+	@Autowired
 	private LikeService likeService;
+	@Autowired
 	private ReplyService replyService;
+	@Autowired
+	private MemberService memberService;
+	@Autowired
+	private BoardService boardService;
 	
 	@RequestMapping(value = "/medicalList.do", method = RequestMethod.GET)
 	public String medicalList(SearchCriteria scri, Model model) {
 		List<BoardVo> list = medicaltalkService.list(scri);
-		model.addAttribute("list",list);
+		model.addAttribute("list", list);
 		PageVO pageVo = new PageVO();
 		pageVo.setScri(scri);
 		pageVo.setTotalCount(medicaltalkService.listCount(scri));
-		model.addAttribute("page",pageVo);
+		model.addAttribute("page", pageVo);
+		
 		
 		return "medicalTalk/medicalList";
 	}
-	
+
 	@RequestMapping(value = "/medicalView.do", method = RequestMethod.GET)
-	public String medicalview(int bidx, Model model) throws Exception {
+	public String medicalview(LikeVO lo, int bidx, Model model/* , int pidx, int midx */) throws Exception {
 		BoardVo vo = medicaltalkService.selectByBidx(bidx);
 		FileVO fvo = medicaltalkService.selectFileByBidx(bidx);
 		
-		model.addAttribute("vo",vo);
+		
+		/*
+		 * ReplyVO ro = replyService.selectByReply(pidx); MemberVo mo =
+		 * memberService.selectByMidx(midx);
+		 */
+
+		model.addAttribute("vo", vo);
 		model.addAttribute("fvo", fvo);
-		
-		
+		model.addAttribute("like",1);
+		//이  like 값만 유동적으로 바꾸면 끝난다.
+		boardService.boardHitUpdate(bidx);
+		/*
+		 * model.addAttribute("ro",ro); model.addAttribute("mo", mo);
+		 * model.addAttribute("like", replyService.selectByReply(pidx));
+		 */
+
 		return "medicalTalk/medicalView";
-		
+
 	}
-	@RequestMapping(value = "/medicalModify.do", method = RequestMethod.GET)	
+
+	/*
+	 * @RequestMapping("/reply/list")
+	 *
+	 * @ResponseBody public List<ReplyVO> replyList(Model model, int bidx, MemberVo
+	 * mo, LikeVO lo) throws Exception { System.out.println("reply cont \n bidx : "
+	 * + bidx);
+	 *
+	 * model.addAttribute(mo); model.addAttribute(lo);
+	 *
+	 * return replyService.replyList(bidx); }
+	 */
+
+	@RequestMapping(value = "/medicalModify.do", method = RequestMethod.GET)
 	public String medicalmodify(int bidx, Model model) {
-				
-		BoardVo vo = medicaltalkService.selectByBidx(bidx); 
-		
-		model.addAttribute("vo",vo);
-		return "medicalTalk/medicalModify";	
+
+		BoardVo vo = medicaltalkService.selectByBidx(bidx);
+
+		model.addAttribute("vo", vo);
+		return "medicalTalk/medicalModify";
 	}
-	@RequestMapping(value = "/medicalModify.do", method = RequestMethod.POST)	
+
+	@RequestMapping(value = "/medicalModify.do", method = RequestMethod.POST)
 	public String medicalmodify(BoardVo vo) {
-				
-		int result = medicaltalkService.updateByBidx(vo); 		
-		if(result>0) {
-		return "redirect:medicalView.do?bidx="+vo.getBidx();	
-		}else {
+
+		int result = medicaltalkService.updateByBidx(vo);
+		if (result > 0) {
+			return "redirect:medicalView.do?bidx=" + vo.getBidx();
+		} else {
 			return "/";
 		}
 	}
-	
+
 	@RequestMapping(value = "/medicalWrite.do", method = RequestMethod.GET)
 	public String medicalWrite() {
 
 		return "medicalTalk/medicalWrite";
 	}
-	
-	
+
 	@RequestMapping(value = "/medicalWrite.do", method = RequestMethod.POST)
 	public String medicalWrite2(BoardVo vo, MultipartFile upload, HttpServletRequest req)
 			throws IllegalStateException, IOException {
-		
+
 		medicaltalkService.insert(vo);
 		String path = req.getSession().getServletContext().getRealPath("/resources/upload");
 		File dir = new File(path);
-		System.out.println(""+path);
-		if (!dir.exists()) { 
+		System.out.println("" + path);
+		if (!dir.exists()) {
 			dir.mkdirs();
 		}
 		if (!upload.getOriginalFilename().isEmpty()) {
-			HashMap<String, Object> file_name = new HashMap<String, Object>();			
+			HashMap<String, Object> file_name = new HashMap<String, Object>();
 			int pos = upload.getOriginalFilename().lastIndexOf(".");
 			String ext = upload.getOriginalFilename().substring(pos + 1);
 			Date now = new Date();
@@ -115,8 +150,8 @@ public class MedicalTalkController{
 			String result2 = today + random;
 			String changeName = result2 + "." + ext;
 			String originName = upload.getOriginalFilename();
-			upload.transferTo(new File(path,changeName));
-			
+			upload.transferTo(new File(path, changeName));
+
 			file_name.put("originname", originName);
 			file_name.put("storedname", changeName);
 			file_name.put("bidx", vo.getBidx());
@@ -127,15 +162,16 @@ public class MedicalTalkController{
 		return "redirect:medicalView.do?bidx=" + vo.getBidx();
 
 	}
+
 	@RequestMapping(value = "/fileDown.do")
 	public void downloadFile(int bidx, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		//https://velog.io/@oyeon/%ED%8C%8C%EC%9D%BC-%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C-%EA%B5%AC%ED%98%84
+		// https://velog.io/@oyeon/%ED%8C%8C%EC%9D%BC-%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C-%EA%B5%AC%ED%98%84
 		FileVO fvo = new FileVO();
 		fvo = medicaltalkService.selectFileByBidx(bidx);
 		String path = request.getSession().getServletContext().getRealPath("/resources/upload/");
 		String saveFileName = fvo.getStoredname();
 		String originalFileName = fvo.getOriginname();
-		System.out.println(""+path);
+		System.out.println("" + path);
 		File downloadFile = new File(path + saveFileName);
 
 		byte fileByte[] = FileUtils.readFileToByteArray(downloadFile);
@@ -152,6 +188,7 @@ public class MedicalTalkController{
 		response.getOutputStream().close();
 
 	}
+
 	@RequestMapping(value = "/medicalDelete.do", method = RequestMethod.GET)
 	public String delete(int bidx) {
 
@@ -160,7 +197,5 @@ public class MedicalTalkController{
 		return "redirect:medicalList.do";
 
 	}
-	
-	
-	
+
 }
