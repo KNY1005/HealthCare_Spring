@@ -21,6 +21,8 @@ public interface MemberService {
 	
 	public String changeStotus(MemberVo vo)throws Exception;
 	
+	public String changedelyn(MemberVo vo)throws Exception;
+	
 	public MemberVo memberIdSearch(MemberVo searchVo);
 	
 	public int memberPwdCheck(MemberVo searchVo);

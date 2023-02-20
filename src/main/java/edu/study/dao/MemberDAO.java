@@ -60,7 +60,12 @@ public class MemberDAO {
 
 		return sqlSession.selectOne("edu.study.mapper.memberMapper.changeStotus", vo);
 	}
+	
+	public String changedelyn(MemberVo vo) {
 
+		return sqlSession.selectOne("edu.study.mapper.memberMapper.changedelyn", vo);
+	}
+	
 	public MemberVo searchId(MemberVo searchVo) {
 		
 		return sqlSession.selectOne("edu.study.mapper.memberMapper.searchId", searchVo);
@@ -83,7 +88,7 @@ public class MemberDAO {
 	
 	public MemberVo updateMember(MemberVo vo) {
 
-		return sqlSession.selectOne("edu.study.mapper.memberMapper.updateMembe", vo);
+		return sqlSession.selectOne("edu.study.mapper.memberMapper.updateMember", vo);
 	}
 	
 	public List<BoardVo> selectMyBoard(int midx) {
@@ -98,9 +103,12 @@ public class MemberDAO {
 
 		return sqlSession.selectList("edu.study.mapper.memberMapper.selectMyBoard2", midx);
 	}
+	
 	public List<ReserveVo> selectMyBoard3(int midx) {
 		System.out.println(midx);
 		return sqlSession.selectList("edu.study.mapper.memberMapper.selectMyBoard3", midx);
 	}
+	
+	
 
 }

@@ -237,6 +237,7 @@ public class MemberController {
 	@RequestMapping(value = "/mypage5.do", method = RequestMethod.GET)
 	public String mypage5() {
 		
+		
 		return "mypage/my_information_inquiry";
 	}
 	
@@ -245,13 +246,9 @@ public class MemberController {
 	public String registerUpdate(HttpServletRequest request, RedirectAttributes redirectAttributes,
 			MemberVo vo, HttpSession session, Model model){
 		
-		try {
 	        memberService.updateMember(vo);
-	        
-	    } catch (Exception e) {
-	    }
 		
-		return "redirect:/mypage5.do";
+		return "redirect:/member/mypage5.do";
 	}
 	
 }

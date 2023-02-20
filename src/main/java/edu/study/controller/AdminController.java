@@ -50,20 +50,24 @@ public class AdminController {
 	public String memberlist_center(Model model){
 		List<MemberVo> list = memberService.memberlist();
 		model.addAttribute("list", list);
+		
 		return "admin/memberlist_center";
 	}
 	
 	/*등급변경*/
 	@RequestMapping(value="/changeStotus.do", method=RequestMethod.POST)
 	public String changeStotus(CriteriaVO criteriaVO, MemberVo vo) throws Exception{
-		
-		//DB에서 등급변경을 시킨다.
+		;
 		memberService.changeStotus(vo);
-		
 		return "admin/memberlist_center";
 	}
 	
-	
+	@RequestMapping(value="/changedelyn.do", method=RequestMethod.POST)
+	public String changedelyn(CriteriaVO criteriaVO, MemberVo vo) throws Exception{
+		
+		memberService.changedelyn(vo);
+		return "admin/memberlist_center";
+	}
 	
 }
 

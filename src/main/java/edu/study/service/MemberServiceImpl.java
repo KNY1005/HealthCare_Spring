@@ -52,13 +52,18 @@ public class MemberServiceImpl implements MemberService {
 		return memberdao.memberlist();
 	}
 
-	//미구현(등급 수정)
 	@Override
 	public String changeStotus(MemberVo vo) throws Exception {
 
 		return memberdao.changeStotus(vo);
 	}
+	
+	@Override
+	public String changedelyn(MemberVo vo) throws Exception {
 
+		return memberdao.changedelyn(vo);
+	}
+	
 	@Override
 	public MemberVo memberIdSearch(MemberVo searchVo) {
 		return memberdao.searchId(searchVo);
@@ -91,7 +96,11 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public MemberVo updateMember(MemberVo vo) {
 
-		return memberdao.updateMember(vo);
+    	String mpwd = vo.getMpwd();
+		vo.setMpwd(memberSha256.encrypt(mpwd));
+		System.out.println("여기는요?"+vo);
+	    		
+	   return memberdao.updateMember(vo);
 	}
 
 	@Override

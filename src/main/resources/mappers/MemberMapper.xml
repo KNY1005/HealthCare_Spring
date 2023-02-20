@@ -175,13 +175,24 @@
 	<update id="changeStotus">
 		update table_member
 		set mgrade = #{mgrade}
-		where mid =
-		#{mid}
+		where mid = #{mid}
 	</update>
-
-	<!-- <update id="updateMember" parameterType="MemberVo"> update table_member 
-		set mid = #{mid}, mpwd = #{mpwd}, mname = #{mname}, mphone = #{mphone}, memail 
-		= #{memail} were mid = #{mid} </update> -->
+	
+	<update id="changedelyn">
+		update table_member
+		set mdelyn = #{mdelyn}
+		where mid = #{mid}
+	</update>
+	
+	<update id="updateMember" parameterType="MemberVo">
+	update table_member 
+		set mid = #{mid}
+		, mpwd = #{mpwd}
+		, mname = #{mname}
+		, mphone = #{mphone}
+		, memail = #{memail} 
+		where 
+		mid = #{mid} </update>
 		
 		
 	<!-- 회원탈퇴 <delete id="deleteByMidx" parameterType="int"> update table_member 

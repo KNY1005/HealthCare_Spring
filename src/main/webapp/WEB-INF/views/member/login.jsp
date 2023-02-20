@@ -248,15 +248,6 @@
             value="Sign up"
             onclick="loadFn()"
           />
-          
-          
-         
-          
-          
-          
-          
-          
-          
 		</form>
       </div>
     </div>
@@ -343,6 +334,8 @@
 	  
 	  var alert3 = document.getElementById('alert3'); //주소 입력좀
 	  
+	  
+	  
 	var checkIdFlag = false;
    var checkIdVal = "";
    var checkDoctorFlag = true;
@@ -387,10 +380,13 @@
       
       
       if ($("#password1").val() == null || $("#password1").val() == "") {
+    	  
+    	  
 	    return false;
 	    }
       
       if ($("#password2").val() == null || $("#password2").val() == "") {
+    	  
 	    return false;
 	    }
     	   
@@ -402,6 +398,10 @@
    		alert1.style.display = 'block';
    		alert2.style.display = 'none';
    		
+   		
+   		
+   		
+
    		
    		
    		

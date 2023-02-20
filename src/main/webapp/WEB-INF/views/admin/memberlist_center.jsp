@@ -166,7 +166,9 @@
           <td><c:out value="${mb.memail}"></c:out></td>
           <td>
           <form method="post" action="/controller/admin/changeStotus.do">
-            <select
+          <input type="hidden" name="mid" value="${mb.mid}">
+            <select 
+            	name="mgrade"
                 class="form-select form-select-sm"
                 aria-label=".form-select-sm example"
                 style="width: 150px"
@@ -175,16 +177,19 @@
                 <option value="G">G(일반회원)</option>
                 <option value="D">D(전문의회원)</option>
                 <option value="A">A(관리자)</option></select
-              ><input
-              type="button"
+              >
+              <input
+              type="submit"
               value="변경"
               class="btn btn-primary"
-            />
+           		 />
+            
             </form>
           </td>
           <td>
-          <form method="post" action="/controller/admin/changeStotus.do">
-              <select
+          <form method="post" action="/controller/admin/changedelyn.do">
+          <input type="hidden" name="mid" value="${mb.mid}">
+              <select name="mdelyn"
                 class="form-select form-select-sm"
                 aria-label=".form-select-sm example"
                 style="width: 150px"
@@ -193,7 +198,7 @@
                 <option value="N">정상(Y)</option>
                 <option value="Y">탈퇴(N)</option></select>
                 <input
-                type="button"
+                type="submit"
                 value="변경"
                 class="btn btn-primary"
               />
