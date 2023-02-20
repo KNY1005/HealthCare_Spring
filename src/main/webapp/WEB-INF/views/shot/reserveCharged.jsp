@@ -117,7 +117,7 @@
         font-size: 40px;
         margin-bottom: 40px;
     }
-    #infor{
+     #infor{
         width: 1319px;
         height: 210px; 
         background-color: #FFEFEF;
@@ -135,6 +135,7 @@
         height: 50px;
         text-align: center;
     }
+   
     #guide{
         display: flex;
         flex-direction: column;

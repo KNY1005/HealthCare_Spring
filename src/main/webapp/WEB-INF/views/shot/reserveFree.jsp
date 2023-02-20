@@ -54,19 +54,19 @@
     }
     #infor{
         width: 1319px;
-        height: 170px; 
+        height: 210px; 
         background-color: #FFEFEF;
         border-radius: 20px;
         display: flex;
         justify-content: space-evenly;
     }
     #infor ul{
-        padding: 30px; 
         font-size: 25px;
-        line-height: 70px;
+        line-height: 50px;
+        padding: 15px 0;
     }
     #infor li{
-        width: 200px;
+        width: 300px;
         height: 50px;
         text-align: center;
     }
