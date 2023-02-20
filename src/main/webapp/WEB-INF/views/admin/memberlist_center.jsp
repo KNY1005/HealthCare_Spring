@@ -151,7 +151,6 @@
     }
   </style>
 <body>
-	<h2 style="text-align: center">회원목록</h2>
     <table border="1" class="rwd-table">
       <tr>
         <td>아이디</td>
@@ -162,7 +161,7 @@
       </tr>
       <c:forEach var="mb" items="${list}">
         <tr>
-          <td><c:out value="${mb.mid}"></c:out>힝</td>
+          <td><c:out value="${mb.mid}"></c:out></td>
           <td><c:out value="${mb.mname}"></c:out></td>
           <td><c:out value="${mb.memail}"></c:out></td>
           <td>

@@ -72,9 +72,9 @@
 						<li><a href="<%=request.getContextPath() %>/healthnews2.do">자가검진</a></li>
 					</ul>
 					<ul>
-		              <li><a href="<%=request.getContextPath() %>/notice/list.do?blist=N">공지사항</a></li>
-		              <li><a href="<%=request.getContextPath() %>/question/questionList.do?blist=Q">문의사항</a></li>
-		              <li><a href="<%=request.getContextPath() %>/medicalTalk/medicalList.do?blist=H">건강상담소</a></li>
+		              <li><a href="<%=request.getContextPath() %>/member/notice/list.do?blist=N">공지사항</a></li>
+		              <li><a href="<%=request.getContextPath() %>/member/question/questionList.do?blist=Q">문의사항</a></li>
+		              <li><a href="<%=request.getContextPath() %>/member/medicalTalk/medicalList.do?blist=H">건강상담소</a></li>
 		            </ul>
 					</ul>
 				</div>
@@ -95,9 +95,9 @@
               <li><img src="${path}/resources/image/profli.png" alt="프로필" /></li>
               <li><p>${member.mname}님</p></li>
               <li><hr width="250px" /></li>
-              <li><a href="<%=request.getContextPath() %>/mypage2.do">마이페이지</a></li>
-              <li><a href="<%=request.getContextPath() %>/mypage4.do">내가 쓴 글</a></li>
-              <li><a href="<%=request.getContextPath() %>/mypage5.do">개인정보 설정</a></li>
+              <li><a href="<%=request.getContextPath() %>/member/mypage2.do?midx=${member.midx}">마이페이지</a></li>
+              <li><a href="<%=request.getContextPath() %>/member/mypage4.do?midx=${member.midx}">내가 쓴 글</a></li>
+              <li><a href="<%=request.getContextPath() %>/member/mypage5.do?midx=${member.midx}">개인정보 설정</a></li>
               <li><hr width="250px" /></li>
               <li>
                 <button id="logoutBtn"><a href="<%=request.getContextPath() %>/member/logout.do">로그아웃</a></button>

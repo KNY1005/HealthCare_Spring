@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <%@ page import="java.util.*"%>
+
 <%@ page import="edu.study.vo.ShotVo"%>
 <%@ page import="edu.study.vo.MemberVo"%>
 <%
@@ -206,7 +207,7 @@
 </head>
 
 <body>
-	<%@include file="../includes/header.jsp"  %>
+	<%@include file="../includes/header.jsp"%>
     <div class="order_box">
         <ul class="order">
             <li>예방접종 유의사항</li>

@@ -26,7 +26,11 @@ import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 import edu.study.service.MemberService;
 import edu.study.service.memberSha256;
+import edu.study.vo.BoardVo;
 import edu.study.vo.MemberVo;
+import edu.study.vo.PageVO;
+import edu.study.vo.ReserveVo;
+import edu.study.vo.SearchCriteria;
 import oracle.net.aso.l;
 
 import org.apache.commons.lang3.RandomStringUtils;
@@ -42,9 +46,6 @@ public class MemberController {
 
 	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
 	public String login() {
-
-		System.out.println("濡�洹몄��");
-
 		return "member/login";
 	}
 
@@ -52,7 +53,6 @@ public class MemberController {
 	public String login(MemberVo vo, HttpServletRequest request, RedirectAttributes rttr) throws Exception {
 
 		HttpSession session = request.getSession();
-		// 鍮�諛�踰��� ���명��
 		String mpwd = vo.getMpwd();
 		vo.setMpwd(memberSha256.encrypt(mpwd));
 		MemberVo login = memberService.login(vo);
@@ -60,15 +60,9 @@ public class MemberController {
 		
 		if (login == null) {
 			session.setAttribute("member", null);
-			System.out.println("濡�洹몄�몄�ㅽ��");
 			return "member/login";
 		} else {
 			session.setAttribute("member", login);
-
-			System.out.println("mid��"+vo.getMid());
-			System.out.println(vo.getMpwd());
-			System.out.println(login);
-			System.out.println("midx��"+vo.getMidx());
 			return "redirect:/";
 		}
 
@@ -79,31 +73,19 @@ public class MemberController {
 	@RequestMapping(value = "/logout.do", method = RequestMethod.GET)
 	public String logout(HttpServletRequest request) {
 
-		System.out.println("logout硫����� 吏���");
 
 		HttpSession session = request.getSession();
-
 		session.invalidate();
 
 		return "home";
 	}
 	
 	@RequestMapping(value = "/join.do", method = RequestMethod.POST)
-	public String join(MemberVo vo, HttpServletRequest request) {
-		System.out.println("����媛���以�");
-
-		// ���� ����
-		System.out.println("泥ル�吏�:" + vo.getMpwd());
-		// 鍮�諛�踰��� ���명�� (sha256
+		public String join(MemberVo vo) {
+			
 		String encryPassword = memberSha256.encrypt(vo.getMpwd());
 		vo.setMpwd(encryPassword);
-		System.out.println("��踰�吏�:" + vo.getMpwd());
-		// ����媛��� 硫�����
 		memberService.register(vo);
-		/*
-		 * // �몄� 硫��� 蹂대�닿린 硫����� mailsender.mailSendWithUserKey(vo.getMemail(),
-		 * vo.getMemail(), request);
-		 */
 		return "member/login";
 	}
 
@@ -135,34 +117,87 @@ public class MemberController {
 	}
 	@RequestMapping(value = "/membersearch.do", method = RequestMethod.GET)
 	public String membersearch(MemberVo vo, HttpServletRequest request) {
-		System.out.println("���대�� 李얘린以�");
+
 
 		return "member/memberSearch";
 	}
 	
-	// ���대��李얘린
+
+	
+	@RequestMapping(value = "/mypage1.do", method = RequestMethod.GET)
+	public String mypage1(Model model, int midx) {
+		
+		List<ReserveVo> list = memberService.selectMyBoard2(midx);
+		model.addAttribute("selectMyBoard2", list);
+		
+		return "mypage/blood_reserve_inquiry";
+	}
+	
+	@RequestMapping(value = "/mypage2.do", method = RequestMethod.GET)
+	public String mypage2(Model model, int midx) {
+		
+		List<ReserveVo> list = memberService.selectMyBoard1(midx);
+		model.addAttribute("selectMyBoard1", list);
+		
+		return "mypage/shot_reserve_inquiry";
+	}
+	@RequestMapping(value = "/mypage3.do", method = RequestMethod.GET)
+	public String mypage3(Model model, int midx) {
+		
+		List<ReserveVo> list = memberService.selectMyBoard3(midx);
+		model.addAttribute("selectMyBoard3", list);
+		
+		return "mypage/medical_reserve_inquiry";
+	}
+	
+	@RequestMapping(value = "/mypage4.do", method = RequestMethod.GET)
+	public String mypage4(Model model, int midx) throws Exception {
+		
+		List<BoardVo> list = memberService.selectMyBoard(midx);
+		model.addAttribute("selectMyBoard", list);
+		
+		return "mypage/my_text_inquiry";
+	}
+	
+	@RequestMapping(value = "/mypage5.do", method = RequestMethod.GET)
+	public String mypage5() {
+		
+		return "mypage/my_information_inquiry";
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping(value = "/search_result_id.do", method = RequestMethod.POST)
 	public String search_result_id(HttpServletRequest request, Model model,
 			@RequestParam(required = true, value = "mname") String mname,
 			@RequestParam(required = true, value = "mphone") int mphone, MemberVo searchVo) {
-		System.out.println("���대�� 鍮�諛�踰��� 李얘린以� ����");
-
-		System.out.println(mname);
-		System.out.println(mphone);
 
 		try {
-			System.out.println("����");
 			searchVo.setMname(mname);
 			searchVo.setMphone(mphone);
 			MemberVo memberSearch = memberService.memberIdSearch(searchVo);
-			System.out.println(mname);
-			System.out.println(mphone);
+
 
 			model.addAttribute("searchVo", memberSearch);
-			System.out.println(memberSearch);
+
 		} catch (Exception e) {
-			System.out.println(e.toString());
-			System.out.println("�명��");
 			model.addAttribute("msg", "�ㅻ�媛� 諛��������듬����.");
 		}
 
@@ -171,7 +206,7 @@ public class MemberController {
 
 	@RequestMapping(value = "/search_result_pwd.do", method = RequestMethod.GET)
 	public String search_result_pwd(MemberVo vo, HttpServletRequest request) {
-		System.out.println("鍮�諛�踰��� 李얘린以�");
+
 
 		return "member/search_pwd";
 	}
@@ -184,19 +219,15 @@ public class MemberController {
 	    MemberVo searchVo) {
 	try {
 	    
-		System.out.println("�ш린�� 鍮�諛�踰��� 李얘린1");
-		System.out.println(mname+mphone+mid);
-		
+
 	    searchVo.setMname(mname);
 	    searchVo.setMphone(mphone);
 	    searchVo.setMid(mid);
 	    
-	    System.out.println(searchVo);
 	    
 	    int memberSearch = memberService.memberPwdCheck(searchVo);
 	    
-	    System.out.println(memberSearch);
-	    
+
 	    if(memberSearch == 0) {
 	        model.addAttribute("msg", "湲곗���� ��蹂닿� ��紐삳�����듬����. �ㅼ�� ���ν�댁＜�몄��.");
 	        return "member/search_pwd";
@@ -204,21 +235,16 @@ public class MemberController {
 	    
 	    
 	    String newPwd = RandomStringUtils.randomAlphanumeric(10);
-	    System.out.println(newPwd);
 	    String enpassword = encryptPassword(newPwd);
 	    
-	    System.out.println(enpassword);
 	    searchVo.setMpwd(enpassword);
-	    System.out.println(enpassword);
 	    memberService.passwordUpdate(searchVo);
-	    System.out.println("�ш린�� 鍮�諛�踰��� 李얘린");
 	    model.addAttribute("newPwd", newPwd);
 	 
 	    
 	    
 	} catch (Exception e) {
 		
-	    System.out.println(e.toString());
 	    model.addAttribute("msg", "�ㅻ�媛� 諛��������듬����.");
 	}
 	 
@@ -230,7 +256,6 @@ public class MemberController {
 
 	private String encryptPassword(String newPwd) {
 		String encryPassword = memberSha256.encrypt(newPwd);
-		System.out.println("user_pw : " + encryPassword);
 		return encryPassword;
 	}
 

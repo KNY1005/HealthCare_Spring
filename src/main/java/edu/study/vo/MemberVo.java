@@ -22,7 +22,6 @@ public class MemberVo {
 	private int didx;
 	
 	
-	
 	@Override
 	public String toString() {
 		return "MemberVo [midx=" + midx + ", mid=" + mid + ", mname=" + mname + ", mpwd=" + mpwd + ", mphone=" + mphone

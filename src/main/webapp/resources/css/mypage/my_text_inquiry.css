@@ -151,21 +151,23 @@ body::before {
 }
 .main_list {
   justify-content: center;
-  width: 1090px;
+  width: 1027px;
   display: flex;
   flex-direction: row;
   font-size: 20px;
   font-weight: bold;
   width: 1090px;
+  margin-top: -35px;
+  margin-left: 21px;
 }
 
 .main_list li:nth-child(1),
 .reserve_list li:nth-child(1) {
-  width: 60px;
+  width: 98px;
 }
 .main_list li:nth-child(2),
 .reserve_list li:nth-child(2) {
-  width: 170px;
+  width: 234px;
 }
 .main_list li:nth-child(3),
 .reserve_list li:nth-child(3) {
@@ -173,11 +175,17 @@ body::before {
 }
 .main_list li:nth-child(4),
 .reserve_list li:nth-child(4) {
-  width: 120px;
+  width: 200px;
 }
 .main_list li:nth-child(5),
 .reserve_list li:nth-child(5) {
-  width: 280px;
+  width: 63px;
+
+}
+.main_list li:nth-child(6),
+.reserve_list li:nth-child(6) {
+  width: 78px;
+
 }
 .main_list li {
   padding: 20px;
@@ -185,8 +193,9 @@ body::before {
 }
 
 .reserve_list {
+	margin-left:54px;
   justify-content: center;
-  width: 1090px;
+  width: 1027px;
   font-weight: bold;
   font-size: 20px;
   background: #ffe7e7;
@@ -196,6 +205,8 @@ body::before {
   height: 50px;
   border-radius: 10px;
   align-items: center;
+      margin-top: -27px;
+      margin-bottom: 20px;
 }
 
 .reserve_list li {
@@ -209,7 +220,7 @@ body::before {
 .box {
   width: 1090px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin-bottom: 10px;
 }
 

@@ -110,9 +110,9 @@ $(document).ready(function(){
               <li><img src="${path}/resources/image/profli.png" alt="프로필" /></li>
               <li><p>${member.mname}님</p></li>
               <li><hr width="250px" /></li>
-              <li><a href="<%=request.getContextPath() %>/mypage2.do">마이페이지</a></li>
-              <li><a href="<%=request.getContextPath() %>/mypage4.do">내가 쓴 글</a></li>
-              <li><a href="<%=request.getContextPath() %>/mypage5.do">개인정보 설정</a></li>
+              <li><a href="<%=request.getContextPath() %>/member/mypage2.do?midx=${member.midx}">마이페이지</a></li>
+              <li><a href="<%=request.getContextPath() %>/member/mypage4.do?midx=${member.midx}">내가 쓴 글</a></li>
+              <li><a href="<%=request.getContextPath() %>/member/mypage5.do?midx=${member.midx}">개인정보 설정</a></li>
               <li><hr width="250px" /></li>
               <li>
                 <button id="logoutBtn"><a href="<%=request.getContextPath() %>/member/logout.do">로그아웃</a></button>

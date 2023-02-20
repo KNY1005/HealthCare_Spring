@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>내가 쓴 글 조회</title>
 <!--파비콘-->
 <link rel="icon" type="image/png" sizes="16x16" href="${path}/resources/image/favicon/android-icon-144x144.png"/>
 <link rel="manifest" href="${path}/resources/image/favicon/manifest.json" />
@@ -36,18 +36,18 @@
           <div class="mypage_manu_1">
               <ul id="nav-v1">
                 <li class="menu-v1">
-                  <p class="a"><a href="<%=request.getContextPath() %>/mypage2.do">조회</a></p>
+                  <p class="a"><a href="<%=request.getContextPath() %>/member/mypage2.do">조회</a></p>
                   <ul class="submenu">
-                    <li><a href="<%=request.getContextPath() %>/mypage2.do">예방접종 조회</a></li>
-                    <li><a href="<%=request.getContextPath() %>/mypage3.do">건강검진 조회</a></li>
-                    <li><a href="<%=request.getContextPath() %>/mypage1.do">헌혈 스탬프 / 조회</li>
+                    <li><a href="<%=request.getContextPath() %>/member/mypage2.do?midx=${member.midx}">예방접종 조회</a></li>
+                    <li><a href="<%=request.getContextPath() %>/member/mypage3.do?midx=${member.midx}">건강검진 조회</a></li>
+                    <li><a href="<%=request.getContextPath() %>/member/mypage1.do?midx=${member.midx}">헌혈 스탬프 / 조회</li>
                   </ul>
                 </li>
                 <li class="menu-v1">
-                  <p class="a"><a href="<%=request.getContextPath() %>/mypage4.do">내가 쓴 글</a></p>
+                  <p class="a"><a href="<%=request.getContextPath() %>/member/mypage4.do?midx=${member.midx}">내가 쓴 글</a></p>
                 </li>
                 <li class="menu-v1">
-                  <p class="a"><a href="<%=request.getContextPath() %>/mypage5.do">개인정보 수정</a></p>
+                  <p class="a"><a href="<%=request.getContextPath() %>/member/mypage5.do?midx=${member.midx}">개인정보 수정</a></p>
                 </li>
               </ul>
           </div>
@@ -56,12 +56,6 @@
       <section class="main_content">
         <div class="main_content_title">
             <h2>내가 쓴 글</h2>
-
-             <select name="게시판" class="select">
-              <option disabled selected>-게시판-</option>
-                <option value="문의사항">문의사항</option>
-                <option value="건강상담소">건강상담소</option>
-            </select>
         </div>
 
 
@@ -78,13 +72,15 @@
 
               </div>
                 <ul class="main_list">
-                    <li>병원명 </li>
-                    <li>날짜</li>
-                    <li>시간</li>
-                    <li>접종명</li>
-                    <li>위치</li>
+                    <li>제목</li>
+                    <li>내용</li>
+                    <li>작성자</li>
+                    <li>작성시간</li>
+                    <li>조회수</li>
+                    <li>삭제여부</li>
                 </ul>
             </div>
+			<c:forEach items="${selectMyBoard}" var="vo">
             <div class="box">
               <div class="checkbox_box">
                 <label>
@@ -92,20 +88,19 @@
                     <span class="checkbox" >
                     </span>
                 </label>
-
               </div>
-
+              
               <ul class="reserve_list">
-                <li>땡땡 병원</li>
-                <li>2022년 12월 30일</li>
-                <li>오후 4시</li>
-                <li>독감</li>
-                <li>전라북도 전쥐시 땡떙동 땡땡길 10 4층</li>
+                <li>${vo.btitle}</li>
+				<li>${vo.bcontent}</li>
+                <li>${vo.bwriter}</li>
+                <li>${vo.bwdate}</li>
+                <li>${vo.bhit}</li>
+                <li>${vo.bstate}</li>
               </ul>
+             </c:forEach>
+
             </div>
-
-             
-
         </div>
         <!--.reserve_list-->
       </section>

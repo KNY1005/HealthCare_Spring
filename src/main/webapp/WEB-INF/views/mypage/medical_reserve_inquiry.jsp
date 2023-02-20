@@ -35,17 +35,17 @@
           <div class="mypage_manu_1">
               <ul id="nav-v1">
                 <li class="menu-v1">
-  					<p class="a"><a href="<%=request.getContextPath() %>/mypage2.do">조회</a></p>
+  					<p class="a"><a href="<%=request.getContextPath() %>/member/mypage2.do?midx=${member.midx}">조회</a></p>
                   <ul class="submenu">
-                    <li><a href="<%=request.getContextPath() %>/mypage2.do">예방접종 조회</a></li>
-                    <li><a href="<%=request.getContextPath() %>/mypage3.do">건강검진 조회</a></li>
-                    <li><a href="<%=request.getContextPath() %>/mypage1.do">헌혈 스탬프 / 조회</li>
+                    <li><a href="<%=request.getContextPath() %>/member/mypage2.do?midx=${member.midx}">예방접종 조회</a></li>
+                    <li><a href="<%=request.getContextPath() %>/member/mypage3.do?midx=${member.midx}">건강검진 조회</a></li>
+                    <li><a href="<%=request.getContextPath() %>/member/mypage1.do?midx=${member.midx}">헌혈 스탬프 / 조회</li>
                   </ul>
                 </li>
-                  <p class="a"><a href="<%=request.getContextPath() %>/mypage4.do">내가 쓴 글</a></p>
+                  <p class="a"><a href="<%=request.getContextPath() %>/member/mypage4.do?midx=${member.midx}">내가 쓴 글</a></p>
                 </li>
                 <li class="menu-v1">
-                  <p class="a"><a href="<%=request.getContextPath() %>/mypage5.do">개인정보 수정</a></p>
+                  <p class="a"><a href="<%=request.getContextPath() %>/member/mypage5.do?midx=${member.midx}">개인정보 수정</a></p>
                 </li>
               </ul>
           </div>
@@ -69,13 +69,13 @@
 
               </div>
                 <ul class="main_list">
-                    <li>병원명 </li>
-                    <li>날짜</li>
-                    <li>시간</li>
-                    <li>접종명</li>
                     <li>위치</li>
+                    <li>등록날짜</li>
+                    <li>등록시간</li>
+                    <li>종류</li>
                 </ul>
             </div>
+            <c:forEach items="${selectMyBoard3}" var="vo">
             <div class="box">
               <div class="checkbox_box">
                 <label>
@@ -87,13 +87,13 @@
               </div>
 
               <ul class="reserve_list">
-                <li>땡땡 병원</li>
-                <li>2022년 12월 30일</li>
-                <li>오후 4시</li>
-                <li>독감</li>
-                <li>전라북도 전쥐시 땡떙동 땡땡길 10 4층</li>
+                <li>${vo.rhospital}</li>
+                <li>${vo.rdate}</li>
+                <li>${vo.rtime}</li>
+                <li>${vo.rname}</li>
               </ul>
             </div>
+            </c:forEach>
         </div>
         <!--.reserve_list-->
       </section>

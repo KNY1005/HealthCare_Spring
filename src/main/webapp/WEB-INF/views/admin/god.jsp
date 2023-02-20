@@ -53,20 +53,35 @@
           >
             관리자
           </a>
+          <script>
+          //
+          //	function openFrame(){
+          //		document.getElmentById("ifr2").src = "/controller/admin/memberlist_center.do";         		
+          //	}
+          
+          $(document).ready(function(e) {
+			/* a요소를 클릭 했을 시 */
+			    $('a').click(function(){
+			/* iframe 요소의 src 속성값을 a 요소의 data-url 속성값으로 변경 */ 
+			        $('#ifr2').attr('src',$(this).attr('data-url'));
+			        })
+			});
+          </script>
           <a
+          	id="memberManage"
+          	data-url="/controller/admin/memberlist_center.do"
             class="list-group-item list-group-item-action"
-            href="<%=request.getContextPath() %>/admin/memberlist_center.do"
             target="iframe"
-            >회원관리</a
-          >
+            >회원관리</a>
           <a
-            href="#"
+            data-url="http://naver.com"
             class="list-group-item list-group-item-action"
-            href=""
             target="iframe"
             >게시물관리</a
           >
-          <a href="#" class="list-group-item list-group-item-action" href=""
+          <a 
+          href="<%=request.getContextPath() %>/"
+          class="list-group-item list-group-item-action" href=""
             >메인메뉴바로가기</a
           >
         </div>
@@ -82,13 +97,16 @@
           transform: translate(-50%, 0%);
         "
       >
-        <iframe
-          width="1500"
-          height="800"
-          scrolling="no"
-          frameborder="0"
-          href="https://jh91.tistory.com/"
-        ></iframe>
+      	<div id="ifr">
+	         <iframe
+	        id = "ifr2"
+	          width="1500px"
+	          height="800px"
+	          
+	          frameborder="0" 
+	                
+	        ></iframe>
+        </div>
       </div>
     </section>
     <div style=""></div>

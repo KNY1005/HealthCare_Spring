@@ -14,9 +14,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import edu.study.service.BoardService;
+import edu.study.service.MedicalTalkService;
 import edu.study.service.MemberService;
+import edu.study.service.QuestionService;
 import edu.study.vo.BoardVo;
 import edu.study.vo.MemberVo;
+import edu.study.vo.SearchCriteria;
 import oracle.net.ns.SessionAtts;
 
 /**
@@ -27,7 +31,10 @@ public class HomeController {
 	
 	@Autowired
 	private MemberService memberService;
+	private QuestionService questionService;
+	private BoardService boardService;
 	
+	private MedicalTalkService medicaltalkService;
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(MemberVo vo,RedirectAttributes rttr, Locale locale, Model model) throws Exception {
 	
@@ -57,33 +64,5 @@ public class HomeController {
 	}
 	
 	
-	@RequestMapping(value = "/mypage1.do", method = RequestMethod.GET)
-	public String mypage1() {
-		
-		return "mypage/blood_reserve_inquiry";
-	}
 	
-	@RequestMapping(value = "/mypage2.do", method = RequestMethod.GET)
-	public String mypage2() {
-		
-		return "mypage/shot_reserve_inquiry";
-	}
-	@RequestMapping(value = "/mypage3.do", method = RequestMethod.GET)
-	public String mypage3() {
-		
-		return "mypage/medical_reserve_inquiry";
-	}
-	
-	@RequestMapping(value = "/mypage4.do", method = RequestMethod.GET)
-	public String mypage4() {
-		
-		return "mypage/my_text_inquiry";
-	}
-	
-	@RequestMapping(value = "/mypage5.do", method = RequestMethod.GET)
-	public String mypage5() {
-		
-		return "mypage/my_information_inquiry";
-	}
-
 }

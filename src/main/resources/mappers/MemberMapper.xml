@@ -19,11 +19,43 @@
 		WHERE mid = #{mid} AND mpwd = #{mpwd}
 	</select>
 
+	<select id="selectMyBoard" parameterType="int" resultType="BoardVo">
+		SELECT *
+		 from table_board
+		WHERE midx = #{midx}
+		and bdelete='N'
+	</select>
+	
+	<select id="selectMyBoard1" parameterType="int" resultType="ReserveVo">
+	SELECT *
+		 from table_reserve
+		WHERE midx = #{midx}
+		and rstate ='Y'
+		and rcase ='S'
+	</select>
+	
+	<select id="selectMyBoard2" parameterType="int" resultType="ReserveVo">
+	SELECT *
+		 from table_reserve
+		WHERE midx = #{midx}
+		and rstate ='Y'
+		and rcase ='B'
+	</select>
+	
+	<select id="selectMyBoard3" parameterType="int" resultType="ReserveVo">
+	SELECT *
+		 from table_reserve
+		WHERE midx = #{midx}
+		and rstate ='Y'
+		and rcase ='H'
+	</select>
+	
 	<select id="selectById" parameterType="String" resultType="int">
 		SELECT COUNT(mid)
 		FROM table_member
 		WHERE mid = #{mid}
-	</select> 
+	</select>
+	
 	<select id="selectByMidx" parameterType="int"
 		resultType="MemberVo">
 		SELECT
@@ -37,15 +69,17 @@
 		, mgrade
 		FROM table_member
 		WHERE midx = #{midx}
-		
+
 	</select>
-	
-	<select id="selectByDoctor" parameterType="String" resultType="int">
+
+	<select id="selectByDoctor" parameterType="String"
+		resultType="int">
 		SELECT COUNT(ddoctor)
 		FROM table_doctor
-		WHERE ddoctor = #{ddoctor}
+		WHERE ddoctor =
+		#{ddoctor}
 	</select>
-	
+
 	<insert id="register" parameterType="MemberVo">
 		insert into table_member(
 		mid
@@ -56,7 +90,8 @@
 		, mmaddzipnum
 		, memail
 		, mgrade
-		, menter
+		,
+		menter
 		)
 		values(
 		#{mid}
@@ -64,14 +99,15 @@
 		, #{mname}
 		, #{mphone}
 		, #{maddrdetail}
-		, #{mmaddzipnum}
+		,
+		#{mmaddzipnum}
 		, #{memail}
 		, #{mgrade}
 		, now()
 		)
 
 	</insert>
-	
+
 	<select id="memberlist" parameterType="MemberVo"
 		resultType="MemberVo">
 		select
@@ -81,7 +117,8 @@
 		, mphone
 		, maddrdetail
 		, mmaddzipnum
-		, memail
+		,
+		memail
 		, mgrade
 		from table_member
 		order by mname
@@ -103,7 +140,8 @@
 ]]>
 	</select>
 
-	<select id="memberPwdCheck" parameterType="MemberVo" resultType="java.lang.Integer">
+	<select id="memberPwdCheck" parameterType="MemberVo"
+		resultType="java.lang.Integer">
 	<![CDATA[
 	    select
 	    	count(*)
@@ -115,21 +153,22 @@
 	        mphone = #{mphone}
 	    and
 	        mid = #{mid}
-	]]>    
+	]]>
 	</select>
-	 
-	    
-	<update id="passwordUpdate" parameterType="MemberVo" >
-	    UPDATE 
-	        table_member
-	    SET 
-	        mpwd = #{mpwd}
-	    where
-	        mname = #{mname}
-	    and
-	        mphone = #{mphone}
-	    and
-	        mid = #{mid}
+
+
+	<update id="passwordUpdate" parameterType="MemberVo">
+		UPDATE
+		table_member
+		SET
+		mpwd = #{mpwd}
+		where
+		mname = #{mname}
+		and
+		mphone = #{mphone}
+		and
+		mid =
+		#{mid}
 	</update>
 
 
@@ -139,20 +178,12 @@
 		where mid =
 		#{mid}
 	</update>
-	
-	<!--
-	<update id="updateMember" parameterType="MemberVo">
-		update table_member
-		set mid = #{mid}, mpwd = #{mpwd}, mname = #{mname}, mphone = #{mphone},
-		memail = #{memail}
-		were mid = #{mid}
-	</update>
-	-->
-	<!-- 회원탈퇴
-	<delete id="deleteByMidx" parameterType="int">
-		update table_member
-		set bdelyn = 'Y'
-		where midx = #{midx}
-	</delete>
-	-->
+
+	<!-- <update id="updateMember" parameterType="MemberVo"> update table_member 
+		set mid = #{mid}, mpwd = #{mpwd}, mname = #{mname}, mphone = #{mphone}, memail 
+		= #{memail} were mid = #{mid} </update> -->
+		
+		
+	<!-- 회원탈퇴 <delete id="deleteByMidx" parameterType="int"> update table_member 
+		set bdelyn = 'Y' where midx = #{midx} </delete> -->
 </mapper>
