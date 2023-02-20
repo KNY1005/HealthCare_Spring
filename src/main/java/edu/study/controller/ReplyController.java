@@ -39,8 +39,9 @@ public class ReplyController {
 			lo.setMidx(mo.getMidx());
 			lo.setPidx(item.getPidx());
 			
-			/* likeService.countbyLike(lo.getPidx()); */		
+			likeService.countbyLike(lo.getPidx());			
 			item.setLikeCheck(likeService.readLike(lo));
+	
 //			System.out.println("reply list / item : like check \n" + lo.toString());
 		}
 		

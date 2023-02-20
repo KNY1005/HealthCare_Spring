@@ -8,6 +8,7 @@
 		src="https://zelkun.tistory.com/attachment/cfile8.uf@99BB7A3D5D45C065343307.js"></script>
  
 <script>
+
 	var bidx = ${vo.bidx}; //게시글 번호
 	var mname = '${member.mname}';
 	var midx = ${member.midx};
@@ -64,12 +65,12 @@
 	            		}
 	            	}
 	                a += '</div>';
-	                a += '<div class="replyLikeCount'+value.plikecount+'" style="width:35px; hieght:35px; margin-top:15px;">';
+	                a += '<div class="replyLikeCount'+value.plikecount+'" style="width:35px; hieght:35px; margin-top:15px;"> '+value.plikecount+'';
 	                a += '</div>';
 	                a += '</div>';
 	                a += '<div class="replyContent'+value.pidx+'" style="margin: 0 0 10px 65px; width: 970px; height: 150px; ">  '+value.pcontent +'';
 	                a += '</div>';
-	                a += '<div class="hob" style="display:flex; width:1000px; margin-left:65px; margin-top:25px;" >';
+	                a += '<div class="hob" style="display:flex; width:1000px; margin-left:65px; 	margin-top:25px;" >';
 	                a += '<div class="replyWriter'+value.pwriter+'" style="font-size:16px; margin-top:10px;">  '+value.pwriter +'';
 	                a += '</div>';
 	                a += '<div class="replyDate'+value.pdate+'" style="	margin-left:50px; font-size:16px; margin-top:10px;">  '+value.pdate +'';
@@ -108,10 +109,10 @@
 	function replyUpdate(pidx, pcontent){
 	    var a ='';
 	    
-	    a += '<div class="input-group">';
-	    a += '<input type="text"  id="ptitle" name="ptitle_'+pidx+'" placeholder="제목을 입력하세요." style="border-radius: 10px;	margin: 10px 0 10px 40px;width: 1000px;	height: 35px;text-align: left;font-size: 25px;">'
-	    a += '<input type="text" name="pcontent_'+pidx+'" value="'+pcontent+'" style="	width: 1000px;margin: 0 0 10px 40px;height: 150px; border-radius: 10px;"/>';
-	    a += '<span class="input-group-btn"><button class="btn btn-default" type="button" onclick="replyUpdateProc('+pidx+');">수정</button> </span>';
+	    a += '<div class="input-group" style="height:280px; width:1100px; margin-top:280px; border: 3px solid #FF8F8F; border-radius: 25px;">';
+	    a += '<input type="text" style="border-radius: 10px; margin: 10px 0 10px 40px;width: 1000px; height: 35px; text-align: left; font-size: 25px;" id="ptitle" name="ptitle_'+pidx+'" placeholder="제목을 입력하세요." style="border-radius: 10px;	margin: 10px 0 10px 40px;width: 1000px;	height: 35px;text-align: left;font-size: 25px;">'
+	    a += '<input type="text" style="width: 1000px; margin: 0 0 10px 40px; height: 150px; border-radius: 10px; " name="pcontent_'+pidx+'" value="'+pcontent+'" style="	width: 1000px;margin: 0 0 10px 40px;height: 150px; border-radius: 10px;"/>';
+	    a += '<span class="input-group-btn" style="display: inline-block; width: 230px; height: 40px; margin-left:820px;margin-bottom:10px;"><button class="btn btn-default" type="button" sty	le="font-weight: bold; width: 100px; padding: 10px; font-size: 15px; background-color: #FFEFEF; border: #FFEFEF; border-radius: 30px; margin-left:10px;" onclick="replyUpdateProc('+pidx+');">수정</button> </span>';
 	    a += '</div>';
 	    
 	    $('.replyContent'+pidx).html(a);
@@ -126,7 +127,7 @@
 	        url : 'medicalView/reply/update',
 	        type : 'post',
 	        data : {'pcontent' : updateContent, 'pidx' : pidx},
-	        success : function(data){
+// 	        success : function(data){		
 	            if(data == 1) replyList(pidx); //댓글 수정후 목록 출력
 	        }
 	    });
@@ -153,16 +154,16 @@
 //		console.log("midx : " + midx );
 //		console.log("likecheck :" + like_check);
 		console.log("this :" + obj.tagName);
-		console.log("chilren :" + obj.children[0].getAttribute('src'));
+	 	console.log("chilren :" + obj.children[0].getAttribute('src')); 
 //		console.log("src :" + obj.children[0].getAttribute('src'));
 		
 		// 기존에 좋아요를 눌렀는지 판단하고
 		if(like_check > 0){
 			alert("좋아요 취소");
-			// 좋아요를 취소하는 ajax
+			// 좋아요를 취소하는 ajax	
  			$.ajax({
 				type :'post',
-				url : 'medicalView/reply/likeDown',
+				url : 'medicalView/reply/likeDown',	
 				data : {"pidx" : pidx, "midx" : midx},
 				success : function(data) {
 					replyList();
@@ -279,52 +280,4 @@
 	
 	}
 	
-		
-	.input-group {
-		height:280px;
-		width: 1100px;
-		margin: 0 auto 0;
-		border: 3px solid #FF8F8F;
-		border-radius: 25px;
-	}
-	
-
-	input#ptitle {
-		border-radius: 10px;
-		margin: 10px 0 10px 40px;
-		width: 1000px;
-		height: 35px;
-		text-align: left;
-		font-size: 25px;
-	}
-	
-	input#pcontent {
-		width: 1000px;
-		margin: 0 0 10px 40px;
-		height: 150px;
-		border-radius: 10px;
-	}
-	
-	.input-group-btn {
-		display: inline-block;
-		width: 230px;
-		height: 40px;
-		margin-left:820px;
-		margin-bottom:10px;
-	}
-	
-	
-	.input-group-btn button {
-		font-weight: bold;
-		width: 100px;
-		padding: 10px;
-		font-size: 15px;
-		background-color: #FFEFEF;
-		border: #FFEFEF;
-		border-radius: 30px;
-		margin-left:10px;
-		
-	} 
-	.input-group-btn button:hover{
-		
 </style>

@@ -186,7 +186,7 @@
 			</div><!--//#guide-->
 			<div id="questionnaire">
 				<p>문진표 PDF 다운로드</p>
-				<a href="#">문진표.pdf</a>
+				<a href="fileDown.do">문진표.pdf</a>
 			</div><!--//#questionnaire-->
 			<div id="question_guide">
 				<p>문진표 다운로드 후 미리 작성해 가시면 빠른 검진을 할 수 있습니다.</p>

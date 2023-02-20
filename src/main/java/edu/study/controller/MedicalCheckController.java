@@ -1,7 +1,12 @@
 package edu.study.controller;
 
-import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.net.URLEncoder;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.io.FileUtils;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import edu.study.service.ShotService;
+import edu.study.vo.FileVO;
 import edu.study.vo.ReserveVo;
 
 
@@ -58,6 +64,26 @@ public class MedicalCheckController {
 		model.addAttribute("rvo",shotService.selectByRidx(ridx));
 		
 		return "medical_check/medical_check_result";
+	}
+	
+	@RequestMapping(value = "/fileDown.do")
+	public void downloadFile(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		//https://velog.io/@oyeon/%ED%8C%8C%EC%9D%BC-%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C-%EA%B5%AC%ED%98%84
+		FileVO fvo = new FileVO();
+		String path = request.getSession().getServletContext().getRealPath("/resources/upload/2021년공단검진전체문진표");
+		File downloadFile = new File(path + "문진표.pdf");
+
+		byte fileByte[] = FileUtils.readFileToByteArray(downloadFile);
+
+		response.setContentType("application/octet-stream");
+		response.setContentLength(fileByte.length);
+
+		response.setHeader("Content-Transfer-Encoding", "binary");
+
+		response.getOutputStream().write(fileByte);
+		response.getOutputStream().flush();
+		response.getOutputStream().close();
+
 	}
 	
 	
