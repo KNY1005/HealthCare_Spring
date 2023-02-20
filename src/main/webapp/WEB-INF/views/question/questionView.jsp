@@ -16,6 +16,8 @@
 <meta name="msapplication-TileImage"
 	content="${path }/resources/image/favicon/ms-icon-144x144.png" />
 <meta name="theme-color" content="#ffffff" />
+<script src="https://code.jquery.com/jquery-latest.min.js"
+		type="application/javascript"></script>
 
 <style>
 .order_box {
@@ -429,7 +431,7 @@
 
 			<h3>답변</h3>
 			<div class="doctor_writing_content" >
-			<c:if test="${member.mgrade == 'A' || member.midx == boardMidx }">
+			<c:if test="${member.mgrade == 'A' || member.midx == boardMidx }">				
 				<div id="writing_container" style="display:none;">
 					<div class="container">
 				    	<label for="pcontent"></label>
@@ -451,7 +453,129 @@
 			    </c:if>
 			   	<div class="container">
 			   		<div class="replyList">
-			   		<%@ include file="../medicalTalk/reply.jsp" %></div>
+<script>
+	var bidx = ${vo.bidx}; 
+	var mname = '${member.mname}';
+	var midx = ${member.midx};		
+	
+	$('[name=replyInsertBtn]').click(function(){ //댓글 등록 버튼 클릭시
+		alert("reply.jsp / btn click : call");
+	    var insertData = $('[name=replyInsertForm]').serialize(); //commentInsertForm의 내용을 가져옴
+	    
+	    replyInsert(insertData);
+	});
+
+	function replyList(){
+		
+	    $.ajax({
+	        url : '<%=request.getContextPath() %>/medicalTalk/medicalView/reply/list',
+	        type : 'get',
+	        data : {'bidx':bidx,'midx':midx},
+	       		
+	        success : function(data){
+	            var a ='';
+	            $.each(data, function(key, value){
+
+	                a += '<div class="replyArea" style="border: 3px solid #FF8F8F; border-radius: 25px;	width: 1100px; height:280px; margin-bottom: 15px;">';
+	                a += '<div class="replyTitle'+value.ptitle+'" style="margin:15px 0 10px 65px; width: 970px; height: 35px; text-align: left; font-size: 25px;">'+value.ptitle+'';
+	                a += '<div class="replyLike">';
+	            	a += '<input type="hidden" name="bidx" value="'+ bidx + '">';
+	            	a += '<input type="hidden" name="pidx" value="'+ value.pidx + '">';
+	            	a += '<input type="hidden" name="pwriter" value="'+ value.pwriter + '">';
+	            	a += '<input type="hidden" name="midx" value="'+ value.midx + '">';
+	           	 	
+	                a += '</div>';
+	                a += '</div>';
+	                a += '<div class="replyContent'+value.pidx+'" style="margin: 0 0 10px 65px; width: 970px; height: 150px; ">  '+value.pcontent +'';
+	                a += '</div>';
+	                a += '<div class="hob" style="display:flex; width:1000px; margin-left:65px; margin-top:25px;" >';
+	                a += '<div class="replyWriter'+value.pwriter+'" style="font-size:16px; margin-top:10px; margin-right:10px; width:80px;">  '+value.pwriter +'';
+	                a += '</div>';
+	                a += '<div class="replyDate'+value.pdate+'" style="width:400px;	margin-left:50px; font-size:16px; margin-top:10px;">  '+value.pdate +'';
+	                a += '</div>';
+	                a += '<div class="button" style="display:flex; margin-left:400px; margin-bottom:20px;">';
+	                a += '<a onclick="replyUpdate('+value.pidx+',\''+value.pcontent+'\');" style="margin-left:10px; width: 80px; height: 15px; padding: 10px; font-size:15px; font-weight: bold; text-align:center; background-color: #FFEFEF; border: #FFEFEF; border-radius: 30px; "> 수정 </a>';
+	                a += '<a onclick="replyDelete('+value.pidx+');"  style="margin-left:10px; width: 80px; height: 15px; padding: 10px; font-size:15px; font-weight: bold; text-align:center; background-color: #FFEFEF; border: #FFEFEF; border-radius: 30px; "> 삭제 </a> </div>';
+	                a += '</div></div><div id="space'+value.pidx+'"></div>';
+	            	
+	            });
+	            
+	            $(".replyList").html(a);
+	        }
+	    });
+	}
+	
+	//댓글 등록
+	function replyInsert(insertData){
+		alert("reply.jsp / replyInsert ajax ")
+	    $.ajax({
+	        url : '<%=request.getContextPath() %>/medicalTalk/medicalView/reply/insert',
+	        type : 'post',
+	        data : insertData,
+	        success : function(data){
+	            if(data == 1) {
+	            	replyList(); //댓글 작성 후 댓글 목록 reload
+	                $('[name=pcontent]').val('');
+	                $('[name=ptitle]').val('');
+	                $('[name=pwriter]').val('');
+	                $('[name=pdate]').val('');
+	            }
+	        }
+	    });
+	}
+	
+	//댓글 수정 - 댓글 내용 출력을 input 폼으로 변경
+	function replyUpdate(pidx, pcontent){
+	    var a ='';
+	    
+	    a += '<div class="input-group">';
+	    a += '<input type="text"  id="ptitle" name="ptitle_'+pidx+'" placeholder="제목을 입력하세요." style="border-radius: 10px;	margin: 10px 0 10px 40px;width: 1000px;	height: 35px;text-align: left;font-size: 25px;">'
+	    a += '<input type="text" name="pcontent_'+pidx+'" value="'+pcontent+'" style="	width: 1000px;margin: 0 0 10px 40px;height: 150px; border-radius: 10px;"/>';
+	    a += '<span class="input-group-btn"><button class="btn btn-default" type="button" onclick="replyUpdateProc('+pidx+');">수정</button> </span>';
+	    a += '</div>';
+	    
+	    $('#space'+pidx).html(a);
+	    
+	}
+	
+	//댓글 수정
+	function replyUpdateProc(pidx){
+	    var updateContent = $('[name=pcontent_'+pidx+']').val();
+	    
+	    $.ajax({
+	        url : '<%=request.getContextPath() %>/medicalTalk/medicalView/reply/update',
+	        type : 'post',
+	        data : {'pcontent' : updateContent, 'pidx' : pidx},
+	        success : function(data){
+	            if(data == 1) replyList(pidx); //댓글 수정후 목록 출력
+	        }
+	    });
+	}
+	
+	//댓글 삭제
+	function replyDelete(pidx){
+	    $.ajax({
+	        url : '<%=request.getContextPath() %>/medicalTalk/medicalView/reply/delete/'+pidx,
+	        type : 'post',
+	        success : function(data){
+	            if(data == 1) replyList(bidx); //댓글 삭제후 목록 출력
+	        }
+	    });
+	}
+	
+	
+	 function login_need(){
+		 alert("로그인 후 이용하실 수 있습니다.");
+	 }
+ 	
+	
+	
+	$(document).ready(function(){
+		replyList(); //페이지 로딩시 댓글 목록 출력
+
+	});
+ 
+</script>
 			    </div>
 			</div>
 			
