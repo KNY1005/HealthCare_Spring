@@ -159,7 +159,7 @@ body::before {
 
 .main_list li:nth-child(1),
 .reserve_list li:nth-child(1) {
-  width: 60px;
+  width: 215pxpx;
 }
 .main_list li:nth-child(2),
 .reserve_list li:nth-child(2) {
@@ -167,7 +167,7 @@ body::before {
 }
 .main_list li:nth-child(3),
 .reserve_list li:nth-child(3) {
-  width: 80px;
+  width: 100px;
 }
 .main_list li:nth-child(4),
 .reserve_list li:nth-child(4) {
