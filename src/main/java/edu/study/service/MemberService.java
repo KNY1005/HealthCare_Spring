@@ -4,7 +4,9 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import edu.study.vo.BoardVo;
 import edu.study.vo.MemberVo;
+import edu.study.vo.ReserveVo;
 
 
 public interface MemberService {
@@ -31,8 +33,13 @@ public interface MemberService {
 	
 	public MemberVo updateMember(MemberVo vo);
 
-	public int loginCheck(MemberVo vo, HttpSession session);
-
+	public List<BoardVo> selectMyBoard(int midx);
+	
+	public List<ReserveVo> selectMyBoard1(int midx);
+	
+	public List<ReserveVo> selectMyBoard2(int midx);
+	
+	public List<ReserveVo> selectMyBoard3(int midx);
 
 
 }

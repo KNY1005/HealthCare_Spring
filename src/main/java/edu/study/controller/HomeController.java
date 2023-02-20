@@ -58,49 +58,5 @@ public class HomeController {
 	}
 	
 	
-	@RequestMapping(value = "/mypage1.do", method = RequestMethod.GET)
-	public String mypage1() {
-		
-		return "mypage/blood_reserve_inquiry";
-	}
 	
-	@RequestMapping(value = "/mypage2.do", method = RequestMethod.GET)
-	public String mypage2() {
-		
-		return "mypage/shot_reserve_inquiry";
-	}
-	@RequestMapping(value = "/mypage3.do", method = RequestMethod.GET)
-	public String mypage3() {
-		
-		return "mypage/medical_reserve_inquiry";
-	}
-	
-	@RequestMapping(value = "/mypage4.do", method = RequestMethod.GET)
-	public String mypage4() {
-		
-		return "mypage/my_text_inquiry";
-	}
-	
-	@RequestMapping(value = "/mypage5.do", method = RequestMethod.GET)
-	public String mypage5() {
-		
-		return "mypage/my_information_inquiry";
-	}
-	
-
-	@RequestMapping(value="/mypage5.do", method = RequestMethod.POST)
-	public String registerUpdate(HttpServletRequest request, RedirectAttributes redirectAttributes,
-			MemberVo vo, HttpSession session, Model model){
-		
-		try {
-	        memberService.updateMember(vo);
-	        System.out.println("여기");
-	        
-	    } catch (Exception e) {
-	        System.out.println(e.toString());
-	        System.out.println("망했네");
-	    }
-		
-		return "redirect:/mypage5.do";
-	}
 }

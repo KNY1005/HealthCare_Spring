@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.study.dao.MemberDAO;
+import edu.study.vo.BoardVo;
 import edu.study.vo.MemberVo;
+import edu.study.vo.ReserveVo;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -93,11 +95,26 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public int loginCheck(MemberVo vo, HttpSession session) {
-		System.out.println("UserService");
-		System.out.println("ID : " + vo.getMid());
-		System.out.println("PW : " + vo.getMpwd());
-		return memberdao.loginCheck(vo);
+	public List<BoardVo> selectMyBoard(int midx) {
+		
+		return memberdao.selectMyBoard(midx);
 	}
 
+	@Override
+	public List<ReserveVo> selectMyBoard1(int midx) {
+		// TODO Auto-generated method stub
+		return memberdao.selectMyBoard1(midx);
+	}
+
+	@Override
+	public List<ReserveVo> selectMyBoard2(int midx) {
+		// TODO Auto-generated method stub
+		return memberdao.selectMyBoard2(midx);
+	}
+
+	@Override
+	public List<ReserveVo> selectMyBoard3(int midx) {
+		// TODO Auto-generated method stub
+		return memberdao.selectMyBoard3(midx);
+	}
 }

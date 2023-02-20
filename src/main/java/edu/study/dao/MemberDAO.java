@@ -9,7 +9,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import edu.study.vo.BoardVo;
 import edu.study.vo.MemberVo;
+import edu.study.vo.ReserveVo;
 
 @Repository
 public class MemberDAO {
@@ -83,9 +85,22 @@ public class MemberDAO {
 
 		return sqlSession.selectOne("edu.study.mapper.memberMapper.updateMembe", vo);
 	}
+	
+	public List<BoardVo> selectMyBoard(int midx) {
 
-	public int loginCheck(MemberVo vo) {
-		
-		return sqlSession.selectOne("edu.study.mapper.memberMapper.loginCheck", vo);
+		return sqlSession.selectList("edu.study.mapper.memberMapper.selectMyBoard", midx);
 	}
+	public List<ReserveVo> selectMyBoard1(int midx) {
+
+		return sqlSession.selectList("edu.study.mapper.memberMapper.selectMyBoard1", midx);
+	}
+	public List<ReserveVo> selectMyBoard2(int midx) {
+
+		return sqlSession.selectList("edu.study.mapper.memberMapper.selectMyBoard2", midx);
+	}
+	public List<ReserveVo> selectMyBoard3(int midx) {
+
+		return sqlSession.selectList("edu.study.mapper.memberMapper.selectMyBoard3", midx);
+	}
+
 }

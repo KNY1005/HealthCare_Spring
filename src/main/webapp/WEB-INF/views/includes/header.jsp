@@ -77,9 +77,9 @@
 						<li><a href="<%=request.getContextPath() %>/healthnews2.do">자가검진</a></li>
 					</ul>
 					<ul>
-		              <li><a href="<%=request.getContextPath() %>/member/notice/list.do?blist=N">공지사항</a></li>
-		              <li><a href="<%=request.getContextPath() %>/member/question/questionList.do?blist=Q">문의사항</a></li>
-		              <li><a href="<%=request.getContextPath() %>/member/medicalTalk/medicalList.do?blist=H">건강상담소</a></li>
+		              <li><a href="<%=request.getContextPath() %>/notice/list.do?blist=N">공지사항</a></li>
+		              <li><a href="<%=request.getContextPath() %>/question/questionList.do?blist=Q">문의사항</a></li>
+		              <li><a href="<%=request.getContextPath() %>/medicalTalk/medicalList.do?blist=H">건강상담소</a></li>
 		            </ul>
 				</div>
 			</nav>

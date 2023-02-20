@@ -93,7 +93,6 @@
           position: absolute;
           top: 100px;
           left: 56%;
-          border: 1px solid #000;
           transform: translate(-50%, 0%);
         "
       >

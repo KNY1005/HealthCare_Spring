@@ -57,32 +57,7 @@
             <h2>헌혈 조회</h2>
         </div>
         <hr />
-        <!--
-        <div class="blood">
-            <div class="slider">
-              <div class="inner">
-                  <ul class="swiper-wrapper slide_list">
-                      <li class="swiper-slide">
-                        <div class="swiper_box">
-                          
-                        </div>
-                      </li>
-                      <li class="swiper-slide">slider2</li>
-                      <li class="swiper-slide">slider3</li>
-                      <li class="swiper-slide">slider4</li>
-                      <li class="swiper-slide">slider5</li>
-                      <li class="swiper-slide">slider5</li>
-                      <li class="swiper-slide">slider5</li>
-                      <li class="swiper-slide">slider5</li>
-                      <li class="swiper-slide">slider5</li>
-                      <li class="swiper-slide">slider5</li>
-                      <li class="swiper-slide">slider5</li>
-                  </ul>
-              </div>
-          </div>
-          
-        <hr/>
-        -->
+     
         <div class="list">
             <div class="box">
               <div class="checkbox_box">

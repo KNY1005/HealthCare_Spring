@@ -117,9 +117,9 @@
 		, mphone
 		, maddrdetail
 		, mmaddzipnum
-		,
-		memail
+		, memail
 		, mgrade
+		, mdelyn
 		from table_member
 		order by mname
 	</select>
