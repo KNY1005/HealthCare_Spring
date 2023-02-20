@@ -358,10 +358,7 @@
 				</div>
 			</form>
 			<div class="like">
-				<h2>답변</h2><a href="javascript:;" class="icon heart">
-     			<img src="https://cdn-icons-png.flaticon.com/512/812/812327.png" alt="찜하기">
-  					</a>
-				<p>211</p>
+				<h2>답변</h2>
 			</div><!--//#like-->
 			<!-- 답변 시작 -->
 			<div class="doctor_writing_content" >

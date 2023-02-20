@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 
 import edu.study.dao.ReplyDAO;
+import edu.study.vo.LikeVO;
 import edu.study.vo.ReplyVO;
 
 @Service
@@ -39,15 +40,15 @@ public class ReplyServiceImpl implements ReplyService{
 	}
 
 	@Override
-	public int like_cnt_up(int pidx) {
+	public int like_cnt_up(LikeVO lo) {
 		
-		return  replyDAO.like_cnt_up(pidx);
+		return  replyDAO.like_cnt_up(lo);
 	}
 
 	@Override
-	public int like_cnt_down(int pidx) {
+	public int like_cnt_down(LikeVO lo) {
 		
-		return replyDAO.like_cnt_down(pidx);
+		return replyDAO.like_cnt_down(lo);
 	}
 
 	@Override

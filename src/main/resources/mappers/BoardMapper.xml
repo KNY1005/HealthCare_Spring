@@ -173,21 +173,19 @@
 	</select>
 
 
-	<select id="countbyLike" resultType="ReplyVO">
-		select *,(select count(*)
-		from TABLE_LIKE where pidx = p.pidx)
-		as plikecount
-		from TABLE_REPLY
-	</select>
+	<update id="countbyLike">
+		update table_reply
+		set plikecount = plikecount + 1
+		where pidx = #{pidx}
+	</update>
 
 	<insert id="likeUp">
-		INSERT INTO TABLE_LIKE (like_check, likeno, pidx , midx
-		VALUES((SELECT * FROM (SELECT MAX(like_check)+1 from TABLE_LIKE) next), #{likeno}, #{pidx},#{midx})
+		INSERT INTO TABLE_LIKE (likeno, like_check, pidx , midx)
+		VALUES((SELECT * FROM (SELECT MAX(likeno)+1 from TABLE_LIKE) next), #{like_check}, #{pidx},#{midx})
 	</insert>
 
-	<update id="deletebyLike" parameterType="int">
-		UPDATE FROM TABLE_LIKE
-		SET like_check = 0
+	<update id="deletebyLike" parameterType="LikeVO">
+		DELETE from TABLE_LIKE
 		where MIDX=#{midx} AND PIDX=#{pidx}
 	</update>
 

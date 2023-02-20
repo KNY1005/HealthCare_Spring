@@ -11,13 +11,13 @@
 	var bidx = ${vo.bidx}; //게시글 번호
 	var mname = '${member.mname}';
 	var midx = ${member.midx};
-	var likeval = ${like};
+//	var likeval = ${like};
 /* 	var pidx = ${ro.pidx}; */
 	
 	console.log("게시물 번호 : " + bidx);
 	console.log("멤버 이름 : " + mname);
 	console.log("멤버 id : " + midx);
-	console.log("좋아요 여부 : " + likeval);
+//	console.log("좋아요 여부 : " + likeval);
 	
 	$('[name=replyInsertBtn]').click(function(){ //댓글 등록 버튼 클릭시
 		alert("reply.jsp / btn click : call");
@@ -44,9 +44,12 @@
 	            	console.log('value.pidx : ' + value.pidx);
 
  */	
+	            	console.log('value.likeCheck : ' + value.likeCheck);
 	                a += '<div class="replyArea" style="border: 3px solid #FF8F8F; border-radius: 25px;	width: 1100px; height:280px; margin-bottom: 15px;">';
-	                a += '<div class="replyTitle'+value.ptitle+'" style="margin:15px 0 10px 65px; width: 970px; height: 35px; text-align: left; font-size: 25px;">'+value.ptitle+'';
-	                a += '<div class="replyLike">';
+	                a += '<div class="replyMain" style="display:flex;">';
+	                a += '<div class="replyTitle'+value.ptitle+'" style="margin:15px 0 10px 65px; width: 930px; height: 35px; text-align: left; font-size: 25px;">'+value.ptitle+'';
+	                a += '</div>';
+	                a += '<div class="replyLike" style="width:35px; hieght:35px; margin-top:15px;">';
 	            	a += '<input type="hidden" name="bidx" value="'+ bidx + '">';
 	            	a += '<input type="hidden" name="pidx" value="'+ value.pidx + '">';
 	            	a += '<input type="hidden" name="pwriter" value="'+ value.pwriter + '">';
@@ -54,8 +57,15 @@
 	           	 	if (midx == 0){
 	                a += '<buttonclass="LikeBtn" onclick="login_need()" ><img src="${path }/resources/image/dislike.png" id="like_img"></button>';
 	            	}else if(midx !== 0){
-	                a += '<button class="LikeBtn" type="button" onclick="doLike('+value.pidx+','+value.midx+','+1+');"><img src="${path }/resources/image/dislike.png"></button>';
+	            		if( value.likeCheck == 0 )
+	            		{
+							a += '<button class="LikeBtn" style="border:none; background-color:#fff; width:25px; height:25px; cursor:pointer;" type="button" onclick="doLike('+value.pidx+','+value.midx+','+ value.likeCheck +',this);"><img src="${path }/resources/image/dislike.png" name="like_img" style="width:25px; height:25px;"></button>';
+	            		}else{
+							a += '<button class="LikeBtn" style="border:none; background-color:#fff; width:25px; height:25px; cursor:pointer;" type="button" onclick="doLike('+value.pidx+','+value.midx+','+ value.likeCheck +',this);"><img src="${path }/resources/image/like.png" name="like_img" style="width:25px; height:25px;"></button>';
+	            		}
 	            	}
+	                a += '</div>';
+	                a += '<div class="replyLikeCount'+value.plikecount+'" style="width:35px; hieght:35px; margin-top:15px;">';
 	                a += '</div>';
 	                a += '</div>';
 	                a += '<div class="replyContent'+value.pidx+'" style="margin: 0 0 10px 65px; width: 970px; height: 150px; ">  '+value.pcontent +'';
@@ -135,23 +145,29 @@
 	}
 	
 	// 버튼 눌렀을때 호출되는 함수
-	function doLike(pidx,midx,like_check){
+	function doLike(pidx,midx,like_check,obj){
 		
 		// 호출이 되었는지 alert으로 띄움
 //		alert("doLike call");
 		// 값이 제대로 넘어왔는지, 콘솔에 찍음
-		console.log("pidx : " + pidx );
-		console.log("midx : " + midx );
-		console.log("likecheck :" + like_check);
+//		console.log("pidx : " + pidx );
+//		console.log("midx : " + midx );
+//		console.log("likecheck :" + like_check);
+		console.log("this :" + obj.tagName);
+		console.log("chilren :" + obj.children[0].getAttribute('src'));
+//		console.log("src :" + obj.children[0].getAttribute('src'));
 		
 		// 기존에 좋아요를 눌렀는지 판단하고
-		if(likeval > 0){
+		if(like_check > 0){
 			alert("취소 call");
 			// 좋아요를 취소하는 ajax
  			$.ajax({
 				type :'post',
-				url : 'medicalView/reply/likeDown/'+like_check,
+				url : 'medicalView/reply/likeDown',
+				data : {"pidx" : pidx, "midx" : midx},
 				success : function(data) {
+					replyList();
+//					obj.children[0].setAttribute('src',"${path }/resources/image/dislike.png")
 					alert('취소 성공');
 				}
 			});
@@ -163,9 +179,11 @@
 				url : 'medicalView/reply/likeUp',
 				data : {"pidx" : pidx, "midx" : midx},
 				success : function(data) {
+					replyList();
+//					obj.children[0].setAttribute('src',"${path }/resources/image/like.png")
 					alert('성공염');
 				}
-			})
+			});
 		}
 	}
 	
@@ -255,5 +273,10 @@
 		transition: .2s;
 		box-shadow: inset 1px 1px 3px rgb(197, 197, 197);
 		cursor: pointer;
+	}
+	
+	#like_img{
+		width:25px; height:25px;
+	
 	}
 </style>

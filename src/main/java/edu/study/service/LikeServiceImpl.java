@@ -18,9 +18,9 @@ public class LikeServiceImpl implements LikeService{
 
 
 	@Override
-	public int countbyLike(ReplyVO ro) {
+	public int countbyLike(int pidx) {
 	
-		return likeDAO.countbyLike(ro);
+		return likeDAO.countbyLike(pidx);
 	}
 
 	@Override
@@ -36,9 +36,9 @@ public class LikeServiceImpl implements LikeService{
 	}
 
 	@Override
-	public int deletebyLike(int likeno) {
+	public int deletebyLike(LikeVO lo) {
 		
-		return likeDAO.deletebyLike(likeno);
+		return likeDAO.deletebyLike(lo);
 	}
 
 	

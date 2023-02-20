@@ -27,42 +27,40 @@ public class ReplyController {
 	@Autowired
 	private LikeService likeService;
 	
-	@ResponseBody
-	@RequestMapping("/likeUp")
-	public int likeUp(LikeVO lo, ReplyVO ro, MemberVo mo, Model model) throws Exception{
-		model.addAttribute(mo);
-		model.addAttribute(lo);
-		model.addAttribute(ro);
-		
-		System.out.println("여기 탔어 ?");
-		
-		return likeService.likeUp(lo);
-	}
-
 	@RequestMapping("/list")
 	@ResponseBody
 	public List<ReplyVO> replyList(ReplyVO ro, Model model, int bidx, MemberVo mo, LikeVO lo) throws Exception {
 		System.out.println("reply cont \n bidx : " + bidx);
+
+		List<ReplyVO> list = replyService.replyList(bidx);
 		
-		LikeVO like = new LikeVO();
+		for ( ReplyVO item : list )
+		{
+			lo.setMidx(mo.getMidx());
+			lo.setPidx(item.getPidx());
+			
+			likeService.countbyLike(lo.getPidx());			
+			item.setLikeCheck(likeService.readLike(lo));
+//			System.out.println("reply list / item : like check \n" + lo.toString());
+		}
 		
-		like.setMidx(like.getMidx());
-		like.setPidx(like.getPidx());
+		for ( ReplyVO item : list )
+		{
+			System.out.println("reply list / item : like check \n" + item.toString());
+		}
+		
+//		model.addAttribute("like", like);
+		
+//		System.out.println("like는 ---->" + like);
 		
 		
-		model.addAttribute("like", like);
 		
-		System.out.println("like는 ---->" + like);
+//		model.addAttribute(ro);
+//		model.addAttribute(mo);
+//		model.addAttribute(lo);
+//		System.out.println(mo.toString()+"@#@!#$");
 		
-		
-		
-		model.addAttribute(ro);
-		model.addAttribute(mo);
-		model.addAttribute(lo);
-		System.out.println(lo.toString()+"@#@!@##$");
-		System.out.println(mo.toString()+"@#@!#$");
-		
-		return replyService.replyList(bidx);
+		return list;
 	}
 
 	@RequestMapping("/insert") // ۼ
@@ -91,20 +89,28 @@ public class ReplyController {
 		return replyService.replyDelete(pidx);
 	}
 
-	
-
-	
+	@RequestMapping("/likeUp")
 	@ResponseBody
-	@RequestMapping("/likeDown/{like_check}")
-	private int likeDown(LikeVO lo, @PathVariable int like_check, Model model) throws Exception{
-		model.addAttribute(lo);
+	public int likeUp(LikeVO lo, Model model) throws Exception{
+		System.out.println("Like UP call");
+		System.out.println("pidx : " + lo.getPidx());
+		System.out.println("midx : " + lo.getMidx());
 		
-		System.out.println("lo값은 ------>"+ lo);
 		
-		return likeService.deletebyLike(like_check);
+		
+		return likeService.likeUp(lo);
 	}
 
-	
-	
-
+	@ResponseBody
+	@RequestMapping("/likeDown")
+//	private int likeDown(LikeVO lo, @PathVariable int like_check, Model model) throws Exception{
+	private int likeDown(LikeVO lo, Model model) throws Exception{
+		System.out.println("Like Down call");
+		System.out.println("pidx : " + lo.getPidx());
+		System.out.println("midx : " + lo.getMidx());
+		
+		
+		
+		return likeService.deletebyLike(lo);
+	}
 }

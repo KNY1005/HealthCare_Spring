@@ -175,7 +175,7 @@
 					<li>날짜</li>
 				</ul>
 				<ul>
-					<li>$${rvo.rhospital}</li>
+					<li>${rvo.rhospital}</li>
 					<li>일반건강검진</li>
 					<li>${rvo.rdate }/${rvo.rtime }</li>
 				</ul>

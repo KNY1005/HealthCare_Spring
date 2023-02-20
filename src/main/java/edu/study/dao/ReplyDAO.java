@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import edu.study.vo.LikeVO;
 import edu.study.vo.ReplyVO;
 
 @Repository
@@ -38,14 +39,14 @@ public class ReplyDAO {
 		return sqlSession.delete("edu.study.mapper.boardMapper.replyDelete", pidx);
 	}
 
-	public int like_cnt_up(int pidx) {
+	public int like_cnt_up(LikeVO lo) {
 		
-		return sqlSession.update("edu.study.mapper.boardMapper.like_cnt_up", pidx);
+		return sqlSession.update("edu.study.mapper.boardMapper.like_cnt_up", lo);
 	}
 	
-	public int like_cnt_down(int pidx) {
+	public int like_cnt_down(LikeVO lo) {
 		
-		return sqlSession.update("edu.study.mapper.boardMapper.like_cnt_down", pidx);
+		return sqlSession.update("edu.study.mapper.boardMapper.like_cnt_down", lo);
 		
 	}
 	

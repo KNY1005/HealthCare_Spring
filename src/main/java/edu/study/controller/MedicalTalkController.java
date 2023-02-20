@@ -66,11 +66,11 @@ public class MedicalTalkController {
 	}
 
 	@RequestMapping(value = "/medicalView.do", method = RequestMethod.GET)
-	public String medicalview(LikeVO lo, int bidx, Model model/* , int pidx, int midx */) throws Exception {
+	public String medicalview(int bidx, Model model/* , int pidx, int midx */) throws Exception {
+		// 게시글 불러오기
 		BoardVo vo = medicaltalkService.selectByBidx(bidx);
+		// 게시글의 첨부파일 가져오기
 		FileVO fvo = medicaltalkService.selectFileByBidx(bidx);
-		
-		
 		/*
 		 * ReplyVO ro = replyService.selectByReply(pidx); MemberVo mo =
 		 * memberService.selectByMidx(midx);
@@ -78,8 +78,9 @@ public class MedicalTalkController {
 
 		model.addAttribute("vo", vo);
 		model.addAttribute("fvo", fvo);
-		model.addAttribute("like",1);
+//		model.addAttribute("like",0);
 		//이  like 값만 유동적으로 바꾸면 끝난다.
+		//조회수 증가
 		boardService.boardHitUpdate(bidx);
 		/*
 		 * model.addAttribute("ro",ro); model.addAttribute("mo", mo);

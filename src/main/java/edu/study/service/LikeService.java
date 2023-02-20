@@ -8,13 +8,13 @@ import edu.study.vo.ReplyVO;
 public interface LikeService {
 	
 	
-	public int countbyLike(ReplyVO ro);
+	public int countbyLike(int pidx);
 	
 	public int likeUp(LikeVO lo);
 	
 	public int readLike(LikeVO lo);
 	
-	public int deletebyLike(int likeno);
+	public int deletebyLike(LikeVO lo);
 	
 	
 	

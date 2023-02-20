@@ -7,6 +7,13 @@ public class ReplyVO {
 	private int pgrps;
 	private int midx;
 	private int plikecount;
+	private int likeCheck;
+	public int getLikeCheck() {
+		return likeCheck;
+	}
+	public void setLikeCheck(int likeCheck) {
+		this.likeCheck = likeCheck;
+	}
 	private String pcontent;
 	private String pwriter;
 	private String ptitle;
@@ -41,8 +48,7 @@ public class ReplyVO {
 	@Override
 	public String toString() {
 		return "ReplyVO [pidx=" + pidx + ", bidx=" + bidx + ", pgrp=" + pgrp + ", pgrps=" + pgrps + ", midx=" + midx
-				+ ", plikecount=" + plikecount + ", pcontent=" + pcontent + ", pwriter=" + pwriter + ", ptitle=" + ptitle
-				+ ", pdate=" + pdate + "]";
+				+ ", plikecount=" + plikecount + ", likeCheck=" + likeCheck + ", pcontent=" + pcontent + ", pwriter="
+				+ pwriter + ", ptitle=" + ptitle + ", pdate=" + pdate + "]";
 	}
-
 }

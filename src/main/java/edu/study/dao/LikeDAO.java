@@ -15,20 +15,20 @@ public class LikeDAO {
 	private SqlSession sqlSession;
 
 	
-	public int countbyLike(ReplyVO ro) {
-		return sqlSession.selectOne("edu.study.mapper.boardMapper.countbyLike",ro);
+	public int countbyLike(int pidx) {
+		return sqlSession.update("edu.study.mapper.boardMapper.countbyLike",pidx);
 	}
 
 	public int likeUp(LikeVO lo) {
-		return sqlSession.insert("edu.study.mapper.boardMapper.countbyLike",lo);
+		return sqlSession.insert("edu.study.mapper.boardMapper.likeUp",lo);
 	}
 	
 	public int readLike(LikeVO lo) {
 		return sqlSession.selectOne("edu.study.mapper.boardMapper.readLike",lo);
 	}
 	
-	public int deletebyLike(int likeno) {
-		return sqlSession.delete("edu.study.mapper.boardMapper.deletebyLike",likeno);
+	public int deletebyLike(LikeVO lo) {
+		return sqlSession.delete("edu.study.mapper.boardMapper.deletebyLike",lo);
 	}
 
 }
