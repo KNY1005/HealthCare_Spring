@@ -25,10 +25,11 @@
 <link href="${path}/resources/css/footer.css" rel="stylesheet" />
 <style>
 main {
-	width: 1320px;
-	height: 1000px;
-	margin: 100px auto;
+   width: 1320px;
+   min-height : 650px;
+   margin: 100px auto;
 }
+
 .order_box{
         width: 790px;
         height: 110px;
@@ -154,6 +155,10 @@ main {
 	width: 1000px;
 	text-align: left;
 	padding-left: 20px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	max-width: 650px;   
 } /*td테두리 첫번쨰와 마지막만 둥글게 하기위해서*/
 .content td:last-child {
 	border-radius: 0 10px 10px 0;

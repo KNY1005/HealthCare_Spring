@@ -2,6 +2,11 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%
+	pageContext.setAttribute("LF", "\n");
+	pageContext.setAttribute("BR", "<br/>");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -233,7 +238,9 @@ hr {
 			<input type="hidden" name="mname" value="${member.mname }">
 			<div id="writing_view">
 				<input type="text" class="title" name="btitle" />
-				<textarea class="content" name="bcontent"></textarea>
+				<textarea class="content" name="bcontent">
+				<c:out value="${fn:replace(CONTENT, LF, BR)}" escapeXml="false"/>
+				</textarea>
 				<ul>
 					<li>${vo.bwriter}</li>
 					<li>${vo.bwdate}</li>
