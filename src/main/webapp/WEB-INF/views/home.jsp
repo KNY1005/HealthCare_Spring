@@ -151,18 +151,6 @@ $(document).ready(function(){
         </div>
       </div>
     
-    
-      	
-      <div class="search-box">
-        <input
-          class="search-txt"
-          type="text"
-          placeholder="검색어를 입력해 주세요"
-        />
-        <button class="search-btn" type="submit">
-          <i class="xi-search"></i>
-        </button>
-      </div>
 
   <div class="main_hover_menu">
         <ul class="main_hover_menu_1">

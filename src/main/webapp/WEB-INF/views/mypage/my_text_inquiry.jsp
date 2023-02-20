@@ -91,8 +91,8 @@
               </div>
               
               <ul class="reserve_list">
-                <li>${vo.btitle}</li>
-				<li>${vo.bcontent}</li>
+                <li style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">${vo.btitle}</li>
+				<li style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">${vo.bcontent}</li>
                 <li>${vo.bwriter}</li>
                 <li>${vo.bwdate}</li>
                 <li>${vo.bhit}</li>
