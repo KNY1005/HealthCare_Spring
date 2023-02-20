@@ -543,7 +543,7 @@
 	    var updateContent = $('[name=pcontent_'+pidx+']').val();
 	    
 	    $.ajax({
-	        url : '<%=request.getContextPath() %>/medicalTalk/medicalView/reply/update',
+	        url :  '<%=request.getContextPath() %>/medicalTalk/medicalView/reply/update',
 	        type : 'post',
 	        data : {'pcontent' : updateContent, 'pidx' : pidx},
 	        success : function(data){
