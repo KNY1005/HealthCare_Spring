@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import edu.study.service.BoardService;
 import edu.study.service.LikeService;
 import edu.study.service.MedicalTalkService;
 import edu.study.service.MemberService;
@@ -42,10 +43,15 @@ public class MedicalTalkController {
 
 	@Autowired
 	private MedicalTalkService medicaltalkService;
+	@Autowired
 	private LikeService likeService;
+	@Autowired
 	private ReplyService replyService;
+	@Autowired
 	private MemberService memberService;
-
+	@Autowired
+	private BoardService boardService;
+	
 	@RequestMapping(value = "/medicalList.do", method = RequestMethod.GET)
 	public String medicalList(SearchCriteria scri, Model model) {
 		List<BoardVo> list = medicaltalkService.list(scri);
@@ -54,15 +60,17 @@ public class MedicalTalkController {
 		pageVo.setScri(scri);
 		pageVo.setTotalCount(medicaltalkService.listCount(scri));
 		model.addAttribute("page", pageVo);
-
+		
+		
 		return "medicalTalk/medicalList";
 	}
 
 	@RequestMapping(value = "/medicalView.do", method = RequestMethod.GET)
-	public String medicalview(int bidx, Model model/* , int pidx, int midx */) throws Exception {
+	public String medicalview(LikeVO lo, int bidx, Model model/* , int pidx, int midx */) throws Exception {
 		BoardVo vo = medicaltalkService.selectByBidx(bidx);
 		FileVO fvo = medicaltalkService.selectFileByBidx(bidx);
-
+		
+		
 		/*
 		 * ReplyVO ro = replyService.selectByReply(pidx); MemberVo mo =
 		 * memberService.selectByMidx(midx);
@@ -71,6 +79,8 @@ public class MedicalTalkController {
 		model.addAttribute("vo", vo);
 		model.addAttribute("fvo", fvo);
 		model.addAttribute("like",1);
+		//이  like 값만 유동적으로 바꾸면 끝난다.
+		boardService.boardHitUpdate(bidx);
 		/*
 		 * model.addAttribute("ro",ro); model.addAttribute("mo", mo);
 		 * model.addAttribute("like", replyService.selectByReply(pidx));
@@ -82,13 +92,13 @@ public class MedicalTalkController {
 
 	/*
 	 * @RequestMapping("/reply/list")
-	 * 
+	 *
 	 * @ResponseBody public List<ReplyVO> replyList(Model model, int bidx, MemberVo
 	 * mo, LikeVO lo) throws Exception { System.out.println("reply cont \n bidx : "
 	 * + bidx);
-	 * 
+	 *
 	 * model.addAttribute(mo); model.addAttribute(lo);
-	 * 
+	 *
 	 * return replyService.replyList(bidx); }
 	 */
 

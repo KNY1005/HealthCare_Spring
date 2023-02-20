@@ -26,13 +26,37 @@ public class ReplyController {
 	private ReplyService replyService;
 	@Autowired
 	private LikeService likeService;
+	
+	@ResponseBody
+	@RequestMapping("/likeUp")
+	public int likeUp(LikeVO lo, ReplyVO ro, MemberVo mo, Model model) throws Exception{
+		model.addAttribute(mo);
+		model.addAttribute(lo);
+		model.addAttribute(ro);
+		
+		System.out.println("ì—¬ê¸° íƒ”ì–´ ?");
+		
+		return likeService.likeUp(lo);
+	}
 
 	@RequestMapping("/list")
 	@ResponseBody
-	public List<ReplyVO> replyList(Model model, int bidx, MemberVo mo, LikeVO lo) throws Exception {
+	public List<ReplyVO> replyList(ReplyVO ro, Model model, int bidx, MemberVo mo, LikeVO lo) throws Exception {
 		System.out.println("reply cont \n bidx : " + bidx);
 		
+		LikeVO like = new LikeVO();
 		
+		like.setMidx(like.getMidx());
+		like.setPidx(like.getPidx());
+		
+		
+		model.addAttribute("like", like);
+		
+		System.out.println("likeëŠ” ---->" + like);
+		
+		
+		
+		model.addAttribute(ro);
 		model.addAttribute(mo);
 		model.addAttribute(lo);
 		System.out.println(lo.toString()+"@#@!@##$");
@@ -41,7 +65,7 @@ public class ReplyController {
 		return replyService.replyList(bidx);
 	}
 
-	@RequestMapping("/insert") // ´ñ±Û ÀÛ¼º
+	@RequestMapping("/insert") // Û¼
 	@ResponseBody
 	public int replyInsert(ReplyVO ro, MemberVo mo, Model model, BoardVo vo) throws Exception {
 
@@ -53,14 +77,14 @@ public class ReplyController {
 		return replyService.replyInsert(ro);
 	}
 
-	@RequestMapping("/update") // ´ñ±Û ¼öÁ¤
+	@RequestMapping("/update") //
 	@ResponseBody
 	public int replyUpdate(ReplyVO ro, MemberVo mo) throws Exception {
 
 		return replyService.replyUpdate(ro);
 	}
 
-	@RequestMapping("/delete/{pidx}") // ´ñ±Û »èÁ¦
+	@RequestMapping("/delete/{pidx}") //
 	@ResponseBody
 	private int replyDelete(@PathVariable int pidx) throws Exception {
 
@@ -68,25 +92,19 @@ public class ReplyController {
 	}
 
 	
-	@ResponseBody
-	@RequestMapping("/likeUp")
-	public int likeUp(LikeVO lo, ReplyVO ro, MemberVo mo, Model model) throws Exception{
-		model.addAttribute(mo);
-		model.addAttribute(lo);
-		model.addAttribute(ro);
-		
-		return likeService.likeUp(lo);
-	}
+
 	
 	@ResponseBody
 	@RequestMapping("/likeDown/{like_check}")
-	private int likeDown(@PathVariable int likeno) throws Exception{
+	private int likeDown(LikeVO lo, @PathVariable int like_check, Model model) throws Exception{
+		model.addAttribute(lo);
 		
+		System.out.println("loê°’ì€ ------>"+ lo);
 		
-		return likeService.deletebyLike(likeno);
+		return likeService.deletebyLike(like_check);
 	}
 
 	
-	 
+	
 
 }

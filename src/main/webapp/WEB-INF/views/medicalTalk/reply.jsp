@@ -12,6 +12,8 @@
 	var mname = '${member.mname}';
 	var midx = ${member.midx};
 	var likeval = ${like};
+/* 	var pidx = ${ro.pidx}; */
+	
 	console.log("게시물 번호 : " + bidx);
 	console.log("멤버 이름 : " + mname);
 	console.log("멤버 id : " + midx);
@@ -23,18 +25,19 @@
 	    console.log("eeee"+insertData);
 	    replyInsert(insertData);
 	});
-	 
-	 
-	 
-	//댓글 목록 
+	
+	
+	
+	//댓글 목록
 	function replyList(){
+		
 	    $.ajax({
 	        url : 'medicalView/reply/list',
 	        type : 'get',
-	        data : {'bidx':bidx,'midx':midx,'pidx':pidx},
+	        data : {'bidx':bidx,'midx':midx},
 	       		
 	        success : function(data){
-	            var a =''; 
+	            var a ='';
 	            $.each(data, function(key, value){
 /* 	            	console.log("replyList() / ajax succes / foreach : key :"+ key );
 	            	console.log('bidx : ' + bidx);
@@ -51,7 +54,7 @@
 	           	 	if (midx == 0){
 	                a += '<buttonclass="LikeBtn" onclick="login_need()" ><img src="${path }/resources/image/dislike.png" id="like_img"></button>';
 	            	}else if(midx !== 0){
-	                a += '<button class="LikeBtn" type="button" onclick="doLike('+value.pidx+','+value.midx+');"><img src="${path }/resources/image/dislike.png"></button>';
+	                a += '<button class="LikeBtn" type="button" onclick="doLike('+value.pidx+','+value.midx+','+1+');"><img src="${path }/resources/image/dislike.png"></button>';
 	            	}
 	                a += '</div>';
 	                a += '</div>';
@@ -73,7 +76,7 @@
 	        }
 	    });
 	}
-	 
+	
 	//댓글 등록
 	function replyInsert(insertData){
 		alert("reply.jsp / replyInsert ajax ")
@@ -92,8 +95,8 @@
 	        }
 	    });
 	}
-	 
-	//댓글 수정 - 댓글 내용 출력을 input 폼으로 변경 
+	
+	//댓글 수정 - 댓글 내용 출력을 input 폼으로 변경
 	function replyUpdate(pidx, pcontent){
 	    var a ='';
 	    
@@ -105,7 +108,7 @@
 	    $('.replyContent'+pidx).html(a);
 	    
 	}
-	 
+	
 	//댓글 수정
 	function replyUpdateProc(pidx){
 	    var updateContent = $('[name=pcontent_'+pidx+']').val();
@@ -115,30 +118,31 @@
 	        type : 'post',
 	        data : {'pcontent' : updateContent, 'pidx' : pidx},
 	        success : function(data){
-	            if(data == 1) replyList(pidx); //댓글 수정후 목록 출력 
+	            if(data == 1) replyList(pidx); //댓글 수정후 목록 출력
 	        }
-	    }); 
+	    });
 	}
-	 
-	//댓글 삭제 
+	
+	//댓글 삭제
 	function replyDelete(pidx){
 	    $.ajax({
 	        url : 'medicalView/reply/delete/'+pidx,
 	        type : 'post',
 	        success : function(data){
-	            if(data == 1) replyList(bidx); //댓글 삭제후 목록 출력 
+	            if(data == 1) replyList(bidx); //댓글 삭제후 목록 출력
 	        }
 	    });
 	}
 	
 	// 버튼 눌렀을때 호출되는 함수
-	function doLike(pidx,midx,likeno)
-	{
+	function doLike(pidx,midx,like_check){
+		
 		// 호출이 되었는지 alert으로 띄움
 //		alert("doLike call");
 		// 값이 제대로 넘어왔는지, 콘솔에 찍음
 		console.log("pidx : " + pidx );
 		console.log("midx : " + midx );
+		console.log("likecheck :" + like_check);
 		
 		// 기존에 좋아요를 눌렀는지 판단하고
 		if(likeval > 0){
@@ -150,7 +154,7 @@
 				success : function(data) {
 					alert('취소 성공');
 				}
-			}); 
+			});
 		}else{
 			alert("좋아요 call");
 			// 좋아요를 추가하는 ajax
@@ -236,11 +240,11 @@
  
 
 	
-	 
-	 
-	 
+	
+	
+	
 	$(document).ready(function(){
-		replyList(); //페이지 로딩시 댓글 목록 출력 
+		replyList(); //페이지 로딩시 댓글 목록 출력
 
 	});
  
@@ -253,4 +257,3 @@
 		cursor: pointer;
 	}
 </style>
-
