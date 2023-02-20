@@ -396,7 +396,7 @@
 	</div>
 	<main id="main">
 		<section id="view">
-			<h2>문의사항 상세</h2>
+			<h2>문의사항</h2>
 			<hr>
 			<div id="writing_view">
 				<div class="title">${vo.btitle}</div>
@@ -459,7 +459,7 @@
 	var midx = ${member.midx};		
 	
 	$('[name=replyInsertBtn]').click(function(){ //댓글 등록 버튼 클릭시
-		alert("reply.jsp / btn click : call");
+		
 	    var insertData = $('[name=replyInsertForm]').serialize(); //commentInsertForm의 내용을 가져옴
 	    
 	    replyInsert(insertData);
@@ -507,7 +507,7 @@
 	
 	//댓글 등록
 	function replyInsert(insertData){
-		alert("reply.jsp / replyInsert ajax ")
+		
 	    $.ajax({
 	        url : '<%=request.getContextPath() %>/medicalTalk/medicalView/reply/insert',
 	        type : 'post',
