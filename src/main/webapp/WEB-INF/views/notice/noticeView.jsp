@@ -73,7 +73,8 @@
 
 #writing_view {
 	width: 1100px;
-	height: 515px;
+	
+	
 	border: 3px solid #FF8F8F;
 	border-radius: 10px;
 	margin: 0 auto 0;
@@ -82,7 +83,7 @@
 .title {
 	margin: 20px auto 10px;
 	width: 970px;
-	height: 40px;
+	min-height: 40px;
 	font-size: 25px;
 	line-height: 40px;
 }
@@ -91,7 +92,7 @@
 	margin: 0 auto 20px;
 	
 	width: 970px;
-	height: 360px;
+	min-height: 360px;
 	
 }
 
@@ -224,7 +225,7 @@
 		<form action="">
 			<div id="writing_view">
 				<div class="title">${vo.btitle}</div>
-                <div class="content">${vo.bcontent}</div>
+                <div class="content" style="white-space:pre;">${vo.bcontent}</div>
 				<ul>
 					<li>${vo.bwriter}</li>
 					<li>${vo.bwdate}</li>
