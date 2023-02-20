@@ -432,7 +432,7 @@
 					<div class="swiper-slide">
 						<div id="first">
 							<div id="gold"></div>
-							<h4><span>김모모</span> 전문의</h4>
+							<h4><span>이국종</span> 전문의</h4>
 							<p><i class="xi-comment xi-1x"></i> 답변 200개</p>
 							<p><i class="xi-thumbs-up xi-1x"></i> 추천 200개</p>
 						</div><!--//#first-->
@@ -440,63 +440,63 @@
 					<div class="swiper-slide">
 						<div id="second">
 							<div id="silver"></div>
-							<h4><span>김모모</span> 전문의</h4>
-							<p><i class="xi-comment xi-1x"></i> 답변 200개</p>
-							<p><i class="xi-thumbs-up xi-1x"></i> 추천 200개</p>
+							<h4><span>최윤기</span> 전문의</h4>
+							<p><i class="xi-comment xi-1x"></i> 답변 190개</p>
+							<p><i class="xi-thumbs-up xi-1x"></i> 추천 185개</p>
 						</div><!--//#second-->
 					</div><!--//.swiper-slide-->
 					<div class="swiper-slide">
 						<div id="third">
 							<div id="bronze"></div>
-							<h4><span>김모모</span> 전문의</h4>
-							<p><i class="xi-comment xi-1x"></i> 답변 200개</p>
-							<p><i class="xi-thumbs-up xi-1x"></i> 추천 200개</p>
+							<h4><span>정윤재</span> 전문의</h4>
+							<p><i class="xi-comment xi-1x"></i> 답변 186개</p>
+							<p><i class="xi-thumbs-up xi-1x"></i> 추천 170개</p>
 						</div><!--//#third-->
 					</div><!--//.swiper-slide-->
 					<div class="swiper-slide">
 						<div id="and">
 							<div id="other"></div>
-							<h4><span>김모모</span> 전문의</h4>
-							<p><i class="xi-comment xi-1x"></i> 답변 200개</p>
-							<p><i class="xi-thumbs-up xi-1x"></i> 추천 200개</p>
+							<h4><span>정태진</span> 전문의</h4>
+							<p><i class="xi-comment xi-1x"></i> 답변 151개</p>
+							<p><i class="xi-thumbs-up xi-1x"></i> 추천 143개</p>
 						</div><!--//#and-->
 					</div><!--//.swiper-slide-->
 					<div class="swiper-slide">
 						<div id="and">
 							<div id="other"></div>
-							<h4><span>김모모</span> 전문의</h4>
-							<p><i class="xi-comment xi-1x"></i> 답변 200개</p>
-							<p><i class="xi-thumbs-up xi-1x"></i> 추천 200개</p>
+							<h4><span>김성현</span> 전문의</h4>
+							<p><i class="xi-comment xi-1x"></i> 답변 120개</p>
+							<p><i class="xi-thumbs-up xi-1x"></i> 추천 111개</p>
 						</div><!--//#and-->
 					</div><!--//.swiper-slide-->
 					<div class="swiper-slide">
 						<div id="and">
 							<div id="other"></div>
-							<h4><span>김모모</span> 전문의</h4>
-							<p><i class="xi-comment xi-1x"></i> 답변 200개</p>
-							<p><i class="xi-thumbs-up xi-1x"></i> 추천 200개</p>
+							<h4><span>신재윤</span> 전문의</h4>
+							<p><i class="xi-comment xi-1x"></i> 답변 76개</p>
+							<p><i class="xi-thumbs-up xi-1x"></i> 추천 55개</p>
 						</div><!--//#and-->
 					</div><!--//.swiper-slide-->
 					<div class="swiper-slide">
 						<div id="and">
 							<div id="other"></div>
-							<h4><span>김모모</span> 전문의</h4>
-							<p><i class="xi-comment xi-1x"></i> 답변 200개</p>
-							<p><i class="xi-thumbs-up xi-1x"></i> 추천 200개</p>
+							<h4><span>박수홍</span> 전문의</h4>
+							<p><i class="xi-comment xi-1x"></i> 답변 72개</p>
+							<p><i class="xi-thumbs-up xi-1x"></i> 추천 47개</p>
 						</div><!--//#and-->
 					</div><!--//.swiper-slide-->
 					<div class="swiper-slide">
 						<div id="and">
 							<div id="other"></div>
-							<h4><span>김모모</span> 전문의</h4>
-							<p><i class="xi-comment xi-1x"></i> 답변 200개</p>
-							<p><i class="xi-thumbs-up xi-1x"></i> 추천 200개</p>
+							<h4><span>최진철</span> 전문의</h4>
+							<p><i class="xi-comment xi-1x"></i> 답변 58개</p>
+							<p><i class="xi-thumbs-up xi-1x"></i> 추천 36개</p>
 						</div><!--//#and-->
 					</div><!--//.swiper-slide-->
 					<div class="swiper-slide">
 						<div id="and">
 							<div id="other"></div>
-							<h4><span>김모모</span> 전문의</h4>
+							<h4><span>곽 윤</span> 전문의</h4>
 							<p><i class="xi-comment xi-1x"></i> 답변 200개</p>
 							<p><i class="xi-thumbs-up xi-1x"></i> 추천 200개</p>
 						</div><!--//#and-->

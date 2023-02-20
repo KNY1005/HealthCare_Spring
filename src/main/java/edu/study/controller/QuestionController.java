@@ -98,6 +98,7 @@ public class QuestionController {
 		
 		questionService.insert(vo);
 		String path = req.getSession().getServletContext().getRealPath("/resources/upload");
+		System.out.println("upload path : "+path);
 		File dir = new File(path);
 		if (!dir.exists()) { 
 			dir.mkdirs();

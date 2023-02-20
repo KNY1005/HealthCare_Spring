@@ -398,7 +398,7 @@
 			<hr>
 			<div id="writing_view">
 				<div class="title">${vo.btitle}</div>
-				<div class="content">${vo.bcontent}</div>
+				<div class="content" style="white-space:pre;">${vo.bcontent}</div>
 				<ul>
 					<li>${vo.bwriter}</li>
 					<li>${vo.bwdate}</li>

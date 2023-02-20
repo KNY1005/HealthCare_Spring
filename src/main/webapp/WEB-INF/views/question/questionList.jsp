@@ -20,6 +20,7 @@
 <style>
 main {
 	width: 1320px;
+	min-height : 650px;
 	margin: 100px auto;
 }
 
