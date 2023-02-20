@@ -62,7 +62,7 @@
 		font-weight: bold;
 	}
 	
-	hr {
+	#view hr {
 		height: 2px;
 		background-color: #FF7373;
 		border: none;

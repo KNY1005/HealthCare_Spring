@@ -262,8 +262,7 @@ main {
 				<th>제목 및 내용</th>
 				<th>작성자</th>
 				<th>작성일</th>
-				<th>조회수</th>
-				<th>답변</th>
+				<th>조회수</th>				
 			</tr>
 			<c:forEach items="${list}" var="vo">
 				<tr class="content"
@@ -272,8 +271,7 @@ main {
 						<p>${vo.bcontent}</p></td>
 					<td>${vo.bwriter}</td>
 					<td>${vo.bwdate}</td>
-					<td>${vo.bhit}</td>
-					<td>${vo.bstate}</td>
+					<td>${vo.bhit}</td>					
 				</tr>
 			</c:forEach>
 		</table>
