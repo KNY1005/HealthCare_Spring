@@ -242,8 +242,8 @@ hr {
 				<c:out value="${fn:replace(CONTENT, LF, BR)}" escapeXml="false"/>
 				</textarea>
 				<ul>
-					<li>${vo.bwriter}</li>
-					<li>${vo.bwdate}</li>
+					<li>${member.mname }</li>
+					<li>${board.bwdate}</li>
 				</ul>
 			</div>
 			<div class="file">

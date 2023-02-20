@@ -101,10 +101,11 @@ public class ShotController {
 	}
 
 	@RequestMapping(value = "abc9.do", method = RequestMethod.POST)
-	public String home9(ReserveVo vo) {
+	public String home9(ReserveVo vo, HttpSession session) {
 		shotService.updatebuy(vo);	
-		
-		return "mypage/shot_reserve_inquiry";
+		MemberVo member2 = (MemberVo)session.getAttribute("member");
+		int midx = member2.getMidx();		
+		return "redirect:/member/mypage2.do?midx="+midx;
 	}
 
 }

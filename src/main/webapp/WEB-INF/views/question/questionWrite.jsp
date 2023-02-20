@@ -218,7 +218,7 @@ hr {
 	<section id="view">
 		<div id="menu">
 			
-			<h2>문의사항 글 쓰기</h2>
+			<h2>문의사항</h2>
 		</div>
 		<hr>
 		<form action="questionWrite.do" method="post" enctype="multipart/form-data">
