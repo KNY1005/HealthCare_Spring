@@ -124,6 +124,7 @@ body::before {
   align-items: center;
 }
 .main_content_title h2 {
+	text-align:center;
   font-size: 40px;
   font-weight: bold;
 }
@@ -134,148 +135,26 @@ body::before {
   padding: 10px;
 }
 
-.main_content hr {
+.main_content aa {
   border-bottom: none;
   border-top: 3px solid rgb(255, 120, 120);
 }
 
-/*스탬프*/
-.ring {
-  height: 170px;
+.form-control{
+	height:30px;
+	width:200px;
+	margin-bottom: 35px;
+	border-radius:20px;
+	text-align: center;
 }
-/*스탬프*/
-
-/*리스트*/
-.list {
-  width: 1090px;
-}
-.main_list {
-  justify-content: center;
-  width: 1090px;
-  display: flex;
-  flex-direction: row;
-  font-size: 20px;
-  font-weight: bold;
-  width: 1090px;
+.btn{
+	border-radius:10px;
+	width: 100px;
+	height: 30px;
+	
 }
 
-.main_list li:nth-child(1),
-.reserve_list li:nth-child(1) {
-  width: 60px;
-}
-.main_list li:nth-child(2),
-.reserve_list li:nth-child(2) {
-  width: 170px;
-}
-.main_list li:nth-child(3),
-.reserve_list li:nth-child(3) {
-  width: 80px;
-}
-.main_list li:nth-child(4),
-.reserve_list li:nth-child(4) {
-  width: 120px;
-}
-.main_list li:nth-child(5),
-.reserve_list li:nth-child(5) {
-  width: 280px;
-}
-.main_list li {
-  padding: 20px;
-  text-align: center;
-}
-
-.reserve_list {
-  justify-content: center;
-  width: 1090px;
-  font-weight: bold;
-  font-size: 20px;
-  background: #ffe7e7;
-  display: flex;
-  flex-direction: row;
-  text-align: center;
-  height: 50px;
-  border-radius: 10px;
-  align-items: center;
-}
-
-.reserve_list li {
-  padding: 20px;
-  text-align: center;
-}
-
-.reserve_list li:nth-child(5) {
-  font-size: 15px;
-}
-.box {
-  width: 1090px;
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 10px;
-}
-
-.checkbox_box p {
-  font-size: 15px;
-  font-weight: bold;
-  text-align: center;
-}
-/*리스트*/
-/*main_content*/
-/*삭제버튼*/
-.button {
-  position: absolute;
-  bottom: 17%;
-  right: 17%;
-}
-
-.button input {
-  width: 100px;
-  height: 40px;
-  background: #ff9797;
-  color: #fff;
-  font-size: 15px;
-  font-weight: bold;
-  border: none;
-  border-radius: 15px;
-}
-
-.button input:hover {
-  box-shadow: inset 1px 1px 5px 1px rgb(120, 120, 120);
-}
-/*삭제버튼*/
-label {
-  width: 12px;
-  display: block;
-  height: 12px;
-  cursor: pointer;
-  margin-top: 15px;
-  margin-left: 20px;
-}
-.checkbox_box input {
-  position: absolute;
-  transform: scale(0);
-}
-input:checked ~ .checkbox {
-  transform: rotate(45deg);
-  width: 5px;
-  margin-top: 15px;
-  margin-left: 20px;
-  border-color: #ff4747;
-  border-top-color: transparent;
-  border-left-color: transparent;
-  border-radius: 0;
-}
-
-.checkbox {
-  display: block;
-  width: inherit;
-  height: inherit;
-  border: 3px solid #434343;
-  border-radius: 6px;
-  transition: all 0.375s;
-  margin-top: 15px;
-  margin-left: 20px;
-}
-
-.checkbox_box {
-  width: 70px;
+.main_box{
+	margin-top: 100px;
+    text-align: center;
 }

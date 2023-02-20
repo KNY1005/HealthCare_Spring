@@ -120,7 +120,7 @@ function fnSubmit() {
                   <ul class="submenu">
                     <li><a href="<%=request.getContextPath() %>/member/mypage2.do?midx=${member.midx}">예방접종 조회</a></li>
                     <li><a href="<%=request.getContextPath() %>/member/mypage3.do?midx=${member.midx}">건강검진 조회</a></li>
-                    <li><a href="<%=request.getContextPath() %>/member/mypage1.do?midx=${member.midx}">헌혈 스탬프 / 조회</li>
+                    <li><a href="<%=request.getContextPath() %>/member/mypage1.do?midx=${member.midx}">헌혈 조회</li>
                   </ul>
                 </li>
                 <li class="menu-v1">
@@ -136,40 +136,40 @@ function fnSubmit() {
       <section class="main_content">
         <div class="main_content_title">
             <h2>개인정보설정</h2>
-            <hr>
+            <hr classs="aa">
         </div>
+        <div class="main_box">
         		<form action="/controller/member/mypage5.do" method="post"  >
 			      <div class="form-group row">
-			              아이디 : <input type="text" class="form-control form-control-user" id="mid" name="mid" style="text-align:center;" value="${member.mid }"
+			              <input type="text" class="form-control form-control-user" id="mid" name="mid" style="text-align:center;" value="${member.mid }"
 			                  placeholder="아이디" readonly="readonly">
 			      </div>
 			      <div class="form-group row">  
-			              이름 : <input type="text" class="form-control form-control-user" id="mname" name="mname" style="text-align:center;" value="${member.mname }"
+			              <input type="text" class="form-control form-control-user" id="mname" name="mname" style="text-align:center;" value="${member.mname }"
 			                  placeholder="이름">
 			      </div>
 			      <div class="form-group row">
-			              전화번호 : <input type="text" class="form-control form-control-user" id="mphone" name="mphone" style="text-align:center;" value="${member.mphone }"
+			              <input type="text" class="form-control form-control-user" id="mphone" name="mphone" style="text-align:center;" value="${member.mphone }"
 			                  placeholder="전화번호">
 			      </div>
 			      <div class="form-group row">
-			              이메일 주소 : <input type="text" class="form-control form-control-user" id="memail" name="memail" style="text-align:center;" value="${member.memail }"
+			              <input type="text" class="form-control form-control-user" id="memail" name="memail" style="text-align:center;" value="${member.memail }"
 			                  placeholder="이메일 주소">
 			      </div>
 			      <div class="form-group row">
-			              비밀번호 : <input type="password" class="form-control form-control-user" id="mpwd" name="mpwd" style="text-align:center;"
+			              <input type="password" class="form-control form-control-user" id="mpwd" name="mpwd" style="text-align:center;"
 			                  placeholder="비밀번호">
 			      </div>
 			      <div class="form-group row">
-			              비밀번호 확인 : <input type="password" class="form-control form-control-user" id="mpwd2" style="text-align:center;"
+			              <input type="password" class="form-control form-control-user" id="mpwd2" style="text-align:center;"
 			                  placeholder="비밀번호 확인">
 			      </div>
 			      
-			      <input type="submit" id="createForm" class="btn btn-primary btn-user btn-block" onclick="fnSubmit();"/>
-			      
-			      <a href="<%=request.getContextPath() %>/" class="btn btn-warning btn-user btn-block">
-			           메인화면으로
-			      </a>
+			      <input type="submit" id="createForm" class="btn" onclick="fnSubmit();"/>
+			      <input type="button" onclick="<%=request.getContextPath() %>/" class="btn" value="메인화면으로"/>
   			</form>
+        
+        </div>
 	</section>
       </main>
     <%@include file="../includes/footer.jsp"%>
