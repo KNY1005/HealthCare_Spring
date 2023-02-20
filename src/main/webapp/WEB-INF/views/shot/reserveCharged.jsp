@@ -59,7 +59,7 @@
 */				var form = document.createElement("form");
 				form.setAttribute("charset", "UTF-8");
 				form.setAttribute("method", "POST");  //Post 방식
-				form.setAttribute("action", "abc9.do?rstate=Y&ridx=${ridx}"); //요청 보낼 주소
+				form.setAttribute("action", "<%=request.getContextPath() %>/shot/abc9.do?rstate=Y&ridx=${ridx}"); //요청 보낼 주소
 				document.body.appendChild(form);
 				form.submit(); 
 
