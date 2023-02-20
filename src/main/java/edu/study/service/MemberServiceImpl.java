@@ -102,19 +102,19 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public List<ReserveVo> selectMyBoard1(int midx) {
-		// TODO Auto-generated method stub
+
 		return memberdao.selectMyBoard1(midx);
 	}
 
 	@Override
 	public List<ReserveVo> selectMyBoard2(int midx) {
-		// TODO Auto-generated method stub
+
 		return memberdao.selectMyBoard2(midx);
 	}
 
 	@Override
 	public List<ReserveVo> selectMyBoard3(int midx) {
-		// TODO Auto-generated method stub
+
 		return memberdao.selectMyBoard3(midx);
 	}
 }

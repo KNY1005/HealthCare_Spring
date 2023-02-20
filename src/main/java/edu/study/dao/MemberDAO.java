@@ -99,7 +99,7 @@ public class MemberDAO {
 		return sqlSession.selectList("edu.study.mapper.memberMapper.selectMyBoard2", midx);
 	}
 	public List<ReserveVo> selectMyBoard3(int midx) {
-
+		System.out.println(midx);
 		return sqlSession.selectList("edu.study.mapper.memberMapper.selectMyBoard3", midx);
 	}
 

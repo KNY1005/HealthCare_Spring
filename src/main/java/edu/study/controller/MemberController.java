@@ -26,7 +26,9 @@ import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 import edu.study.service.MemberService;
 import edu.study.service.memberSha256;
+import edu.study.vo.BoardVo;
 import edu.study.vo.MemberVo;
+import edu.study.vo.ReserveVo;
 import oracle.net.aso.l;
 
 import org.apache.commons.lang3.RandomStringUtils;
@@ -198,24 +200,36 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/mypage1.do", method = RequestMethod.GET)
-	public String mypage1() {
+	public String mypage1(Model model, int midx) {
+		
+		List<ReserveVo> list = memberService.selectMyBoard2(midx);
+		model.addAttribute("selectMyBoard2", list);
 		
 		return "mypage/blood_reserve_inquiry";
 	}
 	
 	@RequestMapping(value = "/mypage2.do", method = RequestMethod.GET)
-	public String mypage2() {
+	public String mypage2(Model model, int midx) {
+		
+		List<ReserveVo> list = memberService.selectMyBoard1(midx);
+		model.addAttribute("selectMyBoard1", list);
 		
 		return "mypage/shot_reserve_inquiry";
 	}
 	@RequestMapping(value = "/mypage3.do", method = RequestMethod.GET)
-	public String mypage3() {
+	public String mypage3(Model model, int midx) {
+		
+		List<ReserveVo> list = memberService.selectMyBoard3(midx);
+		model.addAttribute("selectMyBoard3", list);
 		
 		return "mypage/medical_reserve_inquiry";
 	}
 	
 	@RequestMapping(value = "/mypage4.do", method = RequestMethod.GET)
-	public String mypage4() {
+	public String mypage4(Model model, int midx) throws Exception {
+		
+		List<BoardVo> list = memberService.selectMyBoard(midx);
+		model.addAttribute("selectMyBoard", list);
 		
 		return "mypage/my_text_inquiry";
 	}
@@ -233,11 +247,8 @@ public class MemberController {
 		
 		try {
 	        memberService.updateMember(vo);
-	        System.out.println("여기");
 	        
 	    } catch (Exception e) {
-	        System.out.println(e.toString());
-	        System.out.println("망했네");
 	    }
 		
 		return "redirect:/mypage5.do";
