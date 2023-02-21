@@ -62,7 +62,7 @@
 		font-weight: bold;
 	}
 	
-	hr {
+	#view hr {
 		height: 2px;
 		background-color: #FF7373;
 		border: none;
@@ -330,7 +330,7 @@
 				<h2>답변</h2>
 			</div><!--//#like-->
 			<!-- 답변 시작 -->
-			<div class="doctor_writing_content" >	
+			<div class="doctor_writing_content" >
 			<c:if test="${member.mgrade == 'D'}">
 				<div id="writing_container" style="display:none;">
 					<div class="container">
