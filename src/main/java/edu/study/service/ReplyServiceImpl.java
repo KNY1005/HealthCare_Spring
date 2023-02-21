@@ -40,18 +40,6 @@ public class ReplyServiceImpl implements ReplyService{
 	}
 
 	@Override
-	public int like_cnt_up(LikeVO lo) {
-		
-		return  replyDAO.like_cnt_up(lo);
-	}
-
-	@Override
-	public int like_cnt_down(LikeVO lo) {
-		
-		return replyDAO.like_cnt_down(lo);
-	}
-
-	@Override
 	public ReplyVO selectByReply(int pidx) {
 		
 		return replyDAO.selectByReply(pidx);

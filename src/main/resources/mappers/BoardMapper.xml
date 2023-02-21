@@ -173,7 +173,7 @@
 	</select>
 
 
-	<select id="countbyLike" parameterType="int" resultType="LikeVO" >
+	<select id="countbyLike" parameterType="int" resultType="int" >
 		SELECT
 		COUNT(*)
 		FROM TABLE_LIKE where PIDX = #{pidx}

@@ -17,10 +17,6 @@ public interface ReplyService {
 
 	List<ReplyVO> replyList(int bidx);
 	
-	int like_cnt_up(LikeVO lo);
-	
-	int like_cnt_down(LikeVO lo);
-	
 	ReplyVO selectByReply(int pidx);
 	
 	

@@ -36,12 +36,21 @@ public class ReplyController {
 		
 		for ( ReplyVO item : list )
 		{
+			
 			lo.setMidx(mo.getMidx());
 			lo.setPidx(item.getPidx());
-			
-			likeService.countbyLike(lo.getPidx());			
+			System.out.println("item.getPidx() : " + item.getPidx());
+			int pidx = item.getPidx();
+			System.out.println("pidx : " + pidx);
 			item.setLikeCheck(likeService.readLike(lo));
-	
+			/* ReplyVO rvo = likeService.countbyLike(lo.getPidx()); */
+			int cnt_like = likeService.countbyLike(pidx);
+			System.out.println("cnt_like : " + cnt_like);
+			item.setPlikecount(cnt_like);
+			System.out.println("item pLikeCount : " + item.getPlikecount());
+			/*item.setPlikecount(abc);*/
+//			int abc = item.getPlikecount();
+			
 //			System.out.println("reply list / item : like check \n" + lo.toString());
 		}
 		

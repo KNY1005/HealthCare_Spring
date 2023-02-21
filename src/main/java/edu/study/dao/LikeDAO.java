@@ -16,7 +16,7 @@ public class LikeDAO {
 
 	
 	public int countbyLike(int pidx) {
-		return sqlSession.update("edu.study.mapper.boardMapper.countbyLike",pidx);
+		return sqlSession.selectOne("edu.study.mapper.boardMapper.countbyLike",pidx);
 	}
 
 	public int likeUp(LikeVO lo) {
