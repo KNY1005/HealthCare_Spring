@@ -317,9 +317,12 @@
 				</div>
 				<div id="button">
 					<c:if test="${member.mgrade == 'D'}"><button onclick="openClose()" id="answerBtn" type="button">답변하기</button></c:if>
-					<button type="button" onClick="location.href='medicalModify.do?bidx=${vo.bidx}'">수정</button>
-					<button type="button"
-					onClick="location.href='medicalDelete.do?bidx=${vo.bidx}'">삭제</button>
+					<c:set var="boardMidx" value="${vo.midx}" />			
+					<c:if test="${member.midx == boardMidx}">
+						<button type="button" onClick="location.href='medicalModify.do?bidx=${vo.bidx}'">수정</button>
+						<button type="button" onClick="location.href='medicalDelete.do?bidx=${vo.bidx}'">삭제</button>
+					</c:if>
+					<button type="button" onClick="location.href='medicalList.do?blist=H'">목록</button>
 				</div>
 				</div>
 			</form>
@@ -327,7 +330,7 @@
 				<h2>답변</h2>
 			</div><!--//#like-->
 			<!-- 답변 시작 -->
-			<div class="doctor_writing_content" >
+			<div class="doctor_writing_content" >	
 			<c:if test="${member.mgrade == 'D'}">
 				<div id="writing_container" style="display:none;">
 					<div class="container">
