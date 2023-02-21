@@ -69,14 +69,10 @@ $(document).ready(function() {
 									</div>
 									<hr>
 									<div class="text-center">
-										<a class="small" href="/account/search_id">비밀번호 찾으러가기</a>
+										<a class="small" href="<%=request.getContextPath() %>/member/search_result_pwd.do">비밀번호 찾으러가기</a>
 									</div>
 									<div class="text-center">
-										<a class="small" href="/account/register">Create an
-											Account!</a>
-									</div>
-									<div class="text-center">
-										<a class="small" href="/account/login">로그인하러가기</a>
+										<a class="small" href="<%=request.getContextPath() %>/member/login.do">로그인하러가기</a>
 									</div>
 								</div>
 							</div>

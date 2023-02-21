@@ -54,24 +54,17 @@
 							<div class="col-lg-6">
 								<div class="p-5">
 									<div class="text-center">
-										<h1 class="h4 text-gray-900 mb-2">Please check your
-											Password</h1>
+										<h1 class="h4 text-gray-900 mb-2">비밀번호 찾기</h1>
 										<br>
 										<br>
 										<p class="mb-4">${newPwd}</p>
 									</div>
 									<hr>
 									<div class="text-center">
-										<a class="small" href="/account/search_pwd">Forgot Your
-											Password?</a>
+										<a class="small" href="<%=request.getContextPath() %>/member/membersearch.do">아이디찾으러가기</a>
 									</div>
 									<div class="text-center">
-										<a class="small" href="/account/register">Create an
-											Account!</a>
-									</div>
-									<div class="text-center">
-										<a class="small" href="/account/login">Already have an
-											account? Login!</a>
+										<a class="small" href="<%=request.getContextPath() %>/member/login.do">로그인하러가기</a>
 									</div>
 								</div>
 							</div>

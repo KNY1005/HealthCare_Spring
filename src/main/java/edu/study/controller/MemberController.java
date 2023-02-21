@@ -136,7 +136,7 @@ public class MemberController {
 
 			model.addAttribute("searchVo", memberSearch);
 		} catch (Exception e) {
-			model.addAttribute("msg", "議댁�ы��吏����� 怨���������.");
+			model.addAttribute("msg", "아이디가 확인");
 		}
 
 		return "/member/search_result_id";
@@ -167,7 +167,7 @@ public class MemberController {
 	    System.out.println(memberSearch);
 	    
 	    if(memberSearch == 0) {
-	        model.addAttribute("msg", "怨���.");
+	        model.addAttribute("msg", "비밃번호 확인");
 	        return "member/search_pwd";
 	    }
 	    
@@ -184,7 +184,6 @@ public class MemberController {
 	} catch (Exception e) {
 		
 	    System.out.println(e.toString());
-	    model.addAttribute("msg", "�ш릿萸�吏�.");
 	}
 	 
 	
