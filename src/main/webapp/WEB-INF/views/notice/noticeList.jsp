@@ -290,7 +290,7 @@ main {
 				</c:if>
 			</ul>
 		</div>
-		<c:if test="${member.mgrade == 'A'}">
+		<c:if test="${member.mgrade.trim() == 'A'}">
 		<button class="button" onClick="location.href='write.do'">글쓰기</button>
 		</c:if>
 

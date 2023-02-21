@@ -55,7 +55,7 @@ public class MemberController {
 		String mpwd = vo.getMpwd();
 		vo.setMpwd(memberSha256.encrypt(mpwd));
 		MemberVo login = memberService.login(vo);
-		System.out.println("id는"+vo.getMid()+"   비밀"+vo.getMpwd());		
+		System.out.println("id��"+vo.getMid()+"   鍮�諛�"+vo.getMpwd());		
 		
 		if (login == null) {
 			session.setAttribute("member", null);
@@ -120,7 +120,7 @@ public class MemberController {
 		return "member/memberSearch";
 	}
 	
-	// ���대��李얘린
+	// 占쏙옙占쎈��占쏙옙筌≪��由�
 	@RequestMapping(value = "/search_result_id.do", method = RequestMethod.POST)
 	public String search_result_id(HttpServletRequest request, Model model,
 			@RequestParam(required = true, value = "mname") String mname,
@@ -136,7 +136,7 @@ public class MemberController {
 
 			model.addAttribute("searchVo", memberSearch);
 		} catch (Exception e) {
-			model.addAttribute("msg", "존재하지않는 계정입니다.");
+			model.addAttribute("msg", "議댁�ы��吏����� 怨���������.");
 		}
 
 		return "/member/search_result_id";
@@ -167,7 +167,7 @@ public class MemberController {
 	    System.out.println(memberSearch);
 	    
 	    if(memberSearch == 0) {
-	        model.addAttribute("msg", "계정.");
+	        model.addAttribute("msg", "怨���.");
 	        return "member/search_pwd";
 	    }
 	    
@@ -184,7 +184,7 @@ public class MemberController {
 	} catch (Exception e) {
 		
 	    System.out.println(e.toString());
-	    model.addAttribute("msg", "여긴뭐지.");
+	    model.addAttribute("msg", "�ш릿萸�吏�.");
 	}
 	 
 	

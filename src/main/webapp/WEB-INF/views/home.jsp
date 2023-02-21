@@ -1,6 +1,5 @@
 <%@page import="java.util.Enumeration"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <%@ page import="edu.study.vo.MemberVo" %>
@@ -38,7 +37,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	$("#logoutBtn").on("click", function(){
-		location.href="member/logout";
+		location.href="member/logout.do";
 	})
 	
 })
@@ -72,11 +71,12 @@ $(document).ready(function(){
             <ul>
               <li><a href="<%=request.getContextPath() %>/notice/list.do?blist=N">건강광장</a></li>
             </ul>
-            <c:if test="${member.mgrade == 'A'}">
-            <ul>
-              <li><a href="<%=request.getContextPath() %>/admin/god.do">회원 관리</a></li>
-            </ul>
-            </c:if>
+
+            <c:if test="${member.mgrade.trim() eq 'A'}">
+			<ul>
+	           	<li><a href="<%=request.getContextPath() %>/admin/god.do">회원 관리</a></li>
+	            </ul>
+	        </c:if>
           </div>
           <div id="sliding_menu">
             <ul>
@@ -113,7 +113,7 @@ $(document).ready(function(){
 		      	
             <ul>
               <li><img src="${path}/resources/image/profli.png" alt="프로필" /></li>
-              <li><p>${member.mname}님</p></li>
+              <li><p>${member.mname}님${member.mgrade}</p></li>
               <li><hr width="250px" /></li>
               <li><a href="<%=request.getContextPath() %>/member/mypage2.do?midx=${member.midx}">마이페이지</a></li>
               <li><a href="<%=request.getContextPath() %>/member/mypage4.do?midx=${member.midx}">내가 쓴 글</a></li>
@@ -168,7 +168,7 @@ $(document).ready(function(){
           </li>
           <li class="snip1489 ion-ios-star-outline">
             <a href="<%=request.getContextPath() %>/healthnews2.do">
-              <p>자가검진</p>
+              <p>자가검진 </p>
               <img src="${path}/resources/image/self.png" alt="설문이미지" />
             </a>
           </li>
