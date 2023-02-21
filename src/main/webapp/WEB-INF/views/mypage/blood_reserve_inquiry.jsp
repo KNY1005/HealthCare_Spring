@@ -29,6 +29,7 @@
 </head>
 <body>
 <%@include file="../includes/header.jsp"%>
+<div class="aa"></div>
     <main>
       <section>
         <p class="mypage_manu_p">마이페이지</p>

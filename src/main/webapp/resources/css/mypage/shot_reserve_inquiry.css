@@ -146,10 +146,13 @@ body::before {
   width: 1090px;
 }
 .main_list {
+	margin-top: -33px;
+	margin-left: 85px;
   justify-content: center;
   width: 1090px;
   display: flex;
   flex-direction: row;
+ margin-bottom: -6px;
   font-size: 20px;
   font-weight: bold;
   width: 1090px;
@@ -157,7 +160,7 @@ body::before {
 
 .main_list li:nth-child(1),
 .reserve_list li:nth-child(1) {
-  width: 200pxpx;
+  width: 216px;
 }
 .main_list li:nth-child(2),
 .reserve_list li:nth-child(2) {
@@ -181,6 +184,9 @@ body::before {
 }
 
 .reserve_list {
+	margin-bottom: 15px;
+	    margin-top: -27px;
+	   margin-left: 85px;
   justify-content: center;
   width: 1090px;
   font-weight: bold;
@@ -205,7 +211,7 @@ body::before {
 .box {
   width: 1090px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin-bottom: 10px;
 }
 

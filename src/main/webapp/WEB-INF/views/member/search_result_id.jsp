@@ -55,7 +55,7 @@ $(document).ready(function() {
 							<div class="col-lg-6">
 								<div class="p-5">
 									<div class="text-center">
-										<h1 class="h4 text-gray-900 mb-2">Please check your ID</h1>
+										<h1 class="h4 text-gray-900 mb-2">아이디 찾기</h1>
 										<br>
 										<br>
 										<c:choose>
@@ -69,15 +69,14 @@ $(document).ready(function() {
 									</div>
 									<hr>
 									<div class="text-center">
-										<a class="small" href="/account/search_id">Forgot Your ID?</a>
+										<a class="small" href="/account/search_id">비밀번호 찾으러가기</a>
 									</div>
 									<div class="text-center">
 										<a class="small" href="/account/register">Create an
 											Account!</a>
 									</div>
 									<div class="text-center">
-										<a class="small" href="/account/login">Already have an
-											account? Login!</a>
+										<a class="small" href="/account/login">로그인하러가기</a>
 									</div>
 								</div>
 							</div>
