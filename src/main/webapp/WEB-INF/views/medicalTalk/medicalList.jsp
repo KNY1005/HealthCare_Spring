@@ -296,13 +296,15 @@
 			text-align: center;
 			vertical-align: middle;
 			height: 73px;
+			text-overflow:ellipsis; overflow:hidden ;white-space:nowrap ;max-width: 650px; 
 		}
 		
 		.content td:first-child {
 			border-radius: 10px 0 0 10px;
-			width: 1000px;
+			width: 400px;
 			text-align: left;
 			padding-left: 20px;
+			 text-overflow:ellipsis; overflow:hidden;white-space:nowrap ;max-width: 650px; 
 		} /*td테두리 첫번쨰와 마지막만 둥글게 하기위해서*/
 		.content td:last-child {
 			border-radius: 0 10px 10px 0;
@@ -516,7 +518,7 @@
 			<tr class="content"
 				onclick="location.href='medicalView.do?bidx=${vo.bidx}'">
 				<td>
-					<p class="title">${vo.btitle}${vo.bidx }</p><br />
+					<p class="title">${vo.btitle}</p><br />
 					<p>${vo.bcontent}</p>
 				</td>
 				<td>${vo.bwriter}</td>
