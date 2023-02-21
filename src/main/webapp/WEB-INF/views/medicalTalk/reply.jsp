@@ -127,7 +127,7 @@
 	        url : 'medicalView/reply/update',
 	        type : 'post',
 	        data : {'pcontent' : updateContent, 'pidx' : pidx},
-// 	        success : function(data){		
+ 	        success : function(data){	
 	            if(data == 1) replyList(pidx); //댓글 수정후 목록 출력
 	        }
 	    });

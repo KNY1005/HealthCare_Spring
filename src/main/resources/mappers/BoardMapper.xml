@@ -173,11 +173,13 @@
 	</select>
 
 
-	<update id="countbyLike">
-		update table_reply
-		set plikecount = plikecount + 1
-		where pidx = #{pidx}
-	</update>
+	<select id="countbyLike" parameterType="int" resultType="LikeVO" >
+		SELECT
+		COUNT(*)
+		FROM TABLE_LIKE where PIDX = #{pidx}
+	</select>
+	
+	
 
 	<insert id="likeUp">
 		INSERT INTO TABLE_LIKE (likeno, like_check, pidx , midx)
