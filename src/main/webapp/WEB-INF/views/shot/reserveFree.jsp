@@ -130,7 +130,7 @@
                 <p>수신동의 설정 : 마이페이지 < 개인정보 수정</p>
             </div>
             <div class="btn">
-                <button type="button" onclick="location.href='<%=request.getContextPath() %>/mypage2.do?midx=${member.midx}'">예약조회 바로가기</button>
+                <button type="button" onclick="location.href='<%=request.getContextPath() %>/member/mypage2.do?midx=${member.midx}'">예약조회 바로가기</button>
             </div>
             
         </div>
