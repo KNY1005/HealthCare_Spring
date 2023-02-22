@@ -34,6 +34,9 @@
     ></script>
   </head>
   <style>
+  	#side {
+  	
+  	}
     .side_menu {
       width: 300px;
       height: 800px;
@@ -43,7 +46,7 @@
     }
   </style>
   <body> 
-     <section>
+     <section id="side">
       <div class="side_menu">
         <div class="list-group">
           <a
@@ -99,7 +102,7 @@
       	<div id="ifr">
 	         <iframe
 	        id = "ifr2"
-	          width="1500px"
+	          width="1200px"
 	          height="800px"
 	          
 	          frameborder="0" 

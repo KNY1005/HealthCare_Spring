@@ -195,8 +195,8 @@
                 style="width: 150px"
               >
                 <option selected> <c:out value="${mb.mdelyn}"></c:out></option>
-                <option value="N">정상(Y)</option>
-                <option value="Y">탈퇴(N)</option></select>
+                <option value="N">탈퇴(N)</option>
+                <option value="Y">정상(Y)</option></select>
                 <input
                 type="submit"
                 value="변경"

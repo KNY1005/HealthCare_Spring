@@ -113,7 +113,7 @@ $(document).ready(function(){
 		      	
             <ul>
               <li><img src="${path}/resources/image/profli.png" alt="프로필" /></li>
-              <li><p>${member.mname}님${member.mgrade}</p></li>
+              <li><p>${member.mname}님</p></li>
               <li><hr width="250px" /></li>
               <li><a href="<%=request.getContextPath() %>/member/mypage2.do?midx=${member.midx}">마이페이지</a></li>
               <li><a href="<%=request.getContextPath() %>/member/mypage4.do?midx=${member.midx}">내가 쓴 글</a></li>

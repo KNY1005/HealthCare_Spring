@@ -29,6 +29,7 @@ public class BoardVo {
 	public void setBhit(Integer bhit) {
 		this.bhit = bhit;
 	}
+	
 	public String getBwriter() {
 		return bwriter;
 	}

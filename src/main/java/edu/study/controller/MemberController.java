@@ -84,6 +84,7 @@ public class MemberController {
 
 		String encryPassword = memberSha256.encrypt(vo.getMpwd());
 		vo.setMpwd(encryPassword);
+		
 		memberService.register(vo);
 		return "member/login";
 	}
